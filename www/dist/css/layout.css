@@ -1,0 +1,2225 @@
+/**
+ * water in 20170621
+**/
+
+body, html {
+    font-size:62.5%;
+}
+
+p {
+    font-size:1.4rem;
+}
+
+span {
+    font-size:1.2rem;
+}
+
+div {
+    font-size:1.4rem;
+}
+
+a {
+    text-decoration:none;
+    color:#fff;
+}
+
+.pull-right {
+    float:right;
+}
+
+.pull-left {
+    float:left;
+}
+
+.usual-background {
+    background:#1e2b3f;
+}
+
+.bar-transparent {
+    background:none !important;
+}
+
+.ion-home-on {
+    background:url("../../images/bnlc/tab-1-focus.png") no-repeat center center;
+    background-size:30px;
+}
+
+.ion-home-off {
+    background:url("../../images/bnlc/tab-1.png") no-repeat center center;
+    background-size:30px;
+    -webkit-filter:brightness(1.5);
+}
+
+.ion-information-on {
+    background:url("../../images/bnlc/tab-2-focus.png") no-repeat center center;
+    background-size:30px;
+}
+
+.ion-information-off {
+    background:url("../../images/bnlc/tab-2.png") no-repeat center center;
+    background-size:30px;
+    -webkit-filter:brightness(1.5);
+}
+
+.ion-discover-on {
+    background:url("../../images/bnlc/tab-3-focus.png") no-repeat center center;
+    background-size:30px;
+}
+
+.ion-discover-off {
+    background:url("../../images/bnlc/tab-3.png") no-repeat center center;
+    background-size:30px;
+    -webkit-filter:brightness(1.5);
+}
+
+.ion-account-on {
+    background:url("../../images/bnlc/tab-4-focus.png") no-repeat center center;
+    background-size:30px;
+}
+
+.ion-account-off {
+    background:url("../../images/bnlc/tab-4.png") no-repeat center center;
+    background-size:30px;
+    -webkit-filter:brightness(1.5);
+}
+
+.tabs-very-dark {
+    background:#222 !important;
+}
+
+.tabs-dark > .tabs, .tabs.tabs-very-dark {
+    background:#041529 !important;
+}
+
+.gradient-line {
+    height:1px;
+    width:100%;
+    background:-webkit-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,1));
+    float:left;
+    margin-top: 10px;
+}
+
+.gradient-line-reverse {
+    height:1px;
+    width:100%;
+    background:-webkit-linear-gradient(right, rgba(255,255,255,0), rgba(255,255,255,1));
+    float:left;
+    margin-top: 10px;
+}
+
+.spinner svg {
+    width: 19% !important;
+    height: 85px !important;
+}
+
+.refresh .spinner svg {
+    height:30px !important;
+}
+
+.spinner-assertive {
+    position: absolute;
+    z-index:999;
+    width:100%;
+    height:100%;
+    text-align:center;
+    line-height:100%;
+}
+
+.spinner-assertive  svg{
+    position: relative;
+    top: 50%;
+    transform:translateY(-50%);
+}
+
+.navbar-bg {
+    background:#224;
+    color:#fff;
+    /*padding-top:10px;*/
+}
+
+.navbar-bg a.ion-ios-arrow-back {
+    color:#eee;
+}
+
+.bar .title {
+    line-height:48px;
+}
+
+.platform-android .bar .title {
+    line-height:48px;
+}
+
+.nav-btn-right {
+    line-height:38px;
+    font-size:1.6rem;
+    margin-right:10px;
+    letter-spacing: 1px;
+}
+
+/*.white-space {*/
+    /*width:100%;*/
+    /*height:50px;*/
+/*}*/
+/*.tabs-striped.tabs-very-dark .tabs {*/
+    /*background:#041529 !important;*/
+/*}*/
+
+/*login*/
+
+.login-container {
+    width:100%;
+    position: relative;
+    background:url('../../images/bnlc/login-bg.jpg') no-repeat center center;
+    background-size:cover;
+    overflow:hidden;
+}
+
+.login-top-container {
+    width:100%;
+    height:45%;
+    background:url('../../images/bnlc/login-bg-top.png') no-repeat center center;
+    background-size:cover;
+}
+
+.login-bottom-container {
+    width:100%;
+    height:55%;
+}
+
+.login-phone-icon {
+    width:15px;
+    float:left;
+    display: inline-block;
+    margin-top: 7px;
+    margin-right: 7px;
+}
+
+.login-logo-container {
+    position: absolute;
+    width:120px;
+    height:30px;
+    bottom:20px;
+    background:url('../../images/bnlc/login-logo-icon.png') no-repeat center center;
+    background-size:contain;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.login-account {
+    width:80%;
+    margin:20px auto;
+    margin-top:40px;
+}
+
+.login-phone-container {
+    width:90%;
+    height:36px;
+    margin:0 auto;
+    border-bottom:1px solid #445;
+    font-size:13px;
+    letter-spacing:1px;
+    padding-bottom:5px;
+    padding-left:15px;
+}
+
+.login-phone-container i {
+    float:left;
+    margin:5px;
+    margin-right:10px;
+    font-size:14px;
+    color:#ccc;
+}
+
+.login-phone-container input {
+    color:#fff;
+    font-size:15px;
+    padding-left:10px;
+}
+
+.login-phone-input {
+    width:80%;
+    background:none;
+    color:#fff;
+}
+
+.login-next-btn {
+    display: block;
+    width:100%;
+    height:4rem;
+    border-radius: 2.2rem;
+    border:2px solid #eee;
+    font-size:2rem;
+    line-height:3.6rem;
+    text-align:center;
+    margin-top:2rem;
+    box-sizing:border-box;
+}
+
+.protocol-checkbox {
+    width:120%;
+    color:#9df;
+}
+
+.protocol-checkbox .checkbox input, .protocol-checkbox .checkbox-icon {
+    width:26px;
+    height:26px;
+}
+
+.protocol-checkbox span {
+    font-size:12px;
+    transform:scale(1);
+    display: inline-block;
+    transform-origin:left;
+    color:#9df;
+}
+
+.protocol-checkbox .checkbox-icon:before {
+    background:none;
+    border-color:#aaa;
+}
+
+.protocol-checkbox .checkbox-icon:after {
+    transition: opacity 0.25s ease-in-out;
+}
+
+.protocol-checkbox span a {
+    color:#8cf;
+}
+
+.item-checkbox .checkbox {
+    margin-top:-20px;
+}
+
+.login-other-account {
+    width:100%;
+    text-align: center;
+    margin-top:1.2rem;
+    color:#6f88a8;
+    font-size:1.2rem;
+}
+
+.login-wechat-btn {
+    width:40px;
+    height:40px;
+    border-radius:20px;
+    background:url('../../images/bnlc/login-wechat-icon.png') no-repeat center center;
+    background-size:cover;
+    margin:10px auto;
+}
+
+
+
+/*故事*/
+
+
+.story-more span {
+    margin-right:10px;
+}
+
+/*邀请*/
+.invite-container {
+    width:100%;
+    height:100%;
+    position: relative;
+    background:url('../../images/bnlc/invite-bg.jpg') no-repeat;
+    background-position:0 0;
+    background-size:cover;
+}
+
+.invite-top-bg {
+    width:100%;
+    /*height:100px;*/
+}
+
+.invite-top-bg img{
+    margin-left:5%;
+    margin-top:50px;
+}
+
+.invite-center-bg {
+    position:absolute;
+    bottom:60px;
+    margin-left:5%;
+}
+
+
+.invite-btn {
+    width:80%;
+    height:44px;
+    position:absolute;
+    bottom:10px;
+    left:10%;
+    text-shadow:0 0 1px #333;
+    background:-webkit-linear-gradient(top, #39ebd4, #3dc9e8);
+    color:#fff;
+    text-align: center;
+    line-height:44px;
+    border-radius:22px;
+    font-size:20px;
+    transition:box-shadow 0.4s ease;
+}
+
+.invite-btn:active {
+    box-shadow:0 3px 3px rgba(0,0,0,0.4) inset;
+}
+
+/*invest*/
+.invest-list {
+    width:100%;
+}
+
+.invest-list-item {
+    width:100%;
+    height:120px;
+    box-sizing:border-box;
+    padding:20px;
+    position: relative;
+}
+
+.invest-title {
+    font-size:14px;
+    color:#fff;
+    overflow:hidden;
+    width:100%;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    word-break:break-all;
+}
+
+.invest-content {
+    font-size:13px;
+    color:#999;
+    overflow: hidden;
+    width:100%;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -ms-word-break: break-all;
+    word-break: break-all;
+}
+
+.invest-date {
+    color:#666;
+    font-size:12px;
+    vertical-align: baseline;
+}
+
+.invest-img {
+    width:80%;
+    height:80px;
+    margin-left:20%;
+    background:aliceblue;
+}
+
+/*************************理财****************************/
+
+.bn-icon-container {
+
+}
+
+.bn-icon {
+    width:3rem;
+    height:3rem;
+    border-radius:50%;
+    border:2px solid #fff;
+    line-height:2.8rem;
+    text-align:center;
+    font-size:1.4rem;
+    box-sizing:border-box;
+    color:#fff;
+    font-weight:200;
+    float:left;
+}
+
+.msg-icon {
+    width:26px;
+    height:26px;
+    box-sizing:border-box;
+    font-size:0.5rem;
+    color:#fff;
+    text-align: center;
+    line-height:22px;
+    float:right;
+    font-weight:200;
+}
+
+.report-icon {
+    width:20px;
+    transition:transform 0.3s ease;
+    transform-origin:top;
+}
+
+.report-icon:hover {
+    transform:rotate(15deg);
+}
+
+.report-icon:active {
+    transform:rotate(-15deg);
+}
+
+.home-bg-btm {
+    background:url("../../images/bnlc/home-bg2.png") no-repeat;
+    background-position:0 71%;
+    background-size:contain;
+}
+
+.home-top-bar {
+    width:100%;
+    height:30px;
+}
+
+.home-benefit-outer-bg {
+
+}
+
+.home-benefit-outer-container {
+    height:240px;
+    width:100%;
+    background:url('../../images/bnlc/homg-bg1-c.png') no-repeat center center;
+    background-size: contain;
+    margin:-0.5rem 0 1.5rem 0;
+}
+
+.home-yes-benefit-container {
+    height:220px;
+    width:220px;
+    border-radius:50%;
+    background-color:rgba(68,221,255,1);
+    background:url('../../images/bnlc/home-circle-bg.png') no-repeat;
+    background-position:0 0;
+    background-size:cover;
+    margin:10px auto;
+    box-shadow:0 0 20px rgba(0,0,0,0.2);
+    text-align:center;
+    color:#fff;
+    box-sizing:border-box;
+    padding-top:55px;
+}
+
+.home-yes-benefit-title {
+    margin:0px 0;
+    color:#fff;
+}
+
+.home-yes-benefit-content {
+    color:#fff;
+    margin:0;
+    font-size:46px;
+    font-weight:400;
+}
+
+.home-total-account-title {
+    color:#fff;
+    margin:20px 0 0 0 ;
+    font-weight:200;
+}
+
+.home-total-account-content {
+    color:#fff;
+    font-size:26px;
+    font-weight:200;
+    margin:0;
+}
+
+.home-bnqkl-container {
+    font-size:1.2rem;
+    text-align:center;
+    width:100%;
+}
+
+.home-bnqkl-title {
+    background:#44ddff;
+    display:inline-block;
+    padding:2px 13px;
+    color:#fff;
+    border-radius:5px;
+    transform:skew(-10deg);
+    box-shadow:0 0 5px rgba(0,0,0,0.4);
+    margin-right:8px;
+}
+
+.home-bnqkl-title span{
+    display: inline-block;
+    transform:skew(10deg);
+}
+
+.home-bnqkl-content {
+    color:#fff;
+    letter-spacing:1px;
+    font-weight:200;
+}
+
+.home-benefit-container {
+    width:100%;
+    text-align: center;
+    padding-top:0.5rem;
+}
+
+.home-benefit-amount {
+    font-size:46px;
+    font-weight:300;
+    margin-bottom:0;
+    color:#44ddff;
+    text-indent:0.4em;
+}
+
+.home-benefit-amount-content {
+    font-size:46px;
+    font-weight:300;
+}
+
+.home-benefit-amount span {
+    text-shadow:0 0 8px rgba(0,0,0,0.5);
+}
+
+.home-benefit-amount small {
+    font-weight:200;
+    color:#44ddff;
+    text-shadow:0 0 8px rgba(0,0,0,0.5);
+}
+
+.home-benefit-title {
+    font-size:14px;
+    /*margin-top:0;*/
+    color:rgba(180,230,255,1);
+    text-shadow:0 0 8px rgba(0,0,0,0.5);
+    margin-top:3px;
+    margin-bottom:0.3rem;
+}
+
+.home-benefit-more {
+    margin-top:10px;
+    display: inline-block;
+    color:#6f88a8;
+}
+
+.row.home-roll-buy-container {
+    width:100%;
+    margin-top:1.5rem;
+}
+
+.home-roll-out-container, .home-buy-in-container {
+    width:48%;
+    text-align: center;
+}
+
+.home-roll-out-container {
+    float:left;
+}
+
+.home-buy-in-container {
+    float:right;
+    margin-left:6%;
+}
+
+.home-roll-out-title, .home-buy-in-title {
+    color:#fff;
+    font-size:1rem;
+    letter-spacing:0.3rem;
+    transform:scale(0.7);
+}
+
+.home-roll-out-btn {
+    width:100%;
+    height:3.4rem;
+    border-radius:1.7rem;
+    background:-webkit-linear-gradient(top, #39ebd4, #3dc9e8);;
+    /*background:-webkit-linear-gradient(top, #ccc, #aae);*/
+    /*box-shadow:0 0 2px rgba(200,200,255,0.4);*/
+    margin-top:10px;
+    line-height: 3.4rem;
+    color:#fff;
+    font-size:17px;
+    text-shadow:0 0 1px #333;
+    font-weight:600;
+    transition:box-shadow 0.4s ease;
+}
+
+.home-roll-out-btn:active {
+    /*-webkit-filter:hue-rotate(180deg);*/
+    box-shadow:0 3px 3px rgba(0,0,0,0.4) inset;
+}
+
+.home-buy-in-btn {
+    width:100%;
+    height:3.4rem;
+    border-radius:1.7rem;
+    background:#eee;
+    /*box-shadow:0 0 2px rgba(200,200,255,0.4);*/
+    margin-top:10px;
+    line-height: 3.4rem;
+    color:#99e;
+    font-size:17px;
+    text-shadow:0 0 1px #eee inset;
+    font-weight:600;
+    transition:box-shadow 0.4s ease;
+}
+
+.home-buy-in-btn:active {
+    box-shadow:0 3px 3px rgba(0,0,0,0.4) inset;
+}
+
+.home-buy-in-btn a {
+    color:#99e;
+}
+
+.home-footer-container {
+    bottom:60px;
+    position: fixed;
+}
+
+.home-footer-banner-container {
+    width:100%;
+    margin-top:30px;
+    text-align: center;
+}
+
+.home-footer-banner {
+    margin:0 auto;
+    display: block;
+    width:120px;
+}
+
+.home-bg-no-login {
+    background:url('../../images/bnlc/index-login-bg.jpg') no-repeat center center;
+    background-size:cover;
+}
+
+.index-freshman-award {
+    width:90%;
+    margin:0 auto;
+    margin-top:10px;
+    height:140px;
+    background:url('../../images/bnlc/home-no-login-tip.png') no-repeat center center;
+    background-size:contain;
+}
+
+.home-benefit-tip  {
+    color:#669;
+    margin-right:3px;
+}
+
+.index-login-btn-container {
+    width:80%;
+    height:46px;
+    line-height:46px;
+    color:#fff;
+    border-radius:23px;
+    margin:0 auto;
+    margin-bottom:10px;
+    margin-top:-23px;
+    text-align:center;
+    background:-webkit-linear-gradient(top, #39ebd4, #3dc9e8);
+    /*box-shadow:0 0 2px rgba(200,200,255,0.4);*/
+    font-size:20px;
+    font-weight:200;
+    transition:box-shadow 0.4s ease;
+}
+
+.index-login-btn-container:active {
+    box-shadow:0 3px 3px rgba(0,0,0,0.4) inset;
+}
+
+.home-safe-tip {
+    width:100%;
+    height:80px;
+    line-height:140px;
+    color:#999;
+    text-align:center;
+    position: absolute;
+    bottom:50px;
+    left:0;
+    background:url('../../images/bnlc/home-bg2.png') no-repeat center center;
+    background-size:cover;
+}
+
+
+/*buyin*/
+.buy-in-card-container {
+    height:100px;
+    box-sizing:border-box;
+    padding-left:20px;
+    padding-top:20px;
+    margin-top:10px;
+    background:rgba(0,0,0,0.1);
+}
+
+.buy-in-card-pic {
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#fff;
+}
+
+.buy-in-bank-name, .buy-in-card-no {
+    height:25px;
+    line-height:25px;
+    color:#fff;
+    font-size:14px;
+}
+
+.buy-in-card-no span {
+    color:#4cf;
+}
+
+.buy-in-card-detail-btn {
+    height:50px;
+    line-height:50px;
+    font-size:22px;
+    color:#555;
+    float:right;
+    margin-right:20px;
+    transition:box-shadow 0.4s ease;
+}
+
+.buy-in-card-detail-btn:active {
+    box-shadow:0 3px 3px rgba(0,0,0,0.4) inset;
+}
+
+.buy-in-amount-container {
+    height:60px;
+    line-height:60px;
+    margin-top:20px;
+    background:rgba(0,0,0,0.1);
+}
+
+.buy-in-amount-container label {
+    color:#eee;
+    margin-left:20px;
+    font-size:16px;
+}
+
+.buy-in-amount-container input {
+    color:#fff;
+    font-size:14px;
+    height:30px;
+    line-height:30px;
+    margin-top:15px;
+    padding-right:20px;
+}
+
+.buy-in-amount {
+    width:100%;
+    background:transparent;
+    color:#fff;
+    font-size:14px;
+}
+
+.buy-in-tip-container {
+    margin-top:10px;
+    box-sizing:border-box;
+    padding-left:20px;
+}
+
+.buy-in-tip {
+    color:#bbb;
+    letter-spacing:1px;
+}
+
+.buy-in-tip span {
+    color:#4ce;
+}
+
+.buy-in-btn-container {
+    width:80%;
+    height:44px;
+    line-height:44px;
+    margin-top:30px !important;
+    border-radius:25px;
+    color:#fff;
+    text-align:center;
+    margin-left:10%;
+    font-size:18px;
+    text-shadow: 0 0 2px rgba(0,0,0,0.3);
+    background:-webkit-linear-gradient(top, #39ebd4, #3dc9e8);
+    transition:box-shadow 0.4s ease;
+}
+
+.buy-in-btn-container:active {
+    box-shadow:0 3px 3px rgba(0,0,0,0.4) inset;
+}
+
+.buy-in-btn {
+    font-size:1.8rem;
+}
+
+/*roll-out*/
+.roll-out-card-container {
+    height:100px;
+    box-sizing:border-box;
+    padding-left:20px;
+    padding-top:20px;
+    margin-top:10px;
+    background:rgba(0,0,0,0.1);
+}
+
+.roll-out-card-pic {
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#fff;
+}
+
+.roll-out-bank-name, .roll-out-card-no {
+    height:25px;
+    line-height:25px;
+    color:#fff;
+    font-size:14px;
+}
+
+.roll-out-card-no span {
+    color:#4cf;
+}
+
+.roll-out-card-detail-btn {
+    height:50px;
+    line-height:50px;
+    font-size:22px;
+    color:#555;
+    float:right;
+    margin-right:20px;
+    transition:box-shadow 0.4s ease;
+}
+
+.roll-out-card-detail-btn:active {
+    box-shadow:0 3px 3px rgba(0,0,0,0.4) inset;
+}
+
+.roll-out-amount-container {
+    height:60px;
+    line-height:60px;
+    margin-top:20px;
+    background:rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.roll-out-amount-container label {
+    color:#eee;
+    margin-left:20px;
+    font-size:16px;
+}
+
+.roll-out-amount-container input {
+    color:#fff;
+    font-size:16px;
+    height:30px;
+    line-height:30px;
+    padding-right:20px;
+    display: inline-block;
+    float:left;
+    margin-top:16px;
+    margin-left:50px;
+}
+
+.roll-out-amount-container input::-webkit-input-placeholder {
+    color:#557;
+}
+
+.roll-out-amount {
+    width:100%;
+    background:transparent;
+    color:#fff;
+    font-size:14px;
+    margin-left:30px;
+    position: relative;
+}
+
+.roll-out-amount-unit {
+    position: absolute;
+    display: inline-block;
+    color:#fff;
+    font-size:30px;
+    margin-left:10px;
+    width:20px;
+    height:20px;
+    float:left;
+}
+
+.roll-out-all-btn {
+    font-size:16px;
+    display: block;
+    color:#9ad;
+    float:right;
+    margin-right:10px;
+    transition:box-shadow 0.4s ease;
+}
+
+.roll-out-all-btn:active {
+    box-shadow:0 3px 3px rgba(0,0,0,0.4) inset;
+}
+
+.roll-out-tip-container.row {
+    margin-top:20px;
+}
+
+.roll-out-tip-container {
+    margin-top:40px;
+    box-sizing:border-box;
+    background:rgba(0,0,0,0.1);
+    padding:10px 20px;
+}
+
+.roll-out-quick-icon {
+    width:20px;
+    height:20px;
+    vertical-align: sub;
+    margin-right:5px;
+}
+
+.roll-out-tip-title {
+    color:#fff;
+    font-size:14px;
+    margin-top:10px;
+    margin-bottom:5px;
+}
+
+.roll-out-receive-time {
+    font-size:13px;
+    color:#48a;
+}
+
+.roll-out-receive-date {
+    color:#7ac;
+}
+
+.roll-out-tip {
+    color:#bbb;
+    letter-spacing:1px;
+}
+
+.roll-out-tip span {
+    color:#4ce;
+}
+
+.roll-out-btn-container {
+    width:80%;
+    height:44px;
+    line-height:44px;
+    margin-top:30px !important;
+    border-radius:25px;
+    color:#fff;
+    text-align:center;
+    margin-left:10%;
+    font-size:18px;
+    text-shadow: 0 0 2px rgba(0,0,0,0.3);
+    /*background:-webkit-linear-gradient(top, rgba(211,211,240,1), rgba(160,160,230,1));*/
+    background:-webkit-linear-gradient(top, #39ebd4, #3dc9e8);;
+    transition:box-shadow 0.4s ease;
+}
+
+.roll-out-btn {
+    font-size:1.8rem;
+}
+
+.roll-out-btn-container:active {
+    box-shadow:0 3px 3px rgba(0,0,0,0.4) inset;
+}
+
+/*report*/
+.report-list {
+    width:100%;
+}
+
+.report-list-item {
+    width:100%;
+    height:70px;
+    box-sizing:border-box;
+    padding-top:15px;
+    margin-top:1px;
+    background:rgba(0,0,0,0.1);
+}
+
+.report-list-item:first-child {
+    margin-top:3px;
+}
+
+.report-has-top {
+    background:rgba(255,255,255,0.02);
+}
+
+.report-list-item-row  {
+    width:100%;
+    height:40px;
+}
+
+.report-list-item-col {
+    height:40px;
+    padding-left:15px;
+}
+
+.report-user-head {
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow: 0 0 2px rgba(55,55,55,0.5) inset;
+}
+
+.report-list-item-body {
+
+}
+
+.report-user-info {
+    height:20px;
+    line-height:20px;
+    color:#fff;
+    font-size:12px;
+}
+
+.report-is-top {
+    color:#44bbee;
+}
+
+.report-is-top +
+
+.report-date {
+    color:#666;
+}
+
+.report-title {
+    height:20px;
+    line-height:20px;
+    color:#fff;
+    font-size:13px;
+}
+
+/*******************************发现********************************/
+.discover-picbox-pic {
+    width:100%;
+    height:100%;
+}
+
+.discover-slider {
+    height:18rem;
+}
+
+.discover-picbox-1 {
+    background: url('../../images/bnlc/discover-p1.jpg') no-repeat center center;
+    background-size:cover;
+}
+
+.discover-icon {
+    margin-top:1rem;
+}
+
+.discover-icon div{
+    text-align:center;
+    height:90px;
+}
+
+.discover-icon-pic {
+    width:50px;
+    height:50px;
+    transition:all 0.4s ease;
+    /*background:#333;*/
+}
+
+.discover-icon-pic:active {
+    transform:translateY(-5px);
+}
+
+.discover-icon-content {
+    color:#ddd;
+    font-size:14px;
+}
+
+.discover-protect {
+    width:100%;
+}
+
+.discover-protect-title {
+    text-align:center;
+    margin:0 auto;
+    margin-bottom:10px;
+    color:#ddd;
+    font-size:1.4rem;
+    text-align: center;
+    display:flex;
+    justify-content:center;
+}
+
+.discover-protect-container {
+    text-align:center;
+}
+
+.discover-protect-pic {
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    /*background:#666;*/
+    margin:0 auto;
+}
+
+.discover-protect-pic img{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    /*background:#666;*/
+    margin:0 auto;
+}
+
+.discover-protect-content {
+    padding-top:10px;
+}
+
+.discover-protect-content p {
+    font-size:14px;
+    margin:0;
+    line-height:14px;
+    color:#ddd;
+}
+
+.discover-protect-content span {
+    color:#bbb;
+}
+
+.discover-article-container {
+    width:100%;
+    padding-top:10px;
+    margin-top:50px;
+    background:-webkit-linear-gradient(top, rgba(200,200,200,0.2), rgba(0,0,0,0))
+    /*margin-top:60px;*/
+    border-top:1px dotted rgba(100,100,100,0.2);
+}
+
+.discover-article-list {
+    width:100%;
+}
+
+.discover-article-list-item {
+    margin-top:10px;
+    width:100%;
+    padding-bottom:20px;
+    /*background:-webkit-linear-gradient(top, rgba(200,200,200,0.2), rgba(0,0,0,0))*/
+}
+
+.discover-article-item-pic-container {
+    line-height:2rem;
+}
+
+.discover-article-item-pic-container img {
+    width:100%;
+}
+
+.discover-article-item-title {
+    margin-top:10px;
+    font-size:1.4rem;
+    color:#fff;
+    text-indent:2rem;
+    line-height:2rem;
+}
+
+.discover-article-item-content {
+    font-size:1.4rem;
+    color:#888;
+    text-indent:2rem;
+    line-height:2rem;
+}
+
+/*媒体资讯*/
+.media-information-list {
+
+}
+
+.media-information-list-item {
+    height:130px;
+    box-sizing:border-box;
+    padding:15px;
+    padding-top:20px;
+    margin-top:2px;
+    background:rgba(0,0,0,0.1);
+}
+
+.media-title {
+    color:#fff;
+    font-size:16px;
+    width:100%;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+    word-break:break-all;
+}
+
+.media-content {
+    color:#999;
+    font-size:13px;
+    width:100%;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+    word-break:break-all;
+}
+
+.media-info {
+    font-size:12px;
+    color:#666;
+}
+
+.media-pic {
+    width:80%;
+    height:75px;
+    margin-left:20%;
+    background:red;
+}
+
+/*公司介绍*/
+
+.company-intro-top-contaienr, .company-intro-main-container {
+    width:100%;
+    padding:10px 15px;
+    padding-top:30px;
+    box-sizing:border-box;
+    background:url('../../images/bnlc/intro-bg-1.png') no-repeat center bottom;
+    background-size:cover;
+}
+
+.company-intro-logo {
+    display:block;
+    width:50%;
+    max-width:200px;
+    margin:0px auto;
+    margin-bottom:20px;
+}
+
+.company-intro-about-container {
+    margin-top:30px;
+}
+
+.company-intro-about-title, .company-intro-adv-title {
+    color:#fff;
+    border-left:3px solid #fff;
+    padding-left:8px;
+    font-size:14px;
+}
+
+.company-intro-about-content {
+    color:#779;
+    font-size:1.2rem;
+    letter-spacing:1px;
+}
+
+.company-intro-advantage-pic {
+    display: block;
+    width:60px;
+    margin:10px auto;
+}
+
+.company-intro-advantage-title {
+    color:#fff;
+    text-align:center;
+    font-size:13px;
+    margin:5px 0 !important;
+}
+
+.company-intro-advantage-item {
+    text-align:center;
+}
+
+.company-intro-advantage-item:nth-of-type(2n+1) {
+    box-sizing:border-box;
+    padding:0 10px 0 0;
+}
+
+.company-intro-advantage-item:nth-of-type(2n) {
+    box-sizing:border-box;
+    padding:0 0px 0 10px;
+}
+
+.company-intro-advantage-content {
+    font-size:1.2rem;
+    color:#779;
+}
+
+/*******************************计划********************************/
+
+.plan-row {
+    width:100%;
+    height:200px;
+    background:-webkit-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+    text-align: center;
+    color:#fff;
+    margin-top:0 !important;
+    padding:0;
+}
+
+.row.col.plan-row {
+    /*background:-webkit-linear-gradient(top, rgba(0,0,0,0.3), rgba(0,0,0,0.6));*/
+    vertical-align:middle;
+}
+
+.plan-type {
+    width:120px;
+    font-size:14px;
+    /*margin:15px 0 0 0;*/
+    letter-spacing: 5px;
+    text-align:center;
+    position: relative;
+    display:flex;
+    justify-content:center;
+    margin:10px auto;
+}
+
+.plan-type:before {
+    position:absolute;
+    content:"";
+    width:6px;
+    height:6px;
+    border-radius:3px;
+    background:#fff;
+    left:0px;
+    top:6px;
+}
+
+.plan-type:after {
+    content: "";
+    position:absolute;
+    width:6px;
+    height:6px;
+    border-radius:3px;
+    background:#fff;
+    right:0;
+    top:6px;
+}
+
+.plan-name {
+    font-size:18px;
+    margin:13px 0;
+    letter-spacing:2px;
+}
+
+.plan-intro {
+    font-size:1.2rem;
+    padding:5px 10px;
+    height:24px;
+    width:auto;
+    line-height:14px;
+    border-radius:17px;
+    background:rgba(255,255,255,0.3);
+    font-weight:200;
+    display:inline-block;
+    letter-spacing:1px;
+}
+
+.plan-1-container {
+    background:url("../../images/bnlc/plan-p1.jpg") no-repeat center center;
+    background-size:cover;
+}
+
+.plan-2-container {
+    background:url("../../images/bnlc/plan-p2.jpg") no-repeat center center;
+    background-size:cover;
+}
+
+.plan-3-container {
+    background:url("../../images/bnlc/plan-p3.jpg") no-repeat center center;
+    background-size:cover;
+}
+
+
+.plan-row .col {
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    box-sizing:border-box;
+    padding-top:40px !important;
+    transition:background 0.4s ease;
+}
+
+.plan-row:hover .col {
+    background:none;
+}
+
+
+/*******************************我的********************************/
+
+.account-container {
+    height:180px;
+}
+
+.account-settings-icon {
+    width:100%;
+    position:absolute;
+    top:10px;
+    left:0;
+    height:40px;
+    line-height:40px;
+    z-index: 1;
+    font-size:20px;
+    color:#fff;
+}
+
+.account-settings-img {
+    width:25px;
+    transition:transform 0.4s ease;
+}
+
+.account-settings-img:active {
+    transform:rotate(360deg);
+}
+
+.account-info-container {
+    /*height:120px;*/
+    box-sizing:border-box;
+    text-align:center;
+    padding-top:30px !important;
+    width:200%;
+    transform:translateX(-25%);
+    border-radius:0 0 50% 50%;
+    background:url("../../images/bnlc/account-bg-1.png") no-repeat center center;
+    background-size:cover;
+}
+
+.account-head-container {
+    padding-top:20px;
+}
+
+.account-head {
+    width:70px;
+    height:70px;
+    border-radius: 50%;
+    margin:0px auto;
+    background:url("../../images/bnlc/f-pwd-head.png") no-repeat center center;
+    background-size:cover;
+}
+
+.account-phone {
+    font-size:14px;
+    margin:10px 0 15px 0;
+    font-weight:200;
+    color:#fff;
+}
+
+.account-wallet {
+    font-size:26px;
+    margin-bottom:20px;
+    font-weight:400;
+    color:#fff;
+}
+
+.account-wallet-content {
+    font-size:15px;
+    color:#fff;
+}
+
+.account-wallet-content a {
+    color:#3dc8e8;
+    text-decoration: none;
+}
+
+.account-wallet-content-i {
+    font-size:14px;
+    color:#3dc8e8;
+    margin-left:3px;
+}
+
+.account-settings-container {
+    box-sizing:border-box;
+    /*padding:0 20px;*/
+    padding-top:10px;
+}
+
+
+.account-settings-container ul li {
+    padding:20px 30px;
+    width:100%;
+    box-sizing:border-box;
+    height:50px;
+    line-height:20px;
+    margin-top:1px;
+    color:#fff;
+    font-size:14px;
+    background:rgba(66,66,66,0.1);
+}
+
+.account-settings-container ul li.list-group-item {
+    padding:15px 20px;
+}
+
+.account-settings-container ul li.list-group-item-setting{
+    margin-top:20px;
+}
+
+.account-settings-container ul li span {
+    font-size:1.4rem;
+}
+
+.account-setting-icon {
+    width:25px;
+    margin-right:10px;
+    margin-left:10px;
+    vertical-align: middle;
+    font-size:14px;
+    letter-spacing: 1px;
+}
+
+/**资产明细**/
+
+.assets-navbar-bg .bar .title {
+    /*line-height:58px;*/
+    line-height:48px;
+}
+
+
+
+.assets-navbar-bg {
+    background:#3dc8e8;
+    color:#fff;
+    /*padding-top:10px;*/
+}
+
+.assets-total {
+    width:100%;
+    height:180px;
+    text-align:center;
+    box-sizing:border-box;
+    padding-top:50px;
+    background:#3dc8e8;
+}
+
+.assets-amount {
+    color:#fff;
+    font-size:40px;
+}
+
+.assets-amount-content {
+    color:#fff;
+    font-size:16px;
+    margin-top:30px;
+}
+
+.assets-benefit {
+    color:#eee;
+    height:70px;
+    box-sizing:border-box;
+    padding-top:1.5rem;
+    line-height:1.1rem;
+    font-size:14px;
+    text-align: center;
+    background:rgba(0,0,0,0.2);
+}
+
+.assets-benefit span {
+    font-size:1.4rem;
+}
+
+.assets-management {
+    width:100%;
+    margin-top:20px;
+    background:rgba(0,0,0,0.2);
+}
+
+.assets-management ul li{
+    height:60px;
+    line-height:60px;
+    color:#fff;
+    box-sizing:border-box;
+    padding:0 20px;
+    width:100%;
+ }
+
+.assets-management-sort img{
+    vertical-align: sub;
+    margin-right:10px;
+}
+
+.assets-management-sort span {
+    font-size:16px;
+}
+
+.assets-management-sort-item i {
+    font-size:1.4rem;
+}
+
+.assets-list-dot {
+    margin-right:18px;
+    margin-left:6px;
+    width:8px;
+    height:8px;
+    border-radius:4px;
+    background:#3dc8e8;
+    float:left;
+    margin-top:24px;
+}
+
+.assets-management-sort-item span {
+    font-size:14px;
+}
+
+/*credit card*/
+
+.invite-navbar-bg {
+    background:url('../../images/bnlc/invite-bg.jpg') no-repeat;
+    background-size:cover;
+    color:#fff;
+    /*padding-top:10px;*/
+}
+
+.credit-navbar-bg .bar .title {
+    /*line-height:58px;*/
+}
+
+.credit-navbar-bg a.ion-ios-arrow-back {
+    color:#eee;
+    font-weight:200;
+}
+
+.credit-top-content {
+    color:#eee;
+    text-align:center;
+    font-size:1rem;
+    transform:scale(0.8);
+    margin-bottom:10px;
+    background:rgba(22,22,22,0.1);
+}
+
+.credit-row {
+    padding-left:20px;
+    padding-top:10px;
+    padding-bottom:10px;
+    margin-top:10px;
+    margin-bottom:10px;
+    background:rgba(22,22,22,0.1);
+}
+
+.credit-row label {
+    font-size:16px;
+    color:#fff;
+    line-height:33px;
+}
+
+.credit-row input {
+    background:transparent;
+    color:#fff;
+    font-size:16px;
+}
+
+.credit-row input::-webkit-input-placeholder {
+    color:#446;
+    font-size:14px;
+}
+
+.credit-tip {
+    margin-bottom:10px;
+}
+
+.credit-tip span {
+    margin-left:10px;
+    color:#eee;
+    font-size:1rem;
+    transform:scale(0.9);
+}
+
+.credit-tip a {
+    font-size:1rem;
+    transform:scale(0.9);
+    color:#3dc8e8;
+}
+
+.credit-submit-container {
+    height:80px;
+    margin-top:20px;
+}
+
+.credit-submit-btn {
+    width:80%;
+    height:44px;
+    line-height:44px;
+    margin-top:10px;
+    border-radius:25px;
+    color:#fff;
+    text-align:center;
+    margin-left:10%;
+    font-size:18px;
+    text-shadow: 0 0 2px rgba(0,0,0,0.3);
+    background:-webkit-linear-gradient(top, #39ebd4, #3dc9e8);
+    transition:box-shadow 0.4s ease;
+}
+
+.credit-submit-btn:active {
+    box-shadow:0 3px 3px rgba(0,0,0,0.4) inset;
+}
+
+/*settings*/
+
+.settings-title {
+    width:100%;
+    box-sizing:border-box;
+    padding:10px 0 0 25px;
+    line-height:30px;
+    color:#3dc8e8;
+    font-size:14px;
+}
+
+.settings-title .setting-safe-icon {
+    margin-right:5px;
+    vertical-align: sub;
+}
+
+.settings-title .settings-function-icon {
+    margin-right:5px;
+    vertical-align: sub;
+}
+
+.settings-option {
+    box-sizing:border-box;
+    padding:0px 20px;
+    height:60px;
+    line-height:40px;
+    clear:both;
+    background:rgba(0,0,0,0.1);
+}
+
+.settings-option.row {
+    padding:10px 20px;
+    margin:0;
+}
+
+.settings-option.row span{
+    color:#eee;
+    font-size:15px;
+}
+
+.settings-exit-container {
+    height:46px;
+    margin-top:30px !important;
+}
+
+.settings-exit-btn {
+    text-align:center;
+    width:100%;
+    height:46px;
+    line-height:46px;
+    color:#fff;
+    border-radius:25px;
+    font-size:18px;
+    text-shadow: 0 0 2px rgba(0,0,0,0.3);
+    background:-webkit-linear-gradient(top, #39ebd4, #3dc9e8);
+    transition:box-shadow 0.4s ease;
+}
+
+.settings-exit-btn:active {
+    box-shadow:0 3px 3px rgba(0,0,0,0.4) inset;
+}
+
+/*trade-history*/
+
+.trade-history-tab-container {
+    top:44px;
+    padding-top:0;
+    justify-content:center;
+    transform:translate3d(0,0,0);
+    color:#444;
+    position:absolute;
+    bottom:0;
+    z-index:5;
+    width:100%;
+    height:49px;
+    line-height:49px;
+    margin:0;
+    padding:0;
+    vertical-align:baseline;
+    font-size:100%;
+    box-sizing:border-box;
+    -webkit-font-smoothing:antialiased;
+    -webkit-tap-highlight-color: transparent;
+    word-wrap:break-word;
+}
+
+.trade-history-tab-list {
+    width:100%;
+    height:49px;
+    line-height:49px;
+    position: relative;
+}
+
+.trade-history-tab {
+    float:left;
+    width:32%;
+    height:49px;
+    text-align:center;
+    color:#fff;
+    font-size:16px;
+}
+
+.trade-history-tab-focus {
+    font-weight:bold;
+}
+
+.trade-history-tab-tale {
+    width:36px;
+    height:6px;
+    background:#3dc8e8;
+    border-radius:3px;
+    position: absolute;
+    top:40px;
+    transform:translate(-50%);
+    transition:left 0.5s ease-in-out;
+}
+
+.trade-history-tale-pos-1 {
+    left:16%;
+}
+
+.trade-history-tale-pos-2 {
+    left:48%;
+}
+
+.trade-history-tale-pos-3 {
+    left:80%;
+}
+
+/*qa*/
+.qa-list {
+    width:100%;
+}
+
+.qa-list-item {
+    width:100%;
+    height:45px;
+    box-sizing:border-box;
+    padding:15px 25px 0 25px;
+    line-height:30px;
+    overflow:hidden;
+    margin-bottom:15px;
+}
+
+.qa-list-question {
+    width:100%;
+    height:30px;
+}
+
+.fold-icon {
+    margin:0 12px 0 10px;
+}
+
+.qa-q {
+    color:#fff;
+    font-size:15px;
+    letter-spacing:1px;
+}
+
+.qa-list-answer {
+    width:100%;
+    height:30px;
+    box-sizing:border-box;
+    padding-left:2.5em;
+}
+
+.qa-a {
+    font-size:12px;
+    color:#ccc;
+    text-indent:2em;
+}
+
+/*custom*/
+
+.customer-service-container {
+
+}
+
+.customer-service-chat-list {
+    width:100%;
+    overflow-y:scroll;
+}
+
+.customer-service-chat-list-item {
+    width:100%;
+    box-sizing:border-box;
+    padding:10px;
+    margin:10px 0;
+}
+
+.customer-chat .customer-service-chat-head-container {
+     margin:5px auto;
+ }
+
+.customer-chat .customer-service-chat-head {
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#fff;
+}
+
+.customer-chat .customer-service-chat-content-container {
+    padding:15px;
+    background:#3dc8e8;
+    border-radius:10px;
+    font-size:13px;
+    color:#fff;
+    position: relative;
+    letter-spacing:1px;
+}
+
+.customer-chat .customer-service-trig {
+    position: absolute;
+    left:-16px;
+    top:20px;
+    border-color:transparent #3dc8e8 transparent transparent;
+    border-width:8px;
+    border-style:solid;
+    width:0;
+    height:0;
+}
+
+
+.user-chat .customer-service-chat-head-container {
+    margin:5px auto;
+}
+
+.user-chat .customer-service-chat-head {
+    /*width:50px;*/
+    /*height:50px;*/
+    border-radius:50%;
+    background:#fff;
+    margin-left:15px;
+}
+
+.user-chat .customer-service-chat-content-container {
+    padding:15px;
+    background:#44ddff;
+    border-radius:10px;
+    font-size:13px;
+    color:#333;
+    position: relative;
+    letter-spacing:1px;
+    cursor:default;
+}
+
+.user-chat .customer-service-trig {
+    position: absolute;
+    right:-16px;
+    top:20px;
+    border-color:transparent transparent transparent #44ddff;
+    border-width:8px;
+    border-style:solid;
+    width:0;
+    height:0;
+}
+
+.customer-service-chat-container {
+    width:100%;
+    height:64px;
+    background:rgba(255,255,255,0.1);
+    position:fixed;
+    /*bottom:-4px;*/
+    left:0;
+    padding:8px 10px;
+    box-sizing:border-box;
+}
+
+.customer-service-voice-btn-container {
+    width:15%;
+    float:left;
+}
+
+.customer-service-voice-btn {
+    width:44px;
+    height:44px;
+    line-height:50px;
+    border-radius:50%;
+    background:#fff;
+    margin:0 auto;
+    transition:background 0.5s ease;
+    cursor:pointer;
+}
+
+.customer-service-voice-btn:active {
+    background:#666;
+}
+
+.customer-service-input-box {
+    height:44px;
+    width:64%;
+    background:#fff;
+    border-radius:25px;
+    float:left;
+    margin-left:3%;
+    margin-right:3%;
+}
+
+.customer-service-input {
+    background:none;
+    width:80%;
+    margin-left:20px;
+    margin-top:5px;
+}
+
+.custom-voice-icon {
+    display: inline-block;
+    margin:10px 0 0 12px;
+    vertical-align: sub;
+}
+
+.customer-service-send-btn-container {
+    width:15%;
+    float:left;
+}
+
+.customer-service-send-btn {
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    line-height:46px;
+    text-align: center;
+    margin:0 auto;
+    font-size:#666;
+    font-size:1.4rem;
+    background:#fff;
+    transition:box-shadow 0.4s ease;
+    cursor:pointer;
+}
+
+.customer-service-send-btn:active {
+    box-shadow:0 3px 3px rgba(0,0,0,0.4) inset;
+}
+
+/*exp-money*/
+.exp-money-container {
+    width:100%;
+}
+
+.exp-money-amount {
+    text-align:center;
+    margin-bottom:20px !important;
+}
+
+.exp-money-total-container {
+    width:100%;
+    text-align: center;
+    color:#fff;
+}
+
+.exp-money-total {
+    font-size:50px;
+    color:#fff;
+    margin:0;
+    font-weight:200;
+}
+
+.exp-money-total small {
+    font-weight:200;
+}
+
+.exp-money-content {
+    font-size:16px;
+    color:#eee;
+}
+
+.exp-money-title {
+    text-align: center;
+    color:#fff;
+    font-size:30px;
+    font-weight:200;
+    margin:0;
+    margin-bottom:5px;
+}
+
+.exp-money-tab-container {
+    width:100%;
+    height:60px;
+    line-height:60px;
+    color:#3dc8e8;
+}
+
+.exp-money-tab-list {
+    width:100%;
+    height:60px;
+    line-height:60px;
+    background:rgba(100,100,100,0.1);
+    position: relative;
+}
+
+.exp-money-tab-item {
+    width:32%;
+    height:60px;
+    float:left;
+    text-align:center;
+    font-size:16px;
+}
+
+.exp-money-tab-tale {
+    position:absolute;
+    width:60px;
+    height:4px;
+    border-radius:2px;
+    background:#3dc8e8;
+    top:50px;
+    left:16%;
+    transform:translateX(-50%);
+}
+
+.exp-card.card {
+    border-radius:10px;
+    background:url('../../images/bnlc/exp-pic-1.png') no-repeat center bottom;
+    background-size:cover;
+}
+
+.exp-card .item, .exp-card .item-divider {
+    background:none;
+    border-bottom:none;
+    border-top:none;
+}
+
+.exp-card .item {
+    border-bottom:none !important;
+}
+
+.item p.exp-card-title {
+    font-size:18px;
+    margin-top:10px;
+}
+
+.exp-card-content {
+    margin-top:3px;
+}
+
+.exp-card-amount {
+    margin-top:20px;
+}
+
+.exp-card-amount-no{
+    font-size:40px;
+}
+
+.exp-card-amount-unit {
+    margin-left:30px;
+    font-weight:400;
+    font-size:13px;
+}
+
+.exp-card-expire {
+    font-size:13px;
+    font-weight:200;
+    letter-spacing: 1px;
+    color:#ddd;
+}
+
+.exp-card-reg {
+    display: inline-block;
+    float:right;
+    font-size:14px;
+    letter-spacing:1px;
+    width:80px;
+    text-align:center;
+    height:26px;
+    line-height:26px;
+    border-radius:13px;
+    box-sizing:border-box;
+    color:#0a9dc7;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    background:#fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

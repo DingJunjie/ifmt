@@ -1,0 +1,78 @@
+/*
+	定义通用变量
+*/
+/*
+	定义通用class
+*/
+.bg-lighter {
+  background: rgba(255, 255, 255, 0.1);
+}
+.bg-darker {
+  background: rgba(0, 0, 0, 0.1);
+}
+.bg-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.lighter {
+  -webkit-filter: brightness(1.5);
+}
+.center {
+  margin: 0 auto;
+}
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+.b {
+  display: block;
+}
+.ib {
+  display: inline-block;
+}
+.v-center {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.h-center {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.h-center-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.ls1 {
+  letter-spacing: 1px;
+}
+.bb {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.fix {
+  *zoom: 1;
+}
+.fix:after,
+.fix:before {
+  display: block;
+  content: "clear";
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+.z {
+  _zoom: 1;
+}
+.clearfloat {
+  clear: both;
+}

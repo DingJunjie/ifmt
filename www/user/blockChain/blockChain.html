@@ -1,0 +1,207 @@
+<ion-view view-title="区块链" class="animated usual-background" ng-controller="chainCtrl">
+  <!-- on-drag-left="onDrag('contact', left)" on-drag-right="onDrag('index', right)"-->
+  <ion-content class="has-header">
+    <div class="chain-tab-container">
+      <ul>
+        <li class="chain-tab-list-item" ng-class="chainSelected === 0 ? 'chain-tab-list-item-focus': 'chain-tab-list-blur'" ng-click="chainTabClick(0)"><span>最新概况</span></li>
+        <li class="chain-tab-list-item" ng-class="chainSelected === 1 ? 'chain-tab-list-item-focus': 'chain-tab-list-blur'" ng-click="chainTabClick(1)"><span>最新区块</span></li>
+        <li class="chain-tab-list-item" ng-class="chainSelected === 2 ? 'chain-tab-list-item-focus': 'chain-tab-list-blur'" ng-click="chainTabClick(2)"><span>最新交易</span></li>
+      </ul>
+    </div>
+    <ion-slides class="has-header" slider="data.slider" options="tradeHistoryOpt" on-slide-changed="slideChanged($index)" delegate-handle="blockChainSlider" ng-style="{'height': '{{fullHeight-150}}px'}">
+    <!-- on-slide-changed="slideChanged($index)"-->
+      <ion-slide-page>
+        <div class="chain-slide" style="width:100%;height:100%;">
+          <ion-pane class="padding chain-newest-info">
+              <div class="ifmc-release">
+                <div class="ifmc-release-container">
+                  <img src="../images/ifmt/chain/rainbow-circle.png" alt="" class="ifmc-release-circle" />
+                  <div class="ifmc-release-content">
+                    <span class="ifmc-release-amount">26000</span>
+                    <span class="ifmc-release-unit">IFMC</span>
+                    <span class="ifmc-release-tip">已发行token数量</span>
+                  </div>
+                </div>
+              </div>
+              <svg class="chain-dashed" viewBox="0 0 40 5">
+                <path id="chain-dashed-line" stroke-width="0.2" d="M 0 0 L 40 0"></path>
+              </svg>
+                <div class="left-trig"></div>
+                <div class="right-trig"></div>
+              <div class="ifmc-info">
+                <div class="ifmc-info-container">
+                  <div class="ifmc-info-amount-container">
+                    <span>待确认交易数量</span>
+                    <span>103,000.457</span>
+                  </div>
+                  <div class="ifmc-info-bene-container">
+                    <span>DPOS总权益</span>
+                    <span>4.96 EH/s</span>
+                  </div>
+                  <div class="ifmc-info-difficult-container">
+                    <span>难度</span>
+                    <span>711,697,198,173 - 711.70 G</span>
+                  </div>
+                </div>
+              </div>
+          </ion-pane>
+        </div>
+      </ion-slide-page>
+      <ion-slide-page>
+        <div class="chain-newest-block-container" style="width:100%;height:100%;">
+            <ul class="chain-newest-block-title">
+              <li class="chain-newest-block-title-item">块hash</li>
+              <li class="chain-newest-block-title-item">高度</li>
+              <li class="chain-newest-block-title-item">大小</li>
+              <li class="chain-newest-block-title-item">块收益</li>
+              <li class="chain-newest-block-title-item">时间</li>
+            </ul>
+
+            <div class="chain-newest-block-item">
+              <div class="chain-hash-detail"><div>0123456789abcdefghi</div><div class="down-trig"></div></div>
+              <ul class="chain-newest-block-content">
+                <li class="chain-newest-block-content-item">0123456789abcdefghi</li>
+                <li class="chain-newest-block-content-item">400,000</li>
+                <li class="chain-newest-block-content-item">999,999</li>
+                <li class="chain-newest-block-content-item">16.33 BTC</li>
+                <li class="chain-newest-block-content-item">12min 前</li>
+              </ul>
+            </div>
+
+            <div class="chain-newest-block-item">
+              <div class="chain-hash-detail"><div>0123456789abcdefghi</div><div class="down-trig"></div></div>
+              <ul class="chain-newest-block-content">
+                <li class="chain-newest-block-content-item">0123456789abcdefghi</li>
+                <li class="chain-newest-block-content-item">400,000</li>
+                <li class="chain-newest-block-content-item">999,999</li>
+                <li class="chain-newest-block-content-item">16.33 BTC</li>
+                <li class="chain-newest-block-content-item">12min 前</li>
+              </ul>
+            </div>
+
+            <div class="chain-newest-block-item">
+              <div class="chain-hash-detail"><div>0123456789abcdefghi</div><div class="down-trig"></div></div>
+              <ul class="chain-newest-block-content">
+                <li class="chain-newest-block-content-item">0123456789abcdefghi</li>
+                <li class="chain-newest-block-content-item">400,000</li>
+                <li class="chain-newest-block-content-item">999,999</li>
+                <li class="chain-newest-block-content-item">16.33 BTC</li>
+                <li class="chain-newest-block-content-item">12min 前</li>
+              </ul>
+            </div>
+          </div>
+      </ion-slide-page>
+      <ion-slide-page>
+        <div class="chain-trade-container" style="width:100%;height:100%;">
+            <div class="chain-trade-item">
+              <div class="chain-trade-title">
+                <span class="chain-trade-date">28秒前</span>
+                <span class="chain-trade-amount">交易数量 <span>12.01</span></span>
+                <span class="chain-trade-fee">含0.001手续费</span>
+              </div>
+
+              <div class="chain-trade-content">
+                <div class="chain-trade-addr">
+                  1kj12j12ij192j09j94j320jksadjf90af90ja
+                </div>
+                <div class="chain-trade-operate">
+                  <img src="../images/ifmt/chain/undo-icon.png" alt="">
+                </div>
+
+                <div class="chain-trade-remark">
+                  <input type="text" class="chain-trade-remark-input" placeholder="无备注" />
+                </div>
+              </div>
+            </div>
+
+            <div class="chain-trade-item">
+              <div class="chain-trade-title">
+                <span class="chain-trade-date">28秒前</span>
+                <span class="chain-trade-amount">交易数量 <span>12.01</span></span>
+                <span class="chain-trade-fee">含0.001手续费</span>
+              </div>
+
+              <div class="chain-trade-content">
+                <div class="chain-trade-addr">
+                  1kj12j12ij192j09j94j320jksadjf90af90ja
+                </div>
+                <div class="chain-trade-operate">
+                  <img src="../images/ifmt/chain/undo-icon.png" alt="">
+                </div>
+
+                <div class="chain-trade-remark">
+                  <input type="text" class="chain-trade-remark-input" placeholder="无备注" />
+                </div>
+              </div>
+            </div>
+
+            <div class="chain-trade-item">
+              <div class="chain-trade-title">
+                <span class="chain-trade-date">28秒前</span>
+                <span class="chain-trade-amount">交易数量 <span>12.01</span></span>
+                <span class="chain-trade-fee">含0.001手续费</span>
+              </div>
+
+              <div class="chain-trade-content">
+                <div class="chain-trade-addr">
+                  1kj12j12ij192j09j94j320jksadjf90af90ja
+                </div>
+                <div class="chain-trade-operate">
+                  <img src="../images/ifmt/chain/undo-icon.png" alt="">
+                </div>
+
+                <div class="chain-trade-remark">
+                  <input type="text" class="chain-trade-remark-input" placeholder="无备注" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+      </ion-slide-page>
+    </ion-slides>
+    <!--<ion-slide-box class="has-header" style="height:500px;" on-slide-changed="slideChanged($index)" slider="data.slider" delegate-handle="blockChainSlider">
+      <ion-slide>
+        <div style="width:100%;height:100%; background:blue;"></div>
+        <ion-pane class="padding">
+          <div class="card" style="height:90%;">
+            <div class="ifmc-release">
+              <div class="ifmc-release-container">
+
+              </div>
+            </div>
+            <div class="ifmc-info">
+              <div class="ifmc-info-container">
+
+              </div>
+            </div>
+          </div>
+        </ion-pane>
+      </ion-slide>
+      <ion-slide>
+        <ion-pane>
+          <div class="row ifc-trade-grid">
+            <div ui-grid="{data:myData }" class="myGrid" ng-style='{"height":"{{blockChainTableHeight}}"}'></div>
+          </div>
+        </ion-pane>
+      </ion-slide>
+      <ion-slide style="overflow-y:scroll">
+        &lt;!&ndash;<ion-scroll class="scrollable">&ndash;&gt;
+        <div class="card" ng-repeat="c in cards">
+          <div class="item item-divider">
+            <div class="pull-left"><small>{{c.date}}</small></div>
+            <div class="pull-right"><small>交易数量{{c.amount}}</small></div>
+          </div>
+          <div class="item item-divider">
+            {{c.address}}
+          </div>
+        </div>
+        &lt;!&ndash;</ion-scroll>&ndash;&gt;
+      </ion-slide>、、
+    </ion-slide-box>-->
+  </ion-content>
+  <!--<ion-tabs class="tabs-striped tabs-top" delegate-handle="blockChainTab">-->
+    <!--<ion-tab title="最新概况" on-select="blockChainTabSelected(1)"></ion-tab>-->
+    <!--<ion-tab title="最新区块" on-select="blockChainTabSelected(2)"></ion-tab>-->
+    <!--<ion-tab title="最新交易" on-select="blockChainTabSelected(3)"></ion-tab>-->
+  <!--</ion-tabs>-->
+</ion-view>

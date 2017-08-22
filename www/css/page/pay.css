@@ -1,0 +1,472 @@
+/**
+ * Created by 俊杰 on 2017/7/24.
+ */
+/*
+	定义通用变量
+*/
+/*
+	定义通用class
+*/
+.bg-lighter {
+  background: rgba(255, 255, 255, 0.1);
+}
+.bg-darker {
+  background: rgba(0, 0, 0, 0.1);
+}
+.bg-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.lighter {
+  -webkit-filter: brightness(1.5);
+}
+.center {
+  margin: 0 auto;
+}
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+.b {
+  display: block;
+}
+.ib {
+  display: inline-block;
+}
+.v-center {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.h-center {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.h-center-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.ls1 {
+  letter-spacing: 1px;
+}
+.bb {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.fix {
+  *zoom: 1;
+}
+.fix:after,
+.fix:before {
+  display: block;
+  content: "clear";
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+.z {
+  _zoom: 1;
+}
+.clearfloat {
+  clear: both;
+}
+.pay-swiper-pagination-container {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  padding: 0;
+  margin: 30px 0;
+  position: initial;
+  background: none;
+  position: relative;
+}
+.pay-pagination {
+  width: 33%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  -webkit-box-sizing: initial;
+          box-sizing: initial;
+  padding: 0;
+  margin: 0;
+  color: initial;
+  background: initial;
+  font-size: inherit;
+  float: left;
+}
+.pay-pagination img {
+  width: 30px;
+}
+.pay-pagination-current {
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  left: initial;
+  right: initial;
+  top: 60px;
+  bottom: initial;
+  margin: 0;
+  padding: 0;
+  background: initial;
+  background: #ff0;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-transition: left 0.5s ease;
+  transition: left 0.5s ease;
+}
+.pay-pagination-pos-1 {
+  left: 16.5%;
+}
+.pay-pagination-pos-2 {
+  left: 50%;
+}
+.pay-pagination-pos-3 {
+  left: 83%;
+}
+.pay-swipers {
+  width: 100%;
+  min-height: 400px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+}
+.pay-swipers .add-collector-container .add-collector-icon-container {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: none;
+}
+.pay-swipers .add-collector-container .add-collector-icon-container .add-collector-icon {
+  height: 50px;
+}
+.pay-swipers .add-collector-container .add-collector-amount-container {
+  width: 100%;
+  height: 80px;
+  line-height: 30px;
+  text-align: initial;
+  -webkit-box-sizing: initial;
+          box-sizing: initial;
+  padding: 0;
+  margin: 20px 0 0 0;
+  color: initial;
+  background: initial;
+  font-size: inherit;
+}
+.pay-swipers .add-collector-container .add-collector-amount-container .add-collector-amount-input-container {
+  position: relative;
+  width: 100%;
+  height: 35px;
+  border-bottom: 1px solid #999;
+}
+.pay-swipers .add-collector-container .add-collector-amount-container .add-collector-amount-input-container .add-collector-amount-input {
+  background: none;
+  width: 80%;
+  border: none;
+  outline: none;
+  font-size: 2.0rem;
+  color: #fff;
+  height: 28px;
+  float: left;
+}
+.pay-swipers .add-collector-container .add-collector-amount-container .add-collector-amount-input-container .add-collector-amount-input::-webkit-input-placeholder {
+  color: #999;
+}
+.pay-swipers .add-collector-container .add-collector-amount-container .add-collector-amount-input-container .add-collector-amount-unit {
+  float: right;
+  font-size: 1.8rem;
+  color: #00B7FF;
+  font-weight: 400;
+}
+.pay-swipers .add-collector-container .add-collector-amount-container .add-collector-fee-container {
+  width: auto;
+  height: auto;
+  line-height: auto;
+  padding: 0px 10px;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: initial;
+  background: rgba(150, 150, 150, 0.4);
+  position: relative;
+  top: 8px;
+  border-radius: 5px;
+  color: #ccc;
+  float: left;
+}
+.pay-swipers .add-collector-container .add-collector-amount-container .add-collector-fee-container:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -10px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent rgba(150, 150, 150, 0.4) transparent;
+}
+.pay-swipers .add-collector-container .add-collector-amount-container .add-collector-amount-all {
+  font-size: 1rem;
+  color: #f66;
+  float: right;
+}
+.pay-swipers .add-collector-container .add-collector-remark-container {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: none;
+}
+.pay-swipers .add-collector-container .add-collector-remark-container .add-collector-remark-input {
+  background: none;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #999;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  color: #fff;
+}
+.pay-swipers .add-collector-container .add-collector-remark-container .add-collector-remark-input::-webkit-input-placeholder {
+  color: #999;
+}
+.pay-swipers .add-collector-container .add-collector-submit-btn {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  background: -webkit-linear-gradient(top, #00ccff, #0ee5db);
+}
+.pay-swipers .add-payment-container .add-payment-address-container {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  padding: 0;
+  margin: 10px 0 40px 0;
+  position: initial;
+  background: none;
+  position: relative;
+  border-bottom: 1px solid #999;
+}
+.pay-swipers .add-payment-container .add-payment-address-container .add-payment-address-input {
+  height: 26px;
+  background: none;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1.6rem;
+  color: #fff;
+}
+.pay-swipers .add-payment-container .add-payment-address-container .add-payment-address-input::-webkit-input-placeholder {
+  color: #999;
+}
+.pay-swipers .add-payment-container .add-payment-address-container .add-payment-address-icon {
+  position: absolute;
+  right: 10px;
+  width: 24px;
+  top: 0;
+}
+.pay-swipers .add-payment-container .add-payment-amount-container {
+  width: 100%;
+  height: 80px;
+  line-height: 30px;
+  text-align: initial;
+  -webkit-box-sizing: initial;
+          box-sizing: initial;
+  padding: 0;
+  margin: 0;
+  color: initial;
+  background: initial;
+  font-size: inherit;
+}
+.pay-swipers .add-payment-container .add-payment-amount-container .add-payment-amount-input-container {
+  position: relative;
+  width: 100%;
+  height: 35px;
+  border-bottom: 1px solid #999;
+}
+.pay-swipers .add-payment-container .add-payment-amount-container .add-payment-amount-input-container .add-payment-amount-input {
+  background: none;
+  width: 80%;
+  border: none;
+  outline: none;
+  font-size: 2.0rem;
+  height: 28px;
+  float: left;
+  color: #fff;
+}
+.pay-swipers .add-payment-container .add-payment-amount-container .add-payment-amount-input-container .add-payment-amount-unit {
+  float: right;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: #00ccff;
+}
+.pay-swipers .add-payment-container .add-payment-amount-container .add-payment-amount-all {
+  clear: both;
+  font-size: 1rem;
+  color: #f00;
+}
+.pay-swipers .add-payment-container .add-payment-remark-container {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: none;
+}
+.pay-swipers .add-payment-container .add-payment-remark-container .add-payment-remark-input {
+  background: none;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #999;
+  font-size: 1.4rem;
+  color: #fff;
+}
+.pay-swipers .add-payment-container .add-payment-remark-container .add-payment-remark-input::-webkit-input-placeholder {
+  color: #999;
+}
+.pay-swipers .add-payment-container .add-payment-submit-btn {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.4rem;
+  letter-spacing: inherit;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  background: -webkit-linear-gradient(top, #00ccff, #0ee5db);
+}
+.pay-swipers .pay-qrcode-container .pay-qrcode-outer {
+  width: 80%;
+  height: 330px;
+  line-height: inherit;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: rgba(255, 255, 255, 0.1);
+  min-width: 280px;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+.pay-swipers .pay-qrcode-container .pay-qrcode-outer .pay-qrcode-title {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px 8px 0 0;
+}
+.pay-swipers .pay-qrcode-container .pay-qrcode-outer .pay-qrcode-title .pay-qrcode-title-content {
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: 200;
+  text-indent: 0em;
+  letter-spacing: 1px;
+  text-align: initial;
+  margin: initial;
+  margin-left: 15px;
+}
+.pay-swipers .pay-qrcode-container .pay-qrcode-outer .pay-qrcode-content {
+  width: 100%;
+  height: 290px;
+  line-height: inherit;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: none;
+}
+.pay-swipers .pay-qrcode-container .pay-qrcode-outer .pay-qrcode-content .pay-qrcode-tip {
+  font-family: inherit;
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 200;
+  text-indent: 0em;
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 10px auto;
+  display: block;
+}
+.pay-swipers .pay-qrcode-container .pay-qrcode-outer .pay-qrcode-content .pay-qrcode-img-container {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: none;
+  margin: 0 auto;
+}
+.pay-swipers .pay-qrcode-container .pay-qrcode-outer .pay-qrcode-content .pay-qrcode-img-container .pay-qrcode-img {
+  width: 100%;
+  height: 100%;
+  line-height: 100%;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: #ffffff;
+}
+.pay-swipers .pay-qrcode-container .pay-qrcode-outer .pay-qrcode-content .pay-qrcode-operate-group {
+  width: 200px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: none;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+.pay-swipers .pay-qrcode-container .pay-qrcode-outer .pay-qrcode-content .pay-qrcode-operate-group div {
+  font-family: inherit;
+  font-size: 1.2rem;
+  color: #ffffff;
+  font-weight: 200;
+  text-indent: 0em;
+  letter-spacing: 1px;
+  text-align: center;
+  margin: initial;
+}
+.pay-swipers .pay-qrcode-container .pay-qrcode-outer .pay-qrcode-content .pay-qrcode-operate-group .pay-qrcode-operate-setting {
+  width: 50%;
+  height: 20px;
+  line-height: 20px;
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: initial;
+  background: none;
+  border-right: 1px solid #999;
+  float: left;
+}
+.pay-swipers .pay-qrcode-container .pay-qrcode-outer .pay-qrcode-content .pay-qrcode-operate-group .pay-qrcode-operate-record {
+  width: 50%;
+  height: 20px;
+  line-height: 20px;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: none;
+  float: left;
+}

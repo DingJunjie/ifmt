@@ -1,0 +1,39 @@
+<div class="globalAlertContainer">
+    <!--蒙版-->
+    <div class="masking" ></div>
+    <!--提示框-->
+    <div class="alertContainer" ng-show="!inputError">
+        <!--标题-->
+        <div ng-show="hasHeader" class="header">
+            <font> 标题 </font>
+            <i class="fa fa-close" ng-click="defaultClose()"></i>
+        </div>
+        <!--内容-->
+        <div class="content">
+            <i ng-show="status==='error' " class="ref fa fa-warning"></i>
+            <font>{{content}}</font>
+            <textarea ng-show="hasInput" ng-model="inputValue" class="form-control" type="text"/>
+        </div>
+        <div class="btns">
+            <div class="btn btn-info pull-right" ng-click="successClose()">确认</div>
+            <div ng-show="hasCancel" class="btn btn-default pull-right" ng-click="cancelClose()">取消</div>
+        </div>
+    </div>
+
+    <!--提示框-->
+    <div class="alertContainer" ng-show="inputError">
+        <!--标题-->
+        <div ng-show="hasHeader" class="header">
+            <font> 温馨提示 </font>
+            <i class="fa fa-close" ng-click="closeInputError()"></i>
+        </div>
+        <!--内容-->
+        <div class="content" style="color: #d24333">
+            <i class="fa fa-warning"></i>
+            <font>请认真填写内容再提交</font>
+        </div>
+        <div class="btns">
+            <div class="btn btn-info pull-right" ng-click="closeInputError()">确认</div>
+        </div>
+    </div>
+</div>

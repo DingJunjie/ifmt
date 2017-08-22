@@ -1,0 +1,86 @@
+<ion-view class="animated usual-background" on-drag-left="onDrag('ifcInfo', left)" hide-nav-bar="true" ng-controller="homeCtrl">
+    <ion-content class="home-bg-btm" ng-if="hasLogin">
+      <div class="ifc-smoke"><img src="../images/ifmt/home/smoke.png" alt="" /></div>
+        <!--<p>-->
+        <!--<a class="button icon icon-right ion-chevron-right" href="#/facts">Scientific Facts</a>-->
+        <!--</p>-->
+        <!--<div class="scrollable">-->
+        <!--<div class="scrollable-content panel text-wrap">-->
+      <div class="ifc-title">IFMT</div>
+
+        <div class="row ifc-price-container">
+          <div class="col text-center">
+            <div class="ifc-current-price-container">
+              <img src="../images/ifmt/gp-icon.png" class="ifc-icon-a" />
+              <img src="../images/ifmt/arrow.png" class="ifc-icon-up" />
+              <span class="ifc-current-price">18990.00</span>
+              <span class="ifc-current-price-unit">CNY</span>
+            </div>
+
+            <div class="ifc-current-coin-container">
+              <span class="ifc-coin-name">IFMC</span>
+              <span>剩余数量：{{12.08}}</span>
+            </div>
+
+            <div class="ifm-grid-title">
+              历史交易记录
+            </div>
+          </div>
+        </div>
+
+
+        <div class="ifc-trade-grid" ng-style="{'height' : '{{fullHeight - 317}}px'}">
+          <!--<div ui-grid="{data:myData }" class="myGrid" ng-style="{'height' : '{{fullHeight - 317}}px'}"></div>-->
+          <!-- ng-style='{"height":"{{gridContentHeight}}"}'-->
+          <ul class="ifc-trade-table-head">
+            <!--<li class="ifc-trade-table-title-type">类型</li>-->
+            <li class="ifc-trade-table-title-address">收付地址</li>
+            <li class="ifc-trade-table-title-time">收付时间</li>
+            <li class="ifc-trade-table-title-amount">数量</li>
+          </ul>
+          <div class="ifc-trade-table" ng-style="{'height' : '{{fullHeight - 317  - 45}}px'}">
+            <div class="ifc-trade-item">
+              <!--<div class="ifc-trade-item-type">转入</div>-->
+              <div class="ifc-trade-item-address">bGd5DDhf5fXUxFBn3dUzUFXmjtBegahhUz</div>
+              <div class="ifc-trade-amount">11.22</div>
+              <div class="ifc-trade-time">2017-06-06 17:53:40</div>
+            </div>
+
+            <div class="clearfloat"></div>
+
+            <div class="ifc-trade-item">
+              <!--<div class="ifc-trade-item-type">转入</div>-->
+              <div class="ifc-trade-item-address">bGd5DDhf5fXUxFBn3dUzUFXmjtBegahhUz</div>
+              <div class="ifc-trade-amount">11.22</div>
+              <div class="ifc-trade-time ifc-trade-time-show">2017-06-06 17:53:40</div>
+            </div>
+
+            <div class="clearfloat"></div>
+
+            <div class="ifc-trade-item">
+              <!--<div class="ifc-trade-item-type">转入</div>-->
+              <div class="ifc-trade-item-address">bGd5DDhf5fXUxFBn3dUzUFXmjtBegahhUz</div>
+              <div class="ifc-trade-amount">11.22</div>
+              <div class="ifc-trade-time">2017-06-06 17:53:40</div>
+            </div>
+
+            <div class="ifc-trade-item">
+              <!--<div class="ifc-trade-item-type">转入</div>-->
+              <div class="ifc-trade-item-address">bGd5DDhf5fXUxFBn3dUzUFXmjtBegahhUz</div>
+              <div class="ifc-trade-amount">11.22</div>
+              <div class="ifc-trade-time">2017-06-06 17:53:40</div>
+            </div>
+
+            <div class="ifc-trade-item">
+              <!--<div class="ifc-trade-item-type">转入</div>-->
+              <div class="ifc-trade-item-address">bGd5DDhf5fXUxFBn3dUzUFXmjtBegahhUz</div>
+              <div class="ifc-trade-amount">11.22</div>
+              <div class="ifc-trade-time">2017-06-06 17:53:40</div>
+            </div>
+          </div>
+        </div>
+
+        <!--</div>-->
+        <!--</div>-->
+    </ion-content>
+</ion-view>

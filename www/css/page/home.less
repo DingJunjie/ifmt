@@ -1,0 +1,184 @@
+/**
+ * Created by 俊杰 on 2017/7/19.
+ */
+
+@import "../utils/variables";
+
+.home-bg-btm {
+  position: absolute;
+  height: 100%;
+  width:100%;
+}
+
+.ifc-smoke {
+  position: absolute;
+  height: 190px;
+  width:100%;
+  top:0;
+  //background:url('../../images/ifmt/home/smoke.png') no-repeat center top;
+  //background-size: cover;
+  //opacity:1;
+  //-webkit-filter:blur(1px);
+  z-index:-1;
+
+  img {
+    width: 100%;
+    height: 260px;
+  }
+}
+
+.ifc-title {
+  .text(@fontSize: 1.8rem, @color: #fff, @align: center, @letterSpacing: 2px, @m: 20px 0 0 0);
+}
+
+.ifc-price-container {
+  .box(@w: 100%, @h: 230px, @lh: 2rem, @p:1.5rem 0 0 0, @pos: relative);
+  background: url('../../images/ifmt/home/wave.png') no-repeat center bottom;
+  background-size: 100% 40%;
+}
+
+.ifc-current-price-container {
+  .text-box(@w: 100%, @align: center, @p: 3.5rem 0 0 0, @bb: border-box);
+}
+
+.ifc-icon-a, .ifc-icon-up {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.ifc-current-price {
+  .text(@fontSize: 3rem, @fontWeight: 500, @letterSpacing: 2px, @color: #fff)
+}
+
+.ifc-current-price-unit {
+  .text(@fontSize: 1.4rem, @fontWeight: 200, @color: #fff);
+  margin-left: 3px;
+}
+
+.ifc-current-coin-container {
+  .text-box(@c: #fff, @m: 1rem 0 0 0, @fontSize: 1.2rem, @align: center);
+}
+
+.ifc-current-coin-container span {
+  .text(@fontSize: 1.4rem, @letterSpacing: 1px, @color: #fff);
+}
+
+.ifc-coin-name {
+  .text(@letterSpacing: 2px);
+  margin-right: 10px;
+}
+
+.ifc-trade-grid {
+  width: 100%;
+
+  &.row {
+    padding: 0;
+  }
+}
+
+.myGrid {
+  width: 100%;
+}
+
+.ifmc-release {
+  .box-sizing(100%, 70%, 30px);
+}
+
+.ifmc-info {
+  .box(100%, 30%);
+}
+
+.ifm-grid-title {
+  .absolute-box(@l: 10px, @b: 0px);
+  .text(@fontSize: 1.4rem, @letterSpacing: 1px, @color: #fff);
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ff3;
+}
+
+.ifc-trade-grid {
+
+  .ifc-trade-table {
+    overflow-y: scroll;
+  }
+
+  .ifc-trade-table-head {
+    .box(@w: 100%; @h: 45px; @lh: 45px; @bg: rgba(166,166,166,0.1));
+
+    li {
+      float:left;
+      .text(@fontSize: 1.3rem; @color: #fff;);
+    }
+
+    .ifc-trade-table-title-type {
+      //width: 15%;
+      text-align: center;
+    }
+
+    .ifc-trade-table-title-address {
+      width: 55%;
+      text-align: left;
+      padding-left:10px;
+    }
+
+    .ifc-trade-table-title-time {
+      width: 30%;
+      text-align: left;
+    }
+
+    .ifc-trade-table-title-amount {
+      width: 15%
+    }
+  }
+
+  .ifc-trade-item {
+    .box(@w: 100%; @h: 40px; @lh: 40px; @m: 8px 0; @bg: rgba(100,100,100,0.1));
+
+    div {
+      float: left;
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: thin;
+    }
+
+    .ifc-trade-item-type {
+      width: 15%;
+      text-align: center;
+      font-weight: 200;
+    }
+
+    .ifc-trade-item-address {
+      width: 85%;
+      font-size: 1.2rem;
+      padding-left:10px;
+
+
+      &:after {
+        content: '〉';
+        font-family:"宋体";
+        font-size:1.2rem;
+        float:right;
+        margin-top:2px;
+        margin-right: 1rem;
+      }
+    }
+
+    .ifc-trade-amount {
+      width: 15%;
+    }
+
+    .ifc-trade-time {
+      height: 30px;
+      line-height:30px;
+      width: 70%;
+      text-align: right;
+      font-size: 1.1rem;
+      display: none;
+      color: #ccc;
+
+      &.ifc-trade-time-show {
+      display: block;
+    }
+    }
+  }
+}
+

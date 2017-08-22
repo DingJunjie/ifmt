@@ -1,6 +1,6 @@
 {
-  "name": "My Ionic App",
-  "short_name": "My Ionic App",
+  "name": "IFMT APP",
+  "short_name": "IFMT",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{

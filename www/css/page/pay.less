@@ -1,0 +1,289 @@
+/**
+ * Created by 俊杰 on 2017/7/24.
+ */
+
+@import "../utils/variables";
+
+.pay-swiper-pagination-container {
+  .box(@w: 100%; @h: 60px; @lh: 60px; @m: 30px 0);
+  position: relative;
+}
+
+.pay-pagination {
+  .text-box(@w: 33%; @h: 60px; @lh: 60px; @align:  center);
+  float:left;
+
+  img {
+    width: 30px;
+  }
+}
+
+.pay-pagination-current {
+  .absolute-box(@w: 30px; @h: 4px; @t: 60px;);
+  background: #ff0;
+  transform: translateX(-50%);
+  transition: left 0.5s ease;
+}
+
+.pay-pagination-pos-1 {
+  left: 16.5%;
+}
+
+.pay-pagination-pos-2 {
+  left: 50%;
+}
+
+.pay-pagination-pos-3 {
+  left: 83%;
+}
+
+.pay-swipers {
+  width: 100%;
+  min-height: 400px;
+  box-sizing: border-box;
+  padding: 10px;
+
+  .add-collector-container {
+
+    .add-collector-icon-container {
+      .box(@h:60px; @w: 100%; @lh: 60px;);
+
+      .add-collector-icon {
+        height: 50px;
+      }
+    }
+
+    .add-collector-amount-container {
+      .text-box(@h: 80px; @w: 100%; @lh: 30px; @m: 20px 0 0 0);
+
+      .add-collector-amount-input-container {
+        position: relative;
+        width: 100%;
+        height:35px;
+        border-bottom: 1px solid #999;
+
+        .add-collector-amount-input {
+          background: none;
+          width: 80%;
+          border:none;
+          outline:none;
+          font-size: 2.0rem;
+          color: #fff;
+          height: 28px;
+          float:left;
+
+          &::-webkit-input-placeholder {
+            color: #999;
+          }
+        }
+
+        .add-collector-amount-unit {
+          float:right;
+          font-size: 1.8rem;
+          color: #00B7FF;
+          font-weight: 400;
+        }
+      }
+
+      .add-collector-fee-container {
+        .box-sizing(@p:0px 10px; @bg: rgba(150,150,150,0.4));
+        position: relative;
+        top:8px;
+        border-radius:5px;
+        color:#ccc;
+        float:left;
+
+        &:before {
+          content:'';
+          position: absolute;
+          width:0;
+          height:0;
+          top:-10px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: transparent transparent rgba(150,150,150,0.4) transparent;
+        }
+      }
+
+      .add-collector-amount-all {
+        font-size: 1rem;
+        color: #f66;
+        float:right;
+      }
+    }
+
+    .add-collector-remark-container {
+      .box(@w: 100%; @h: 60px;);
+
+
+      .add-collector-remark-input {
+        background: none;
+        width: 100%;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #999;
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        color: #fff;
+
+        &::-webkit-input-placeholder {
+          color: #999;
+        }
+      }
+    }
+
+    .add-collector-submit-btn {
+      .btn-gradient(@w: 100%; @h: 50px; @lh: 50px; @fontSize: 1.4rem; @letterSpacing: 1px;);
+    }
+  }
+
+  .add-payment-container {
+
+    .add-payment-address-container {
+      .box(@h:30px; @w: 100%; @lh: 30px; @m: 10px 0 40px 0);
+      position: relative;
+      border-bottom: 1px solid #999;
+
+      .add-payment-address-input {
+        height: 26px;
+        background: none;
+        width: 100%;
+        border: none;
+        outline:none;
+        font-size: 1.6rem;
+        color: #fff;
+
+        &::-webkit-input-placeholder {
+          color: #999;
+        }
+      }
+
+      .add-payment-address-icon {
+        position: absolute;
+        right: 10px;
+        width: 24px;
+        top:0;
+      }
+    }
+
+    .add-payment-amount-container {
+      .text-box(@h: 80px; @w: 100%; @lh: 30px;);
+
+      .add-payment-amount-input-container {
+        position: relative;
+        width: 100%;
+        height:35px;
+        border-bottom: 1px solid #999;
+
+        .add-payment-amount-input {
+          background: none;
+          width: 80%;
+          border:none;
+          outline:none;
+          font-size: 2.0rem;
+          height: 28px;
+          float:left;
+          color: #fff;
+        }
+
+        .add-payment-amount-unit {
+          float:right;
+          font-size: 1.8rem;
+          font-weight: 400;
+          color: #00ccff;
+        }
+      }
+
+      .add-payment-amount-all {
+        clear: both;
+        font-size: 1rem;
+        color: #f00;
+      }
+    }
+
+    .add-payment-remark-container {
+      .box(@w: 100%; @h: 60px;);
+
+
+      .add-payment-remark-input {
+        background: none;
+        width: 100%;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #999;
+        font-size: 1.4rem;
+        color: #fff;
+
+        &::-webkit-input-placeholder {
+          color: #999;
+        }
+      }
+    }
+
+    .add-payment-submit-btn {
+      .btn-gradient(@w: 100%; @h: 50px; @lh: 50px;);
+    }
+  }
+
+  .pay-qrcode-container {
+    .pay-qrcode-outer {
+      .box(@w: 80%; @h:330px; @lh: inherit; @bg: rgba(255,255,255,0.1));
+      min-width: 280px;
+      border-radius: 8px;
+      .center;
+
+      .pay-qrcode-title {
+        .box(@w: 100%; @h: 40px; @lh: 40px; @bg: rgba(255,255,255,0.1));
+        border-radius: 8px 8px 0 0;
+
+        .pay-qrcode-title-content {
+          .text(@color: #fff; @fontSize: 1.4rem; @fontWeight: 200; @letterSpacing: 1px;);
+          margin-left:15px;
+        }
+      }
+
+      .pay-qrcode-content {
+        .box(@w: 100%; @h: 290px; @lh: inherit;);
+
+        .pay-qrcode-tip {
+          .text(@align: center; @fontSize: 1rem; @color: #fff; @m: 10px auto; @letterSpacing: 1px; @fontWeight: 200);
+          display: block;
+        }
+
+        .pay-qrcode-img-container {
+          .box(@w: 200px; @h: 200px; );
+          .center;
+
+          .pay-qrcode-img {
+            .box(@w: 100%; @h: 100%; @bg: white);
+          }
+        }
+
+        .pay-qrcode-operate-group {
+          .box(@w: 200px; @h: 20px;);
+          .center;
+          margin-top: 15px;
+
+          div {
+            .text(@fontSize: 1.2rem; @color: #fff; @align: center; @letterSpacing: 1px; @fontWeight: 200);
+          }
+
+          .pay-qrcode-operate-setting {
+            .box-sizing(@w: 50%; @h: 20px;);
+            border-right: 1px solid #999;
+            float:left;
+          }
+
+          .pay-qrcode-operate-record {
+            .box(@w: 50%; @h: 20px;);
+            float:left;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+

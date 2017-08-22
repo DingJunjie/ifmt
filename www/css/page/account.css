@@ -1,0 +1,407 @@
+/**
+ * Created by 俊杰 on 2017/7/19.
+ */
+/*
+	定义通用变量
+*/
+/*
+	定义通用class
+*/
+.bg-lighter {
+  background: rgba(255, 255, 255, 0.1);
+}
+.bg-darker {
+  background: rgba(0, 0, 0, 0.1);
+}
+.bg-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.lighter {
+  -webkit-filter: brightness(1.5);
+}
+.center {
+  margin: 0 auto;
+}
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+.b {
+  display: block;
+}
+.ib {
+  display: inline-block;
+}
+.v-center {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.h-center {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.h-center-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.ls1 {
+  letter-spacing: 1px;
+}
+.bb {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.fix {
+  *zoom: 1;
+}
+.fix:after,
+.fix:before {
+  display: block;
+  content: "clear";
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+.z {
+  _zoom: 1;
+}
+.clearfloat {
+  clear: both;
+}
+.account-container {
+  height: 180px;
+  background: url('../../images/ifmt/pay/pay-wave.png') no-repeat;
+  background-position: 100% 165%;
+  background-size: 100%;
+}
+.account-container .account-info-container {
+  width: auto;
+  height: 120px;
+  line-height: 120px;
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: initial;
+  background: none;
+}
+.account-container .account-head-container {
+  padding-top: 20px;
+}
+.account-container .account-head {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto;
+  background: #fff;
+}
+.account-container .account-head .account-head-img {
+  width: 80px;
+}
+.account-container .account-info {
+  width: auto;
+  height: 70px;
+  line-height: 70px;
+  padding: 25px 0 0 20px;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: initial;
+  background: none;
+}
+.account-container .account-info h5 {
+  width: auto;
+  height: auto;
+  line-height: 30px;
+  text-align: initial;
+  -webkit-box-sizing: initial;
+          box-sizing: initial;
+  padding: 0;
+  margin: 0;
+  color: #ffffff;
+  background: initial;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  font-weight: 200;
+}
+.account-container .account-info img.verified {
+  width: 14px;
+  vertical-align: sub;
+  margin-bottom: 2px;
+  margin-left: 6px;
+}
+.account-container .account-coin-container {
+  width: auto;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  -webkit-box-sizing: initial;
+          box-sizing: initial;
+  padding: 0;
+  margin: 0;
+  color: initial;
+  background: initial;
+  font-size: inherit;
+}
+.account-container .account-coin-container .account-receive-icon {
+  margin-top: 7px;
+  width: 30px;
+  vertical-align: top;
+}
+.account-container .account-coin-container span {
+  color: #fff;
+  margin-left: 10px;
+  font-size: 1.4rem;
+}
+.account-container .account-coin-container .account-pay-icon {
+  margin-top: 7px;
+  width: 30px;
+  vertical-align: top;
+}
+.account-container .account-more {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: initial;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  color: initial;
+  background: initial;
+  font-size: inherit;
+  position: relative;
+  padding-top: 20px;
+}
+.account-container .account-more i {
+  font-size: 3rem;
+  font-weight: 100;
+  position: absolute;
+  right: 10px;
+}
+.account-container .account-more .account-more-icon {
+  width: 12px;
+  float: right;
+  margin-right: 10px;
+  margin-top: 30%;
+}
+.account-settings-container {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-top: 20px;
+}
+.account-settings-container ul li {
+  width: auto;
+  height: 50px;
+  line-height: 30px;
+  padding: 10px 10px;
+  margin: 1px 0 0 0;
+  position: initial;
+  background: none;
+  background: rgba(0, 0, 0, 0.1);
+}
+.account-settings-container ul li span {
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: initial;
+  text-indent: 0em;
+  letter-spacing: 1px;
+  text-align: initial;
+  margin: 0 0px 0 10px;
+  margin-top: 4px;
+}
+.account-settings-container ul li i.pull-right {
+  float: right;
+}
+.account-settings-container ul li.list-group-item-setting {
+  margin-top: 20px;
+}
+.account-settings-container .account-setting-icon {
+  width: 25px;
+  vertical-align: top;
+  margin: 3px 10px;
+}
+.setting-container {
+  margin-top: 30px;
+}
+.setting-container .settings-option {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: rgba(255, 255, 255, 0.1);
+  margin-top: 5px;
+}
+.setting-container .settings-option span:first-child {
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: initial;
+  text-indent: 0em;
+  letter-spacing: 2px;
+  text-align: initial;
+  margin: initial;
+  margin-left: 10px;
+  line-height: 40px;
+  float: left;
+}
+.setting-container .settings-option span:last-child {
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: #cccccc;
+  font-weight: 400;
+  text-indent: 0em;
+  letter-spacing: 1px;
+  text-align: initial;
+  margin: initial;
+  margin-right: 10px;
+  line-height: 40px;
+  float: right;
+}
+.setting-container .settings-option-tip {
+  padding: 5px 10px 10px 10px;
+  font-family: inherit;
+  font-size: inherit;
+  color: #669988;
+  font-weight: initial;
+  text-indent: 0em;
+  letter-spacing: 1px;
+  text-align: initial;
+  margin: initial;
+}
+.setting-container .settings-exit-container {
+  width: 100%;
+  margin-top: 100px;
+}
+.setting-container .settings-exit-container .settings-exit-btn {
+  width: 80%;
+  height: 40px;
+  line-height: 40px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.4rem;
+  letter-spacing: inherit;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  background: -webkit-linear-gradient(top, #00ccff, #0ee5db);
+  margin: 0 auto;
+}
+.suggest-submit-btn.submit-active {
+  background-image: -webkit-linear-gradient(left, #14efcc, #019fc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.suggestTextarea {
+  width: 100%;
+  height: auto;
+  line-height: 2rem;
+  padding: 10px;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: initial;
+  background: rgba(255, 255, 255, 0.1);
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: 200;
+  text-indent: 0em;
+  letter-spacing: 1px;
+  text-align: initial;
+  margin: 20px 0 0 0;
+}
+textarea::-webkit-input-placeholder {
+  color: #999;
+}
+input.suggestInput {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding: 10px;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: initial;
+  background: rgba(255, 255, 255, 0.1);
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: 200;
+  text-indent: 0em;
+  letter-spacing: 1px;
+  text-align: initial;
+  margin: 20px 0 0 0;
+}
+.about-ifmt-ver-container {
+  width: 100%;
+  height: auto;
+  line-height: auto;
+  padding: 30px;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: initial;
+  background: none;
+}
+.about-ifmt-ver-container .about-ifmt-icon {
+  width: 100%;
+}
+.about-ifmt-ver-container .about-ifmt-icon img {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  display: block;
+  margin: 0 auto;
+}
+.about-ifmt-ver-container span {
+  display: block;
+  margin: 10px auto;
+  font-family: inherit;
+  font-size: 1.3rem;
+  color: #ffffff;
+  font-weight: 200;
+  text-indent: 0em;
+  letter-spacing: initial;
+  text-align: center;
+  margin: initial;
+}
+.about-ifmt-container {
+  margin-top: 10px;
+}
+.about-ifmt-container .about-ifmt-item-container {
+  width: 100%;
+  height: 50px;
+  line-height: 30px;
+  padding: 10px;
+  margin: 3px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: initial;
+  background: rgba(166, 166, 166, 0.1);
+}
+.about-ifmt-container .about-ifmt-item-container:first-child {
+  margin-bottom: 20px;
+}
+.about-ifmt-container .about-ifmt-item-container .about-ifmt-item-content {
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: 200;
+  text-indent: 0em;
+  letter-spacing: 1px;
+  text-align: initial;
+  margin: initial;
+}

@@ -1,0 +1,222 @@
+/**
+ * Created by 俊杰 on 2017/7/19.
+ */
+
+@import "../utils/variables";
+
+.account-container {
+  height: 180px;
+  background: url('../../images/ifmt/pay/pay-wave.png') no-repeat;
+  background-position: 100% 165%;
+  background-size: 100%;
+
+  .account-info-container {
+    .box-sizing(@h: 120px);
+  }
+
+  .account-head-container {
+    padding-top: 20px;
+  }
+
+  .account-head {
+    .circle(80px);
+    .center;
+    background: #fff;
+
+    .account-head-img {
+      width: 80px;
+    }
+  }
+
+  .account-info {
+   .box-sizing(@h: 70px; @p: 25px 0 0 20px);
+
+    h5 {
+      .text-box(@lh: 30px; @c: #fff; @fontSize: 1.4rem;);
+      letter-spacing: 1px;
+      font-weight: 200;
+    }
+
+    img.verified {
+      width: 14px;
+      vertical-align: sub;
+      margin-bottom:2px;
+      margin-left: 6px;
+    }
+  }
+
+  .account-coin-container {
+    .text-box(@h: 40px, @align: center);
+
+    .account-receive-icon {
+      margin-top: 7px;
+      width: 30px;
+      vertical-align: top;
+    }
+
+    span {
+      color: #fff;
+      margin-left: 10px;
+      font-size: 1.4rem;
+    }
+
+    .account-pay-icon {
+      margin-top: 7px;
+      width: 30px;
+      vertical-align: top;
+    }
+  }
+
+  .account-more {
+    .text-box(@w: 100%, @h: 60px, @bb: border-box);
+    position: relative;
+    padding-top: 20px;
+
+    i {
+      font-size: 3rem;
+      font-weight:100;
+      position: absolute;
+      right: 10px;
+    }
+
+    .account-more-icon {
+      width: 12px;
+      float:right;
+      margin-right: 10px;
+      margin-top: 30%;
+    }
+  }
+}
+
+.account-settings-container {
+  box-sizing: border-box;
+  padding-top: 20px;
+
+  ul li {
+    .box(@h: 50px, @lh: 30px, @p: 10px 10px, @m:1px 0 0 0);
+    background: rgba(0,0,0,0.1);
+
+    span {
+      .text(@fontSize: 1.4rem; @color: #fff; @letterSpacing: 1px; @m: 0 0px 0 10px);
+      margin-top: 4px;
+    }
+
+    i.pull-right {
+      float: right;
+    }
+
+    &.list-group-item-setting {
+      margin-top: 20px;
+    }
+  }
+
+  .account-setting-icon {
+    width: 25px;
+    vertical-align: top;
+    margin:3px 10px;
+  }
+}
+
+//setting
+.setting-container {
+  margin-top: 30px;
+
+  .settings-option {
+    .box(@w: 100%; @h: 40px; @lh: 40px; @bg: rgba(255,255,255,0.1));
+    margin-top:5px;
+
+    span:first-child{
+        .text(@fontSize: 1.4rem; @color: #fff; @letterSpacing: 2px;);
+        margin-left:10px;
+        line-height:40px;
+        float:left;
+    }
+
+    span:last-child {
+      .text(@fontSize: 1.4rem; @color: #ccc; @letterSpacing: 1px; @fontWeight: 400);
+      margin-right:10px;
+      line-height:40px;
+      float:right;
+    }
+  }
+
+  .settings-option-tip {
+    padding: 5px 10px 10px 10px;
+    .text(@color: #698; @letterSpacing: 1px;);
+  }
+
+  .settings-exit-container {
+    width: 100%;
+    margin-top: 100px;
+
+    .settings-exit-btn {
+      .btn-gradient(@w: 80%; @h: 40px;);
+      .center;
+    }
+  }
+}
+
+//suggest
+.suggest-submit-btn.submit-active {
+  background-image:-webkit-linear-gradient(left, #14efcc, #019fc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.suggestTextarea {
+  .box-sizing(@w: 100%; @p: 10px; @lh: 2rem; @bg: rgba(255,255,255,0.1));
+  .text(@fontSize: 1.4rem; @color: #fff; @fontWeight: 200; @letterSpacing: 1px; @m:20px 0 0 0;);
+}
+
+textarea::-webkit-input-placeholder {
+  //padding:5px;
+  color:#999;
+}
+
+input.suggestInput {
+  .box-sizing(@w: 100%; @h: 40px; @bg: rgba(255,255,255,0.1); @p: 10px;);
+  .text(@fontSize: 1.4rem; @fontWeight: 200; @letterSpacing: 1px; @color: #fff; @m: 20px 0 0 0; );
+}
+
+//about
+
+.about-ifmt-ver-container {
+  .box-sizing(@w: 100%; @p: 30px;);
+
+  .about-ifmt-icon {
+    width:100%;
+
+    img {
+      width:60px;
+      height: 60px;
+      border-radius: 5px;
+      display: block;
+      .center;
+    }
+  }
+
+  span {
+    display: block;
+    margin:10px auto;
+    .text(@color: #fff;@fontSize: 1.3rem; @fontWeight: 200; @align: center;);
+  }
+}
+
+.about-ifmt-container {
+  margin-top: 10px;
+
+  .about-ifmt-item-container {
+
+    &:first-child {
+      margin-bottom: 20px;
+    }
+
+    .box-sizing(@w: 100%; @h: 50px; @lh: 30px; @p: 10px; @bg: rgba(166,166,166,0.1); @m: 3px 0;);
+
+    .about-ifmt-item-content {
+      .text(@fontSize: 1.4rem; @color: #fff; @letterSpacing: 1px; @fontWeight: 200;);
+    }
+  }
+}
+
+

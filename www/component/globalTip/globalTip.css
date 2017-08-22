@@ -1,0 +1,95 @@
+.globalTip {
+    width:60%;
+    height:10%;
+    min-width:200px;
+    max-width:500px;
+    min-height:50px;
+    max-height:120px;
+    position:absolute;
+    bottom:100px;
+    left:50%;
+    transform:translateX(-50%) scale(1);
+    background:#fff;
+    box-shadow:0 4px 20px rgba(0,0,0,0.3);
+    border-radius:5px;
+    overflow:hidden;
+    z-index: 1111;
+    display:none;
+    /*transition:transform 1s ease 1s, opacity 1s ease 1s, bottom 0.5s ease-out;*/
+}
+
+.showGlobalTip {
+    display: block;
+}
+
+
+.globalTip .globalTipContent{
+    text-align:center;
+    position:relative;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+}
+
+.globalTip .globalTipContent .content{
+    position: relative;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:1.8rem;
+}
+
+.globalTip.showGlobalTip.showHideAnimation1 {
+    animation:showHide 4000ms ease;
+    will-change: transform;
+}
+
+@-webkit-keyframes showHide{
+    0% {
+        bottom:-300px;
+        opacity:1;
+        /*display:block;*/
+    }
+    30% {
+        bottom:110px;
+        opacity:1;
+        /*display:block;*/
+    }
+    80% {
+        bottom:110px;
+        opacity:1;
+        /*display:block;*/
+    }
+    100% {
+        bottom:130px;
+        /*transform:translateX(-50%) scale(1.3);*/
+        opacity:0;
+        /*display:block;*/
+    }
+}
+
+.globalTipContainer .globalTipInnerMask {
+    width:50%;
+    height:300%;
+    position:absolute;
+    transform:rotate(-45deg);
+    left:-100%;
+    top:-100%;
+    background:rgb(245,245,245);
+    -webkit-filter:blur(100px);
+    animation: innerMask 4000ms ease-out 1s;
+    will-change: transform;
+}
+
+@-webkit-keyframes innerMask {
+    0% {
+        left:-100%;
+    }
+    100% {
+        left:300%;
+    }
+}
+
+
+
+

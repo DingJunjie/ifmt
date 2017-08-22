@@ -1,0 +1,302 @@
+/**
+ * Created by 俊杰 on 2017/7/28.
+ */
+
+@import "../utils/variables";
+@background: url('../../images/ifmt/home/bg.png') no-repeat center center;
+
+.login-container {
+  width: 100%;
+  overflow: hidden;
+  background: @background;
+  background-size: 100%;
+
+  .login-top-container {
+    .box(@w: 100%; @h: 35%;);
+    min-height: 150px;
+    position: relative;
+
+    .login-top-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left:0;
+      top:0;
+      background: url('../../images/ifmt/login/login-wave.png') no-repeat center center;
+      background-size: cover;
+      opacity: 0.5;
+    }
+
+    .login-title {
+      .absolute-box(@w: 80%; @h: 80px; @b: 0; @l: 10%; @bg: rgba(255,255,255,0.2));
+      letter-spacing:1px;
+      line-height:80px;
+
+      div {
+        display: flex;
+        justify-content: center;
+
+        img {
+          width: 30px;
+          vertical-align: middle;
+        }
+
+        .login-logo {
+          width:21px;
+          height: 28px;
+          vertical-align: middle;
+          margin-top: 26px;
+          margin-right:10px;
+        }
+
+        .login-title-text {
+          .text(@fontSize: 2.6rem; @color: #fff; @fontWeight: 400; @letterSpacing: 1px;);
+          line-height:80px;
+        }
+      }
+    }
+  }
+
+  .login-main-container {
+    .box(@w: 100%; @h: 65%; @bg: white;);
+    position: relative;
+    left:0;
+    top:0;
+    min-height: 300px;
+
+    .login-content {
+      .box-sizing(@w: 80%; @h: 300px; @lh: initial; @p: 30px 20px; @m: 0 auto;);
+      box-shadow: 0 0 4px rgba(200,200,200,1);
+
+      .login-pwd-input {
+        width: 100%;
+        height: 30px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+
+        &::-webkit-input-placeholder {
+          color: #ccc;
+        }
+      }
+
+      .item-checkbox {
+        border:none;
+        top: -5px;
+        left:-8px;
+        padding-left:40px;
+
+        .checkbox {
+          left:0;
+          margin-top:-21px;
+        }
+
+        .checkbox input:after, .checkbox-icon:after {
+          //top: 15%;
+          //left: 26%;
+        }
+
+        @media screen and(min-width: 376px) and (max-width: 640px) {
+          .checkbox input:after, .checkbox-icon:after {
+            top: 15%;
+            left: 26%;
+          }
+        }
+
+        .checkbox-icon {
+          width:24px;
+          height:24px;
+        }
+
+        .item-content span{
+          font-size: 1.4rem;
+        }
+      }
+
+      .list .item .lang-div {
+        padding:15px 20px;
+      }
+
+      .list .item select.needsclick {
+        width:100%;
+        max-width: 100%;
+      }
+
+      .list .item select option{
+        padding: 10px 7px;
+      }
+
+      .login-btn-group {
+        width: 100%;
+        margin-top: 20px;
+
+        .new-account-btn {
+          .radius-box(@w: 40%; @h: 40px; @lh: 20px; @br: 5px; @c: #fff; @bg: #9cf; @p: 10px 20px);
+          font-size: 1.2rem;
+          text-align: center;
+          min-width: 90px;
+          border:none;
+          outline:none;
+          //box-shadow: 0px 2px 3px rgba(100,100,100,0.2);
+          float:left;
+          transition: box-shadow 0.3s ease;
+
+          &:active {
+            box-shadow: 0 3px 3px rgba(100,100,100,0.3) inset;
+          }
+        }
+
+        .login-btn {
+          .radius-box(@w: 40%; @h: 40px; @lh: 20px; @br: 5px; @c: #fff; @bg: #6c9; @p: 10px 20px);
+          font-size: 1.2rem;
+          text-align: center;
+          min-width: 90px;
+          border:none;
+          outline:none;
+          //box-shadow: 0px 2px 3px rgba(100,100,100,0.2);
+          float:right;
+          transition: box-shadow 0.3s ease;
+
+          &:active {
+            box-shadow: 0 3px 3px rgba(100,100,100,0.3) inset;
+          }
+        }
+      }
+    }
+  }
+
+  .login-pwd-container  {
+    .box(@w: 100%; @h: 65%; @lh: initial; @bg: white;);
+    position: relative;
+    left:0;
+    top:0;
+    min-height: 250px;
+
+    .login-pwd {
+      .box-sizing(@w: 80%; @h: 250px; @lh: initial; @p: 10px 20px; @m: 0 auto;);
+      box-shadow: 0 0 4px rgba(200,200,200,1);
+
+      .login-pwd-title {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        font-size: 1.4rem;
+      }
+
+      .login-pwd-content {
+        width:100%;
+        height: 133px;
+        font-size: 1.2rem;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #eee #ddd #ddd #eee;
+        box-sizing: border-box;
+        padding: 15px;
+        font-family: inherit;
+        line-height:20px;
+        letter-spacing:1px;
+        user-select: text;
+      }
+
+      .login-pwd-btn-group {
+        margin-top: 10px;
+
+        .login-pwd-next-btn {
+          .radius-box(@w: 40%; @h: 40px; @lh: 20px; @br: 5px; @c: #fff; @bg: #9cf; @p: 10px 20px);
+          font-size: 1.2rem;
+          text-align: center;
+          min-width: 90px;
+          border:none;
+          outline:none;
+          //box-shadow: 0px 2px 3px rgba(100,100,100,0.2);
+          float:left;
+          transition: box-shadow 0.3s ease;
+
+          &:active {
+            box-shadow: 0 3px 3px rgba(100,100,100,0.3) inset;
+          }
+        }
+
+        .login-pwd-save-btn {
+          .radius-box(@w: 40%; @h: 40px; @lh: 20px; @br: 5px; @c: #fff; @bg: #6c9; @p: 10px 20px);
+          font-size: 1.2rem;
+          text-align: center;
+          min-width: 90px;
+          border:none;
+          outline:none;
+          //box-shadow: 0px 2px 3px rgba(100,100,100,0.2);
+          float:right;
+          transition: box-shadow 0.3s ease;
+
+          &:active {
+            box-shadow: 0 3px 3px rgba(100,100,100,0.3) inset;
+          }
+        }
+      }
+    }
+  }
+
+  .login-repwd-container {
+    .box(@w: 100%; @h: 65%; @lh: initial; @bg: white;);
+    position: relative;
+    left:0%;
+    top:0;
+    min-height: 250px;
+
+    .login-repwd {
+      .box-sizing(@w: 80%; @h: 250px; @lh: initial; @p: 10px 20px; @m: 0 auto;);
+      box-shadow: 0 0 4px rgba(200,200,200,1);
+
+      textarea.login-repwd-textarea {
+        width: 100%;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #eee #ddd #ddd #eee;
+        line-height:20px;
+        padding:10px;
+        letter-spacing:1px;
+        margin-top: 20px;
+
+        &::-webkit-input-placeholder {
+          color: #ddd;
+        }
+      }
+
+      .login-repwd-btn-group {
+        margin-top:10px;
+
+        .login-repwd-submit {
+          .radius-box(@w: 40%; @h: 40px; @lh: 20px; @br: 5px; @c: #fff; @bg: #9cf; @p: 10px 20px);
+          font-size: 1.2rem;
+          text-align: center;
+          min-width: 90px;
+          border:none;
+          outline:none;
+          //box-shadow: 0px 2px 3px rgba(100,100,100,0.2);
+          float:left;
+          transition: box-shadow 0.3s ease;
+
+          &:active {
+            box-shadow: 0 3px 3px rgba(100,100,100,0.3) inset;
+          }
+        }
+
+        .login-repwd-return {
+          .radius-box(@w: 40%; @h: 40px; @lh: 20px; @br: 5px; @c: #fff; @bg: #6c9; @p: 10px 20px);
+          font-size: 1.2rem;
+          text-align: center;
+          min-width: 90px;
+          border:none;
+          outline:none;
+          //box-shadow: 0px 2px 3px rgba(100,100,100,0.2);
+          float:right;
+          transition: box-shadow 0.3s ease;
+
+          &:active {
+            box-shadow: 0 3px 3px rgba(100,100,100,0.3) inset;
+          }
+        }
+      }
+    }
+  }
+}

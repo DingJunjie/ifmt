@@ -1,0 +1,328 @@
+/**
+ * Created by 俊杰 on 2017/7/19.
+ */
+/*
+	定义通用变量
+*/
+/*
+	定义通用class
+*/
+.bg-lighter {
+  background: rgba(255, 255, 255, 0.1);
+}
+.bg-darker {
+  background: rgba(0, 0, 0, 0.1);
+}
+.bg-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.lighter {
+  -webkit-filter: brightness(1.5);
+}
+.center {
+  margin: 0 auto;
+}
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+.b {
+  display: block;
+}
+.ib {
+  display: inline-block;
+}
+.v-center {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.h-center {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.h-center-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.ls1 {
+  letter-spacing: 1px;
+}
+.bb {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.fix {
+  *zoom: 1;
+}
+.fix:after,
+.fix:before {
+  display: block;
+  content: "clear";
+  height: 0;
+  clear: both;
+  overflow: hidden;
+  visibility: hidden;
+}
+.z {
+  _zoom: 1;
+}
+.clearfloat {
+  clear: both;
+}
+.home-bg-btm {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.ifc-smoke {
+  position: absolute;
+  height: 190px;
+  width: 100%;
+  top: 0;
+  z-index: -1;
+}
+.ifc-smoke img {
+  width: 100%;
+  height: 260px;
+}
+.ifc-title {
+  font-family: inherit;
+  font-size: 1.8rem;
+  color: #ffffff;
+  font-weight: initial;
+  text-indent: 0em;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 20px 0 0 0;
+}
+.ifc-price-container {
+  width: 100%;
+  height: 230px;
+  line-height: 2rem;
+  padding: 1.5rem 0 0 0;
+  margin: 0;
+  position: relative;
+  background: none;
+  background: url('../../images/ifmt/home/wave.png') no-repeat center bottom;
+  background-size: 100% 40%;
+}
+.ifc-current-price-container {
+  width: 100%;
+  height: auto;
+  line-height: auto;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 3.5rem 0 0 0;
+  margin: 0;
+  color: initial;
+  background: initial;
+  font-size: inherit;
+}
+.ifc-icon-a,
+.ifc-icon-up {
+  width: 20px;
+  margin-right: 10px;
+}
+.ifc-current-price {
+  font-family: inherit;
+  font-size: 3rem;
+  color: #ffffff;
+  font-weight: 500;
+  text-indent: 0em;
+  letter-spacing: 2px;
+  text-align: initial;
+  margin: initial;
+}
+.ifc-current-price-unit {
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: 200;
+  text-indent: 0em;
+  letter-spacing: initial;
+  text-align: initial;
+  margin: initial;
+  margin-left: 3px;
+}
+.ifc-current-coin-container {
+  width: auto;
+  height: auto;
+  line-height: auto;
+  text-align: center;
+  -webkit-box-sizing: initial;
+          box-sizing: initial;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  color: #ffffff;
+  background: initial;
+  font-size: 1.2rem;
+}
+.ifc-current-coin-container span {
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: initial;
+  text-indent: 0em;
+  letter-spacing: 1px;
+  text-align: initial;
+  margin: initial;
+}
+.ifc-coin-name {
+  font-family: inherit;
+  font-size: inherit;
+  color: initial;
+  font-weight: initial;
+  text-indent: 0em;
+  letter-spacing: 2px;
+  text-align: initial;
+  margin: initial;
+  margin-right: 10px;
+}
+.ifc-trade-grid {
+  width: 100%;
+}
+.ifc-trade-grid.row {
+  padding: 0;
+}
+.myGrid {
+  width: 100%;
+}
+.ifmc-release {
+  width: 100%;
+  height: 70%;
+  line-height: 30px;
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: initial;
+  background: none;
+}
+.ifmc-info {
+  width: 100%;
+  height: 30%;
+  line-height: 30%;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: none;
+}
+.ifm-grid-title {
+  position: absolute;
+  width: auto;
+  height: auto;
+  left: 10px;
+  right: initial;
+  top: initial;
+  bottom: 0px;
+  margin: 0;
+  padding: 0;
+  background: initial;
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: initial;
+  text-indent: 0em;
+  letter-spacing: 1px;
+  text-align: initial;
+  margin: initial;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ff3;
+}
+.ifc-trade-grid .ifc-trade-table {
+  overflow-y: scroll;
+}
+.ifc-trade-grid .ifc-trade-table-head {
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: rgba(166, 166, 166, 0.1);
+}
+.ifc-trade-grid .ifc-trade-table-head li {
+  float: left;
+  font-family: inherit;
+  font-size: 1.3rem;
+  color: #ffffff;
+  font-weight: initial;
+  text-indent: 0em;
+  letter-spacing: initial;
+  text-align: initial;
+  margin: initial;
+}
+.ifc-trade-grid .ifc-trade-table-head .ifc-trade-table-title-type {
+  text-align: center;
+}
+.ifc-trade-grid .ifc-trade-table-head .ifc-trade-table-title-address {
+  width: 55%;
+  text-align: left;
+  padding-left: 10px;
+}
+.ifc-trade-grid .ifc-trade-table-head .ifc-trade-table-title-time {
+  width: 30%;
+  text-align: left;
+}
+.ifc-trade-grid .ifc-trade-table-head .ifc-trade-table-title-amount {
+  width: 15%;
+}
+.ifc-trade-grid .ifc-trade-item {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  margin: 8px 0;
+  position: initial;
+  background: rgba(100, 100, 100, 0.1);
+}
+.ifc-trade-grid .ifc-trade-item div {
+  float: left;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: thin;
+}
+.ifc-trade-grid .ifc-trade-item .ifc-trade-item-type {
+  width: 15%;
+  text-align: center;
+  font-weight: 200;
+}
+.ifc-trade-grid .ifc-trade-item .ifc-trade-item-address {
+  width: 85%;
+  font-size: 1.2rem;
+  padding-left: 10px;
+}
+.ifc-trade-grid .ifc-trade-item .ifc-trade-item-address:after {
+  content: '〉';
+  font-family: "宋体";
+  font-size: 1.2rem;
+  float: right;
+  margin-top: 2px;
+  margin-right: 1rem;
+}
+.ifc-trade-grid .ifc-trade-item .ifc-trade-amount {
+  width: 15%;
+}
+.ifc-trade-grid .ifc-trade-item .ifc-trade-time {
+  height: 30px;
+  line-height: 30px;
+  width: 70%;
+  text-align: right;
+  font-size: 1.1rem;
+  display: none;
+  color: #ccc;
+}
+.ifc-trade-grid .ifc-trade-item .ifc-trade-time.ifc-trade-time-show {
+  display: block;
+}

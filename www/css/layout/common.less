@@ -1,0 +1,75 @@
+/**
+ * Created by 俊杰 on 2017/7/19.
+ */
+@bg : rgba(0,0,0,0.4);
+@background: url('../../images/ifmt/home/bg.png') no-repeat center center;
+
+.tabs-dark > .tabs, .tabs.tabs-dark {
+  margin-bottom:-1px;
+}
+
+.usual-background {
+  background: @background;
+  background-size: 100%;
+}
+
+.bar-transparent {
+  background: none !important;
+  color: #fff;
+}
+
+.navbar-bg a.ion-ios-arrow-back {
+  color:#eee;
+  font-weight: 200;
+}
+
+.nav-right-btn {
+  color:#fff;
+  letter-spacing:1px;
+  font-size:17px;
+  font-weight: 500;
+  margin:0 10px;
+  height:43px;
+  line-height:32px;
+}
+
+.pull-right {
+  float:right;
+}
+
+.toggle {
+  margin-top: -1px;
+  margin-right: 5px;
+  transform: scaleY(0.9);
+}
+
+a {
+  text-decoration: none;
+}
+
+.ion-ios-arrow-back {
+  padding-left:2px !important;
+}
+
+.platform-android .bar .title {
+  line-height:48px;
+}
+
+//
+@media screen and(max-width: 375px) {
+  html, body {
+    font-size: 62.5%;
+  }
+
+  .pay-swiper-pagination-container {
+    margin-bottom: 10px !important;
+  }
+}
+
+@media screen and(max-width: 640px) and (min-width: 376px) {
+  html, body {
+    font-size: 75%;
+  }
+}
+
+

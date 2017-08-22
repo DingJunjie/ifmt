@@ -1,0 +1,221 @@
+/*
+	定义通用变量
+*/
+
+//默认p元素字体大小
+@pFontSize : 1.4rem;
+//默认span字体大小
+@spanFontSize : 1.2rem;
+//默认字体大小
+@defaultFontSize : 1.4rem;
+
+/*
+	定义通用class
+*/
+
+.bg-lighter {
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.bg-darker {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+.bg-cover {
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-size:cover;
+}
+
+.lighter {
+	-webkit-filter: brightness(1.5);
+}
+
+.center {
+	margin:0 auto;
+}
+
+.text-ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-break: break-all;
+}
+
+.b {
+	display: block;
+}
+
+.ib{
+	display: inline-block;
+}
+
+.v-center {
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.h-center {
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.h-center-flex {
+	display: flex;
+	justify-content: center;
+}
+
+.ls1 {
+	letter-spacing: 1px;
+}
+
+.bb {
+	box-sizing: border-box;
+}
+
+.circle(@w) {
+	width : @w;
+	height: @w;
+	border-radius: 50%;
+}
+
+.btn-gradient (@w: 100%; @h: 100%; @lh: @h; @c: #fff; @startColor: #0cf; @transitColor :false; @endColor: #0ee5db; @fontSize: 1.4rem; @letterSpacing: inherit;) when (@transitColor = false){
+  width: @w;
+  height: @h;
+  line-height: @lh;
+  color: @c;
+  text-align: center;
+  font-size: @fontSize;
+  letter-spacing: @letterSpacing;
+  text-shadow: 0 0 3px rgba(0,0,0,0.1);
+  background: -webkit-linear-gradient(top, @startColor, @endColor);
+}
+
+
+
+.fix {
+	*zoom: 1;
+}
+
+.fix:after,.fix:before{display:block;content:"clear";height:0;clear:both;overflow:hidden;visibility:hidden;}
+
+.z{_zoom:1;}
+
+.clearfloat {
+	clear: both;
+}
+
+.text-container(@w:auto, @h:auto, @lineHeight : @h, @fontSize, @color:initial, @pos: initial) {
+  width: @w;
+  height: @h;
+  line-height: @lineHeight;
+  font-size: @fontSize;
+  color: @color;
+  position: @pos;
+}
+
+.box(@w: auto, @h: auto, @lh: @h, @p: 0, @m: 0, @pos: initial, @bg: none) {
+  width: @w;
+  height: @h;
+  line-height: @lh;
+  padding: @p;
+  margin: @m;
+  position: @pos;
+  background: @bg;
+}
+
+.radius-box(@w: auto, @h: auto, @lh: inerit, @p: inerit, @m: inherit, @bg: none, @br: 0, @c: inerit, @bb: inherit) {
+  width: @w;
+  height: @h;
+  line-height: @lh;
+  padding: @p;
+  margin: @m;
+  background: @bg;
+  border-radius: @br;
+  color: @c;
+  box-sizing: @bb;
+}
+
+.box-sizing(@w: auto, @h: auto, @lh: @h,  @p : 0, @m : 0, @pos: initial, @bg: none) {
+  width: @w;
+  height: @h;
+  line-height: @lh;
+  padding: @p;
+  margin: @m;
+  box-sizing: border-box;
+  position: @pos;
+  background: @bg;
+}
+
+.absolute-box(@w: auto, @h: auto, @l: initial, @r: initial, @t: initial, @b: initial, @m: 0, @p: 0, @bg: initial) {
+  position: absolute;
+  width: @w;
+  height: @h;
+  left: @l;
+  right: @r;
+  top: @t;
+  bottom: @b;
+  margin: @m;
+  padding: @p;
+  background: @bg;
+}
+
+.text-box(@w: auto, @h: auto, @lh : @h, @align: initial, @bb: initial, @p: 0, @m: 0, @c: initial, @fontSize: inherit, @bg: initial) {
+  width: @w;
+  height: @h;
+  line-height: @lh;
+  text-align: @align;
+  box-sizing: @bb;
+  padding: @p;
+  margin: @m;
+  color: @c;
+  background: @bg;
+  font-size: @fontSize;
+}
+
+.text(@fontFamily: inherit, @fontSize : inherit, @color : initial, @fontWeight: initial, @textIndent : 0em, @letterSpacing : initial, @align : initial, @m: initial) {
+  font-family: @fontFamily;
+  font-size: @fontSize;
+  color: @color;
+  font-weight: @fontWeight;
+  text-indent: @textIndent;
+  letter-spacing: @letterSpacing;
+  text-align: @align;
+  margin: @m;
+}
+
+.tab-icon(@on, @imgSrc) when (@on = true) {
+  background-image: url(@imgSrc);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size:22px;
+  //i {
+  //  background-image: url(@imgSrc);
+  //  background-repeat: no-repeat;
+  //  background-position: center center;
+  //  background-size:22px;
+  //}
+  //span {
+  //  color:#eee;
+  //}
+}
+
+.tab-icon(@on, @imgSrc) when (@on = false) {
+  background-image: url(@imgSrc);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size:22px;
+  -webkit-filter:brightness(1.5);
+  //i {
+  //  background-image: url(@imgSrc);
+  //  background-repeat: no-repeat;
+  //  background-position: center center;
+  //  background-size:22px;
+  //  -webkit-filter:brightness(1.5);
+  //}
+  //span {
+  //  color:#666;
+  //}
+}
+
+

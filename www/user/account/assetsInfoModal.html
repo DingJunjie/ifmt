@@ -1,0 +1,57 @@
+<ion-view view-title="总资产明细" class="usual-background" hide-tabs="true">
+    <ion-nav-bar class="assets-navbar-bg">
+        <ion-nav-buttons side="left">
+            <a href="#/account" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+            <!--javascript:history.back(-1)-->
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <ion-refresher
+                pulling-text="下拉刷新总资产..."
+                spinner="dots"
+                class="refresh">
+        </ion-refresher>
+        <div class="assets-total">
+            <h2 class="assets-amount">
+                27500.00
+            </h2>
+            <p class="assets-amount-content">
+                总资产&nbsp;&nbsp;（元）
+            </p>
+        </div>
+
+        <div class="assets-benefit">
+            <div class="row">
+                <div class="col-50">
+                    <p>3000.00</p>
+                    <p>昨日收益</p>
+                </div>
+
+                <div class="col-50">
+                    <p>16000.00</p>
+                    <p>累计收益</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="assets-management">
+            <ul>
+                <li class="assets-management-sort">
+                    <img src="../images/bnlc/assets-icon-1.png" width="20" />
+                    <span>资金管理</span>
+                </li>
+
+                <li class="assets-management-sort-item">
+                    <i class="assets-list-dot"></i>
+                    <span>可转出资产</span>
+                    <i class="pull-right icon-right ion-chevron-right "></i>
+                </li>
+                <li class="assets-management-sort-item">
+                    <i class="assets-list-dot"></i>
+                    <span>资产分类账</span>
+                    <i class="pull-right icon-right ion-chevron-right "></i>
+                </li>
+            </ul>
+        </div>
+    </ion-content>
+</ion-view>

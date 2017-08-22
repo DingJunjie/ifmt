@@ -1,0 +1,98 @@
+<ion-view view-title="收付币" class="animated usual-background" ng-controller="payCtrl">
+    <ion-content>
+      <!-- style="overflow-y:scroll" scroll="true"-->
+      <div class="pay-swiper-pagination-container">
+        <!--<div class="pay-swiper-prev"><</div>-->
+        <div class="pay-swiper-pagination">
+          <div class="pay-pagination-slides">
+            <div class="pay-pagination pay-icon" ng-click="payTabClick(0)">
+              <img src="../images/ifmt/pay/pay-collector-icon.png" alt="" />
+            </div>
+            <div class="pay-pagination pay-icon" ng-click="payTabClick(1)">
+              <img src="../images/ifmt/pay/pay-payment-icon.png" alt="" />
+            </div>
+            <div class="pay-pagination pay-icon" ng-click="payTabClick(2)">
+              <img src="../images/ifmt/pay/pay-qrcode-icon.png" alt="" />
+            </div>
+            <div class="pay-pagination-current" ng-class="paySelected === 0 ? 'pay-pagination-pos-1' : (paySelected === 1 ? 'pay-pagination-pos-2' : 'pay-pagination-pos-3')"></div>
+          </div>
+        </div>
+        <!--<div class="pay-swiper-next">></div>-->
+      </div>
+
+      <ion-slides class="has-header pay-swipers" slider="data.slider" options="tradeHistoryOpt" on-slide-changed="slideChanged($index)" delegate-handle="blockChainSlider" ng-style="{'height': '{{fullHeight-220}}px'}">
+          <ion-slide-page class="swiper-slide pay-slide-1">
+            <div class="add-collector-container padding">
+              <div class="add-collector-icon-container">
+                <img src="../images/ifmt/pay/pay-add-all-icon.png" alt="" class="add-collector-icon" />
+              </div>
+
+              <div class="add-collector-amount-container">
+                <div class="add-collector-amount-input-container">
+                  <input type="number" class="add-collector-amount-input" placeholder="0.00" />
+                  <span class="add-collector-amount-unit">IFMT</span>
+                </div>
+                <div class="add-collector-fee-container">
+                  收取0.01手续费
+                </div>
+                <span class="add-collector-amount-all">剩余数量: 12.09</span>
+              </div>
+
+              <div class="add-collector-remark-container">
+                <input type="text" class="add-collector-remark-input" placeholder="添加备注（20字以内）" />
+              </div>
+
+              <div class="add-collector-submit-btn">
+                确认支付
+              </div>
+            </div>
+          </ion-slide-page>
+          <ion-slide-page class="swiper-slide pay-slide-2">
+            <div class="add-payment-container padding">
+              <div class="add-payment-address-container">
+                <input type="text" class="add-payment-address-input" placeholder="输入或扫码添加对方地址" />
+                <img src="../images/ifmt/pay/pay-camera.png" alt="" class="add-payment-address-icon" />
+              </div>
+
+              <div class="add-payment-amount-container">
+                <div class="add-payment-amount-input-container">
+                  <input type="number" class="add-payment-amount-input" placeholder="0.00" />
+                  <span class="add-payment-amount-unit">IFMT</span>
+                </div>
+                <span class="add-payment-amount-all">剩余数量: 12.09</span>
+              </div>
+
+              <div class="add-payment-remark-container">
+                <input type="text" class="add-payment-remark-input" placeholder="添加备注（20字以内）" />
+              </div>
+
+              <div class="add-payment-submit-btn">
+                确认支付
+              </div>
+            </div>
+          </ion-slide-page>
+          <ion-slide-page class="swiper-slide pay-slide-3">
+            <div class="pay-qrcode-container padding">
+              <div class="pay-qrcode-outer">
+                <div class="pay-qrcode-title">
+                  <p class="pay-qrcode-title-content">个人收币码</p>
+                </div>
+                <div class="pay-qrcode-content">
+                  <span class="pay-qrcode-tip">扫一扫，向我付币</span>
+                  <div class="pay-qrcode-img-container">
+                    <img src="" alt="" class="pay-qrcode-img">
+                  </div>
+                  <div class="pay-qrcode-operate-group">
+                    <div class="pay-qrcode-operate-setting">设置金额</div>
+                    <div class="pay-qrcode-operate-record">收币记录</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-slide-page>
+      </ion-slides>
+
+      .
+
+    </ion-content>
+</ion-view>

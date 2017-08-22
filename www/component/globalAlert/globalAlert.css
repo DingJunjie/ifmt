@@ -1,0 +1,97 @@
+.globalAlertContainer{
+    display: none;
+    z-index: 1111;
+    top: 0px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.globalAlertContainer .masking{
+    z-index: 1111;
+    top: 0px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0.6
+}
+
+.globalAlertContainer .alertContainer{
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1111;
+    top: 35%;
+    background: white;
+    width: 20%;
+    min-width: 300px;
+    min-height: 168px;
+    max-height: 540px;
+    left:50%;
+    transform: translateX(-50%);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+}
+
+.globalAlertContainer .alertContainer .header{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 10px 15px;
+    border-bottom: 1px #ddd solid;
+    min-height: 36px;
+    max-height: 20%;
+    background: #f4f5f6;
+}
+.globalAlertContainer .alertContainer .header font{
+    display: block;
+    word-break: break-all;
+    width: 96%;
+    float: left;
+}
+
+.globalAlertContainer .alertContainer .header i{
+    color: #d9d6c3 ;
+    width: 4%;
+    float: left;
+
+}
+.globalAlertContainer .alertContainer .header i:hover{
+    color: #999d9c;
+}
+
+.globalAlertContainer .alertContainer .content{
+    padding: 6px 15px;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    text-align: center;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.globalAlertContainer .alertContainer .content font{
+    display: block;
+    word-break: break-all;
+    -webkit-box-flex: 1;
+    font-size: 17px;
+    float: left;
+
+}
+.globalAlertContainer .alertContainer .content i{
+    float: left;
+    margin-right: 8px;
+    color: #d24333;
+}
+.globalAlertContainer .alertContainer .form-control{
+    resize: vertical;
+}
+.globalAlertContainer .alertContainer .btns{
+    padding: 10px 12px;
+    padding-top: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.globalAlertContainer .alertContainer .btns .btn{
+    margin-left: 12px;
+}
