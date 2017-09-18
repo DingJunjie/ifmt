@@ -1,0 +1,16 @@
+<div class="contact-menu-content">
+  <ul class="contact-menu-list">
+    <li ng-repeat="cl in contactList" class="contact-menu-item">
+      <div class="contact-menu-letter">{{cl.letter}}</div>
+      <div class="contact-menu-item" ng-repeat="cli in cl.items">
+
+      </div>
+    </li>
+  </ul>
+
+  <ul class="contact-index-list">
+    <li ng-repeat="ci in contactIndexList">
+      {{ci.letter}}
+    </li>
+  </ul>
+</div>

@@ -4,8 +4,12 @@
 
 @import "../utils/variables";
 
+.pay-top-space {
+  height: 40px;
+}
+
 .pay-swiper-pagination-container {
-  .box(@w: 100%; @h: 60px; @lh: 60px; @m: 30px 0);
+  .box(@w: 100%; @h: 60px; @lh: 60px; @m: 10px 0; @p: 0px 0 0 0;);
   position: relative;
 }
 
@@ -92,6 +96,7 @@
         border-radius:5px;
         color:#ccc;
         float:left;
+        font-size: 1.2rem;
 
         &:before {
           content:'';
@@ -102,6 +107,15 @@
           border-width: 5px;
           border-style: solid;
           border-color: transparent transparent rgba(150,150,150,0.4) transparent;
+        }
+
+        .add-collector-fee-config {
+          position: absolute;
+          right:-110px;
+          top:0;
+          width:100px;
+          text-decoration: underline;
+          font-size:1rem;
         }
       }
 

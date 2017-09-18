@@ -1,0 +1,22 @@
+<ion-view view-title="默认手续费" class="usual-background animated slide-in-right" hide-tabs="true">
+  <ion-nav-bar class="navbar-bg bar-transparent">
+    <ion-nav-buttons side="left">
+      <a href="javascript:history.go(-1)" class="nav-cancel-btn" nav-direction="back">取消</a>
+      <!--javascript:history.back(-1)-->
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <a href="#/account" class="nav-right-btn suggest-submit-btn submit-active">保存</a>
+      <!--javascript:history.back(-1)-->
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="fee-container">
+      <input type="number" class="fee-config-input" />
+
+      <span class="fee-config-tips">
+        手动输入您设置挖矿、收付币、修改个人信息的手续费。<br>
+        &nbsp;（默认手续费数量设置越多，挖矿概率更高哦）
+      </span>
+    </div>
+  </ion-content>
+</ion-view>

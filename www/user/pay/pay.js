@@ -48,4 +48,11 @@ app.controller('payCtrl', ['$scope', '$timeout', function($scope, $timeout) {
         $scope.slider.slideTo(i);
       }
     }
+
+    $scope.paySlideOpt = {
+      loop: false,
+      effect: 'slide',
+      speed: 500,
+      pagination: false
+    }
 }]);

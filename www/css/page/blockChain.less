@@ -4,8 +4,13 @@
 
 @import "../utils/variables";
 
+.chain-top-space {
+  height:40px;
+}
+
 .chain-tab-container {
   .text-box(@w: 100%, @h: 60px, @lh: 60px, @bb: box-sizing);
+  margin-top:0px;
 
   ul {
     li {
@@ -184,10 +189,10 @@ svg.chain-dashed {
     }
 
     .chain-trade-title {
-      .radius-box(@w: 100%; @h: 30px; @lh: 20px; @br: 10px 10px 0 0; @bg: rgba(255,255,255,0.2); @p: 5px 10px; @bb: border-box; @m: 0);
+      .radius-box(@w: 100%; @h: 30px; @lh: 20px; @br: 6px 6px 0 0; @bg: rgba(255,255,255,0.1); @p: 5px 10px; @bb: border-box; @m: 0);
 
       .chain-trade-date {
-        .text(@align: left; @fontSize: 1.1rem; @color: #fff; @fontWeight: 200);
+        .text(@align: left; @fontSize: 1.2rem; @color: #eee; @fontWeight: 200; @letterSpacing: 1px);
         float:left;
       }
 
@@ -198,7 +203,7 @@ svg.chain-dashed {
       }
 
       .chain-trade-amount {
-        .text(@align: right, @fontSize: 1.1rem, @color: #fff);
+        .text(@align: right, @fontSize: 1.2rem, @color: #eee, @letterSpacing: 1px);
         float:right;
 
         span {
@@ -209,7 +214,7 @@ svg.chain-dashed {
     }
 
     .chain-trade-content {
-      .radius-box(@w: 100%; @h: 120px;  @br:0 0 10px 10px; @bg: rgba(255,255,255,0.1); @p: 5px 10px; @bb: border-box; @m: 0);
+      .radius-box(@w: 100%; @h: 150px;  @br:0 0 10px 10px; @bg: rgba(255,255,255,0.05); @p: 5px 10px; @bb: border-box; @m: 0);
 
       .chain-trade-addr {
         .text-box(@w: 70%; @h: 70px; @lh: 30px; @fontSize: 1.2rem; @c: #fff);
@@ -234,11 +239,17 @@ svg.chain-dashed {
         width:100%;
         margin: 0 auto;
 
-        input {
-          .box-sizing(@w: 100%; @bg: rgba(200,200,200,0.1); @p: 10px;);
-          .text(@color: #fff;@fontWeight: 200; @fontSize: 1.2rem);
+        .chain-trade-remark-input {
+          .box-sizing(@w: 100%; @h: 40px; @lh: 20px; @bg: rgba(200,200,200,0.1); @p: 10px;);
+          .text(@color: #ccc;@fontWeight: 200; @fontSize: 1.2rem);
           border-radius: 6px;
+          clear:both;
         }
+      }
+
+      .chain-trade-fee-btm {
+        .text(@m: 10px 0 0 3px; @color: rgba(222,222,222,0.6); @letterSpacing: 1px;);
+
       }
     }
   }
@@ -255,6 +266,9 @@ svg.chain-dashed {
 
       &:nth-of-type(1) {
         width: 20%;
+        text-align:left;
+        text-indent:0.5rem;
+        padding-left:10px;
       }
       &:nth-of-type(2) {
         width: 20%;
@@ -271,8 +285,22 @@ svg.chain-dashed {
     }
   }
 
+  .chain-newest-mine-title {
+    .text-box(@w: 100%; @h: 40px; @lh: 40px; @c: #ccc; @align: left; @fontSize: 1.2rem;);
+    letter-spacing: 1px;
+    padding-left:10px;
+    text-indent: 0.5rem;
+  }
+
+  .chain-newest-all-title {
+    .text-box(@w: 100%; @h: 40px; @lh: 40px; @c: #ccc; @align: left; @fontSize: 1.2rem;);
+    letter-spacing: 1px;
+    padding-left:10px;
+    text-indent: 0.5rem;
+  }
+
   .chain-newest-block-item {
-    .box(@w: 100%; @h: 40px; @bg: rgba(255,255,255,0.2););
+    .box(@w: 100%; @h: 40px; @bg: rgba(255,255,255,0.1););
     position: relative;
 
     .chain-hash-detail {
@@ -307,7 +335,7 @@ svg.chain-dashed {
     }
 
     .chain-newest-block-content {
-      .box-sizing(@w: 100%; @h: 40px; @lh: 30px; @p: 5px 10px; @m: 5px 0);
+      .box-sizing(@w: 100%; @h: 50px; @lh: 30px; @p: 5px 10px; @m: 0px 0);
 
       .chain-newest-block-content-item {
         float:left;
@@ -316,6 +344,8 @@ svg.chain-dashed {
         &:nth-of-type(1) {
           width: 20%;
           text-decoration: underline;
+          text-align:left;
+          text-indent: 0.5rem;
           .text-ellipsis;
         }
         &:nth-of-type(2) {
@@ -332,9 +362,122 @@ svg.chain-dashed {
         }
       }
     }
+
+    .chain-newest-my-block-list {
+      .chain-newest-block-content {
+        margin-top:0;
+      }
+    }
+
+    &:nth-of-type(odd) {
+      background:rgba(200,200,200,0.1);
+    }
+
+    &:nth-of-type(even) {
+      background:rgba(100,100,100,0.05);
+    }
   }
 }
 
+/*
+trade-detail
+ */
+.trade-detail-space {
+  height: 20px;
+}
+
+.trade-detail-container {
+  margin-top:0px;
+
+  .trade-detail-list {
+    li.trade-detail-item {
+      clear: both;
+      .box(@w:100%; @h:50px; @lh: initial; @p:10px; @bg:rgba(155,155,155,0.05); @m: 1px 0 0 0;);
+
+      .trade-detail-name {
+        width:40%;
+        .text(@fontSize: 1.4rem; @color: #eee);
+        line-height:30px;
+        text-align:left;
+        float:left;
+      }
+
+      .trade-detail-content {
+        .text(@fontSize: 1.3rem; @color: #999);
+        float:left;
+        width:60%;
+        text-align:right;
+        line-height:30px;
+
+        &.trade-detail-blob {
+          line-height:15px;
+          font-size:1.1rem;
+        }
+
+        &.trade-detail-address {
+          font-size:1.1rem;
+        }
+      }
+    }
+
+    li.trade-detail-item-divide-space {
+      margin:20px 0;
+    }
+
+    li.trade-detail-textarea-container {
+
+      .trade-detail-textarea {
+        width:100%;
+        padding:20px 10px;
+        box-sizing:border-box;
+        background:rgba(155,155,155,0.05);
+        border:none;
+        color: #aaa;
+        font-size:1.4rem;
+        line-height:2rem;
+      }
+
+    }
+  }
+}
+
+/**
+block-detail
+ */
+
+.block-detail-space {
+  height: 20px;
+}
+
+.block-detail-container {
+  width: 100%;
+  .block-detail-list {
+    li.block-detail-item {
+      .box-sizing(@w: 100%; @h: 50px; @lh: 30px; @p: 10px; @bg: rgba(155,155,155,0.05); @m: 1px 0 0 0;);
+
+      span.block-detail-name {
+        float:left;
+        .text(@fontSize: 1.4rem; @color: #eee;);
+      }
+
+      span.block-detail-value {
+        float:right;
+        .text(@fontSize: 1.2rem; @color: #999);
+
+
+        &.block-detail-code {
+          width: 60%;
+          line-height: 15px;
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    li.block-detail-item-divide {
+      margin:10px 0;
+    }
+  }
+}
 
 
 

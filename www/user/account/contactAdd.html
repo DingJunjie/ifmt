@@ -1,0 +1,25 @@
+<ion-view view-title="添加联系人" class="usual-background animated" hide-tabs="true">
+  <ion-nav-bar class="navbar-bg bar-transparent">
+    <ion-nav-buttons side="left">
+      <a href="#/account/contact" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+      <!--javascript:history.back(-1)-->
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <a href="#/account" class="nav-right-btn suggest-submit-btn submit-active"></a>
+      <!--javascript:history.back(-1)-->
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="contact-add-container">
+      <div class="contact-add-title">
+        联系人地址
+      </div>
+      <div class="contact-add-address-container">
+        <input type="text" class="contact-add-address-input" placeholder="输入或扫描添加联系人地址" />
+        <i class="contact-add-address-scan">口</i>
+      </div>
+
+      <div class="contact-add-submit-btn">提交</div>
+    </div>
+  </ion-content>
+</ion-view>

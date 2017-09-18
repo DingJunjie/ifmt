@@ -3,12 +3,16 @@
  */
 
 @import "../utils/variables";
+.account-top-space {
+  height: 40px;
+}
 
 .account-container {
   height: 180px;
   background: url('../../images/ifmt/pay/pay-wave.png') no-repeat;
   background-position: 100% 165%;
   background-size: 100%;
+  //margin-top:40px;
 
   .account-info-container {
     .box-sizing(@h: 120px);
@@ -101,7 +105,14 @@
       margin-top: 4px;
     }
 
-    i.pull-right {
+    img.icon-right {
+      height:16px;
+      margin-top:7px;
+      vertical-align: middle;
+      margin-right:10px;
+    }
+
+    img.pull-right {
       float: right;
     }
 
@@ -119,10 +130,11 @@
 
 //setting
 .setting-container {
-  margin-top: 30px;
+  margin-top: 20px;
 
   .settings-option {
     .box(@w: 100%; @h: 40px; @lh: 40px; @bg: rgba(255,255,255,0.1));
+    font-weight:200;
     margin-top:5px;
 
     span:first-child{
@@ -138,6 +150,23 @@
       line-height:40px;
       float:right;
     }
+
+    .setting-fee-unit {
+      margin-left:6px;
+    }
+
+    small {
+      font-size: 100%;
+      font-weight: 100;
+    }
+
+    i.icon-right {
+      margin-left:5px;
+
+      &:before {
+        font-weight:200;
+      }
+    }
   }
 
   .settings-option-tip {
@@ -148,9 +177,15 @@
   .settings-exit-container {
     width: 100%;
     margin-top: 100px;
+    height:50px;
 
     .settings-exit-btn {
-      .btn-gradient(@w: 80%; @h: 40px;);
+      //.btn-gradient(@w: 80%; @h: 40px;);
+      text-align: center;
+      color:#f93;
+      font-size: 1.4rem;
+      letter-spacing:2px;
+      font-weight: 400;
       .center;
     }
   }
@@ -182,16 +217,18 @@ input.suggestInput {
 
 .about-ifmt-ver-container {
   .box-sizing(@w: 100%; @p: 30px;);
+  padding-top:20px;
 
   .about-ifmt-icon {
     width:100%;
 
     img {
-      width:60px;
-      height: 60px;
+      //width:60px;
+      height: 50px;
       border-radius: 5px;
       display: block;
       .center;
+      margin-bottom:10px;
     }
   }
 
@@ -203,7 +240,7 @@ input.suggestInput {
 }
 
 .about-ifmt-container {
-  margin-top: 10px;
+  margin-top: 0px;
 
   .about-ifmt-item-container {
 
@@ -219,4 +256,374 @@ input.suggestInput {
   }
 }
 
+
+/*fee-config*/
+.fee-container {
+  padding-top: 20px;
+}
+
+input.fee-config-input {
+  .text-box(@w:100%; @h: 30px;@p: 10px; @c: #fff; @fontSize: 1.5rem; @bg:rgba(200,200,200,0.1); @m: 0px 0 5px 0);
+  border:none;
+}
+
+.fee-config-tips {
+  font-size:1.1rem;
+  color: #888;
+  letter-spacing:1px;
+  margin: 5px 10px;
+}
+
+.fee-max-container {
+  padding-top: 20px;
+}
+
+input.fee-max-config-input {
+  .text-box(@w:100%; @h: 30px;@p: 10px; @c: #fff; @fontSize: 1.4rem; @bg:rgba(200,200,200,0.1); @m: 0px 0 5px 0);
+  border:none;
+}
+
+.fee-max-config-tips {
+  font-size:1.1rem;
+  color: #888;
+  letter-spacing:1px;
+  margin: 5px 10px;
+}
+
+/**
+user-settings
+ */
+
+.user-settings-container {
+  margin-top:0px;
+  width:100%;
+  .user-settings-head-container {
+    .box-sizing(@w:100%; @h: 160px; @p: 10px;);
+
+    .user-settings-head-pic {
+      .box(@w: 100px; @h: 100px; @m:20px auto;);
+
+      img {
+        width:100%;
+        height:100%;
+      }
+    }
+  }
+
+  .user-settings-list {
+    width:100%;
+    .user-settings-list-item {
+      .box-sizing(@w:100%; @h: 50px; @lh: 30px; @p:10px; @bg: rgba(155,155,155,0.1); @m: 1px 0 0 0);
+      .user-settings-list-key {
+        color: #eee;
+        font-size:1.4rem;
+        float:left;
+      }
+
+      .user-settings-list-value {
+        float:right;
+        color: #999;
+        font-size:1.4rem;
+
+        i {
+          margin-left:10px;
+        }
+      }
+    }
+  }
+}
+
+/*联系人*/
+#contactUser {
+  .has-header {
+    top:0;
+  }
+}
+
+.contact-user-container {
+
+  .contact-user-head-container {
+
+    .contact-user-head {
+      .box(@w: 100%; @h: 160px; @bg: rgba(155,155,155,0.05));
+      position: relative;
+
+      .contact-user-head-pic {
+        .box(@w: 70px; @h: 70px; @bg: #33ffdd; @m: 0 auto;);
+        display: block;
+        border-radius: 5px;
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .contact-user-name {
+      .text-box(@w: auto; @m: 3rem auto 1.5rem auto; @c: #fff; @fontSize: 1.5rem;);
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    .contact-user-address-container {
+      .contact-user-address-title {
+        .text-box(@w: auto; @c: #fff; @fontSize: 1.3rem;);
+        text-align: center;
+        letter-spacing: 2px;
+      }
+
+      .contact-user-address {
+        .text-box(@w: auto; @c: #999; @fontSize: 1.3rem; @m: 0.5rem 0 1rem 0);
+        text-align: center;
+        letter-spacing:1px;
+      }
+    }
+
+    .contact-user-transfer-btn {
+      .btn-gradient(@w: 40%; @h: 40px);
+      border-radius: 20px;
+      margin:2rem auto ;
+    }
+  }
+
+  .contact-user-trade-container {
+    position: relative;
+    margin-top: 40px;
+
+    .contact-user-trade-title {
+      .box-sizing(@h: 40px; @lh: 40px;);
+      .text(@fontSize: 1.5rem; @color: #fff; @letterSpacing: 1px;);
+      border-bottom: 3px solid #ffff00;
+      position: absolute;
+      top: -40px;
+      left: 10px;
+      color: #ddd;
+    }
+
+    .contact-user-trade-table {
+      .box(@w: 100%;);
+
+      .contact-user-trade-table-title {
+        .box(@w: 100%; @h: 36px; @bg: rgba(155,155,155,0.1));
+        font-size: 1.4rem;
+        color: #ddd;
+
+        li.contact-user-trade-table-title-item {
+          color: #ddd;
+          float:left;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+
+          &:nth-of-type(1) {
+            width: 40%;
+            padding-left:10px;
+          }
+
+          &:nth-of-type(2) {
+            width: 25%;
+            text-align: center;
+          }
+
+          &:nth-of-type(3) {
+            width: 20%;
+            text-align: center;
+          }
+
+          &:nth-of-type(4) {
+            width: 15%;
+            text-align: center;
+          }
+        }
+      }
+
+      .contact-user-trade-table-items {
+
+        .contact-user-trade-table-item {
+          .box(@w: 100%; @h: 40px;);
+
+          .contact-user-trade-table-item-item {
+            color: #999;
+            float:left;
+            font-size: 1.3rem;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+            &:nth-of-type(1) {
+              width: 40%;
+              padding-left:10px;
+            }
+
+            &:nth-of-type(2) {
+              width: 25%;
+              text-align: center;
+            }
+
+            &:nth-of-type(3) {
+              width: 20%;
+              text-align: center;
+            }
+
+            &:nth-of-type(4) {
+              width: 15%;
+              text-align: center;
+            }
+
+            &.contact-user-trade-table-item-failure {
+              color: #ff0000;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.contact-transfer-container {
+
+  .contact-transfer-amount-container {
+    .box(@w: 100%;);
+
+    .contact-transfer-amount-content {
+      .box-sizing(@w: 94%; @h: 40px; @m: 0 3%;);
+      border-bottom: 1px solid #666;
+      padding-bottom: 5px;
+      position: relative;
+
+      .contact-transfer-amount-input {
+        background: none;
+        height: 40px;
+        width: 80%;
+        font-size: 2.4rem;
+        font-weight:400;
+        float:left;
+      }
+
+      .contact-transfer-amount-unit {
+        width: 20%;
+        float:right;
+        font-size: 1.8rem;
+        color: #9999ff;
+        text-align: right;
+      }
+    }
+
+    .contact-transfer-fee-container {
+      position: relative;
+      color: #999;
+      font-size: 1.1rem;
+      top: 10px;
+      left:10px;
+      padding: 4px 10px;
+      background:rgba(155,155,155,0.2);
+
+      &:before {
+        content: '';
+        width: 0;
+        height: 0;
+        top:-10px;
+        position: absolute;
+        border-style: solid;
+        border-width: 5px;
+        border-color: transparent  transparent rgba(155,155,155,0.2) transparent;
+      }
+
+      a {
+        position: absolute;
+        width: 200px;
+        right: -210px;
+        font-size: 1rem;
+      }
+    }
+
+    .contact-transfer-fee-total {
+      float:right;
+      position: relative;
+      right:10px;
+      top:5px;
+      color: #ff3333;
+      font-size: 1.2rem;
+    }
+  }
+
+  .contact-transfer-remark-container {
+    clear: both;
+    .box-sizing(@w: 94%; @h: 40px; @m: 50px 3%; 20px 3%);
+    border-bottom: 1px solid #666;
+
+      .contact-transfer-remark-input {
+        height: 35px;
+        background: none;
+        width: 100%;
+        color: #fff;
+        font-size: 1.4rem;
+        letter-spacing:1px;
+      }
+  }
+
+  .contact-transfer-submit-btn {
+    .btn-gradient(@w: 94%; @h: 40px;);
+    margin: 20px 3%;
+  }
+}
+
+/**
+ * 添加联系人
+ */
+.contact-add-container {
+  margin-top: 20px;
+  .contact-add-title {
+    .text(@fontSize: 1.4rem; @color: #fff; @letterSpacing: 1px; @m:0 0 0 3%;);
+  }
+
+  .contact-add-address-container {
+    .box(@w: 94%; @h: 40px; @m: 30px 3%;);
+    border-bottom: 1px solid #999;
+
+    .contact-add-address-input {
+      background: none;
+      width: 80%;
+      float:left;
+      font-size: 1.4rem;
+      color: #fff;
+      letter-spacing:1px;
+    }
+
+    .contact-add-address-scan {
+      float:right;
+      text-align: right;
+      color: #fff;
+    }
+  }
+
+  .contact-add-submit-btn {
+    .btn-gradient(@w: 94%; @h: 40px;);
+    .center;
+  }
+}
+
+.name-setting-container {
+  .box-sizing(@w: 100%; @h: 50px; @lh: 40px; @p: 5px 10px; @bg:rgba(155,155,155,0.1); @m: 20px 0 0 0);
+
+  .name-setting-input {
+    height: 40px;
+    color: #fff;
+    font-size: 1.4rem;
+    background: none;
+    margin-bottom: 10px;
+  }
+
+  .name-setting-tip {
+    margin-top: 40px;
+    color: #999;
+    font-size: 1.1rem;
+
+    a {
+      font-size: 1rem;
+      text-decoration: underline;
+    }
+  }
+}
 

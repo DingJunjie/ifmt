@@ -14,9 +14,46 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+$cordova-md-statusbar-padding:    20px default;
+$cordova-ios-statusbar-padding:   20px default;
+$cordova-wp-statusbar-padding:    20px default;
+$colors: #fff;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
+
+.platform-ios {
+  ion-header {
+    padding-top: $cordova-ios-statusbar-padding;
+  }
+}
+
+.platform-android {
+  ion-header {
+    padding-top: $cordova-md-statusbar-padding;
+  }
+}
+
+.platform-windowsphone {
+  ion-header {
+    padding-top: $cordova-wp-statusbar-padding;
+  }
+}
+
+.platform-ios {
+  ion-header {
+    padding-top: $cordova-ios-statusbar-padding;
+
+    >ion-navbar.toolbar.statusbar-padding {
+      margin-top: -$cordova-ios-statusbar-padding;
+    }
+
+    .header-with-bg {
+      margin-top: -$cordova-ios-statusbar-padding;
+      padding-top: $cordova-ios-statusbar-padding;
+    }
+  }
+}
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";

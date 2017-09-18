@@ -38,28 +38,21 @@
 }
 .v-center {
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 .h-center {
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 .h-center-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 .ls1 {
   letter-spacing: 1px;
 }
 .bb {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .fix {
   *zoom: 1;
@@ -79,12 +72,20 @@
 .clearfloat {
   clear: both;
 }
+.text-middle {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+.pay-top-space {
+  height: 40px;
+}
 .pay-swiper-pagination-container {
   width: 100%;
   height: 60px;
   line-height: 60px;
-  padding: 0;
-  margin: 30px 0;
+  padding: 0px 0 0 0;
+  margin: 10px 0;
   position: initial;
   background: none;
   position: relative;
@@ -94,8 +95,7 @@
   height: 60px;
   line-height: 60px;
   text-align: center;
-  -webkit-box-sizing: initial;
-          box-sizing: initial;
+  box-sizing: initial;
   padding: 0;
   margin: 0;
   color: initial;
@@ -118,9 +118,7 @@
   padding: 0;
   background: initial;
   background: #ff0;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  -webkit-transition: left 0.5s ease;
+  transform: translateX(-50%);
   transition: left 0.5s ease;
 }
 .pay-pagination-pos-1 {
@@ -135,8 +133,7 @@
 .pay-swipers {
   width: 100%;
   min-height: 400px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 10px;
 }
 .pay-swipers .add-collector-container .add-collector-icon-container {
@@ -156,8 +153,7 @@
   height: 80px;
   line-height: 30px;
   text-align: initial;
-  -webkit-box-sizing: initial;
-          box-sizing: initial;
+  box-sizing: initial;
   padding: 0;
   margin: 20px 0 0 0;
   color: initial;
@@ -195,8 +191,7 @@
   line-height: auto;
   padding: 0px 10px;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: initial;
   background: rgba(150, 150, 150, 0.4);
   position: relative;
@@ -204,6 +199,7 @@
   border-radius: 5px;
   color: #ccc;
   float: left;
+  font-size: 1.2rem;
 }
 .pay-swipers .add-collector-container .add-collector-amount-container .add-collector-fee-container:before {
   content: '';
@@ -214,6 +210,14 @@
   border-width: 5px;
   border-style: solid;
   border-color: transparent transparent rgba(150, 150, 150, 0.4) transparent;
+}
+.pay-swipers .add-collector-container .add-collector-amount-container .add-collector-fee-container .add-collector-fee-config {
+  position: absolute;
+  right: -110px;
+  top: 0;
+  width: 100px;
+  text-decoration: underline;
+  font-size: 1rem;
 }
 .pay-swipers .add-collector-container .add-collector-amount-container .add-collector-amount-all {
   font-size: 1rem;
@@ -287,8 +291,7 @@
   height: 80px;
   line-height: 30px;
   text-align: initial;
-  -webkit-box-sizing: initial;
-          box-sizing: initial;
+  box-sizing: initial;
   padding: 0;
   margin: 0;
   color: initial;
@@ -453,8 +456,7 @@
   line-height: 20px;
   padding: 0;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: initial;
   background: none;
   border-right: 1px solid #999;

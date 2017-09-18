@@ -30,4 +30,11 @@ app.controller('chainCtrl',['$scope', '$timeout', function($scope, $timeout) {
     }
   }
 
+  $scope.blockChainOpt = {
+    loop: false,
+    effect: 'slide',
+    speed: 500,
+    pagination: false
+  }
+
 }])

@@ -2,7 +2,23 @@
  * Created by 俊杰 on 2017/7/19.
  */
 @bg : rgba(0,0,0,0.4);
-@background: url('../../images/ifmt/home/bg.png') no-repeat center center;
+@background: url('../../images/ifmt/home-bg3.jpg') no-repeat center center;
+
+.bar-header {
+  top:20px;
+}
+
+[nav-bar-transition="android"] [nav-bar="active"] .bar, [nav-bar-transition="android"] [nav-bar="entering"] .bar {
+  top: 40px;
+}
+
+.has-header {
+  top:84px;
+}
+
+.bar .title.title-left {
+  text-align:center;
+}
 
 .tabs-dark > .tabs, .tabs.tabs-dark {
   margin-bottom:-1px;
@@ -30,7 +46,16 @@
   font-weight: 500;
   margin:0 10px;
   height:43px;
-  line-height:32px;
+  line-height:200%; //32
+}
+
+.nav-cancel-btn {
+  color: #fff;
+  font-size:1.5rem;
+  font-weight: 500;
+  height:43px;
+  line-height:200%;
+  letter-spacing:1px;
 }
 
 .pull-right {
@@ -71,5 +96,6 @@ a {
     font-size: 75%;
   }
 }
+
 
 

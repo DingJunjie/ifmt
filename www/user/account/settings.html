@@ -1,9 +1,13 @@
-<ion-view view-title="设置" class="usual-background" hide-tabs="true">
+<ion-view view-title="设置" class="usual-background animated" hide-tabs="true">
     <ion-nav-bar class="navbar-bg bar-transparent">
         <ion-nav-buttons side="left">
             <a ui-sref="tabs.account" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
             <!--javascript:history.back(-1)-->
         </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <a href="#/account" class="nav-right-btn suggest-submit-btn submit-active"></a>
+        <!--javascript:history.back(-1)-->
+      </ion-nav-buttons>
     </ion-nav-bar>
     <ion-content>
       <div class="setting-container">
@@ -20,27 +24,28 @@
           <span>打开应用时，自动挖矿；当挖矿手续费超过1.009IFMT时将关闭自动挖矿。</span>
         </div>
 
-      <div class="settings-option">
-          <span>手续费</span>
-          <span>0.002</span>
-      </div>
-      <div class="settings-option-tip">
-        <span>设置挖矿、收付币、修改个人信息的手续费。</span>
-      </div>
+        <div class="settings-option">
+            <span>手续费</span>
+            <a href="#/account/fee"><span>0.002<small class="setting-fee-unit">IFMT</small><i class="icon-right ion-chevron-right"></i></span></a>
+        </div>
+        <div class="settings-option-tip">
+          <span>设置挖矿、收付币、修改个人信息的手续费。</span>
+        </div>
 
-      <div class="settings-option">
-          <span>手续费上限</span>
-          <span>1.009</span>
-      </div>
-      <div class="settings-option-tip">
-        <span>设置挖矿、收付币、修改个人信息的手续费的最高上限。</span>
-      </div>
+        <div class="settings-option">
+            <a href="#/account/maxFee"><span>手续费上限</span>
+            <span>1.009<small class="setting-fee-unit">IFMT</small><i class="icon-right ion-chevron-right"></i></span></a>
+        </div>
+        <div class="settings-option-tip">
+          <span>设置挖矿、收付币、修改个人信息的手续费的最高上限。</span>
+        </div>
 
-
-        <div class="settings-exit-container">
-            <a href="../index.html" ng-click="exit()"><div class="settings-exit-btn">
-                退出账户
-            </div></a>
+        <div class="settings-option">
+          <div class="settings-exit-container">
+              <a href="../index.html" ng-click="exit()"><div class="settings-exit-btn">
+                  退出账户
+              </div></a>
+          </div>
         </div>
       </div>
     </ion-content>

@@ -38,28 +38,21 @@
 }
 .v-center {
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 .h-center {
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 .h-center-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 .ls1 {
   letter-spacing: 1px;
 }
 .bb {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .fix {
   *zoom: 1;
@@ -79,6 +72,14 @@
 .clearfloat {
   clear: both;
 }
+.text-middle {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+.account-top-space {
+  height: 40px;
+}
 .account-container {
   height: 180px;
   background: url('../../images/ifmt/pay/pay-wave.png') no-repeat;
@@ -91,8 +92,7 @@
   line-height: 120px;
   padding: 0;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: initial;
   background: none;
 }
@@ -115,8 +115,7 @@
   line-height: 70px;
   padding: 25px 0 0 20px;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: initial;
   background: none;
 }
@@ -125,8 +124,7 @@
   height: auto;
   line-height: 30px;
   text-align: initial;
-  -webkit-box-sizing: initial;
-          box-sizing: initial;
+  box-sizing: initial;
   padding: 0;
   margin: 0;
   color: #ffffff;
@@ -146,8 +144,7 @@
   height: 40px;
   line-height: 40px;
   text-align: center;
-  -webkit-box-sizing: initial;
-          box-sizing: initial;
+  box-sizing: initial;
   padding: 0;
   margin: 0;
   color: initial;
@@ -174,8 +171,7 @@
   height: 60px;
   line-height: 60px;
   text-align: initial;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
   color: initial;
@@ -197,8 +193,7 @@
   margin-top: 30%;
 }
 .account-settings-container {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding-top: 20px;
 }
 .account-settings-container ul li {
@@ -222,7 +217,13 @@
   margin: 0 0px 0 10px;
   margin-top: 4px;
 }
-.account-settings-container ul li i.pull-right {
+.account-settings-container ul li img.icon-right {
+  height: 16px;
+  margin-top: 7px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.account-settings-container ul li img.pull-right {
   float: right;
 }
 .account-settings-container ul li.list-group-item-setting {
@@ -234,7 +235,7 @@
   margin: 3px 10px;
 }
 .setting-container {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .setting-container .settings-option {
   width: 100%;
@@ -244,6 +245,7 @@
   margin: 0;
   position: initial;
   background: rgba(255, 255, 255, 0.1);
+  font-weight: 200;
   margin-top: 5px;
 }
 .setting-container .settings-option span:first-child {
@@ -272,6 +274,19 @@
   line-height: 40px;
   float: right;
 }
+.setting-container .settings-option .setting-fee-unit {
+  margin-left: 6px;
+}
+.setting-container .settings-option small {
+  font-size: 100%;
+  font-weight: 100;
+}
+.setting-container .settings-option i.icon-right {
+  margin-left: 5px;
+}
+.setting-container .settings-option i.icon-right:before {
+  font-weight: 200;
+}
 .setting-container .settings-option-tip {
   padding: 5px 10px 10px 10px;
   font-family: inherit;
@@ -286,17 +301,14 @@
 .setting-container .settings-exit-container {
   width: 100%;
   margin-top: 100px;
+  height: 50px;
 }
 .setting-container .settings-exit-container .settings-exit-btn {
-  width: 80%;
-  height: 40px;
-  line-height: 40px;
-  color: #ffffff;
   text-align: center;
+  color: #f93;
   font-size: 1.4rem;
-  letter-spacing: inherit;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-  background: -webkit-linear-gradient(top, #00ccff, #0ee5db);
+  letter-spacing: 2px;
+  font-weight: 400;
   margin: 0 auto;
 }
 .suggest-submit-btn.submit-active {
@@ -310,8 +322,7 @@
   line-height: 2rem;
   padding: 10px;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: initial;
   background: rgba(255, 255, 255, 0.1);
   font-family: inherit;
@@ -332,8 +343,7 @@ input.suggestInput {
   line-height: 40px;
   padding: 10px;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: initial;
   background: rgba(255, 255, 255, 0.1);
   font-family: inherit;
@@ -351,20 +361,20 @@ input.suggestInput {
   line-height: auto;
   padding: 30px;
   margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: initial;
   background: none;
+  padding-top: 20px;
 }
 .about-ifmt-ver-container .about-ifmt-icon {
   width: 100%;
 }
 .about-ifmt-ver-container .about-ifmt-icon img {
-  width: 60px;
-  height: 60px;
+  height: 50px;
   border-radius: 5px;
   display: block;
   margin: 0 auto;
+  margin-bottom: 10px;
 }
 .about-ifmt-ver-container span {
   display: block;
@@ -379,7 +389,7 @@ input.suggestInput {
   margin: initial;
 }
 .about-ifmt-container {
-  margin-top: 10px;
+  margin-top: 0px;
 }
 .about-ifmt-container .about-ifmt-item-container {
   width: 100%;
@@ -387,8 +397,7 @@ input.suggestInput {
   line-height: 30px;
   padding: 10px;
   margin: 3px 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: initial;
   background: rgba(166, 166, 166, 0.1);
 }
@@ -404,4 +413,474 @@ input.suggestInput {
   letter-spacing: 1px;
   text-align: initial;
   margin: initial;
+}
+/*fee-config*/
+.fee-container {
+  padding-top: 20px;
+}
+input.fee-config-input {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  text-align: initial;
+  box-sizing: initial;
+  padding: 10px;
+  margin: 0px 0 5px 0;
+  color: #ffffff;
+  background: rgba(200, 200, 200, 0.1);
+  font-size: 1.5rem;
+  border: none;
+}
+.fee-config-tips {
+  font-size: 1.1rem;
+  color: #888;
+  letter-spacing: 1px;
+  margin: 5px 10px;
+}
+.fee-max-container {
+  padding-top: 20px;
+}
+input.fee-max-config-input {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  text-align: initial;
+  box-sizing: initial;
+  padding: 10px;
+  margin: 0px 0 5px 0;
+  color: #ffffff;
+  background: rgba(200, 200, 200, 0.1);
+  font-size: 1.4rem;
+  border: none;
+}
+.fee-max-config-tips {
+  font-size: 1.1rem;
+  color: #888;
+  letter-spacing: 1px;
+  margin: 5px 10px;
+}
+/**
+user-settings
+ */
+.user-settings-container {
+  margin-top: 0px;
+  width: 100%;
+}
+.user-settings-container .user-settings-head-container {
+  width: 100%;
+  height: 160px;
+  line-height: 160px;
+  padding: 10px;
+  margin: 0;
+  box-sizing: border-box;
+  position: initial;
+  background: none;
+}
+.user-settings-container .user-settings-head-container .user-settings-head-pic {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  padding: 0;
+  margin: 20px auto;
+  position: initial;
+  background: none;
+}
+.user-settings-container .user-settings-head-container .user-settings-head-pic img {
+  width: 100%;
+  height: 100%;
+}
+.user-settings-container .user-settings-list {
+  width: 100%;
+}
+.user-settings-container .user-settings-list .user-settings-list-item {
+  width: 100%;
+  height: 50px;
+  line-height: 30px;
+  padding: 10px;
+  margin: 1px 0 0 0;
+  box-sizing: border-box;
+  position: initial;
+  background: rgba(155, 155, 155, 0.1);
+}
+.user-settings-container .user-settings-list .user-settings-list-item .user-settings-list-key {
+  color: #eee;
+  font-size: 1.4rem;
+  float: left;
+}
+.user-settings-container .user-settings-list .user-settings-list-item .user-settings-list-value {
+  float: right;
+  color: #999;
+  font-size: 1.4rem;
+}
+.user-settings-container .user-settings-list .user-settings-list-item .user-settings-list-value i {
+  margin-left: 10px;
+}
+/*联系人*/
+#contactUser .has-header {
+  top: 0;
+}
+.contact-user-container .contact-user-head-container .contact-user-head {
+  width: 100%;
+  height: 160px;
+  line-height: 160px;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: rgba(155, 155, 155, 0.05);
+  position: relative;
+}
+.contact-user-container .contact-user-head-container .contact-user-head .contact-user-head-pic {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  padding: 0;
+  margin: 0 auto;
+  position: initial;
+  background: #33ffdd;
+  display: block;
+  border-radius: 5px;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.contact-user-container .contact-user-head-container .contact-user-name {
+  width: auto;
+  height: auto;
+  line-height: auto;
+  text-align: initial;
+  box-sizing: initial;
+  padding: 0;
+  margin: 3rem auto 1.5rem auto;
+  color: #ffffff;
+  background: initial;
+  font-size: 1.5rem;
+  text-align: center;
+  letter-spacing: 2px;
+}
+.contact-user-container .contact-user-head-container .contact-user-address-container .contact-user-address-title {
+  width: auto;
+  height: auto;
+  line-height: auto;
+  text-align: initial;
+  box-sizing: initial;
+  padding: 0;
+  margin: 0;
+  color: #ffffff;
+  background: initial;
+  font-size: 1.3rem;
+  text-align: center;
+  letter-spacing: 2px;
+}
+.contact-user-container .contact-user-head-container .contact-user-address-container .contact-user-address {
+  width: auto;
+  height: auto;
+  line-height: auto;
+  text-align: initial;
+  box-sizing: initial;
+  padding: 0;
+  margin: 0.5rem 0 1rem 0;
+  color: #999999;
+  background: initial;
+  font-size: 1.3rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.contact-user-container .contact-user-head-container .contact-user-transfer-btn {
+  width: 40%;
+  height: 40px;
+  line-height: 40px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.4rem;
+  letter-spacing: inherit;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  background: -webkit-linear-gradient(top, #00ccff, #0ee5db);
+  border-radius: 20px;
+  margin: 2rem auto ;
+}
+.contact-user-container .contact-user-trade-container {
+  position: relative;
+  margin-top: 40px;
+}
+.contact-user-container .contact-user-trade-container .contact-user-trade-title {
+  width: auto;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  position: initial;
+  background: none;
+  font-family: inherit;
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: initial;
+  text-indent: 0em;
+  letter-spacing: 1px;
+  text-align: initial;
+  margin: initial;
+  border-bottom: 3px solid #ffff00;
+  position: absolute;
+  top: -40px;
+  left: 10px;
+  color: #ddd;
+}
+.contact-user-container .contact-user-trade-container .contact-user-trade-table {
+  width: 100%;
+  height: auto;
+  line-height: auto;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: none;
+}
+.contact-user-container .contact-user-trade-container .contact-user-trade-table .contact-user-trade-table-title {
+  width: 100%;
+  height: 36px;
+  line-height: 36px;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: rgba(155, 155, 155, 0.1);
+  font-size: 1.4rem;
+  color: #ddd;
+}
+.contact-user-container .contact-user-trade-container .contact-user-trade-table .contact-user-trade-table-title li.contact-user-trade-table-title-item {
+  color: #ddd;
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.contact-user-container .contact-user-trade-container .contact-user-trade-table .contact-user-trade-table-title li.contact-user-trade-table-title-item:nth-of-type(1) {
+  width: 40%;
+  padding-left: 10px;
+}
+.contact-user-container .contact-user-trade-container .contact-user-trade-table .contact-user-trade-table-title li.contact-user-trade-table-title-item:nth-of-type(2) {
+  width: 25%;
+  text-align: center;
+}
+.contact-user-container .contact-user-trade-container .contact-user-trade-table .contact-user-trade-table-title li.contact-user-trade-table-title-item:nth-of-type(3) {
+  width: 20%;
+  text-align: center;
+}
+.contact-user-container .contact-user-trade-container .contact-user-trade-table .contact-user-trade-table-title li.contact-user-trade-table-title-item:nth-of-type(4) {
+  width: 15%;
+  text-align: center;
+}
+.contact-user-container .contact-user-trade-container .contact-user-trade-table .contact-user-trade-table-items .contact-user-trade-table-item {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: none;
+}
+.contact-user-container .contact-user-trade-container .contact-user-trade-table .contact-user-trade-table-items .contact-user-trade-table-item .contact-user-trade-table-item-item {
+  color: #999;
+  float: left;
+  font-size: 1.3rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.contact-user-container .contact-user-trade-container .contact-user-trade-table .contact-user-trade-table-items .contact-user-trade-table-item .contact-user-trade-table-item-item:nth-of-type(1) {
+  width: 40%;
+  padding-left: 10px;
+}
+.contact-user-container .contact-user-trade-container .contact-user-trade-table .contact-user-trade-table-items .contact-user-trade-table-item .contact-user-trade-table-item-item:nth-of-type(2) {
+  width: 25%;
+  text-align: center;
+}
+.contact-user-container .contact-user-trade-container .contact-user-trade-table .contact-user-trade-table-items .contact-user-trade-table-item .contact-user-trade-table-item-item:nth-of-type(3) {
+  width: 20%;
+  text-align: center;
+}
+.contact-user-container .contact-user-trade-container .contact-user-trade-table .contact-user-trade-table-items .contact-user-trade-table-item .contact-user-trade-table-item-item:nth-of-type(4) {
+  width: 15%;
+  text-align: center;
+}
+.contact-user-container .contact-user-trade-container .contact-user-trade-table .contact-user-trade-table-items .contact-user-trade-table-item .contact-user-trade-table-item-item.contact-user-trade-table-item-failure {
+  color: #ff0000;
+}
+.contact-transfer-container .contact-transfer-amount-container {
+  width: 100%;
+  height: auto;
+  line-height: auto;
+  padding: 0;
+  margin: 0;
+  position: initial;
+  background: none;
+}
+.contact-transfer-container .contact-transfer-amount-container .contact-transfer-amount-content {
+  width: 94%;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  margin: 0 3%;
+  box-sizing: border-box;
+  position: initial;
+  background: none;
+  border-bottom: 1px solid #666;
+  padding-bottom: 5px;
+  position: relative;
+}
+.contact-transfer-container .contact-transfer-amount-container .contact-transfer-amount-content .contact-transfer-amount-input {
+  background: none;
+  height: 40px;
+  width: 80%;
+  font-size: 2.4rem;
+  font-weight: 400;
+  float: left;
+}
+.contact-transfer-container .contact-transfer-amount-container .contact-transfer-amount-content .contact-transfer-amount-unit {
+  width: 20%;
+  float: right;
+  font-size: 1.8rem;
+  color: #9999ff;
+  text-align: right;
+}
+.contact-transfer-container .contact-transfer-amount-container .contact-transfer-fee-container {
+  position: relative;
+  color: #999;
+  font-size: 1.1rem;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  background: rgba(155, 155, 155, 0.2);
+}
+.contact-transfer-container .contact-transfer-amount-container .contact-transfer-fee-container:before {
+  content: '';
+  width: 0;
+  height: 0;
+  top: -10px;
+  position: absolute;
+  border-style: solid;
+  border-width: 5px;
+  border-color: transparent transparent rgba(155, 155, 155, 0.2) transparent;
+}
+.contact-transfer-container .contact-transfer-amount-container .contact-transfer-fee-container a {
+  position: absolute;
+  width: 200px;
+  right: -210px;
+  font-size: 1rem;
+}
+.contact-transfer-container .contact-transfer-amount-container .contact-transfer-fee-total {
+  float: right;
+  position: relative;
+  right: 10px;
+  top: 5px;
+  color: #ff3333;
+  font-size: 1.2rem;
+}
+.contact-transfer-container .contact-transfer-remark-container {
+  clear: both;
+  width: 94%;
+  height: 40px;
+  line-height: 20px 3%;
+  padding: 0;
+  margin: 50px 3%;
+  box-sizing: border-box;
+  position: initial;
+  background: none;
+  border-bottom: 1px solid #666;
+}
+.contact-transfer-container .contact-transfer-remark-container .contact-transfer-remark-input {
+  height: 35px;
+  background: none;
+  width: 100%;
+  color: #fff;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+.contact-transfer-container .contact-transfer-submit-btn {
+  width: 94%;
+  height: 40px;
+  line-height: 40px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.4rem;
+  letter-spacing: inherit;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  background: -webkit-linear-gradient(top, #00ccff, #0ee5db);
+  margin: 20px 3%;
+}
+/**
+ * 添加联系人
+ */
+.contact-add-container {
+  margin-top: 20px;
+}
+.contact-add-container .contact-add-title {
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: initial;
+  text-indent: 0em;
+  letter-spacing: 1px;
+  text-align: initial;
+  margin: 0 0 0 3%;
+}
+.contact-add-container .contact-add-address-container {
+  width: 94%;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  margin: 30px 3%;
+  position: initial;
+  background: none;
+  border-bottom: 1px solid #999;
+}
+.contact-add-container .contact-add-address-container .contact-add-address-input {
+  background: none;
+  width: 80%;
+  float: left;
+  font-size: 1.4rem;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.contact-add-container .contact-add-address-container .contact-add-address-scan {
+  float: right;
+  text-align: right;
+  color: #fff;
+}
+.contact-add-container .contact-add-submit-btn {
+  width: 94%;
+  height: 40px;
+  line-height: 40px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.4rem;
+  letter-spacing: inherit;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  background: -webkit-linear-gradient(top, #00ccff, #0ee5db);
+  margin: 0 auto;
+}
+.name-setting-container {
+  width: 100%;
+  height: 50px;
+  line-height: 40px;
+  padding: 5px 10px;
+  margin: 20px 0 0 0;
+  box-sizing: border-box;
+  position: initial;
+  background: rgba(155, 155, 155, 0.1);
+}
+.name-setting-container .name-setting-input {
+  height: 40px;
+  color: #fff;
+  font-size: 1.4rem;
+  background: none;
+  margin-bottom: 10px;
+}
+.name-setting-container .name-setting-tip {
+  margin-top: 40px;
+  color: #999;
+  font-size: 1.1rem;
+}
+.name-setting-container .name-setting-tip a {
+  font-size: 1rem;
+  text-decoration: underline;
 }

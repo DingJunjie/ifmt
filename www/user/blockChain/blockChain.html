@@ -1,6 +1,7 @@
-<ion-view view-title="区块链" class="animated usual-background" ng-controller="chainCtrl">
+<ion-view view-title="" class="animated usual-background" scroll-height ng-controller="chainCtrl" hide-back-button="true" hide-nav-bar="true">
   <!-- on-drag-left="onDrag('contact', left)" on-drag-right="onDrag('index', right)"-->
-  <ion-content class="has-header">
+  <ion-content>
+    <div class="chain-top-space"></div>
     <div class="chain-tab-container">
       <ul>
         <li class="chain-tab-list-item" ng-class="chainSelected === 0 ? 'chain-tab-list-item-focus': 'chain-tab-list-blur'" ng-click="chainTabClick(0)"><span>最新概况</span></li>
@@ -8,7 +9,7 @@
         <li class="chain-tab-list-item" ng-class="chainSelected === 2 ? 'chain-tab-list-item-focus': 'chain-tab-list-blur'" ng-click="chainTabClick(2)"><span>最新交易</span></li>
       </ul>
     </div>
-    <ion-slides class="has-header" slider="data.slider" options="tradeHistoryOpt" on-slide-changed="slideChanged($index)" delegate-handle="blockChainSlider" ng-style="{'height': '{{fullHeight-150}}px'}">
+    <ion-slides class="has-header" slider="data.slider" pager="false" loop="true" options="blockChainOpt" on-slide-changed="slideChanged($index)" delegate-handle="blockChainSlider" ng-style="{'height': '{{fullHeight-150}}px'}">
     <!-- on-slide-changed="slideChanged($index)"-->
       <ion-slide-page>
         <div class="chain-slide" style="width:100%;height:100%;">
@@ -50,46 +51,90 @@
       <ion-slide-page>
         <div class="chain-newest-block-container" style="width:100%;height:100%;">
             <ul class="chain-newest-block-title">
-              <li class="chain-newest-block-title-item">块hash</li>
               <li class="chain-newest-block-title-item">高度</li>
-              <li class="chain-newest-block-title-item">大小</li>
-              <li class="chain-newest-block-title-item">块收益</li>
+              <li class="chain-newest-block-title-item">金额</li>
+              <li class="chain-newest-block-title-item">费用</li>
+              <li class="chain-newest-block-title-item">奖励</li>
               <li class="chain-newest-block-title-item">时间</li>
             </ul>
 
-            <div class="chain-newest-block-item">
-              <div class="chain-hash-detail"><div>0123456789abcdefghi</div><div class="down-trig"></div></div>
-              <ul class="chain-newest-block-content">
-                <li class="chain-newest-block-content-item">0123456789abcdefghi</li>
-                <li class="chain-newest-block-content-item">400,000</li>
-                <li class="chain-newest-block-content-item">999,999</li>
-                <li class="chain-newest-block-content-item">16.33 BTC</li>
-                <li class="chain-newest-block-content-item">12min 前</li>
-              </ul>
-            </div>
+            <div class="chain-newest-mine-title">我的区块</div>
+            <a href="#/blockChain/blockDetail"><div class="chain-newest-my-block-list">
+              <div class="chain-newest-block-item">
+                <!--<div class="chain-hash-detail"><div>0123456789abcdefghi</div><div class="down-trig"></div></div>-->
+                <ul class="chain-newest-block-content">
+                  <li class="chain-newest-block-content-item">1145</li>
+                  <li class="chain-newest-block-content-item">1120</li>
+                  <li class="chain-newest-block-content-item">1.12</li>
+                  <li class="chain-newest-block-content-item">35</li>
+                  <li class="chain-newest-block-content-item">12min 前</li>
+                </ul>
+              </div>
+            </div></a>
 
-            <div class="chain-newest-block-item">
-              <div class="chain-hash-detail"><div>0123456789abcdefghi</div><div class="down-trig"></div></div>
-              <ul class="chain-newest-block-content">
-                <li class="chain-newest-block-content-item">0123456789abcdefghi</li>
-                <li class="chain-newest-block-content-item">400,000</li>
-                <li class="chain-newest-block-content-item">999,999</li>
-                <li class="chain-newest-block-content-item">16.33 BTC</li>
-                <li class="chain-newest-block-content-item">12min 前</li>
-              </ul>
-            </div>
+          <div class="chain-newest-all-title">最新区块</div>
+            <div class="chain-newest-block-list">
+              <div class="chain-newest-block-item">
+                <ul class="chain-newest-block-content">
+                  <li class="chain-newest-block-content-item">1144</li>
+                  <li class="chain-newest-block-content-item">1120</li>
+                  <li class="chain-newest-block-content-item">1.12</li>
+                  <li class="chain-newest-block-content-item">35</li>
+                  <li class="chain-newest-block-content-item">12min 前</li>
+                </ul>
+              </div>
 
-            <div class="chain-newest-block-item">
-              <div class="chain-hash-detail"><div>0123456789abcdefghi</div><div class="down-trig"></div></div>
-              <ul class="chain-newest-block-content">
-                <li class="chain-newest-block-content-item">0123456789abcdefghi</li>
-                <li class="chain-newest-block-content-item">400,000</li>
-                <li class="chain-newest-block-content-item">999,999</li>
-                <li class="chain-newest-block-content-item">16.33 BTC</li>
-                <li class="chain-newest-block-content-item">12min 前</li>
-              </ul>
+              <div class="chain-newest-block-item">
+                <ul class="chain-newest-block-content">
+                  <li class="chain-newest-block-content-item">1143</li>
+                  <li class="chain-newest-block-content-item">1120</li>
+                  <li class="chain-newest-block-content-item">1.12</li>
+                  <li class="chain-newest-block-content-item">35</li>
+                  <li class="chain-newest-block-content-item">12min 前</li>
+                </ul>
+              </div>
+
+              <div class="chain-newest-block-item">
+                <ul class="chain-newest-block-content">
+                  <li class="chain-newest-block-content-item">1142</li>
+                  <li class="chain-newest-block-content-item">1120</li>
+                  <li class="chain-newest-block-content-item">1.12</li>
+                  <li class="chain-newest-block-content-item">35</li>
+                  <li class="chain-newest-block-content-item">12min 前</li>
+                </ul>
+              </div>
+
+              <div class="chain-newest-block-item">
+                <ul class="chain-newest-block-content">
+                  <li class="chain-newest-block-content-item">1141</li>
+                  <li class="chain-newest-block-content-item">1120</li>
+                  <li class="chain-newest-block-content-item">1.12</li>
+                  <li class="chain-newest-block-content-item">35</li>
+                  <li class="chain-newest-block-content-item">12min 前</li>
+                </ul>
+              </div>
+
+              <div class="chain-newest-block-item">
+                <ul class="chain-newest-block-content">
+                  <li class="chain-newest-block-content-item">1140</li>
+                  <li class="chain-newest-block-content-item">1120</li>
+                  <li class="chain-newest-block-content-item">1.12</li>
+                  <li class="chain-newest-block-content-item">35</li>
+                  <li class="chain-newest-block-content-item">12min 前</li>
+                </ul>
+              </div>
+
+              <div class="chain-newest-block-item">
+                <ul class="chain-newest-block-content">
+                  <li class="chain-newest-block-content-item">1139</li>
+                  <li class="chain-newest-block-content-item">1120</li>
+                  <li class="chain-newest-block-content-item">1.12</li>
+                  <li class="chain-newest-block-content-item">35</li>
+                  <li class="chain-newest-block-content-item">12min 前</li>
+                </ul>
+              </div>
             </div>
-          </div>
+        </div>
       </ion-slide-page>
       <ion-slide-page>
         <div class="chain-trade-container" style="width:100%;height:100%;">
@@ -97,62 +142,22 @@
               <div class="chain-trade-title">
                 <span class="chain-trade-date">28秒前</span>
                 <span class="chain-trade-amount">交易数量 <span>12.01</span></span>
-                <span class="chain-trade-fee">含0.001手续费</span>
+                <!--<span class="chain-trade-fee">含0.001手续费</span>-->
               </div>
 
               <div class="chain-trade-content">
-                <div class="chain-trade-addr">
+                <a href="#/blockChain/tradeDetail"><div class="chain-trade-addr">
                   1kj12j12ij192j09j94j320jksadjf90af90ja
-                </div>
+                </div></a>
                 <div class="chain-trade-operate">
                   <img src="../images/ifmt/chain/undo-icon.png" alt="">
                 </div>
 
                 <div class="chain-trade-remark">
-                  <input type="text" class="chain-trade-remark-input" placeholder="无备注" />
+                  <!--<input type="text" class="chain-trade-remark-input" placeholder="无备注" />-->
+                  <div class="chain-trade-remark-input">无备注</div>
                 </div>
-              </div>
-            </div>
-
-            <div class="chain-trade-item">
-              <div class="chain-trade-title">
-                <span class="chain-trade-date">28秒前</span>
-                <span class="chain-trade-amount">交易数量 <span>12.01</span></span>
-                <span class="chain-trade-fee">含0.001手续费</span>
-              </div>
-
-              <div class="chain-trade-content">
-                <div class="chain-trade-addr">
-                  1kj12j12ij192j09j94j320jksadjf90af90ja
-                </div>
-                <div class="chain-trade-operate">
-                  <img src="../images/ifmt/chain/undo-icon.png" alt="">
-                </div>
-
-                <div class="chain-trade-remark">
-                  <input type="text" class="chain-trade-remark-input" placeholder="无备注" />
-                </div>
-              </div>
-            </div>
-
-            <div class="chain-trade-item">
-              <div class="chain-trade-title">
-                <span class="chain-trade-date">28秒前</span>
-                <span class="chain-trade-amount">交易数量 <span>12.01</span></span>
-                <span class="chain-trade-fee">含0.001手续费</span>
-              </div>
-
-              <div class="chain-trade-content">
-                <div class="chain-trade-addr">
-                  1kj12j12ij192j09j94j320jksadjf90af90ja
-                </div>
-                <div class="chain-trade-operate">
-                  <img src="../images/ifmt/chain/undo-icon.png" alt="">
-                </div>
-
-                <div class="chain-trade-remark">
-                  <input type="text" class="chain-trade-remark-input" placeholder="无备注" />
-                </div>
+                <div class="chain-trade-fee-btm">含0.001手续费</div>
               </div>
             </div>
 

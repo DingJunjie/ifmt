@@ -1,27 +1,28 @@
-<ion-view title="我的" class="animated usual-background" ng-controller="accountCtrl">
+<ion-view title="" class="animated usual-background" ng-controller="accountCtrl" hide-back-button="true" hide-nav-bar="true">
   <ion-content>
+    <div class="account-top-space"></div>
     <div class="row account-container">
       <div class="col">
         <div class="row account-info-container">
           <div class="account-head-container col-25">
             <div class="account-head">
-              <img src="../images/ifmt/account/head.png" alt="" class="account-head-img" />
+              <a href="#/account/userSettings"><img src="../images/ifmt/account/head.png" alt="" class="account-head-img" /></a>
             </div>
           </div>
           <div class="account-info col-50">
-            <h5>林婉婷 <img src="../images/ifmt/account/verified.png" alt="" class="verified" /></h5>
-            <h5>bGd5****hhUz</h5>
+            <a href="#/account/userSettings"><h5>林婉婷 <img src="../images/ifmt/account/verified.png" alt="" class="verified" /></h5>
+              <h5>bGd5****hhUz</h5></a>
           </div>
           <div class="col-25 account-more">
             <!--<i class="icon-right ion-chevron-right pull-right"></i>-->
-            <img src="../images/ifmt/account/back.png" alt="" class="account-more-icon" />
+            <a href="#/account/userSettings"><img src="../images/ifmt/account/back.png" alt="" class="account-more-icon" /></a>
           </div>
         </div>
 
         <div class="row account-coin-container">
           <div class="col-50">
             <img src="../images/ifmt/account/receive.png" alt="" class="account-receive-icon">
-            <span>收币</span>
+              <span>收币</span>
           </div>
           <div class="col-50">
             <img src="../images/ifmt/account/pay.png" alt="" class="account-pay-icon">
@@ -34,25 +35,29 @@
     <div class="account-settings-container">
       <ul class="list-group">
         <li class="list-group-item">
-          <img src="../images/ifmt/account/relative.png" alt="" class="account-setting-icon" />
+          <a href="#/account/contact"><img src="../images/ifmt/account/relative.png" alt="" class="account-setting-icon" />
           <span>我的联系人</span>
-          <i class="pull-right icon-right ion-chevron-right "></i>
+          <!--<i class="pull-right icon-right ion-chevron-right "></i>-->
+          <img src="../images/ifmt/account/back.png" class="pull-right icon-right" alt=""></a>
         </li>
         <li class="list-group-item">
           <a href="#/account/suggest"><img src="../images/ifmt/account/suggest.png" alt="" class="account-setting-icon" />
           <span>我的建议</span>
-          <i class="pull-right icon-right ion-chevron-right "></i></a>
+          <!--<i class="pull-right icon-right ion-chevron-right "></i></a>-->
+            <img src="../images/ifmt/account/back.png" class="pull-right icon-right" alt=""></a>
         </li>
         <li class="list-group-item">
           <a href="#/account/about"><img src="../images/ifmt/account/about.png" alt="" class="account-setting-icon" />
           <span>关于本币</span>
-          <i class="pull-right icon-right ion-chevron-right "></i></a>
+          <!--<i class="pull-right icon-right ion-chevron-right "></i></a>-->
+            <img src="../images/ifmt/account/back.png" class="pull-right icon-right" alt=""></a>
         </li>
 
         <li class="list-group-item list-group-item-setting">
           <a href="#/account/settings"><img src="../images/ifmt/account/setting.png" alt="" class="account-setting-icon" />
           <span>设置</span>
-          <i class="pull-right icon-right ion-chevron-right "></i></a>
+          <!--<i class="pull-right icon-right ion-chevron-right "></i></a>-->
+            <img src="../images/ifmt/account/back.png" class="pull-right icon-right" alt=""></a>
         </li>
       </ul>
     </div>

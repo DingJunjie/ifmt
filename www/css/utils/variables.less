@@ -188,7 +188,7 @@
   background-image: url(@imgSrc);
   background-repeat: no-repeat;
   background-position: center center;
-  background-size:22px;
+  background-size:20px;
   //i {
   //  background-image: url(@imgSrc);
   //  background-repeat: no-repeat;
@@ -200,11 +200,17 @@
   //}
 }
 
+.text-middle {
+  text-align:center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
 .tab-icon(@on, @imgSrc) when (@on = false) {
   background-image: url(@imgSrc);
   background-repeat: no-repeat;
   background-position: center center;
-  background-size:22px;
+  background-size:20px;
   -webkit-filter:brightness(1.5);
   //i {
   //  background-image: url(@imgSrc);

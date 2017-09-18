@@ -38,28 +38,21 @@
 }
 .v-center {
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 .h-center {
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 .h-center-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 .ls1 {
   letter-spacing: 1px;
 }
 .bb {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .fix {
   *zoom: 1;
@@ -79,6 +72,11 @@
 .clearfloat {
   clear: both;
 }
+.text-middle {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
 .tabs-very-dark .tabs {
   background: url('../../images/ifmt/bar-bg.jpg') no-repeat center center;
   background-size: cover;
@@ -87,49 +85,77 @@
   background-image: url('../../images/ifmt/tab-ifmt-on.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 22px;
+  background-size: 20px;
 }
 .ion-home-off {
   background-image: url('../../images/ifmt/tab-ifmt-off.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 22px;
+  background-size: 20px;
 }
 .ion-chain-on {
   background-image: url('../../images/ifmt/tab-qkl-on.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 22px;
+  background-size: 20px;
 }
 .ion-chain-off {
   background-image: url('../../images/ifmt/tab-qkl-off.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 22px;
+  background-size: 20px;
 }
 .ion-pay-on {
   background-image: url('../../images/ifmt/tab-pay-on.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 22px;
+  background-size: 20px;
 }
 .ion-pay-off {
   background-image: url('../../images/ifmt/tab-pay-off.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 22px;
+  background-size: 20px;
 }
 .ion-account-on {
   background-image: url('../../images/ifmt/tab-account-on.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 22px;
+  background-size: 20px;
 }
 .ion-account-off {
   background-image: url('../../images/ifmt/tab-account-off.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 22px;
+  background-size: 20px;
+}
+.tab-item .icon {
+  height: 26px;
+  margin-bottom: 2px;
+  margin-top: 1px;
+}
+.tabs-striped.tabs-positive .tab-item.tab-item-active,
+.tabs-striped.tabs-positive .tab-item.active,
+.tabs-striped.tabs-positive .tab-item.activated {
+  border: none;
+  margin-top: 0;
+  position: relative;
+}
+.tabs-icon-top > .tabs .tab-item,
+.tabs-icon-top.tabs .tab-item,
+.tabs-icon-bottom > .tabs .tab-item,
+.tabs-icon-bottom.tabs .tab-item {
+  position: relative;
+}
+.tab-item.tab-item-active:after,
+.tab-item.active:after {
+  content: "";
+  position: absolute;
+  width: 20%;
+  height: 3px;
+  background: #ff6;
+  bottom: 0px;
+  left: 40%;
 }
 .tab-item-active .tab-title {
   background-image: -webkit-linear-gradient(left, #14efcc, #019fc4);

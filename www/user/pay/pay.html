@@ -1,5 +1,6 @@
-<ion-view view-title="收付币" class="animated usual-background" ng-controller="payCtrl">
+<ion-view view-title="" class="animated usual-background" ng-controller="payCtrl" hide-back-button="true" hide-nav-bar="true">
     <ion-content>
+      <div class="pay-top-space"></div>
       <!-- style="overflow-y:scroll" scroll="true"-->
       <div class="pay-swiper-pagination-container">
         <!--<div class="pay-swiper-prev"><</div>-->
@@ -20,7 +21,7 @@
         <!--<div class="pay-swiper-next">></div>-->
       </div>
 
-      <ion-slides class="has-header pay-swipers" slider="data.slider" options="tradeHistoryOpt" on-slide-changed="slideChanged($index)" delegate-handle="blockChainSlider" ng-style="{'height': '{{fullHeight-220}}px'}">
+      <ion-slides class="has-header pay-swipers" slider="data.slider" options="paySlideOpt" on-slide-changed="slideChanged($index)" delegate-handle="blockChainSlider" ng-style="{'height': '{{fullHeight-220}}px'}">
           <ion-slide-page class="swiper-slide pay-slide-1">
             <div class="add-collector-container padding">
               <div class="add-collector-icon-container">
@@ -33,7 +34,7 @@
                   <span class="add-collector-amount-unit">IFMT</span>
                 </div>
                 <div class="add-collector-fee-container">
-                  收取0.01手续费
+                  收取0.01手续费<a class="add-collector-fee-config" href="#/account/fee">点击设置</a>
                 </div>
                 <span class="add-collector-amount-all">剩余数量: 12.09</span>
               </div>

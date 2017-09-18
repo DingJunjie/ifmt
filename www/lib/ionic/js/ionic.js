@@ -10428,12 +10428,12 @@ ionic.views.Slider = ionic.views.View.inherit({
             // Time diff
             var touchEndTime = Date.now();
             var timeDiff = touchEndTime - touchStartTime;
-
+            //双击测试
             // Tap, doubleTap, Click
             if (s.allowClick) {
                 s.updateClickedSlide(e);
                 s.emit('onTap', s, e);
-                if (timeDiff < 300 && (touchEndTime - lastClickTime) > 300) {
+                if (timeDiff < 100 && (touchEndTime - lastClickTime) > 100) {
                     if (clickTimeout) clearTimeout(clickTimeout);
                     clickTimeout = setTimeout(function () {
                         if (!s) return;
@@ -10441,10 +10441,10 @@ ionic.views.Slider = ionic.views.View.inherit({
                             s.paginationContainer.toggleClass(s.params.paginationHiddenClass);
                         }
                         s.emit('onClick', s, e);
-                    }, 300);
+                    }, 100);
 
                 }
-                if (timeDiff < 300 && (touchEndTime - lastClickTime) < 300) {
+                if (timeDiff < 100 && (touchEndTime - lastClickTime) < 100) {
                     if (clickTimeout) clearTimeout(clickTimeout);
                     s.emit('onDoubleTap', s, e);
                 }

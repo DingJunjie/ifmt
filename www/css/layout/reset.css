@@ -1,0 +1,23 @@
+/**
+用于修改ionic或者其他组件的样式
+ */
+.action-sheet .button {
+  font-size: 1.3rem;
+  color: #000;
+  padding: 8px 1px;
+}
+.actionSheetSpan {
+  color: #999;
+  font-size: 1rem;
+}
+.platform-android .action-sheet .action-sheet-title,
+.platform-android .action-sheet .button {
+  text-align: center;
+  border-top: 1px solid rgba(222, 222, 222, 0.4);
+}
+.platform-android .action-sheet-cancel {
+  display: block;
+}
+.action-sheet-cancel .button {
+  border-top: 2px solid #333;
+}

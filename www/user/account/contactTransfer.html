@@ -1,0 +1,30 @@
+<ion-view view-title="" class="usual-background animated" hide-tabs="true">
+  <ion-nav-bar class="navbar-bg bar-transparent">
+    <ion-nav-buttons side="left">
+      <a href="#/account/contactUser" class="button button-icon" nav-direction="back">取消</a>
+      <!--javascript:history.back(-1)-->
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <a href="#/account" class="nav-right-btn suggest-submit-btn submit-active"></a>
+      <!--javascript:history.back(-1)-->
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="contact-transfer-container">
+      <div class="contact-transfer-amount-container">
+        <div class="contact-transfer-amount-content">
+          <input type="number" class="contact-transfer-amount-input" placeholder="0.00" />
+          <span class="contact-transfer-amount-unit">IFMT</span>
+        </div>
+        <span class="contact-transfer-fee-container">收取0.001手续费<a class="contact-transfer-fee-setting" href="#/account/fee">点击设置</a></span>
+        <div class="contact-transfer-fee-total">可用数量：12.09</div>
+      </div>
+
+      <div class="contact-transfer-remark-container">
+        <input type="text" class="contact-transfer-remark-input" placeholder="添加备注（20字以内）" />
+      </div>
+
+      <div class="contact-transfer-submit-btn">确认支付</div>
+    </div>
+  </ion-content>
+</ion-view>
