@@ -37,6 +37,10 @@ app.controller('accountCtrl', ['$scope', '$ionicActionSheet', '$timeout', functi
 
   $scope.contactList = [];
 
+  $scope.saveAddress = function() {
+    $('.user-settings-list-value')[0].select();
+    document.execCommand("Copy");
+  }
 }])
 
 

@@ -24,13 +24,14 @@ app.controller('payCtrl', ['$scope', '$timeout', function($scope, $timeout) {
         initialSlide : 0
     });
 
-    $scope.paySelected = 0;
-
     $scope.$on('$ionicSlides.sliderInitialized', function(event, data) {
       $scope.slider = data.slider;
     })
+    $scope.paySelected = 0;
 
     $scope.$on('$ionicSlides.slideChangeEnd', function(event, data) {
+      $scope.activeIndex = data.slider.activeIndex;
+      $scope.previousIndex = data.slider.previousIndex;
       $scope.paySelected = data.slider.activeIndex;
       $timeout(function() {
         $scope.paySelected;

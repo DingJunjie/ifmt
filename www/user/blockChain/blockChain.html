@@ -14,8 +14,9 @@
       <ion-slide-page>
         <div class="chain-slide" style="width:100%;height:100%;">
           <ion-pane class="padding chain-newest-info">
-              <div class="ifmc-release">
+              <!--<div class="ifmc-release">
                 <div class="ifmc-release-container">
+                  <progress-circle></progress-circle>
                   <img src="../images/ifmt/chain/rainbow-circle.png" alt="" class="ifmc-release-circle" />
                   <div class="ifmc-release-content">
                     <span class="ifmc-release-amount">26000</span>
@@ -44,8 +45,33 @@
                     <span>711,697,198,173 - 711.70 G</span>
                   </div>
                 </div>
+              </div>-->
+            <div class="ifmt-my-ifmt-container">
+              <div class="ifmt-my-ifmt-circle-container">
+                <div class="ifmt-my-ifmt-circle">
+                  <progress-circle></progress-circle>
+                </div>
+                <div class="ifmt-my-ifmt-wave">
+                  <progress-wave></progress-wave>
+                </div>
+
+                <div class="ifmt-my-ifmt-percent-container">
+                  <p class="ifmt-my-ifmt-title">我的挖矿进度</p>
+                  <div class="ifmt-my-ifmt-percent">61%</div>
+                </div>
               </div>
+            </div>
+            <div class="ifmt-my-ifmt-switch" ng-class="dig ? '' : 'ifmt-my-no-dig'"  ng-click="dig = !dig">
+              <div class="ifmt-my-ifmt-dig-no" ng-if="!dig">
+                <button id="ifmt-my-ifmt-dig-no">开启自动挖矿</button>
+              </div>
+              <div class="ifmt-my-ifmt-dig" ng-if="dig">
+                <button id="ifmt-my-ifmt-dig">自动挖矿中…</button>
+              </div>
+            </div>
+
           </ion-pane>
+          <chain-swiper></chain-swiper>
         </div>
       </ion-slide-page>
       <ion-slide-page>

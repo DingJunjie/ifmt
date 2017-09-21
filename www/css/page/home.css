@@ -310,13 +310,17 @@
   width: 15%;
 }
 .ifc-trade-grid .ifc-trade-item .ifc-trade-time {
-  height: 30px;
+  height: 0px;
   width: 70%;
   text-align: right;
   font-size: 1.1rem;
   display: none;
+  opacity: 0;
   color: #ccc;
+  transition: height 0.6s ease, opacity 0.6s ease;
 }
 .ifc-trade-grid .ifc-trade-item .ifc-trade-time.ifc-trade-time-show {
   display: block;
+  opacity: 1;
+  height: 30px;
 }

@@ -41,14 +41,190 @@
 }
 
 .chain-newest-info {
-  @bg: url('../../images/ifmt/chain/block-chain-bg.png') no-repeat center center;
-  @bgc: rgba(255,255,255,0.2);
+  position: relative;
+  //@bg: url('../../images/ifmt/chain/block-chain-bg.png') no-repeat center center;
+  //@bgc: rgba(255,255,255,0.2);
   .radius-box(@w: 96%; @h: 96%; @br: 16px);
-  background: @bg;
-  background-size: 100% 98%;
+  //background: @bg;
+  //background-size: 100% 98%;
   margin-left: 2%;
   margin-top: 2%;
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+
+  .ifmt-my-ifmt-container {
+    //.circle(@w: 400px);
+    width:100%;
+    height: 300px;
+    margin:0 auto;
+    position: relative;
+    transform-origin: center center;
+
+    .ifmt-my-ifmt-circle-container {
+
+      .ifmt-my-ifmt-circle {
+        //.circle(@w: 400px;);
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+
+        canvas {
+          width: 400px;
+          height: 400px;
+        }
+      }
+
+      .ifmt-my-ifmt-wave {
+        overflow: hidden;
+        .circle(@w: 290px;);
+        margin:25px auto;
+        position: absolute;
+        top:30px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        canvas {
+          width: 290px;
+          height: 290px;
+        }
+      }
+
+      .ifmt-my-ifmt-percent-container {
+        position: absolute;
+        top:14vh;
+        color: #fff;
+        width: 100%;
+
+        .ifmt-my-ifmt-title {
+          text-align: center;
+          font-size: 1.2rem;
+        }
+
+        .ifmt-my-ifmt-percent {
+          text-align: center;
+          font-size: 6rem;
+          margin-top: 12vh;
+        }
+      }
+    }
+
+    @media screen and  (max-width: 320px) {
+      transform: scale(0.8) translateY(-20%);
+      height: 216px;
+      .ifmt-my-ifmt-circle-container {
+        .ifmt-my-ifmt-circle {
+          //.circle(@w: 400px;);
+          canvas {
+            width: 300px;
+            height:300px;
+          }
+        }
+
+        .ifmt-my-ifmt-wave {
+          width: 210px;
+          height: 210px;
+          top: 20px;
+          //left: 44px;
+
+          canvas {
+            width: 210px;
+            height: 210px;
+          }
+        }
+      }
+    }
+
+    @media screen and (min-width : 321px) {
+      height: 290px;
+      transform: scale(0.8) translateY(-20%);
+    }
+
+    @media screen and (min-width : 520px) {
+      height: 320px;
+      transform: scale(1);
+
+      .ifmt-my-ifmt-circle-container {
+        .ifmt-my-ifmt-circle {
+          //.circle(@w: 400px;);
+          canvas {
+            width: 320px;
+            height:320px;
+          }
+        }
+
+        .ifmt-my-ifmt-wave {
+          width: 230px;
+          height: 230px;
+          top: 20px;
+          //left: 44px;
+
+          canvas {
+            width: 230px;
+            height: 230px;
+          }
+        }
+
+        .ifmt-my-ifmt-percent-container {
+          top: 9vh;
+          .ifmt-my-ifmt-title {
+
+          }
+
+          .ifmt-my-ifmt-percent {
+            margin-top: 6vh;
+          }
+        }
+      }
+    }
+
+    @media screen and (min-width : 1000px) {
+      height: 360px;
+      transform: scale(1.4);
+
+      .ifmt-my-ifmt-circle-container {
+        margin-top: 10vh;
+        .ifmt-my-ifmt-percent-container {
+          top: 6vh;
+        }
+      }
+
+    }
+
+  }
+
+  .ifmt-my-ifmt-switch {
+    .btn-gradient(@w: 50vw; @h: 4rem;);
+    color: #fff;
+    //margin: 40px auto 20px auto;
+    margin: 0 auto;
+    border-radius: 2rem;
+    transition: all 1s ease;
+
+    &.ifmt-my-no-dig {
+      -webkit-filter: grayscale(1);
+      color: #999;
+    }
+
+    label {
+      font-size: 1.4rem;
+      letter-spacing:1px;
+    }
+
+    button {
+      border:none;
+      background:none;
+      color: #fff;
+    }
+
+    @media screen and (min-width : 1000px) {
+      margin: 4vh auto;
+    }
+  }
+
+  .ifmt-my-ifmt-slider {
+    width: 100%;
+    //height: 100px;
+  }
 }
 
 .ifmc-release {
@@ -117,6 +293,10 @@
     .ifmc-release-content .ifmc-release-amount {
       margin-top: 100px;
     }
+  }
+
+  .chain-newest-info .ifmt-my-ifmt-switch {
+    margin: 1rem auto;
   }
 }
 

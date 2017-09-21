@@ -3,35 +3,6 @@
  * 需要在jquery之后引入
  */
 var cacheUrl = ["/getDicInfo", "/getContryList", "/getCurrencyList"];//缓存白名单
-// var hostUrl = "http://127.0.0.1:3000";//该地址在socket.io中使用
-//var hostUrl = "http://ark.bnqkl.cn";//如果在ionic中运行就需要执行服务器地址
-
-//var hostUrl = "http://demo.bnqkl.cn";//如果在ionic中运行就需要执行服务器地址
-
-
-// var hostUrl = "http://192.168.1.101:3000"; //xr@home
-//var hostUrl = "http://192.168.1.110:3000";//llhome
-
-//var hostUrl = "http://192.168.16.10:3000";//wzx
-
-//var hostUrl = "http://192.168.1.100:3000";//llhome
-
-// var hostUrl = "http://192.168.16.220:3000"; //xr@officellhome
-
-//var hostUrl = "http://192.168.16.227:3000";//wzx
-//var hostUrl = "http://192.168.1.4:3000";//wzx
-// var hostUrl = "http://192.168.16.220:3000"; //xr@office
-
-
-//var hostUrl = "http://192.168.16.154:3000";
-//var hostUrl = "http://192.168.16.158:3000";
-
-//var hostUrl = "http://192.168.16.178:3000";
-//var hostUrl = "http://192.168.16.211:3000";
-//var hostUrl = "http://192.168.16.243:3000";
-//var hostUrl = "http://192.168.16.10:3000";
-// var hostUrl = "http://192.168.16.237:3000";
-//var hostUrl = "http://192.168.16.158:3
 var hostUrl = "http://192.168.16.252:4000";
 // var hostUrl = "http://192.168.16.154:3000";
 
@@ -125,7 +96,7 @@ var iLoadCount = 0 ;//记录记载效果显示次数，归零时取消加载效�
                     //$rootScope.initfished = true;
                     //$rootScope.loading = false;
                     $rootScope.postfinished = true;
-                } 
+                }
                 safeApply($scope);
             }
         })
@@ -220,8 +191,8 @@ var iLoadCount = 0 ;//记录记载效果显示次数，归零时取消加载效�
                     if (--iLoadCount<=0){
                         //$rootScope.initfished = true;
                         //$rootScope.loading = false;
-                        $rootScope.postfinished = true;                        
-                    } 
+                        $rootScope.postfinished = true;
+                    }
                     safeApply($scope);
                 }
             }).error(function(){
@@ -230,7 +201,7 @@ var iLoadCount = 0 ;//记录记载效果显示次数，归零时取消加载效�
                         //$rootScope.initfished = true;
                         //$rootScope.loading = false;
                         $rootScope.postfinished = true;
-                    } 
+                    }
                     safeApply($scope);
                 }
             })
@@ -527,7 +498,7 @@ var iLoadCount = 0 ;//记录记载效果显示次数，归零时取消加载效�
                     var err = e.message ? e.message : e;
                     //配置提示框对象
                     var config = {
-                        
+
                         content: err,
                         status: 'error',
                         //callback: function () {
@@ -544,7 +515,7 @@ var iLoadCount = 0 ;//记录记载效果显示次数，归零时取消加载效�
                 var err = e.message ? e.message : e;
                 //配置提示框对象
                 var config = {
-                    
+
                     content: err,
                     status: 'error',
                     //callback: function () {

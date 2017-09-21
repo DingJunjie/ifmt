@@ -3,7 +3,7 @@
  */
 var app = angular.module('IfmCoinApp', [
     'ngRoute',
-    'pascalprecht.translate',
+    // 'pascalprecht.translate',
     'ionic',
     'ngCordova',
     'ngAnimate',
@@ -11,6 +11,9 @@ var app = angular.module('IfmCoinApp', [
     'pinyin',
     'contactMenu',
     'contactIndex',
+    'progressCircle',
+    'progressWave',
+    'chainSwiper',
     // 'ui.grid',
 ]);
 
@@ -104,216 +107,10 @@ app.run(function ($ionicPlatform) {
     });
 })
 
-/**
- * 创建二维码
- */
-app.directive('qrcode', ['$window', function ($window) {
-
-    var canvas2D = !!$window.CanvasRenderingContext2D,
-        levels = {
-            'L': 'Low',
-            'M': 'Medium',
-            'Q': 'Quartile',
-            'H': 'High'
-        },
-        draw = function (context, qr, modules, tile) {
-            for (var row = 0; row < modules; row++) {
-                for (var col = 0; col < modules; col++) {
-                    var w = (Math.ceil((col + 1) * tile) - Math.floor(col * tile)),
-                        h = (Math.ceil((row + 1) * tile) - Math.floor(row * tile));
-
-                    context.fillStyle = qr.isDark(row, col) ? '#000' : '#fff';
-                    context.fillRect(Math.round(col * tile),
-                        Math.round(row * tile), w, h);
-                }
-            }
-        };
-
-    return {
-        restrict: 'E',
-        template: '<canvas class="qrcode"></canvas>',
-        link: function (scope, element, attrs) {
-            var domElement = element[0],
-                $canvas = element.find('canvas'),
-                canvas = $canvas[0],
-                context = canvas2D ? canvas.getContext('2d') : null,
-                download = 'download' in attrs,
-                href = attrs.href,
-                link = download || href ? document.createElement('a') : '',
-                trim = /^\s+|\s+$/g,
-                error,
-                version,
-                errorCorrectionLevel,
-                data,
-                size,
-                modules,
-                tile,
-                qr,
-                $img,
-                setVersion = function (value) {
-                    version = Math.max(1, Math.min(parseInt(value, 10), 40)) || 5;
-                },
-                setErrorCorrectionLevel = function (value) {
-                    errorCorrectionLevel = value in levels ? value : 'M';
-                },
-                setData = function (value) {
-                    if (!value) {
-                        return;
-                    }
-
-                    data = value.replace(trim, '');
-                    qr = qrcode(version, errorCorrectionLevel);
-                    qr.addData(data);
-
-                    try {
-                        qr.make();
-                    } catch (e) {
-                        error = e.message;
-                        return;
-                    }
-
-                    error = false;
-                    modules = qr.getModuleCount();
-                },
-                setSize = function (value) {
-                    size = parseInt(value, 10) || modules * 2;
-                    tile = size / modules;
-                    canvas.width = canvas.height = size;
-                },
-                render = function () {
-                    if (!qr) {
-                        return;
-                    }
-
-                    if (error) {
-                        if (link) {
-                            link.removeAttribute('download');
-                            link.title = '';
-                            link.href = '#_';
-                        }
-                        if (!canvas2D) {
-                            domElement.innerHTML = '<img src width="' + size + '"' +
-                                'height="' + size + '"' +
-                                'class="qrcode">';
-                        }
-                        scope.$emit('qrcode:error', error);
-                        return;
-                    }
-
-                    if (download) {
-                        domElement.download = 'qrcode.png';
-                        domElement.title = 'Download QR code';
-                    }
-
-                    if (canvas2D) {
-                        draw(context, qr, modules, tile);
-
-                        if (download) {
-                            //domElement.href = canvas.toDataURL('image/png');
-                            return;
-                        }
-                    } else {
-                        domElement.innerHTML = qr.createImgTag(tile, 0);
-                        $img = element.find('img');
-                        $img.addClass('qrcode');
-
-                        if (download) {
-                            //domElement.href = $img[0].src;
-                            return;
-                        }
-                    }
-
-                    if (href) {
-                        //domElement.href = href;
-                    }
-                };
-
-            if (link) {
-                link.className = 'qrcode-link';
-                $canvas.wrap(link);
-                domElement = domElement.firstChild;
-            }
-
-            setVersion(attrs.version);
-            setErrorCorrectionLevel(attrs.errorCorrectionLevel);
-            setSize(attrs.size);
-
-            attrs.$observe('version', function (value) {
-                if (!value) {
-                    return;
-                }
-
-                setVersion(value);
-                setData(data);
-                setSize(size);
-                render();
-            });
-
-            attrs.$observe('errorCorrectionLevel', function (value) {
-                if (!value) {
-                    return;
-                }
-
-                setErrorCorrectionLevel(value);
-                setData(data);
-                setSize(size);
-                render();
-            });
-
-            attrs.$observe('data', function (value) {
-                if (!value) {
-                    return;
-                }
-
-                setData(value);
-                setSize(size);
-                render();
-            });
-
-            attrs.$observe('size', function (value) {
-                if (!value) {
-                    return;
-                }
-
-                setSize(value);
-                render();
-            });
-
-            //attrs.$observe('href', function (value) {
-            //    if (!value) {
-            //        return;
-            //    }
-            //
-            //    href = value;
-            //    render();
-            //});
-        }
-    };
-}]);
-
-/**
- * 用来创建显示包含html的信息
- * 原生的ng-bind-html会提示：Attempting to use an unsafe value in a safe context.用法上还需要研究
- */
-app.directive('ngHtml', ['$compile', function ($compile) {
-    return function (scope, elem, attrs) {
-        if (attrs.ngHtml) {
-            elem.html(scope.$eval(attrs.ngHtml));
-            $compile(elem.contents())(scope);
-        }
-        scope.$watch(attrs.ngHtml, function (newValue, oldValue) {
-            if (newValue && newValue !== oldValue) {
-                elem.html(newValue);
-                $compile(elem.contents())(scope);
-            }
-        });
-    };
-}]);
-
 //
 // 我的首页
 //
-app.controller('MainController', ['$rootScope', '$scope', '$translate', '$timeout', '$interval', '$http', '$ionicPopup', '$ionicPlatform', '$location', '$anchorScroll', '$cordovaImagePicker', '$cordovaCamera', '$cordovaGeolocation', '$cordovaNetwork', '$ionicActionSheet','$ionicSlideBoxDelegate','$ionicTabsDelegate', function ($rootScope, $scope, $translate, $timeout, $interval, $http, $ionicPopup, $ionicPlatform, $location, $anchorScroll,$cordovaImagePicker,$cordovaCamera,$cordovaGeolocation,$cordovaNetwork,blockChainService, $ionicSlideBoxDelegate,$ionicTabsDelegate, $ionicActionSheet) {
+app.controller('MainController', ['$rootScope', '$scope', '$timeout', '$interval', '$http', '$ionicPopup', '$ionicPlatform', '$location', '$anchorScroll', '$cordovaImagePicker', '$cordovaCamera', '$cordovaGeolocation', '$cordovaNetwork', '$ionicActionSheet','$ionicSlideBoxDelegate','$ionicTabsDelegate', function ($rootScope, $scope, $timeout, $interval, $http, $ionicPopup, $ionicPlatform, $location, $anchorScroll,$cordovaImagePicker,$cordovaCamera,$cordovaGeolocation,$cordovaNetwork,blockChainService, $ionicSlideBoxDelegate,$ionicTabsDelegate, $ionicActionSheet) {
 
   if (ionic && ionic.Platform) {
       //alert("ionic platform");
@@ -372,9 +169,8 @@ app.controller('MainController', ['$rootScope', '$scope', '$translate', '$timeou
   window.$scope = $scope;
 
   $scope.loading = true;
-  $scope.isInWx = isInWx();//判断是否在微信中
   $scope.isAfternoon = (new Date().getHours() >= 12);//标记是否超过12点了
-  $scope.userOperation = getClientOS(navigator);//获取操作系统
+  // $scope.userOperation = getClientOS(navigator);//获取操作系统
 
   $scope.gridContentHeight = ($(document).height() - 200);
   $scope.fullWidth = $(document).width();
@@ -397,16 +193,6 @@ app.controller('MainController', ['$rootScope', '$scope', '$translate', '$timeou
       if (toState.name === "tabs.contact") {
         $scope.$emit('showIndex');
       }
-
-      /*if (fromState.name === "tabs.fee" && toState.name !== "tabs.settings" && toState.name !== "tabs.contactTransfer") {
-        fromState.url = "/account";
-        fromState.name = "tabs.account";
-        $location.path("account");
-      }*/
-
-      /*if (toState.name === "tabs.account" || toState.url === "#/account") {
-        $state.go("tabs.account", {}, {reload: true});
-      }*/
 
       if (fromState.name === "tabs.contact") {
         $scope.$emit('hideIndex');
@@ -465,30 +251,9 @@ app.controller('MainController', ['$rootScope', '$scope', '$translate', '$timeou
     $scope.hasLogin = true;
     $scope.exit = function() {
         $scope.hasLogin = false;
-    }
-
-/*    $timeout(function() {
-        $scope.loading = false;
-    }, 2000);*/
+    };
 
 }])
-
-//显示隐藏tab
-/*app.directive('showTabs', function ($rootScope) {
-    return {
-        restrict: 'A',
-        link: function ($scope, $el) {
-            $rootScope.hideTabs = false;
-        }
-    };
-}).directive('hideTabs', function ($rootScope) {
-    return {
-        restrict: 'A',
-        link: function ($scope, $el) {
-            $rootScope.hideTabs = true;
-        }
-    };
-})*/
 
 app.directive('hideTabs', function ($rootScope, $location) {
     return {
@@ -513,27 +278,9 @@ app.directive('hideTabs', function ($rootScope, $location) {
     };
 })
 
-app.service('blockChainService', function($http) {
-    this.getClassify = function() {
-        return [
-            {name : "最新概况", viewable: true, url: domain + '/info', page: 1, rows: 20},
-            {name : "最新区块", viewable: true, url: domain + '/block', page: 1, rows: 20},
-            {name : "最新交易", viewable: true, url: domain + '/trade', page: 1, rows: 20}
-        ]
-    }
-
-    this.getList = function(url, page, rows) {
-        return $http.post(url, {page:page, rows: rows});
-    }
-})
-
 app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
 })
-
-//app.config(function($ionicConfigProvider) {
-//    $ionicConfigProvider.scrolling.jsScrolling(true);
-//})
 
 app.config(function($stateProvider, $urlRouterProvider) {
 

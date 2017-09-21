@@ -3,7 +3,7 @@
  */
 var cacheUrl = [];  //用于缓存白名单
 
-var hostUrl = 'http://192.168.16.252:4000'; //测试主机地址
+var hostUrl = 'http://localhost:19000'; //测试主机地址
 
 var apkVer = "v0.1";
 var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
@@ -20,13 +20,9 @@ var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
     var postOnce = function(useHostUrl, url, data, okfn, errfn, noloading) {
 
         var fullUrl = '';
-        if(useHostUrl == true) {
-            fullUrl = hostUrl + url;
-        }else {
-            fullUrl = url;
-        }
+        fullUrl = useHostUrl ? hostUrl + url : url;
 
-        if(!data) data = {};
+        if(!data) {data = {};}
 
         /*
         //当确定使用token后将token加入data传入后端
@@ -34,14 +30,13 @@ var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
         if (token) {
             data.token = token;
         }*/
-
-        if (!noloading) {
+        /*if (!noloading) {
             iLoadCount ++;
             if($rootScope.initfinished) {
                 $rootScope.postfinished = false;
             }
             safeApply($scope);
-        }
+        }*/
 
         $.ajax({
             url : fullUrl,
@@ -69,11 +64,7 @@ var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
      */
     var getOnce = function(useHostUrl, url, data, okfn, errfn, noloading) {
         var fullUrl = '';
-        if(useHostUrl == true) {
-            fullUrl = hostUrl + url;
-        }else {
-            fullUrl = url;
-        }
+        fullUrl = useHostUrl ? hostUrl + url : url;
 
         if(!data) {
             data = {};
@@ -81,14 +72,13 @@ var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
             fullUrl += '?';
         }
 
-        if (!noloading) {
+        /*if (!noloading) {
             iLoadCount ++;
             if($rootScope.initfinished) {
                 $rootScope.postfinished = false;
             }
             safeApply($scope);
-        }
-
+        }*/
         for (var i in data) {
             fullUrl += i + '=' + data[i];
             if(data[i+1]) {
@@ -108,7 +98,35 @@ var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
                 //console.log(err);
                 if(errfn) errfn(err);
             }
-        })
+        });
+    }
+
+  /**
+   * put方法
+   * @param useHostUrl 是否使用hostURL来填充URL
+   * @param url
+   * @param data
+   * @param okfn
+   * @param errfn
+   * @param noloading
+   */
+    var putOnce = function(useHostUrl, url, data, okfn, errfn, noloading) {
+      var fullUrl = '';
+      fullUrl = useHostUrl ? hostUrl + url : url;
+
+      $.ajax({
+        url: fullUrl,
+        type: "PUT",
+        contentType : "application/json; charset=utf=8",
+        dataType: "json",
+        success : function(data) {
+          if(okfn) okfn(data);
+        },
+        error : function(err) {
+          //console.log(err);
+          if(errfn) errfn(err);
+        }
+      });
     }
 
 
@@ -182,23 +200,6 @@ var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
         else if (_min <= -1) result = parseInt(-_min) + "分钟后";
         else result = "刚刚";
         return result;
-    }
-
-    /**
-     * 判断是否在微信
-     */
-    var isWeiXin = function (userAgent) {
-        var ua;// by wzx 2017/2/9
-        if(userAgent){
-            ua = userAgent.toLowerCase();;
-        }else{
-            ua = window.navigator.userAgent.toLowerCase();
-        }
-        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     /**
@@ -333,19 +334,6 @@ var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
     };
 
     /**
-     * 安全更新试图，如果已经在更新了就不再更新
-     * @param scope
-     * @param fn
-     */
-    var safeApply = function (scope, fn) {
-        if (scope.$$phase) {
-            if (fn) fn();
-        } else {
-            scope.$apply(fn);
-        }
-    };
-
-    /**
      * 生成随机字符串
      * @returns {string}
      */
@@ -363,11 +351,10 @@ var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
     window.getQry = getQry;
     window.getOnce = getOnce;
     window.postOnce = postOnce;
+    window.putOnce = putOnce;
     window.dateDiff = dateDiff;
-    window.isInWx = isWeiXin;
     window.getDataFormat = getDataFormat;
     window.getClientOS = getClientOS;
     window.inArray = inArray;
-    window.safeApply = safeApply;
     window.uniqueID = uniqueID;
 })(window);
