@@ -1,9 +1,10 @@
-require('angular');
+const angular = require('angular');
+require('./lib/ionic/js/angular/angular.min.js');
 require('./lib/ionic/js/ionic.bundle.js');
 // require('./lib/ngCordova/dist/ng-cordova.js');
-require('./dist/js/jquery-1.8.3.min.js');
 require('./dist/js/angular-route.min.js');
 require('./dist/js/angular-animate.min.js');
+require('./dist/js/jquery-1.8.3.min.js');
 require('./js/swiper.jquery.min.js');
 require('./js/commonAPI.js');
 require('./js/pinyin.js');
