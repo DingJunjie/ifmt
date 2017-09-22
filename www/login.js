@@ -1,7 +1,7 @@
 /**
  * Created by 俊杰 on 2017/7/5.
  */
-require('angular');
+/*require('angular');
 require('./lib/ionic/js/ionic.bundle.js');
 require('./lib/ngCordova/dist/ng-cordova.js');
 require('./dist/js/jquery-1.8.3.min.js');
@@ -20,7 +20,7 @@ require('./user/index.js');
 require('./user/home/home.js');
 require('./user/pay/pay.js');
 require('./user/blockChain/blockChain.js');
-require('./user/account/account.js');
+require('./user/account/account.js');*/
 
 
 var app = angular.module('IfmCoinApp', [
