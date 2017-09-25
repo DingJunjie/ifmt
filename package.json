@@ -1,5 +1,5 @@
 {
-    "name": "ifmt wallet",
+    "name": "ifmt_wallet",
     "version": "0.0.1",
     "description": "An ifmchain app, build for collect ifmt and exchange ifmt",
     "devDependencies": {
@@ -9,7 +9,7 @@
         "gulp-clean-css": "^3.7.0",
         "gulp-rename": "^1.2.2",
         "gulp-sass": "^3.1.0",
-        "ionic": "3.6.0",
+        "ionic": "3.12.0",
         "node-sass": "^4.5.3"
     },
     "dependencies": {
@@ -28,7 +28,8 @@
         "grunt-contrib-requirejs": "^1.0.0",
         "grunt-contrib-uglify": "^3.1.0",
         "grunt-strip": "^0.2.1",
-        "ionic-plugin-keyboard": "^2.2.1"
+        "ionic-plugin-keyboard": "^2.2.1",
+        "ng-cordova": "^0.1.27-alpha"
     },
     "cordova": {
         "plugins": {

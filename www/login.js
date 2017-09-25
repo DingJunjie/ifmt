@@ -22,6 +22,14 @@ require('./user/pay/pay.js');
 require('./user/blockChain/blockChain.js');
 require('./user/account/account.js');*/
 
+require("./lib/ionic/js/ionic.bundle.js");
+require("ng-cordova");
+require("./dist/js/jquery-1.8.3.min.js");
+require("./dist/js/angular-route.min.js");
+require("./dist/js/angular-animate.min.js");
+require("./dist/js/socket.io.js");
+require("./js/commonAPI.js");
+
 
 var app = angular.module('IfmCoinApp', [
     'ngRoute',
