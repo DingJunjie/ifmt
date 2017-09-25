@@ -118,6 +118,7 @@ app.controller('loginController', ['$rootScope', '$scope',  '$timeout', '$interv
     //登陆
     $scope.login = function() {
         try {
+
             /*if($scope.secret) {
                 var flag = Mnemonic.isValid($scope.secret);
                 if(flag === true ) {
