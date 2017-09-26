@@ -29,6 +29,9 @@ require("./dist/js/angular-route.min.js");
 require("./dist/js/angular-animate.min.js");
 require("./dist/js/socket.io.js");
 require("./js/commonAPI.js");
+// var Buffer = require('buffer/').Buffer;
+var ifmjs = require("ifmcoin-js");
+
 
 
 var app = angular.module('IfmCoinApp', [
@@ -88,8 +91,10 @@ app.controller('loginController', ['$rootScope', '$scope',  '$timeout', '$interv
     $scope.expSlideHeight = $(document).height() -324;
     $scope.serviceHeight = $(document).height() - 110;
     $scope.blockChainTableHeight = $(document).height();
+    $scope.loginOpt = {};
     //选择注册
     $scope.reg = false;
+    // $scope.secret = '';
     //重新输入主密码
     $scope.repwd = false;
     $scope.pwd = 'asdkfjoiasjdfiosadflkjsdakfjlsadjflsjadlkfjasodjfoiajsdf';
@@ -126,19 +131,28 @@ app.controller('loginController', ['$rootScope', '$scope',  '$timeout', '$interv
     //登陆
     $scope.login = function() {
         try {
-            /*if($scope.secret) {
-                var flag = Mnemonic.isValid($scope.secret);
-                if(flag === true ) {
-                    var publicKey = ifmHelper.create($scope.secret);
+            if($scope.loginOpt.secret) {
+                var flag = ifmjs.Mnemonic.isValid($scope.loginOpt.secret);
+                if(flag === true) {
+                    var keypair = ifmjs.keypairHelper.create($scope.loginOpt.secret);
                     var req = {
-                        "publicKey" : publicKey
+                        "publicKey": keypair.publicKey.toString('hex')
                     }
-                    putOnce(true, '/api/accounts/open', req, function(data) {
+
+                  /*$http.put("http://localhost:19000/api/accounts/open/", req)
+                    .then(function(data) {
+                      console.log(data);
+                    })
+                    .catch(function(err) {
+                      console.log(err);
+                    })*/
+                    putOnce(true, '/api/accounts/open/', req, function(data) {
                         window.location.href = "./user/index.html#/home";
                     }, function(err) {
+                      console.log(err);
                       $ionicPopup.alert({
                         title : '<div>温馨提示</div>',
-                        template: '<div class="text-center">' + e + '</div>'
+                        template: '<div class="text-center">' + err + '</div>'
                       });
                        // alert(err.error.message);
                     });
@@ -147,8 +161,8 @@ app.controller('loginController', ['$rootScope', '$scope',  '$timeout', '$interv
                 }
             }else {
                 throw ("请输入正确的主密码。");
-            }*/
-            window.location.href = "./user/index.html#/home";
+            }
+            // window.location.href = "./user/index.html#/home";
         }catch (e) {
             $ionicPopup.alert({
                 title : '<div>温馨提示</div>',

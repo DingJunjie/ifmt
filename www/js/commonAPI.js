@@ -117,8 +117,9 @@ var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
       $.ajax({
         url: fullUrl,
         type: "PUT",
-        contentType : "application/json; charset=utf=8",
-        dataType: "json",
+        contentType : "application/json",
+        // dataType: "json",
+        data: JSON.stringify(data),
         success : function(data) {
           if(okfn) okfn(data);
         },

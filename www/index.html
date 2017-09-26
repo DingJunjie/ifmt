@@ -39,9 +39,10 @@
                   </div>
                 </div>
 
-              <div class="login-main-container" ng-if="!reg">
+              <div class="login-main-container" ng-show="!reg">
                 <div class="login-content">
-                  <input type="text" ng-model="secret" class="login-pwd-input" placeholder="您的主密码" />
+                  <input type="text" ng-model="loginOpt.secret" class="login-pwd-input" placeholder="您的主密码" />
+                  {{secret}}
                   <ion-checkbox>记住密码</ion-checkbox>
                   <div class="list">
 
@@ -64,7 +65,7 @@
                 </div>
               </div>
 
-              <div class="login-pwd-container" ng-if="reg && !repwd">
+              <div class="login-pwd-container" ng-show="reg && !repwd">
                 <div class="login-pwd">
                   <div class="login-pwd-title">
                     主密码
