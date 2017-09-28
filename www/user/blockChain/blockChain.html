@@ -100,65 +100,16 @@
 
           <div class="chain-newest-all-title">最新区块</div>
             <div class="chain-newest-block-list">
-              <div class="chain-newest-block-item">
+              <div class="chain-newest-block-item" ng-repeat="bl in blocks">
                 <ul class="chain-newest-block-content">
-                  <li class="chain-newest-block-content-item">1144</li>
-                  <li class="chain-newest-block-content-item">1120</li>
-                  <li class="chain-newest-block-content-item">1.12</li>
-                  <li class="chain-newest-block-content-item">35</li>
+                  <li class="chain-newest-block-content-item" ng-click="showBlock(bl)">{{bl.height}}</li>
+                  <li class="chain-newest-block-content-item">{{bl.reward/10000000}}</li>
+                  <li class="chain-newest-block-content-item">{{bl.totalFee/10000000}}</li>
+                  <li class="chain-newest-block-content-item">{{bl.totalForged/10000000}}</li>
                   <li class="chain-newest-block-content-item">12min 前</li>
                 </ul>
               </div>
 
-              <div class="chain-newest-block-item">
-                <ul class="chain-newest-block-content">
-                  <li class="chain-newest-block-content-item">1143</li>
-                  <li class="chain-newest-block-content-item">1120</li>
-                  <li class="chain-newest-block-content-item">1.12</li>
-                  <li class="chain-newest-block-content-item">35</li>
-                  <li class="chain-newest-block-content-item">12min 前</li>
-                </ul>
-              </div>
-
-              <div class="chain-newest-block-item">
-                <ul class="chain-newest-block-content">
-                  <li class="chain-newest-block-content-item">1142</li>
-                  <li class="chain-newest-block-content-item">1120</li>
-                  <li class="chain-newest-block-content-item">1.12</li>
-                  <li class="chain-newest-block-content-item">35</li>
-                  <li class="chain-newest-block-content-item">12min 前</li>
-                </ul>
-              </div>
-
-              <div class="chain-newest-block-item">
-                <ul class="chain-newest-block-content">
-                  <li class="chain-newest-block-content-item">1141</li>
-                  <li class="chain-newest-block-content-item">1120</li>
-                  <li class="chain-newest-block-content-item">1.12</li>
-                  <li class="chain-newest-block-content-item">35</li>
-                  <li class="chain-newest-block-content-item">12min 前</li>
-                </ul>
-              </div>
-
-              <div class="chain-newest-block-item">
-                <ul class="chain-newest-block-content">
-                  <li class="chain-newest-block-content-item">1140</li>
-                  <li class="chain-newest-block-content-item">1120</li>
-                  <li class="chain-newest-block-content-item">1.12</li>
-                  <li class="chain-newest-block-content-item">35</li>
-                  <li class="chain-newest-block-content-item">12min 前</li>
-                </ul>
-              </div>
-
-              <div class="chain-newest-block-item">
-                <ul class="chain-newest-block-content">
-                  <li class="chain-newest-block-content-item">1139</li>
-                  <li class="chain-newest-block-content-item">1120</li>
-                  <li class="chain-newest-block-content-item">1.12</li>
-                  <li class="chain-newest-block-content-item">35</li>
-                  <li class="chain-newest-block-content-item">12min 前</li>
-                </ul>
-              </div>
             </div>
         </div>
       </ion-slide-page>

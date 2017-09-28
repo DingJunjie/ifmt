@@ -13,13 +13,13 @@
             <div class="ifc-current-price-container">
               <img src="../images/ifmt/gp-icon.png" class="ifc-icon-a" />
               <img src="../images/ifmt/arrow.png" class="ifc-icon-up" />
-              <span class="ifc-current-price">18990.00</span>
+              <span class="ifc-current-price">{{balanceCNY}}</span>
               <span class="ifc-current-price-unit">CNY</span>
             </div>
 
             <div class="ifc-current-coin-container">
               <span class="ifc-coin-name">IFMC</span>
-              <span>剩余数量：{{12.08}}</span>
+              <span>剩余数量：{{balance}}</span>
             </div>
 
             <div class="ifm-grid-title">
@@ -39,44 +39,14 @@
             <li class="ifc-trade-table-title-amount">数量</li>
           </ul>
           <div class="ifc-trade-table" ng-style="{'height' : '{{fullHeight - 317  - 45}}px'}">
-            <div class="ifc-trade-item">
+            <div ng-repeat="ta in transactions" class="ifc-trade-item">
               <!--<div class="ifc-trade-item-type">转入</div>-->
-              <div class="ifc-trade-item-address">bGd5DDhf5fXUxFBn3dUzUFXmjtBegahhUz</div>
-              <div class="ifc-trade-amount">11.22</div>
-              <div class="ifc-trade-time">2017-06-06 17:53:40</div>
+              <div class="ifc-trade-item-address">{{ta.recipientId}}</div>
+              <div class="ifc-trade-amount">{{ta.amount/100000000}}</div>
+              <!-- <div class="ifc-trade-time">{{ta.timestamp | timestampFilter}}</div> -->
             </div>
 
             <div class="clearfloat"></div>
-
-            <div class="ifc-trade-item">
-              <!--<div class="ifc-trade-item-type">转入</div>-->
-              <div class="ifc-trade-item-address">bGd5DDhf5fXUxFBn3dUzUFXmjtBegahhUz</div>
-              <div class="ifc-trade-amount">11.22</div>
-              <div class="ifc-trade-time ifc-trade-time-show">2017-06-06 17:53:40</div>
-            </div>
-
-            <div class="clearfloat"></div>
-
-            <div class="ifc-trade-item">
-              <!--<div class="ifc-trade-item-type">转入</div>-->
-              <div class="ifc-trade-item-address">bGd5DDhf5fXUxFBn3dUzUFXmjtBegahhUz</div>
-              <div class="ifc-trade-amount">11.22</div>
-              <div class="ifc-trade-time">2017-06-06 17:53:40</div>
-            </div>
-
-            <div class="ifc-trade-item">
-              <!--<div class="ifc-trade-item-type">转入</div>-->
-              <div class="ifc-trade-item-address">bGd5DDhf5fXUxFBn3dUzUFXmjtBegahhUz</div>
-              <div class="ifc-trade-amount">11.22</div>
-              <div class="ifc-trade-time">2017-06-06 17:53:40</div>
-            </div>
-
-            <div class="ifc-trade-item">
-              <!--<div class="ifc-trade-item-type">转入</div>-->
-              <div class="ifc-trade-item-address">bGd5DDhf5fXUxFBn3dUzUFXmjtBegahhUz</div>
-              <div class="ifc-trade-amount">11.22</div>
-              <div class="ifc-trade-time">2017-06-06 17:53:40</div>
-            </div>
           </div>
         </div>
 

@@ -80,11 +80,9 @@ var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
             safeApply($scope);
         }*/
         for (var i in data) {
-            fullUrl += i + '=' + data[i];
-            if(data[i+1]) {
-                fullUrl += '&';
-            }
+            fullUrl += i + '=' + data[i] + '&';
         }
+        fullUrl[fullUrl.length-1].replace('&', '');
 
         $.ajax({
             url : fullUrl,

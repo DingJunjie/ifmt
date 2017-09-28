@@ -1,7 +1,7 @@
 /**
  * Created by 俊杰 on 2017/6/20.
  */
-var app = angular.module('IfmCoinApp', [
+/*var app = angular.module('IfmCoinApp', [
     'ngRoute',
     // 'pascalprecht.translate',
     'ionic',
@@ -15,26 +15,12 @@ var app = angular.module('IfmCoinApp', [
     'progressWave',
     'chainSwiper',
     // 'ui.grid',
-]);
-
-// app.run(function ($transform) {
-//     window.$transform = $transform;
-// });
-
-//app.config(function ($routeProvider) {
-//    $routeProvider.when('/', {templateUrl: 'myinfo.html', reloadOnSearch: false});
-//    $routeProvider.when('/myplan', {templateUrl: 'myplan.html', reloadOnSearch: false});
-//    $routeProvider.when('/myplan/:id', {templateUrl: 'myplandetail.html', reloadOnSearch: false});//钱包明细信息的路由
-//    $routeProvider.when('/glorious', {templateUrl: 'project.html', reloadOnSearch: false});
-//    $routeProvider.when('/compensationBenefits', {templateUrl: 'compensationBenefits.html', reloadOnSearch: false});
-//    $routeProvider.when('/customer', {templateUrl: 'customer.html', reloadOnSearch: false});
-//});
-// angular.module('pinyin', [])
+]);*/
 
 
 
 
-app.run(function ($ionicPlatform) {
+angular.module('IfmCoinApp').run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
         // alert(" ionic ready");
         if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -110,7 +96,7 @@ app.run(function ($ionicPlatform) {
 //
 // 我的首页
 //
-app.controller('MainController', ['$rootScope', '$scope', '$timeout', '$interval', '$http', '$ionicPopup', '$ionicPlatform', '$location', '$anchorScroll', '$cordovaImagePicker', '$cordovaCamera', '$cordovaGeolocation', '$cordovaNetwork', '$ionicActionSheet','$ionicSlideBoxDelegate','$ionicTabsDelegate', function ($rootScope, $scope, $timeout, $interval, $http, $ionicPopup, $ionicPlatform, $location, $anchorScroll,$cordovaImagePicker,$cordovaCamera,$cordovaGeolocation,$cordovaNetwork,blockChainService, $ionicSlideBoxDelegate,$ionicTabsDelegate, $ionicActionSheet) {
+angular.module('IfmCoinApp').controller('MainController', ['$rootScope', '$scope', '$timeout', '$interval', '$http', 'userService', '$ionicPopup', '$ionicPlatform', '$location', '$anchorScroll', '$cordovaImagePicker', '$cordovaCamera', '$cordovaGeolocation', '$cordovaNetwork', '$ionicActionSheet','$ionicSlideBoxDelegate','$ionicTabsDelegate', function ($rootScope, $scope, $timeout, $interval, $http, userService, $ionicPopup, $ionicPlatform, $location, $anchorScroll,$cordovaImagePicker,$cordovaCamera,$cordovaGeolocation,$cordovaNetwork,blockChainService, $ionicSlideBoxDelegate,$ionicTabsDelegate, $ionicActionSheet) {
 
   if (ionic && ionic.Platform) {
       //alert("ionic platform");
@@ -180,12 +166,19 @@ app.controller('MainController', ['$rootScope', '$scope', '$timeout', '$interval
   $scope.serviceHeight = $(document).height() - 110;
   $scope.blockChainTableHeight = $(document).height();
 
-//打开外部网页(by wmc)
-  $scope.openSourcePath = function(url){
-      window.open(url, '_system', 'location=yes');
-  }
-
-
+  (function () {
+    var userData = window.localStorage.userData;
+    if(userData && JSON.parse(userData).success === true) {
+      var data = JSON.parse(userData);
+      userService.setData(data.account.address, data.account.publicKey, data.account.balance, data.account.unconfirmedBalance, data.account.effectiveBalance);
+      userService.setForging(data.account.forging);
+      userService.unconfirmedPassphrase = data.account.unconfirmedSignature;
+      window.localStorage.removeItem('userData');
+    }else {
+      window.location.href="/";
+    }
+  })()
+  
   /**
    * 监听路由变化，触发部分事件
    */
@@ -198,7 +191,7 @@ app.controller('MainController', ['$rootScope', '$scope', '$timeout', '$interval
         $scope.$emit('hideIndex');
       }
 
-    })
+  })
 
   $scope.openAccount = function() {
     $location.path("/account");
@@ -255,7 +248,7 @@ app.controller('MainController', ['$rootScope', '$scope', '$timeout', '$interval
 
 }])
 
-app.directive('hideTabs', function ($rootScope, $location) {
+angular.module('IfmCoinApp').directive('hideTabs', function ($rootScope, $location) {
     return {
         restrict: 'A',
         link: function (scope, element, attributes) {
@@ -278,11 +271,11 @@ app.directive('hideTabs', function ($rootScope, $location) {
     };
 })
 
-app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+angular.module('IfmCoinApp').config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
 })
 
-app.config(function($stateProvider, $urlRouterProvider) {
+angular.module('IfmCoinApp').config(function($stateProvider, $urlRouterProvider) {
 
         $stateProvider
             .state('tabs', {

@@ -2,7 +2,7 @@
  * Created by 俊杰 on 2017/7/12.
  */
 
-app.controller('payCtrl', ['$scope', '$timeout', function($scope, $timeout) {
+angular.module('IfmCoinApp').controller('payCtrl', ['$scope', '$timeout', function($scope, $timeout) {
     $scope.bnlcHeight = $(document).height() - 48;
 
     var paySwiper = new Swiper('.pay-swipers', {

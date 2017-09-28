@@ -2,8 +2,9 @@
  * Created by 俊杰 on 2017/7/26.
  */
 
-app.controller('chainCtrl',['$scope', '$timeout', function($scope, $timeout) {
-
+angular.module('IfmCoinApp').controller('chainCtrl',['$scope', '$timeout', function($scope, $timeout) {
+  $scope.blocks = {};
+  $scope.blockDetail = {};
 
   $scope.$on('$ionicSlides.sliderInitialized', function(event, data) {
     $scope.slider = data.slider;
@@ -39,28 +40,26 @@ app.controller('chainCtrl',['$scope', '$timeout', function($scope, $timeout) {
     pagination: false
   };
 
-  // new Swiper("#chainSwiper", {autoplay: 1000});
-
-  /*var chainSwiper = new Swiper('.chain-swiper', {
-    //paginationClickable: true,
-    autoPlay: true,
-    spaceBetween: 40,
-    effect : 'coverflow',
-    slidesPerView: 2,
-    centeredSlides: true,
-    coverflow: {
-      rotate: 0,
-      stretch: 0,
-      depth: 80,
-      modifier: 1,
-      slideShadows : false
-    },
-    //pagination : '.mission-swiper-pagination',
-    loop : true,
-    slideToClickedSlide:true,
-    initialSlide : 1
-  });*/
-
   $scope.dig = true;
 
+  function getBlock() {
+    var blockRequest = {
+      'limit' : 10,
+      'offset' : 0,
+      'orderBy' : 'height:desc'
+    };
+    getOnce(true, '/api/blocks/', blockRequest, function(data) {
+      if(data.success === true) {
+        $scope.blocks = data.blocks;
+      }
+    })
+  }
+
+  getBlock();
+
+  $scope.showBlock = function(block) {
+    $scope.blockDetail = block;
+    console.log($scope.blockDetail);
+    window.location.href = '#/blockChain/blockDetail';
+  }
 }])

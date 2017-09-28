@@ -15,22 +15,22 @@
       <ul class="block-detail-list">
         <li class="block-detail-item">
           <span class="block-detail-name">高度</span>
-          <span class="block-detail-value">1145</span>
+          <span class="block-detail-value">{{blockDetail.height}}</span>
         </li>
 
         <li class="block-detail-item">
           <span class="block-detail-name">金额</span>
-          <span class="block-detail-value">0</span>
+          <span class="block-detail-value">{{blockDetail.reward/100000000}}</span>
         </li>
 
         <li class="block-detail-item">
           <span class="block-detail-name">费用</span>
-          <span class="block-detail-value">0</span>
+          <span class="block-detail-value">{{blockDetail.totalFee/100000000}}</span>
         </li>
 
         <li class="block-detail-item">
           <span class="block-detail-name">奖励</span>
-          <span class="block-detail-value">1145</span>
+          <span class="block-detail-value">{{blockDetail.totalForged/100000000}}</span>
         </li>
 
         <li class="block-detail-item">
@@ -45,7 +45,7 @@
 
         <li class="block-detail-item">
           <span class="block-detail-name">交易信息</span>
-          <span class="block-detail-value">0</span>
+          <span class="block-detail-value">{{blockDetail}}</span>
         </li>
 
         <li class="block-detail-item-divide"></li>

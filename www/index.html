@@ -73,8 +73,8 @@
                   <!--<div class="login-pwd-content">-->
                     <!--{{pwd}}-->
                   <!--</div>-->
-                  <textarea class="login-pwd-content" style="width: 0; height: 0; position: absolute; left:0%; top: 0%; opacity: 0; z-index: -999;">{{pwd}}</textarea>
-                  <div class="login-pwd-content">{{pwd}}</div>
+                  <textarea class="login-pwd-content" style="width: 0; height: 0; position: absolute; left:0%; top: 0%; opacity: 0; z-index: -999;">{{loginOpt.passphrase}}</textarea>
+                  <div class="login-pwd-content">{{loginOpt.passphrase}}</div>
                   <div class="login-pwd-btn-group">
                     <div class="login-pwd-next-btn" ng-click="reSubmit()">下一步</div>
                     <div class="login-pwd-save-btn" ng-click="savedPwd()">保存密码</div>
@@ -84,7 +84,7 @@
 
               <div class="login-repwd-container" ng-show="reg && repwd">
                 <div class="login-repwd">
-                  <textarea name="repwd" id="" cols="30" rows="6" class="login-repwd-textarea" placeholder="请再一次输入您的主密码"></textarea>
+                  <textarea name="repwd" id="" cols="30" rows="6" ng-model="loginOpt.rePassphrase" class="login-repwd-textarea" placeholder="请再一次输入您的主密码"></textarea>
 
                   <div class="login-repwd-btn-group">
                     <div class="login-repwd-submit" ng-click="login()">确认</div>

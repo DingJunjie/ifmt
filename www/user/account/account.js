@@ -2,7 +2,7 @@
  * Created by 俊杰 on 2017/7/31.
  */
 
-app.controller('accountCtrl', ['$scope', '$ionicActionSheet', '$timeout', function($scope, $ionicActionSheet, $timeout) {
+angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$ionicActionSheet', '$timeout', function($scope, $ionicActionSheet, $timeout) {
     $scope.exit = function() {
       window.location.href = "/";
     }
