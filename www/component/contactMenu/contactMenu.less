@@ -1,4 +1,4 @@
-.contact-menu-content {
+.contact-menu-content, .contact-untracked-content {
   color: #fff;
 
   .contact-menu-list {
@@ -24,10 +24,22 @@
         box-sizing: border-box;
         padding: 5px 10px;
         line-height:50px;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
 
         &:not(:nth-of-type(1)) {
           border-top: 1px solid rgba(155,155,155,0.05);
+        }
+
+        .contact-menu-add-btn {
+          width: 50px;
+          height: 30px;
+          line-height: 30px;
+          margin-top:10px;
+          margin-right: 30px;
+          border:none;
+          padding:0;
+          background: rgba(255,255,255,0.8);
+          float:right;
         }
       }
     }

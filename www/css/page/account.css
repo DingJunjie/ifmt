@@ -98,6 +98,17 @@
 }
 .account-container .account-head-container {
   padding-top: 20px;
+  text-align: center;
+}
+.account-container .account-head-container h5 {
+  line-height: 60px;
+  color: #fff;
+  font-size: 1.6rem;
+}
+.account-container .account-head-container img {
+  width: 14px;
+  vertical-align: middle;
+  display: none;
 }
 .account-container .account-head {
   width: 80px;
@@ -118,11 +129,12 @@
   box-sizing: border-box;
   position: initial;
   background: none;
+  text-align: center;
 }
 .account-container .account-info h5 {
   width: auto;
   height: auto;
-  line-height: 30px;
+  line-height: auto;
   text-align: initial;
   box-sizing: initial;
   padding: 0;
@@ -130,8 +142,10 @@
   color: #ffffff;
   background: initial;
   font-size: 1.4rem;
+  line-height: 35px;
   letter-spacing: 1px;
   font-weight: 200;
+  text-align: center;
 }
 .account-container .account-info img.verified {
   width: 14px;
@@ -178,7 +192,7 @@
   background: initial;
   font-size: inherit;
   position: relative;
-  padding-top: 20px;
+  padding-top: 35px;
 }
 .account-container .account-more i {
   font-size: 3rem;
@@ -507,17 +521,37 @@ user-settings
   font-size: 1.4rem;
   float: left;
 }
-.user-settings-container .user-settings-list .user-settings-list-item .user-settings-list-value {
+.user-settings-container .user-settings-list .user-settings-list-item div.user-settings-list-value {
   float: right;
   color: #999;
   font-size: 1.4rem;
 }
-.user-settings-container .user-settings-list .user-settings-list-item .user-settings-list-value i {
+.user-settings-container .user-settings-list .user-settings-list-item div.user-settings-list-value i {
   margin-left: 10px;
+}
+.user-settings-container .user-settings-list .user-settings-list-item input.user-settings-list-value {
+  letter-spacing: 1px;
+  float: right;
+  color: #999;
+  font-size: 1.4rem;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -moz-user-focus: none;
+  -moz-user-select: none;
+  -webkit-appearance: none;
+  outline: none;
+  border: none;
+  opacity: 0;
+}
+.user-settings-container .user-settings-list .user-settings-list-item div.user-settings-list-address {
+  font-size: 1.2rem;
 }
 /*联系人*/
 #contactUser .has-header {
   top: 0;
+}
+.contact-user-container {
+  padding-top: 80px;
 }
 .contact-user-container .contact-user-head-container .contact-user-head {
   width: 100%;
@@ -598,6 +632,7 @@ user-settings
   background: -webkit-linear-gradient(top, #00ccff, #0ee5db);
   border-radius: 20px;
   margin: 2rem auto ;
+  margin-bottom: 70px;
 }
 .contact-user-container .contact-user-trade-container {
   position: relative;
@@ -681,7 +716,7 @@ user-settings
 .contact-user-container .contact-user-trade-container .contact-user-trade-table .contact-user-trade-table-items .contact-user-trade-table-item .contact-user-trade-table-item-item {
   color: #999;
   float: left;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -810,6 +845,9 @@ user-settings
 /**
  * 添加联系人
  */
+.name-back-button {
+  color: #fff;
+}
 .contact-add-container {
   margin-top: 20px;
 }
@@ -869,6 +907,7 @@ user-settings
   background: rgba(155, 155, 155, 0.1);
 }
 .name-setting-container .name-setting-input {
+  width: 90%;
   height: 40px;
   color: #fff;
   font-size: 1.4rem;
@@ -883,4 +922,12 @@ user-settings
 .name-setting-container .name-setting-tip a {
   font-size: 1rem;
   text-decoration: underline;
+}
+.pwd-container .pwd-config-input {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  margin: 1px 0;
+  background: rgba(200, 200, 200, 0.1);
+  padding: 10px 12px;
 }

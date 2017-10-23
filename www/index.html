@@ -41,9 +41,9 @@
 
               <div class="login-main-container" ng-show="!reg">
                 <div class="login-content">
-                  <input type="text" ng-model="loginOpt.secret" class="login-pwd-input" placeholder="您的主密码" />
+                  <input type="password" ng-model="loginOpt.secret" class="login-pwd-input" placeholder="您的主密码" />
                   {{secret}}
-                  <ion-checkbox>记住密码</ion-checkbox>
+                  <ion-checkbox ng-model="loginOpt.passRemembered">记住密码</ion-checkbox>
                   <div class="list">
 
                     <label class="item item-input item-select">
@@ -110,6 +110,7 @@
 <!--<script src="dist/js/socket.io.js"></script>-->
 
 <!-- <script src="./js/commonAPI.js"></script> -->
+
 <script src="./browserifylogin.js"></script>
 
 

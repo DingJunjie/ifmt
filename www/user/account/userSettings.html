@@ -1,4 +1,4 @@
-<ion-view view-title="个人设置" class="usual-background" hide-tabs="true" ng-controller="settingsCtrl">
+<ion-view view-title="个人设置" class="usual-background" hide-tabs="true" ng-controller="userSettingsCtrl">
   <ion-nav-bar class="navbar-bg bar-transparent">
     <ion-nav-buttons side="left">
       <a ui-sref="tabs.account" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
@@ -11,21 +11,23 @@
   </ion-nav-bar>
   <ion-content>
     <div class="user-settings-container">
-      <div class="user-settings-head-container">
+      <!-- <div class="user-settings-head-container">
         <div class="user-settings-head-pic">
           <img src="../images/ifmt/account/head.png" alt="" ng-click="showActionSheet()">
         </div>
-      </div>
+      </div> -->
 
       <div class="user-settings-list">
         <div class="user-settings-list-item">
           <div class="user-settings-list-key">用户名</div>
-          <a href="#/account/nameSetting"><div class="user-settings-list-value">林婉婷<i class="icon-right ion-chevron-right"></i></div></a>
+          <a href="#/account/nameSetting"><div class="user-settings-list-value">{{username}}<i class="icon-right ion-chevron-right"></i></div></a>
         </div>
 
-        <div class="user-settings-list-item">
+        <div class="user-settings-list-item"  ng-click="saveAddress()">
           <div class="user-settings-list-key">地址</div>
-          <div class="user-settings-list-value" ng-click="saveAddress()">bGd5DDhf5fXUxFBn3Duasdflksadjf</div>
+          <div class="user-settings-list-value user-settings-list-address">{{address}}</div>
+          <input class="user-settings-list-value user-settings-list-address" ng-model="address" />
+          <!-- {{address}} -->
         </div>
       </div>
     </div>

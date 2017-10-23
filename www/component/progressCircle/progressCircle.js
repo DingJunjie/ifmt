@@ -10,12 +10,15 @@
       restrict : "E",
       template: "<canvas id='canvas'></canvas>",
       replace: true,
+      controller: function($scope, userService, $interval) {
+        
+      },
       link: function($scope) {
         var canvas = document.getElementById("canvas"),
             context = canvas.getContext('2d'),
             PI = Math.PI,
             radius = 200,
-            currentProgress = 50,
+            currentProgress = 20,
             step = 0;
         canvas.width = "500";
         canvas.height = "500";
@@ -44,7 +47,7 @@
           context.closePath();
 
           context.beginPath();
-          context.arc(canvas.width/2, canvas.height/2, radius - 5, PI*3/2, PI*(currentProgress/100), false);
+          context.arc(canvas.width/2, canvas.height/2, radius - 5, PI*3/2, PI*$rootScope.roundProgress/50 - PI/2, false);
           context.lineWidth = 10;
           context.lineCap = "round";
           context.strokeStyle = 'rgba(0,200,255,1)';

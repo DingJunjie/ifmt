@@ -3,7 +3,11 @@
  */
 var cacheUrl = [];  //用于缓存白名单
 
-var hostUrl = 'http://localhost:19000'; //测试主机地址
+// var hostUrl = 'http://test1.ifmchain.org:19001'; //测试主机地址
+var hostUrl = 'http://test2.ifmchain.org:19002'; //测试主机地址
+// var hostUrl = 'http://test3.ifmchain.org:19003'; //测试主机地址
+// var hostUrl = 'http://test4.ifmchain.org:19004'; //测试主机地址
+// var hostUrl = 'http://192.168.16.161:19000';
 
 var apkVer = "v0.1";
 var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
@@ -165,10 +169,10 @@ var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
      * @param  {[type=Number]} nowTime [当前时间戳，不传将获取当前时间戳]
      * @return {[string]}         [string]
      */
-    var dateDiff = function (hisTime, nowTime) {
+    var dateDiff = function (hisTime) {
         hisTime = isNaN(hisTime) ? new Date(hisTime) : hisTime;
 
-        var now = nowTime ? nowTime : new Date().getTime(),
+        var nowTime = new Date().getTime(),
             diffValue = now - hisTime,
             result = '',
             minute = 1000 * 60,
@@ -347,6 +351,16 @@ var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
             '-' + chr4() + chr4() + chr4();
     }
 
+    /**
+     * 当前轮次起始时间
+     * 目前每轮57个块，每个块10秒
+     */
+    var roundStartTime = function(endTime, blockTime) {
+        blockTime = blockTime ? blockTime : 10;
+        return endTime - (blockTime * 57);
+    }
+
+
     window.getQry = getQry;
     window.getOnce = getOnce;
     window.postOnce = postOnce;
@@ -356,4 +370,5 @@ var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
     window.getClientOS = getClientOS;
     window.inArray = inArray;
     window.uniqueID = uniqueID;
+    window.roundStartTime = roundStartTime;
 })(window);

@@ -9,10 +9,10 @@
             <div class="pay-pagination pay-icon" ng-click="payTabClick(0)">
               <img src="../images/ifmt/pay/pay-collector-icon.png" alt="" />
             </div>
-            <div class="pay-pagination pay-icon" ng-click="payTabClick(1)">
+            <!-- <div class="pay-pagination pay-icon" ng-click="payTabClick(1)">
               <img src="../images/ifmt/pay/pay-payment-icon.png" alt="" />
-            </div>
-            <div class="pay-pagination pay-icon" ng-click="payTabClick(2)">
+            </div> -->
+            <div class="pay-pagination pay-icon" ng-click="payTabClick(1)">
               <img src="../images/ifmt/pay/pay-qrcode-icon.png" alt="" />
             </div>
             <div class="pay-pagination-current" ng-class="paySelected === 0 ? 'pay-pagination-pos-1' : (paySelected === 1 ? 'pay-pagination-pos-2' : 'pay-pagination-pos-3')"></div>
@@ -21,9 +21,9 @@
         <!--<div class="pay-swiper-next">></div>-->
       </div>
 
-      <ion-slides class="has-header pay-swipers" slider="data.slider" options="paySlideOpt" on-slide-changed="slideChanged($index)" delegate-handle="blockChainSlider" ng-style="{'height': '{{fullHeight-220}}px'}">
+      <ion-slides class="has-header pay-swipers" slider="data.slider" options="paySlideOpt" on-slide-changed="slideChanged($index)" delegate-handle="blockChainSlider" ng-style="{'height': '{{fullHeight-170}}px'}">
           <ion-slide-page class="swiper-slide pay-slide-1">
-            <div class="add-collector-container padding">
+            <!-- <div class="add-collector-container padding">
               <div class="add-collector-icon-container">
                 <img src="../images/ifmt/pay/pay-add-all-icon.png" alt="" class="add-collector-icon" />
               </div>
@@ -34,7 +34,7 @@
                   <span class="add-collector-amount-unit">IFMT</span>
                 </div>
                 <div class="add-collector-fee-container">
-                  收取0.01手续费<a class="add-collector-fee-config" href="#/account/fee">点击设置</a>
+                  收取{{fee}}手续费<a class="add-collector-fee-config" href="#/account/fee">点击设置</a>
                 </div>
                 <span class="add-collector-amount-all">剩余数量: 12.09</span>
               </div>
@@ -43,35 +43,79 @@
                 <input type="text" class="add-collector-remark-input" placeholder="添加备注（20字以内）" />
               </div>
 
-              <div class="add-collector-submit-btn">
+              <div class="add-collector-submit-btn" ng-click="">
                 确认支付
               </div>
-            </div>
-          </ion-slide-page>
-          <ion-slide-page class="swiper-slide pay-slide-2">
-            <div class="add-payment-container padding">
-              <div class="add-payment-address-container">
-                <input type="text" class="add-payment-address-input" placeholder="输入或扫码添加对方地址" />
-                <img src="../images/ifmt/pay/pay-camera.png" alt="" class="add-payment-address-icon" />
+            </div> -->
+            <div class="pay-options">
+              <div class="pay-option" ng-click="tradePara.switch = 2; addAttachment();" ng-class="tradePara.switch === 3 ? '' : (tradePara.switch === 0 ? 'pay-focus' : 'pay-blur')">
+                <img src="../images/ifmt/pay/scan.png" alt="" class="pay-option-image">
+                <span>扫码添加地址</span>
+              </div>
+              <a href="#/account/contact"><div class="pay-option" ng-click="tradePara.switch = 2; toContact();" ng-class="tradePara.switch === 3 ? '' : (tradePara.switch === 1 ? 'pay-focus' : 'pay-blur')">
+                <img src="../images/ifmt/pay/human.png" alt="" class="pay-option-image">
+                <span>添加联系人</span>
+              </div></a>
+              <div class="pay-option" ng-click="tradePara.switch = 2;" ng-class="tradePara.switch === 3 ? '' : (tradePara.switch === 2 ? 'pay-focus' : 'pay-blur')">
+                <img src="../images/ifmt/pay/input.png" alt="" class="pay-option-image-input">
               </div>
 
+              <div class="pay-container" ng-if="tradePara.switch !== 3">
+                <div class="add-collector-container padding">
+                  <div class="add-collector-address-container">
+                    <input type="text" class="add-collector-address-input" placeholder="输入对方地址" ng-model="to" />
+                  </div>
+
+                  <div class="add-collector-amount-container">
+                    <div class="add-collector-amount-input-container">
+                      <input type="number" class="add-collector-amount-input"  ng-model="tradePara.amountDest" placeholder="请设置转账金额" />
+                      <span class="add-collector-amount-unit">IFMT</span>
+                    </div>
+                    <div class="add-collector-fee-container">
+                      收取{{fee*100000000 | noEulerNumberFilter}}手续费<a class="add-collector-fee-config" href="#/account/fee">点击设置</a>
+                    </div>
+                    <span class="add-collector-amount-all">剩余数量: 12.09</span>
+                  </div>
+
+                  <!-- <div class="add-collector-remark-container">
+                    <input type="text" class="add-collector-remark-input" placeholder="添加备注（20字以内）" />
+                  </div> -->
+
+                  <div class="add-collector-submit-btn" ng-click="payForContact()">
+                    确认支付
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+
+            
+            
+          </ion-slide-page>
+          <!-- <ion-slide-page class="swiper-slide pay-slide-2">
+            <div class="add-payment-container padding">
+              <div class="add-payment-address-container">
+                <input type="text" class="add-payment-address-input" placeholder="输入或扫码添加对方地址" ng-model="tradePara.destination" />
+                <img src="../images/ifmt/pay/pay-camera.png" alt="" class="add-payment-address-icon" />
+              </div>
+          
               <div class="add-payment-amount-container">
                 <div class="add-payment-amount-input-container">
-                  <input type="number" class="add-payment-amount-input" placeholder="0.00" />
+                  <input type="number" class="add-payment-amount-input" placeholder="0.00" ng-model="tradePara.amountDest" />
                   <span class="add-payment-amount-unit">IFMT</span>
                 </div>
                 <span class="add-payment-amount-all">剩余数量: 12.09</span>
               </div>
-
+          
               <div class="add-payment-remark-container">
                 <input type="text" class="add-payment-remark-input" placeholder="添加备注（20字以内）" />
               </div>
-
-              <div class="add-payment-submit-btn">
+          
+              <div class="add-payment-submit-btn" ng-click="payForContact()">
                 确认支付
               </div>
             </div>
-          </ion-slide-page>
+          </ion-slide-page> -->
           <ion-slide-page class="swiper-slide pay-slide-3">
             <div class="pay-qrcode-container padding">
               <div class="pay-qrcode-outer">
@@ -81,7 +125,10 @@
                 <div class="pay-qrcode-content">
                   <span class="pay-qrcode-tip">扫一扫，向我付币</span>
                   <div class="pay-qrcode-img-container">
-                    <img src="" alt="" class="pay-qrcode-img">
+                    <!-- <img src="" alt="" class="pay-qrcode-img"> -->
+                    <qrcode version="9" error-correction-level="L" size="180"
+                                                    data="{{tradePara.address}}"
+                                                    download></qrcode>
                   </div>
                   <div class="pay-qrcode-operate-group">
                     <div class="pay-qrcode-operate-setting">设置金额</div>
@@ -92,8 +139,6 @@
             </div>
           </ion-slide-page>
       </ion-slides>
-
-      .
 
     </ion-content>
 </ion-view>

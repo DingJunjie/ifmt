@@ -6,11 +6,20 @@
     return {
       restrict : "E",
       template :
+      '<div>\n' + 
+      '<div class="contact-untracked-content" ng-if="untrackedContactList.length > 0">\n' +
+      '  <ul class="contact-menu-list">\n' +
+      '    <li class="contact-menu-item-container">\n' +
+      '      <div class="contact-menu-letter">待确认</div>\n' +
+      '      <div class="contact-menu-item" ng-repeat="al in untrackedContactList">{{al.username ? al.username : al.address}}<button class="contact-menu-add-btn" ng-click="submitContact(al)">添加</button></div>\n' +
+      '    </li>\n' +
+      '  </ul>\n' +
+      '</div>\n' +
       '<div class="contact-menu-content">\n' +
       '  <ul class="contact-menu-list">\n' +
       '    <li ng-repeat="la in letterArray track by $index" class="contact-menu-item-container">\n' +
-      '      <div id="letter{{la}}" class="contact-menu-letter">{{la.toUpperCase()}}</div>\n' +
-      '      <a href="#/account/contactUser"><div class="contact-menu-item" ng-repeat="cl in originalContactList" ng-if="la === cl.pinyin[0]">{{cl.name}}</div></a>\n' +
+      '      <div id="letter{{la}}" class="contact-menu-letter">{{la === "*" ? "地址" : la.toUpperCase()}}</div>\n' +
+      '      <div ng-click="showContact(cl)" class="contact-menu-item" ng-repeat="cl in originalContactList" ng-if="la === cl.pinyin[0]">{{cl.username ? cl.username : cl.address}}</div>\n' +
       '    </li>\n' +
       '  </ul>\n' +
       '\n' +
@@ -21,9 +30,10 @@
       '      \n' +
       '    </li>\n' +
       '  </ul>\n' +*/
+      '</div>\n' +
       '</div>\n',
       replace : true,
-      link : function($scope) {
+      controller: function($scope, $rootScope, userService, $ionicPopup, $timeout) {
         //定义排序属性方法
         function sortArr(property) {
           return function(obj1, obj2) {
@@ -44,8 +54,173 @@
         $scope.letterArray = [];
         //模拟数据
         $scope.originalContactList = [{"name" : "我的名字特别长，长到我自己都快数不清了", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "什么东西", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "知乎", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "传神", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "笑嘻嘻", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "中文", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "丁俊杰", "address" : "asdfsadfasdfsdaf", "pinyin": ''}, {"name" : "丁嘻嘻", "address" : "asdfsadfasdfsdaf", "pinyin": ''}, {"name" : "water", "address" : "323kjk2l3", "pinyin": ''}, {"name" : "123", "address" : "hahaha", "pinyin": ''}];
+        $scope.untrackedContactList;
+
+        var contactReq = {
+          "publicKey" : userService.publicKey
+        }
+
+        function getContacts() {
+          var contactReq = {
+            "publicKey" : userService.publicKey
+          }
+          
+          getOnce(true, '/api/contacts/', contactReq, function(data) {
+            console.log(data);
+            if(data.success === true) {
+              $scope.originalContactList = data.following;
+              $scope.untrackedContactList = data.followers;
+
+              if($scope.originalContactList.length > 0) {
+                //将中文转为拼音
+                for(var i in $scope.originalContactList) {
+                  if($scope.originalContactList[i].username === '') {
+                     $scope.originalContactList[i].pinyin = '***';
+                  }else {
+                    if(/\w/.test($scope.originalContactList[i].username[0]) === false) {
+                      $scope.originalContactList[i].pinyin = pinyin.toPinyin($scope.originalContactList[i].username);
+                    }else {
+                      $scope.originalContactList[i].pinyin = $scope.originalContactList[i].username.toLowerCase();
+                    }
+                  }
+                }
+                console.log($scope.originalContactList);
+
+                //根据拼音排序
+                for(var j in $scope.originalContactList) {
+                  if($scope.originalContactList[j] && $scope.originalContactList[j].pinyin) {
+                    $scope.originalContactList.sort(sortArr('pinyin'));
+                  }
+                }
+
+                //将拼音首字母加入字母列表
+                for(var k in $scope.originalContactList) {
+                  if($scope.letterArray.indexOf($scope.originalContactList[k].pinyin[0]) === -1) {
+                    $scope.letterArray.push($scope.originalContactList[k].pinyin[0]);
+                  }
+                }
+              }
+            }
+          })
+        }
+
+        getContacts();
+
+        $scope.showContact = function(co) {
+          if($scope.paying === true) {
+            if(co.username) {
+              $rootScope.to = co.username;
+            }else {
+              $rootScope.to = co.address;
+            }
+            window.location.href = "#/pay";
+          }else {
+            $rootScope.contactDetail = co;
+            window.location.href = "#/account/contactUser";
+          }
+        }
+
+        $scope.submitContact = function(co) {
+          $ionicPopup.prompt({
+              title: "添加联系人",
+              template: "请输入您添加联系人的手续费",
+              inputType: 'number',
+              inputPlaceholder: $scope.fee
+            }).then(function(addFee) {
+                if(addFee && addFee > 0.00000001) {
+                  $ionicPopup.prompt({
+                    title: "请输入密码",
+                    template: "请输入您的主密码",
+                    inputType: 'text',
+                  }).then(function(pass) {
+                    if(pass.length>0 && ifmjs.Mnemonic.isValid(pass) === true) {
+                      submitContactFn(addFee, pass, co);
+                    }else {
+                    $ionicPopup.alert({
+                      "title" : "密码错误",
+                      "template" : "<h4>主密码错误，请重新输入。</h4>"
+                    }, function() {
+                      return;
+                    })
+                  }
+                })
+              }else {
+                $ionicPopup.alert({
+                  "title" : "手续费错误",
+                  "template" : "<h4>手续费应该大于0.00000001个IFMT</h4>"
+                }, function() {
+                  return;
+                })
+              }
+            })
+          }
+
+          function submitContactFn(fee, pass, co) {
+            getOnce(true, '/api/transactions/getslottime', null, function(data) {
+            console.log(data);
+            try {
+              if(data.success === true) {
+                  var timestamp = data.timestamp;
+                  var req = {
+                    type: ifmjs.transactionTypes.FOLLOW,
+                    amount: 0,
+                    secret: pass,
+                    asset: {
+                      contact: {
+                        address: '+' + co.address
+                      }
+                    },
+                    fee: fee,
+                    publicKey: userService.publicKey,
+                    timestamp: timestamp
+                  }
+                  console.log(req);
+
+                  ifmjs.transaction.createTransaction(req, function(err, transaction) {
+                    try {
+                      console.log(transaction);
+                      if(err) {
+                        throw err;
+                      }else {
+                        putOnce(true, "/api/contacts/tx", transaction, function(res) {
+                          console.log(res);
+                          if(res.success === true) {
+                              $ionicPopup.alert({
+                                title: '添加成功',
+                                template: '<h4 style="text-align: center">联系人添加成功。</h4>'
+                              })
+                              $timeout(getContacts, 10000);
+                              /*var temp;
+                              for(var i in $scope.untrackedContactList) {
+                                if($scope.untrackedContactList[i].address === co.address) {
+                                  temp = $scope.untrackedContactList.splice(i, 1);
+                                  break;
+                                }
+                              }
+                              console.log(temp);
+                              $scope.originalContactList.push(temp);*/
+                          }else {
+                            throw "发生交易失败";
+                          }
+                        })
+                      }
+                    }catch(e) {
+                      console.log(e);
+                    }
+                  })
+                }
+              }catch(e) {
+                console.log(e);
+              }
+            })
+          }
+
+          $scope.$on('refreshContact', function() {
+            getContacts();
+          })
+
         //将中文转为拼音
-        for(var i in $scope.originalContactList) {
+        /*for(var i in $scope.originalContactList) {
           if(/\w/.test($scope.originalContactList[i].name[0]) === false) {
             $scope.originalContactList[i].pinyin = pinyin.toPinyin($scope.originalContactList[i].name);
           }else {
@@ -65,7 +240,10 @@
           if($scope.letterArray.indexOf($scope.originalContactList[k].pinyin[0]) === -1) {
             $scope.letterArray.push($scope.originalContactList[k].pinyin[0]);
           }
-        }
+        }*/
+      },
+      link : function($scope) {
+        
 
       }
     };

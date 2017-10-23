@@ -4,6 +4,7 @@ angular.module('IfmCoinApp').service('userService', function () {
 
     this.rememberPassphrase = false;
     this.rememberedPassphrase = '';
+    this.username = '';
 
     this.setData = function (address, publicKey, balance, unconfirmedBalance, effectiveBalance) {
         this.address = address;

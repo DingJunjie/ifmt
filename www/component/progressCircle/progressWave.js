@@ -15,7 +15,7 @@
           context = canvas.getContext('2d'),
           PI = Math.PI,
           radius = 200,
-          currentProgress = 50,
+          currentProgress = 30,
           step = 0;
         canvas.width = "500";
         canvas.height = "500";
@@ -32,6 +32,7 @@
         })();
 
         function wave() {
+          var floatHeight = (100 - $rootScope.roundProgress)/100;
           context.clearRect(0,0,canvas.width, canvas.height);
 
           context.fillStyle = "rgba(0, 222, 255, 0.2)";
@@ -40,23 +41,23 @@
           var deltaHeight = Math.sin(angle) * 30;
           var deltaHeightRight = Math.cos(angle) * 50;
           context.beginPath();
-          context.moveTo(0, canvas.height/2+deltaHeight);
-          context.bezierCurveTo(canvas.width/2 + deltaHeight, canvas.height/2+deltaHeight -50, canvas.width/2, canvas.height/2+deltaHeightRight-50, canvas.width, canvas.height/2+deltaHeightRight);
-          context.lineTo(canvas.width, canvas.height/2+deltaHeightRight);
+          context.moveTo(0, canvas.height*floatHeight+deltaHeight);
+          context.bezierCurveTo(canvas.width/2 + deltaHeight, canvas.height*floatHeight+deltaHeight -50, canvas.width/2, canvas.height*floatHeight+deltaHeightRight-50, canvas.width, canvas.height*floatHeight+deltaHeightRight);
+          context.lineTo(canvas.width, canvas.height*floatHeight+deltaHeightRight);
           context.lineTo(canvas.width, canvas.height);
           context.lineTo(0, canvas.height);
-          context.lineTo(0, canvas.height/2+deltaHeight);
+          context.lineTo(0, canvas.height*floatHeight+deltaHeight);
           context.closePath();
           context.fill();
 
           context.fillStyle = "rgba(0, 222, 255, 0.1)";
           context.beginPath();
-          context.moveTo(0, canvas.height/2+deltaHeight);
-          context.bezierCurveTo(canvas.width/2 - 50, canvas.height/2+deltaHeight -80, canvas.width/2 + 50, canvas.height/2+deltaHeightRight+20, canvas.width, canvas.height/2+deltaHeightRight + 20);
-          context.lineTo(canvas.width, canvas.height/2+deltaHeightRight);
+          context.moveTo(0, canvas.height*floatHeight+deltaHeight);
+          context.bezierCurveTo(canvas.width/2 - 50, canvas.height*floatHeight+deltaHeight -80, canvas.width/2 + 50, canvas.height*floatHeight+deltaHeightRight+20, canvas.width, canvas.height*floatHeight+deltaHeightRight + 20);
+          context.lineTo(canvas.width, canvas.height*floatHeight+deltaHeightRight);
           context.lineTo(canvas.width, canvas.height);
           context.lineTo(0, canvas.height);
-          context.lineTo(0, canvas.height/2+deltaHeight);
+          context.lineTo(0, canvas.height*floatHeight+deltaHeight);
           context.closePath();
           context.fill();
 

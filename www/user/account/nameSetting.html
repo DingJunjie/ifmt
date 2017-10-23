@@ -1,19 +1,20 @@
-<ion-view view-title="用户名" class="usual-background animated" hide-tabs="true">
+<ion-view view-title="用户名" class="usual-background animated" hide-tabs="true" ng-controller="nameSettingCtrl">
   <ion-nav-bar class="navbar-bg bar-transparent">
     <ion-nav-buttons side="left">
-      <a href="#/account" class="button button-icon" nav-direction="back">取消</a>
+      <a href="#/account" class="button button-icon name-back-button">返回</a>
       <!--javascript:history.back(-1)-->
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-      <a href="#/account" class="nav-right-btn suggest-submit-btn submit-active">保存</a>
+      <a class="nav-right-btn suggest-submit-btn submit-active" ng-click="editName()">保存</a>
       <!--javascript:history.back(-1)-->
     </ion-nav-buttons>
   </ion-nav-bar>
   <ion-content>
     <div class="name-setting-container">
-      <input type="text" class="name-setting-input" placeholder="请输入您的用户名" />
+      <input type="text" class="name-setting-input" placeholder="{{username === '请输入用户名，只能修改一次' ? '' : '您已经不能修改用户名'}}" disabled="{{username !== ''}}" ng-keyup="editUsername()" ng-model="nameOpt.newUsername" />
+      <!-- placeholder="请输入用户名，只能修改一次" -->
 
-      <span class="name-setting-tip">收取0.002修改信息的手续费。<a href="#/account/fee">点击设置</a></span>
+      <span class="name-setting-tip">收取{{fee}}修改信息的手续费。<a href="#/account/fee">点击设置</a></span>
     </div>
   </ion-content>
 </ion-view>

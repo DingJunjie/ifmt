@@ -52,30 +52,32 @@
                   <progress-circle></progress-circle>
                 </div>
                 <div class="ifmt-my-ifmt-wave">
-                  <progress-wave></progress-wave>
+                  <progress-wave ng-if="userData.autoDig" ng-click="cancelDig()"></progress-wave>
+                  <div class="ifmt-my-ifmt-dig-no" ng-if="!userData.autoDig" ng-click="startDig()"></div>
                 </div>
 
-                <div class="ifmt-my-ifmt-percent-container">
-                  <p class="ifmt-my-ifmt-title">我的挖矿进度</p>
-                  <div class="ifmt-my-ifmt-percent">61%</div>
+                <div class="ifmt-my-ifmt-percent-container" ng-if="userData.autoDig">
+                  <p class="ifmt-my-ifmt-title">挖矿进度</p>
+                  <div class="ifmt-my-ifmt-percent" ng-click="cancelDig()">{{roundProgress}}%</div>
                 </div>
               </div>
             </div>
-            <div class="ifmt-my-ifmt-switch" ng-class="dig ? '' : 'ifmt-my-no-dig'"  ng-click="dig = !dig">
-              <div class="ifmt-my-ifmt-dig-no" ng-if="!dig">
-                <button id="ifmt-my-ifmt-dig-no">开启自动挖矿</button>
+
+            <!-- <div class="ifmt-my-ifmt-switch" ng-class="userData.autoDig ? '' : 'ifmt-my-no-dig'">
+              <div class="ifmt-my-ifmt-dig-no" ng-if="!userData.autoDig">
+                <button id="ifmt-my-ifmt-dig-no" ng-click="startDig()">开启自动挖矿</button>
               </div>
-              <div class="ifmt-my-ifmt-dig" ng-if="dig">
-                <button id="ifmt-my-ifmt-dig">自动挖矿中…</button>
+              <div class="ifmt-my-ifmt-dig" ng-if="userData.autoDig">
+                <button id="ifmt-my-ifmt-dig" ng-click="cancelDig()">自动挖矿中…</button>
               </div>
-            </div>
+            </div> -->
 
           </ion-pane>
           <chain-swiper></chain-swiper>
         </div>
       </ion-slide-page>
       <ion-slide-page>
-        <div class="chain-newest-block-container" style="width:100%;height:100%;">
+        <div class="chain-newest-block-container" style="width:100%;height:100%;" >
             <ul class="chain-newest-block-title">
               <li class="chain-newest-block-title-item">高度</li>
               <li class="chain-newest-block-title-item">金额</li>
@@ -84,10 +86,10 @@
               <li class="chain-newest-block-title-item">时间</li>
             </ul>
 
-            <div class="chain-newest-mine-title">我的区块</div>
+            <!-- <div class="chain-newest-mine-title">我的区块</div>
             <a href="#/blockChain/blockDetail"><div class="chain-newest-my-block-list">
               <div class="chain-newest-block-item">
-                <!--<div class="chain-hash-detail"><div>0123456789abcdefghi</div><div class="down-trig"></div></div>-->
+                <div class="chain-hash-detail"><div>0123456789abcdefghi</div><div class="down-trig"></div></div>
                 <ul class="chain-newest-block-content">
                   <li class="chain-newest-block-content-item">1145</li>
                   <li class="chain-newest-block-content-item">1120</li>
@@ -96,45 +98,56 @@
                   <li class="chain-newest-block-content-item">12min 前</li>
                 </ul>
               </div>
-            </div></a>
+            </div></a> -->
 
           <div class="chain-newest-all-title">最新区块</div>
-            <div class="chain-newest-block-list">
+            <div class="chain-newest-block-list" style="height: {{fullHeight - 240}}px">
               <div class="chain-newest-block-item" ng-repeat="bl in blocks">
                 <ul class="chain-newest-block-content">
                   <li class="chain-newest-block-content-item" ng-click="showBlock(bl)">{{bl.height}}</li>
-                  <li class="chain-newest-block-content-item">{{bl.reward/10000000}}</li>
-                  <li class="chain-newest-block-content-item">{{bl.totalFee/10000000}}</li>
-                  <li class="chain-newest-block-content-item">{{bl.totalForged/10000000}}</li>
-                  <li class="chain-newest-block-content-item">12min 前</li>
+                  <li class="chain-newest-block-content-item">{{bl.rewardName}}</li>
+                  <li class="chain-newest-block-content-item">{{bl.totalFeeName}}</li>
+                  <li class="chain-newest-block-content-item">{{bl.totalForgedName}}</li>
+                  <li class="chain-newest-block-content-item">{{bl.timestamp | timestampFilter | dateDiffFilter}}</li>
+                </ul>
+
+                
+              </div>
+
+              <div class="chain-newest-block-item">
+                <ul class="chain-newest-block-content">
+                  <a href="#/blockChain/blockMore"><li class="chain-newest-block-more">查看更多区块</li></a>
                 </ul>
               </div>
+              
 
             </div>
         </div>
       </ion-slide-page>
       <ion-slide-page>
-        <div class="chain-trade-container" style="width:100%;height:100%;">
-            <div class="chain-trade-item">
+        <div class="chain-trade-container" style="width:100%;height:100%; overflow-y: scroll;">
+            <div class="chain-trade-item" ng-repeat = "tr in trades">
               <div class="chain-trade-title">
-                <span class="chain-trade-date">28秒前</span>
-                <span class="chain-trade-amount">交易数量 <span>12.01</span></span>
+                <span class="chain-trade-date">{{tr.timestamp | timestampFilter | dateDiffFilter}}</span>
+                <span class="chain-trade-amount">交易数量 <span>{{tr.amount | noEulerNumberFilter}}</span></span>
                 <!--<span class="chain-trade-fee">含0.001手续费</span>-->
               </div>
 
-              <div class="chain-trade-content">
+              <div class="chain-trade-content" ng-click="showTrade(tr)">
                 <a href="#/blockChain/tradeDetail"><div class="chain-trade-addr">
-                  1kj12j12ij192j09j94j320jksadjf90af90ja
+                  {{tr.recipientUsername ? tr.recipientUsername : tr.recipientId}}
+                  <br>
+                  {{tr.senderUsername ? tr.senderUsername : tr.senderId}}
                 </div></a>
                 <div class="chain-trade-operate">
-                  <img src="../images/ifmt/chain/undo-icon.png" alt="">
+                  <!-- <img src="../images/ifmt/chain/undo-icon.png" alt=""> -->
                 </div>
 
-                <div class="chain-trade-remark">
-                  <!--<input type="text" class="chain-trade-remark-input" placeholder="无备注" />-->
+                <!-- <div class="chain-trade-remark">
+                  <input type="text" class="chain-trade-remark-input" placeholder="无备注" />
                   <div class="chain-trade-remark-input">无备注</div>
-                </div>
-                <div class="chain-trade-fee-btm">含0.001手续费</div>
+                </div> -->
+                <div class="chain-trade-fee-btm">含{{tr.fee | noEulerNumberFilter}}手续费</div>
               </div>
             </div>
 

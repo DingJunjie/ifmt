@@ -1,28 +1,28 @@
-<ion-view id="contactUser" view-title="" class="usual-background animated" hide-tabs="true">
+<ion-view id="contactUser" view-title="" class="usual-background animated" hide-tabs="true" ng-controller="contactUserCtrl">
   <ion-nav-bar class="navbar-bg bar-transparent">
     <ion-nav-buttons side="left">
       <a href="#/account/contact" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
       <!--javascript:history.back(-1)-->
     </ion-nav-buttons>
-    <ion-nav-buttons side="right">
+    <!-- <ion-nav-buttons side="right">
       <a href="#/account" class="nav-right-btn suggest-submit-btn submit-active">删除</a>
-      <!--javascript:history.back(-1)-->
-    </ion-nav-buttons>
+      javascript:history.back(-1)
+    </ion-nav-buttons> -->
   </ion-nav-bar>
   <ion-content>
     <div class="contact-user-container">
       <div class="contact-user-head-container">
-        <div class="contact-user-head">
+        <!-- <div class="contact-user-head">
           <img src="" alt="" class="contact-user-head-pic">
-        </div>
+        </div> -->
 
-        <div class="contact-user-name">埃尔文</div>
+        <div class="contact-user-name">{{contactDetail.username ? '用户名：' : ''}}{{contactDetail.username}}</div>
         <div class="contact-user-address-container">
           <h4 class="contact-user-address-title">
             收付币地址
           </h4>
           <div class="contact-user-address">
-            va9sdf0435j3242095325n2349023040
+            {{contactDetail.address}}
           </div>
         </div>
 
@@ -36,31 +36,18 @@
           <ul class="contact-user-trade-table-title">
             <li class="contact-user-trade-table-title-item">时间</li>
             <li class="contact-user-trade-table-title-item">数量</li>
-            <li class="contact-user-trade-table-title-item">类型</li>
-            <li class="contact-user-trade-table-title-item">状态</li>
+            <li class="contact-user-trade-table-title-item">手续费</li>
+            <li class="contact-user-trade-table-title-item">块高度</li>
           </ul>
 
           <div class="contact-user-trade-table-items">
-            <ul class="contact-user-trade-table-item">
-              <li class="contact-user-trade-table-item-item">2017.06.01 23:59</li>
-              <li class="contact-user-trade-table-item-item">1.209</li>
-              <li class="contact-user-trade-table-item-item">收币</li>
-              <li class="contact-user-trade-table-item-item">成功</li>
+            <ul class="contact-user-trade-table-item" ng-repeat="ct in contactTransactions">
+              <li class="contact-user-trade-table-item-item">{{ct.timestamp | timestampFilter}}</li>
+              <li class="contact-user-trade-table-item-item">{{ct.amountFixed}}</li>
+              <li class="contact-user-trade-table-item-item">{{ct.fee | noEulerNumberFilter}}</li>
+              <li class="contact-user-trade-table-item-item">{{ct.height}}</li>
             </ul>
 
-            <ul class="contact-user-trade-table-item">
-              <li class="contact-user-trade-table-item-item">2017.06.01 23:59</li>
-              <li class="contact-user-trade-table-item-item">1.209</li>
-              <li class="contact-user-trade-table-item-item">收币</li>
-              <li class="contact-user-trade-table-item-item">成功</li>
-            </ul>
-
-            <ul class="contact-user-trade-table-item">
-              <li class="contact-user-trade-table-item-item">2017.06.01 23:59</li>
-              <li class="contact-user-trade-table-item-item">1.209</li>
-              <li class="contact-user-trade-table-item-item">收币</li>
-              <li class="contact-user-trade-table-item-item contact-user-trade-table-item-failure">失败</li>
-            </ul>
           </div>
         </div>
       </div>

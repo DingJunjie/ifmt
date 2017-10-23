@@ -7,8 +7,31 @@
     <list default="true" id="031ab8a7-256b-4804-b306-de182e7794e6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/browserifylogin.js" afterPath="$PROJECT_DIR$/www/browserifylogin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/component/chainSwiper/chainSwiper.js" afterPath="$PROJECT_DIR$/www/component/chainSwiper/chainSwiper.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/page/account.css" afterPath="$PROJECT_DIR$/www/css/page/account.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/page/account.less" afterPath="$PROJECT_DIR$/www/css/page/account.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/page/blockChain.css" afterPath="$PROJECT_DIR$/www/css/page/blockChain.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/page/blockChain.less" afterPath="$PROJECT_DIR$/www/css/page/blockChain.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/page/home.css" afterPath="$PROJECT_DIR$/www/css/page/home.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/css/page/home.less" afterPath="$PROJECT_DIR$/www/css/page/home.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/commonAPI.js" afterPath="$PROJECT_DIR$/www/js/commonAPI.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/service/runtimeDataService.js" afterPath="$PROJECT_DIR$/www/js/service/runtimeDataService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/login.js" afterPath="$PROJECT_DIR$/www/login.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/user/account/account.html" afterPath="$PROJECT_DIR$/www/user/account/account.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/user/account/account.js" afterPath="$PROJECT_DIR$/www/user/account/account.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/user/account/feeConfig.html" afterPath="$PROJECT_DIR$/www/user/account/feeConfig.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/user/account/feeMaxConfig.html" afterPath="$PROJECT_DIR$/www/user/account/feeMaxConfig.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/user/account/nameSetting.html" afterPath="$PROJECT_DIR$/www/user/account/nameSetting.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/user/account/settings.html" afterPath="$PROJECT_DIR$/www/user/account/settings.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/user/account/userSettings.html" afterPath="$PROJECT_DIR$/www/user/account/userSettings.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/user/blockChain/blockChain.html" afterPath="$PROJECT_DIR$/www/user/blockChain/blockChain.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/user/blockChain/blockChain.js" afterPath="$PROJECT_DIR$/www/user/blockChain/blockChain.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/user/blockChain/blockDetailModal.html" afterPath="$PROJECT_DIR$/www/user/blockChain/blockDetailModal.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/user/blockChain/tradeDetailModal.html" afterPath="$PROJECT_DIR$/www/user/blockChain/tradeDetailModal.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/user/home/home.html" afterPath="$PROJECT_DIR$/www/user/home/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/user/home/home.js" afterPath="$PROJECT_DIR$/www/user/home/home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/user/index.html" afterPath="$PROJECT_DIR$/www/user/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/user/index.js" afterPath="$PROJECT_DIR$/www/user/index.js" />
     </list>
     <ignored path="ifm wallet.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,17 +54,7 @@
         <entry file="file://$PROJECT_DIR$/www/login.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="19">
-              <caret line="212" column="57" lean-forward="false" selection-start-line="212" selection-start-column="57" selection-end-line="212" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="userService.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/js/userService.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="912">
-              <caret line="48" column="0" lean-forward="false" selection-start-line="2" selection-start-column="28" selection-end-line="48" selection-end-column="0" />
+              <caret line="105" column="10" lean-forward="false" selection-start-line="105" selection-start-column="10" selection-end-line="105" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -60,9 +73,11 @@
       <file leaf-file-name="commonAPI.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/js/commonAPI.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2185">
-              <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="2147">
+              <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+              <folding>
+                <marker date="1506616111338" expanded="true" signature="11149:11446" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,9 +105,11 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/www/user/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
+            <state relative-caret-position="133">
               <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-              <folding />
+              <folding>
+                <marker date="1506767099697" expanded="true" signature="14328:14343" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -251,8 +268,6 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/javascript/ifmcoin-js/node_modules" />
     <handled-path value="$PROJECT_DIR$/node_modules" />
-    <handled-path value="$PROJECT_DIR$/www/ifmcoin-js/node_modules" />
-    <handled-path value="$PROJECT_DIR$/www/js/ifmcoin-js/node_modules" />
     <handled-path value="$PROJECT_DIR$/www/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
@@ -307,8 +322,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -456,11 +471,13 @@
       <workItem from="1506482862288" duration="19000" />
       <workItem from="1506483505568" duration="257000" />
       <workItem from="1506493847214" duration="161000" />
+      <workItem from="1507515715579" duration="109000" />
+      <workItem from="1507516433925" duration="7000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="202636000" />
+    <option name="totallyTimeSpent" value="202752000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -779,9 +796,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/user/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
+        <state relative-caret-position="133">
           <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-          <folding />
+          <folding>
+            <marker date="1506767099697" expanded="true" signature="14328:14343" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -792,20 +811,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/ifmcoin-js/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-128">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/ifmcoin-js/Gruntfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="23" lean-forward="false" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/ifmcoin-js/package.json" />
+    <entry file="file://$PROJECT_DIR$/www/js/ifmcoin-js/Gruntfile.js" />
     <entry file="file://$PROJECT_DIR$/www/browserifylogin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -813,20 +820,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/ifmcoin-js/lib/tx/dapp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/ifmcoin-js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="51" lean-forward="true" selection-start-line="8" selection-start-column="51" selection-end-line="8" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/ifmcoin-js/lib/tx/dapp.js" />
+    <entry file="file://$PROJECT_DIR$/www/js/ifmcoin-js/index.js" />
     <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -845,9 +840,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/www/js/commonAPI.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2185">
-          <caret line="115" column="0" lean-forward="false" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="2147">
+          <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+          <folding>
+            <marker date="1506616111338" expanded="true" signature="11149:11446" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -859,18 +856,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/js/userService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="912">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="2" selection-start-column="28" selection-end-line="48" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/www/js/userService.js" />
     <entry file="file://$PROJECT_DIR$/www/login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
-          <caret line="212" column="57" lean-forward="false" selection-start-line="212" selection-start-column="57" selection-end-line="212" selection-end-column="57" />
+          <caret line="105" column="10" lean-forward="false" selection-start-line="105" selection-start-column="10" selection-end-line="105" selection-end-column="10" />
           <folding />
         </state>
       </provider>

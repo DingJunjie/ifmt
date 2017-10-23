@@ -1,0 +1,63 @@
+{
+  "_from": "jsqr",
+  "_id": "jsqr@0.2.2",
+  "_inBundle": false,
+  "_integrity": "sha1-jB8Ceft8lFQqqp6K63xyLVI+oJI=",
+  "_location": "/jsqr",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "jsqr",
+    "name": "jsqr",
+    "escapedName": "jsqr",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "http://registry.npm.taobao.org/jsqr/download/jsqr-0.2.2.tgz",
+  "_shasum": "8c1f0279fb7c94542aaa9e8aeb7c722d523ea092",
+  "_spec": "jsqr",
+  "_where": "H:\\WORK-BNGJ\\projects\\ifm wallet\\www",
+  "bugs": {
+    "url": "https://github.com/cozmo/jsQR/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Cosmo Wolfe",
+      "email": "cosmo.wolfe@gmail.com"
+    },
+    {
+      "name": "Jefff Nelson",
+      "email": "gmjefff@gmail.com"
+    }
+  ],
+  "deprecated": false,
+  "description": "QR code detection, extraction, decoding and parsing written as pure JS port of the ZXing library.",
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "ts-loader": "^0.7.2",
+    "ts-node": "^0.5.4",
+    "typescript": "^1.7.3",
+    "webpack": "^1.12.9"
+  },
+  "homepage": "https://github.com/cozmo/jsQR#readme",
+  "license": "Apache-2.0",
+  "main": "./dist/jsQR.js",
+  "name": "jsqr",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cozmo/jsQR.git"
+  },
+  "scripts": {
+    "build": "node ./node_modules/webpack/bin/webpack.js",
+    "test": "node ./node_modules/mocha/bin/mocha --require ts-node/register ./test/test-*.ts",
+    "watch": "node ./node_modules/webpack/bin/webpack.js --watch"
+  },
+  "version": "0.2.2"
+}

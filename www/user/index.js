@@ -17,12 +17,196 @@
     // 'ui.grid',
 ]);*/
 
+/**
+ * QRcode插件，用于生成地址的QRCODE
+ */
+angular.module('IfmCoinApp').directive('qrcode', ['$window', function ($window) {
 
+        var canvas2D = !!$window.CanvasRenderingContext2D,
+            levels = {
+                'L': 'Low',
+                'M': 'Medium',
+                'Q': 'Quartile',
+                'H': 'High'
+            },
+            draw = function (context, qr, modules, tile) {
+                for (var row = 0; row < modules; row++) {
+                    for (var col = 0; col < modules; col++) {
+                        var w = (Math.ceil((col + 1) * tile) - Math.floor(col * tile)),
+                            h = (Math.ceil((row + 1) * tile) - Math.floor(row * tile));
+
+                        context.fillStyle = qr.isDark(row, col) ? '#000' : '#fff';
+                        context.fillRect(Math.round(col * tile),
+                            Math.round(row * tile), w, h);
+                    }
+                }
+            };
+
+        return {
+            restrict: 'E',
+            template: '<canvas class="qrcode"></canvas>',
+            link: function (scope, element, attrs) {
+                var domElement = element[0],
+                    $canvas = element.find('canvas'),
+                    canvas = $canvas[0],
+                    context = canvas2D ? canvas.getContext('2d') : null,
+                    download = 'download' in attrs,
+                    href = attrs.href,
+                    link = download || href ? document.createElement('a') : '',
+                    trim = /^\s+|\s+$/g,
+                    error,
+                    version,
+                    errorCorrectionLevel,
+                    data,
+                    size,
+                    modules,
+                    tile,
+                    qr,
+                    $img,
+                    setVersion = function (value) {
+                        version = Math.max(1, Math.min(parseInt(value, 10), 40)) || 5;
+                    },
+                    setErrorCorrectionLevel = function (value) {
+                        errorCorrectionLevel = value in levels ? value : 'M';
+                    },
+                    setData = function (value) {
+                        if (!value) {
+                            return;
+                        }
+
+                        data = value.replace(trim, '');
+                        qr = qrcode(version, errorCorrectionLevel);
+                        qr.addData(data);
+
+                        try {
+                            qr.make();
+                        } catch (e) {
+                            error = e.message;
+                            return;
+                        }
+
+                        error = false;
+                        modules = qr.getModuleCount();
+                    },
+                    setSize = function (value) {
+                        size = parseInt(value, 10) || modules * 2;
+                        tile = size / modules;
+                        canvas.width = canvas.height = size;
+                    },
+                    render = function () {
+                        if (!qr) {
+                            return;
+                        }
+
+                        if (error) {
+                            if (link) {
+                                link.removeAttribute('download');
+                                link.title = '';
+                                link.href = '#_';
+                            }
+                            if (!canvas2D) {
+                                domElement.innerHTML = '<img src width="' + size + '"' +
+                                    'height="' + size + '"' +
+                                    'class="qrcode">';
+                            }
+                            scope.$emit('qrcode:error', error);
+                            return;
+                        }
+
+                        if (download) {
+                            domElement.download = 'qrcode.png';
+                            domElement.title = 'Download QR code';
+                        }
+
+                        if (canvas2D) {
+                            draw(context, qr, modules, tile);
+
+                            if (download) {
+                                //domElement.href = canvas.toDataURL('image/png');
+                                return;
+                            }
+                        } else {
+                            domElement.innerHTML = qr.createImgTag(tile, 0);
+                            $img = element.find('img');
+                            $img.addClass('qrcode');
+
+                            if (download) {
+                                //domElement.href = $img[0].src;
+                                return;
+                            }
+                        }
+
+                        if (href) {
+                            //domElement.href = href;
+                        }
+                    };
+
+                if (link) {
+                    link.className = 'qrcode-link';
+                    $canvas.wrap(link);
+                    domElement = domElement.firstChild;
+                }
+
+                setVersion(attrs.version);
+                setErrorCorrectionLevel(attrs.errorCorrectionLevel);
+                setSize(attrs.size);
+
+                attrs.$observe('version', function (value) {
+                    if (!value) {
+                        return;
+                    }
+
+                    setVersion(value);
+                    setData(data);
+                    setSize(size);
+                    render();
+                });
+
+                attrs.$observe('errorCorrectionLevel', function (value) {
+                    if (!value) {
+                        return;
+                    }
+
+                    setErrorCorrectionLevel(value);
+                    setData(data);
+                    setSize(size);
+                    render();
+                });
+
+                attrs.$observe('data', function (value) {
+                    if (!value) {
+                        return;
+                    }
+
+                    setData(value);
+                    setSize(size);
+                    render();
+                });
+
+                attrs.$observe('size', function (value) {
+                    if (!value) {
+                        return;
+                    }
+
+                    setSize(value);
+                    render();
+                });
+
+                //attrs.$observe('href', function (value) {
+                //    if (!value) {
+                //        return;
+                //    }
+                //
+                //    href = value;
+                //    render();
+                //});
+            }
+        };
+    }]);
 
 
 angular.module('IfmCoinApp').run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
-        // alert(" ionic ready");
         if (window.cordova && window.cordova.plugins.Keyboard) {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -82,6 +266,7 @@ angular.module('IfmCoinApp').run(function ($ionicPlatform) {
                 //通过触发监听打开提示框
                 $scope.$emit('openAlert', config);
             }
+
         }
         if (window.StatusBar) {
           // StatusBar.hide();
@@ -96,7 +281,7 @@ angular.module('IfmCoinApp').run(function ($ionicPlatform) {
 //
 // 我的首页
 //
-angular.module('IfmCoinApp').controller('MainController', ['$rootScope', '$scope', '$timeout', '$interval', '$http', 'userService', '$ionicPopup', '$ionicPlatform', '$location', '$anchorScroll', '$cordovaImagePicker', '$cordovaCamera', '$cordovaGeolocation', '$cordovaNetwork', '$ionicActionSheet','$ionicSlideBoxDelegate','$ionicTabsDelegate', function ($rootScope, $scope, $timeout, $interval, $http, userService, $ionicPopup, $ionicPlatform, $location, $anchorScroll,$cordovaImagePicker,$cordovaCamera,$cordovaGeolocation,$cordovaNetwork,blockChainService, $ionicSlideBoxDelegate,$ionicTabsDelegate, $ionicActionSheet) {
+angular.module('IfmCoinApp').controller('MainController', ['$rootScope', '$scope', '$timeout', '$interval', '$http', 'userService', 'runtimeData', 'httpAjaxService', '$ionicPopup', '$ionicPlatform', '$location', '$anchorScroll', '$cordovaImagePicker', '$cordovaCamera', '$cordovaGeolocation', '$cordovaNetwork', '$ionicActionSheet','$ionicSlideBoxDelegate','$ionicTabsDelegate', function ($rootScope, $scope, $timeout, $interval, $http, userService, runtimeData, httpAjaxService, $ionicPopup, $ionicPlatform, $location, $anchorScroll,$cordovaImagePicker,$cordovaCamera,$cordovaGeolocation,$cordovaNetwork, $ionicSlideBoxDelegate,$ionicTabsDelegate, $ionicActionSheet) {
 
   if (ionic && ionic.Platform) {
       //alert("ionic platform");
@@ -165,7 +350,20 @@ angular.module('IfmCoinApp').controller('MainController', ['$rootScope', '$scope
   $scope.expSlideHeight = $(document).height() -324;
   $scope.serviceHeight = $(document).height() - 110;
   $scope.blockChainTableHeight = $(document).height();
+  // window.fee = runtimeData.getFee();
+  $rootScope.fee = runtimeData.getFee();
+  $rootScope.maxFee = runtimeData.getMaxFee();
+  $rootScope.address = userService.address;
+  $rootScope.autoDig = runtimeData.autoDig;
+  $rootScope.username = userService.username;
+  $rootScope.balance = userService.balance;
+  $rootScope.secondSign = userService.secondSign;
 
+  /**
+   * 从login获取的数据无法在home获取，所以存至localStorage再进行获取
+   * 当前端获取到login的值时进行赋值，并清空，当未获取时直接返回至登录
+   * @return {[type]} [description]
+   */
   (function () {
     var userData = window.localStorage.userData;
     if(userData && JSON.parse(userData).success === true) {
@@ -173,6 +371,9 @@ angular.module('IfmCoinApp').controller('MainController', ['$rootScope', '$scope
       userService.setData(data.account.address, data.account.publicKey, data.account.balance, data.account.unconfirmedBalance, data.account.effectiveBalance);
       userService.setForging(data.account.forging);
       userService.unconfirmedPassphrase = data.account.unconfirmedSignature;
+      userService.username = data.account.username;
+      userService.secondSign = data.account.secondSignature;
+      refreshAccount();
       window.localStorage.removeItem('userData');
     }else {
       window.location.href="/";
@@ -193,7 +394,13 @@ angular.module('IfmCoinApp').controller('MainController', ['$rootScope', '$scope
 
   })
 
+  /**
+   * 当从非账户页面进入设置手续费，再点击账户时会跳入手续费设置页面
+   * 所以设置点击进入账户为click方法，而不是通过路由进行直接跳转
+   * @return {[type]} [description]
+   */
   $scope.openAccount = function() {
+    $rootScope.paying = false;
     $location.path("/account");
   }
 
@@ -202,52 +409,64 @@ angular.module('IfmCoinApp').controller('MainController', ['$rootScope', '$scope
    * @type {{loop: boolean, effect: string, speed: number, pager: boolean}}
    */
   $scope.blockChainOpt = {
-        loop: false,
-        effect: 'slide',
-        speed: 500,
-        pager: false
-    }
+      loop: false,
+      effect: 'slide',
+      speed: 500,
+      pager: false
+  }
 
   /**
-   * 卡片参数配置
+   * 获取当前轮次的相关信息，获取当前的进度
    */
-  $scope.cards = [{
-      "date" : new Date(),
-      "amount" : "1.04",
-      "address" : "askdjfkasjdkfjiwfn1kj3194j1kj39121kj12"
-    },{
-      "date" : new Date(),
-      "amount" : "1.04",
-      "address" : "askdjfkasjdkfjiwfn1kj3194j1kj39121kj12"
-    },{
-      "date" : new Date(),
-      "amount" : "1.04",
-      "address" : "askdjfkasjdkfjiwfn1kj3194j1kj39121kj12"
-    },{
-      "date" : new Date(),
-      "amount" : "1.04",
-      "address" : "askdjfkasjdkfjiwfn1kj3194j1kj39121kj12"
-    },{
-      "date" : new Date(),
-      "amount" : "1.04",
-      "address" : "askdjfkasjdkfjiwfn1kj3194j1kj39121kj12"
-    },{
-      "date" : new Date(),
-      "amount" : "1.04",
-      "address" : "askdjfkasjdkfjiwfn1kj3194j1kj39121kj12"
-    },{
-      "date" : new Date(),
-      "amount" : "1.04",
-      "address" : "askdjfkasjdkfjiwfn1kj3194j1kj39121kj12"
-    }]
+  var publicKey = userService.publicKey;
+  $rootScope.roundProgress = 0;
+  var blockTime = 10;
+  var remainTime = function() {
+    getOnce(true, '/api/delegates/roundTime', {params: {publicKey: publicKey}}, function(res) {
+      if(res.success === true) {
+        var duringTime = res.nextRoundTime;
+        // var roundProgress = ((1 - duringTime/(57*blockTime))*100).toFixed(2);
+        // $rootScope.roundProgress = roundProgress;
+        
+        // var startTime = roundStartTime(res.nextRoundTime, blockTime);
+        getOnce(true, '/api/transactions/getslottime', null, function(res) {
+          if(res.success === true) {
+            // console.log(res.timestamp,startTime);
+            // var duringTime = res.timestamp - startTime;
+            // var duringTime = res.nextRoundTime;
+            var roundProgress = ((1 - duringTime/(57*blockTime))*100).toFixed(2);
+            // var roundProgress = (duringTime/(57*blockTime)*100).toFixed(2);
+            $rootScope.roundProgress = roundProgress;
+          }
+        })
+      }
+    })
+  }
 
-    $scope.hasLogin = true;
-    $scope.exit = function() {
-        $scope.hasLogin = false;
-    };
+  remainTime();
+  $interval(remainTime, 3000);
+
+
+  function refreshAccount() {
+    var req = {
+      "address" : userService.address
+    }
+    getOnce(true, '/api/accounts', req, function(data) {
+      if(data.success === true) {
+        $rootScope.username = data.account.username;
+      }
+    })
+  }
+
 
 }])
 
+/**
+ * 进入二级页面隐藏tab需要
+ * @param  {[type]} $rootScope [description]
+ * @param  {[type]} $location) {               return {        restrict: 'A',        link: function (scope, element, attributes) {            scope.$on('$ionicView.beforeEnter', function () {                scope.$watch(attributes.hideTabs, function (value) {                                        if ($location.path() [description]
+ * @return {[type]}            [description]
+ */
 angular.module('IfmCoinApp').directive('hideTabs', function ($rootScope, $location) {
     return {
         restrict: 'A',
@@ -271,10 +490,24 @@ angular.module('IfmCoinApp').directive('hideTabs', function ($rootScope, $locati
     };
 })
 
+/**
+ * 定义tab位于底部
+ * 当是android时默认在顶部，需要这个进行配置
+ * @param  {[type]} $stateProvider        [description]
+ * @param  {[type]} $urlRouterProvider    [description]
+ * @param  {[type]} $ionicConfigProvider) {               $ionicConfigProvider.tabs.position('bottom');} [description]
+ * @return {[type]}                       [description]
+ */
 angular.module('IfmCoinApp').config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
 })
 
+/**
+ * 进行路由配置
+ * @param  {[type]} $stateProvider      [description]
+ * @param  {[type]} $urlRouterProvider) {                   $stateProvider            .state('tabs', {                abstract: true,                templateUrl: "menus.html"            })            .state('tabs.home', {                url: "/home",                views: {                    'index-tab': {                        templateUrl: "home/home.html"                    }                }            })            .state('tabs.blockChain', {                url: "/blockChain",                views: {                    'chain-tab': {                        templateUrl: "blockChain/blockChain.html"                    }                }            } [description]
+ * @return {[type]}                     [description]
+ */
 angular.module('IfmCoinApp').config(function($stateProvider, $urlRouterProvider) {
 
         $stateProvider
@@ -287,6 +520,22 @@ angular.module('IfmCoinApp').config(function($stateProvider, $urlRouterProvider)
                 views: {
                     'index-tab': {
                         templateUrl: "home/home.html"
+                    }
+                }
+            })
+            .state('tabs.tradeMore', {
+                url: "/home/tradeMore",
+                views: {
+                    'index-tab' : {
+                        templateUrl: "home/tradeMore.html"
+                    }
+                }
+            })
+            .state('tabs.benefitMore', {
+                url: "/home/benefitMore",
+                views: {
+                    'index-tab' : {
+                        templateUrl: "home/benefitMore.html"
                     }
                 }
             })
@@ -311,6 +560,14 @@ angular.module('IfmCoinApp').config(function($stateProvider, $urlRouterProvider)
               views: {
                 'chain-tab': {
                   templateUrl: "blockChain/blockDetailModal.html"
+                }
+              }
+            })
+            .state('tabs.blockMore', {
+              url: "/blockChain/blockMore",
+              views: {
+                'chain-tab': {
+                  templateUrl: "blockChain/blockMore.html"
                 }
               }
             })
@@ -371,12 +628,12 @@ angular.module('IfmCoinApp').config(function($stateProvider, $urlRouterProvider)
               }
             })
             .state('tabs.fee', {
-                url: "/account/fee",
-                views: {
-                  "account-tab" : {
-                      templateUrl: "account/feeConfig.html"
-                  }
+              url: "/account/fee",
+              views: {
+                "account-tab" : {
+                    templateUrl: "account/feeConfig.html"
                 }
+              }
             })
             .state('tabs.max-fee', {
               url: "/account/maxFee",
@@ -415,6 +672,14 @@ angular.module('IfmCoinApp').config(function($stateProvider, $urlRouterProvider)
               views: {
                 "account-tab" : {
                   templateUrl: "account/contactAdd.html"
+                }
+              }
+            })
+            .state('tabs.second-signature', {
+              url: "/account/secondSignature",
+              views: {
+                "account-tab" : {
+                  templateUrl: "account/secondSignature.html"
                 }
               }
             });

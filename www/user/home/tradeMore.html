@@ -1,0 +1,44 @@
+<ion-view view-title="" class="usual-background" hide-tabs="true" ng-controller="tradeMoreCtrl">
+  <ion-nav-bar class="navbar-bg bar-transparent">
+    <ion-nav-buttons side="left">
+      <a href="#/home" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+      <!--javascript:history.back(-1)-->
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <!--javascript:history.back(-1)-->
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="trade-more-grid">
+          <!-- <ion-refresher pulling-text="下拉刷新" on-refresh="freshTrade()"></ion-refresher> -->
+
+          <!--<div ui-grid="{data:myData }" class="myGrid" ng-style="{'height' : '{{fullHeight - 317}}px'}"></div>-->
+          <!-- ng-style='{"height":"{{gridContentHeight}}"}'-->
+          <ul class="trade-more-table-head">
+            <!--<li class="trade-more-table-title-type">类型</li>-->
+            <li class="trade-more-table-title-address">收付地址</li>
+            <li class="trade-more-table-title-time">收付时间</li>
+            <li class="trade-more-table-title-amount">数量</li>
+          </ul>
+          <div class="trade-more-table" style="min-height: {{fullHeight - 200}}px">
+            <div ng-repeat="ta in transaction.transactions" class="trade-more-item" ng-class="ta.showTime === true? 'trade-more-show-time': ''">
+              <!--<div class="trade-more-item-type">转入</div>-->
+              <div class="trade-more-item-address" ng-click="ta.showTime = !ta.showTime">{{ta.recipientName}}</div>
+              <div class="trade-more-amount"><span class="trade-more-pm">{{ta.plusMinus}}</span>{{ta.amountFixed}}</div>
+              <div class="trade-more-time" ng-class="ta.showTime === true? 'trade-more-time-show': ''">{{ta.timestamp | timestampFilter | dateDiffFilter}} — {{ta.timestamp | timestampFilter}}</div>
+              <div class="trade-more-fee">( {{ta.fee | noEulerNumberFilter}} )</div>
+            </div>
+
+            <div class="clearfloat"></div>
+
+          </div>
+
+          <ul class="trade-more-page">
+            <!-- <li class="trade-more-page-item" ng-repeat="pg in transaction.pageArr track by $index" ng-click="getTransactionsByPage($index, 10)">{{$index+1}}</li> -->
+            <li class="trade-more-page-prev" ng-hide="transaction.current == 0" ng-click="prevPage(10)">上一页</li>
+            <li class="trade-more-page-show" ng-hide="transaction.current == 0">{{transaction.current+1}}/{{transaction.page}}</li>
+            <li class="trade-more-page-next" ng-hide="transaction.current+1 == transaction.page" ng-click="nextPage(10)">下一页</li>
+          </ul>
+        </div>
+  </ion-content>
+</ion-view>

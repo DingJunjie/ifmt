@@ -1,0 +1,41 @@
+<ion-view view-title="" class="usual-background" hide-tabs="true" ng-controller="blockMoreCtrl">
+  <ion-nav-bar class="navbar-bg bar-transparent">
+    <ion-nav-buttons side="left">
+      <a href="#/home" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
+      <!--javascript:history.back(-1)-->
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <!--javascript:history.back(-1)-->
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="block-more-container" style="height: {{fullHeight}}px">
+      <ul class="block-more-title">
+        <li class="block-more-title-item">高度</li>
+        <li class="block-more-title-item">金额</li>
+        <li class="block-more-title-item">费用</li>
+        <li class="block-more-title-item">奖励</li>
+        <li class="block-more-title-item">时间</li>
+      </ul>
+      
+      <div class="block-more-list">
+        <div class="block-more-item" ng-repeat="bl in blocks">
+          <ul class="block-more-content">
+            <li class="block-more-content-item" ng-click="showBlock(bl)">{{bl.height}}</li>
+            <li class="block-more-content-item">{{bl.rewardName}}</li>
+            <li class="block-more-content-item">{{bl.totalFeeName}}</li>
+            <li class="block-more-content-item">{{bl.totalForgedName}}</li>
+            <li class="block-more-content-item">{{bl.timestamp | timestampFilter | dateDiffFilter}}</li>
+          </ul>
+        </div>
+      </div>
+
+      <ul class="block-more-page">
+        <!-- <li class="block-more-page-item" ng-repeat="pg in transaction.pageArr track by $index" ng-click="getTransactionsByPage($index, 10)">{{$index+1}}</li> -->
+        <li class="block-more-page-prev" ng-hide="block.current == 0" ng-click="prevPage(10)">上一页</li>
+        <li class="block-more-page-show" ng-hide="block.current == 0">{{block.current+1}}/{{block.page}}</li>
+        <li class="block-more-page-next" ng-hide="block.current+1 == block.page" ng-click="nextPage(10)">下一页</li>
+      </ul>
+    </div>
+  </ion-content>
+</ion-view>

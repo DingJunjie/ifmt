@@ -8,6 +8,7 @@
   position: absolute;
   height: 100%;
   width:100%;
+  overflow:hidden;
 }
 
 .ifc-smoke {
@@ -89,10 +90,27 @@
 }
 
 .ifm-grid-title {
-  .absolute-box(@l: 10px, @b: 0px);
+  .absolute-box(@l: 0px, @b: 0px);
   .text(@fontSize: 1.4rem, @letterSpacing: 1px, @color: #fff);
-  padding-bottom: 5px;
-  border-bottom: 2px solid #ff3;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #ccc;
+  //border-bottom: 2px solid #ff3;
+
+  &.ifm-grid-trade {
+    width: 50%;
+  }
+
+  &.ifm-grid-benefit {
+    width: 50%;
+    left: 50%;
+  }
+
+  &.ifm-grid-selected {
+    background: rgba(166,166,166,0.1);
+    color: #fff;
+  }
 }
 
 .ifc-trade-grid {
@@ -106,7 +124,7 @@
 
     li {
       float:left;
-      .text(@fontSize: 1.3rem; @color: #fff;);
+      .text(@fontSize: 1.2rem; @color: #fff;);
     }
 
     .ifc-trade-table-title-type {
@@ -132,11 +150,13 @@
 
   .ifc-trade-item {
     .box(@w: 100%; @h: 40px; @lh: 40px; @m: 8px 0; @bg: rgba(100,100,100,0.1));
+    position: relative;
+    transition: height 0.5s ease;
 
     div {
       float: left;
       color: #fff;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: thin;
     }
 
@@ -168,20 +188,410 @@
 
     .ifc-trade-time {
       height: 0px;
+      bottom: 40px;
       //line-height:30px;
       width: 70%;
-      text-align: right;
+      text-align: left;
+      padding-left: 10px;
+      box-sizing: border-box;
       font-size: 1.1rem;
-      display: none;
+      //display: inline;
+      position: absolute;
       opacity: 0;
       color: #ccc;
-      transition: height 0.6s ease, opacity 0.6s ease;
+      transition: opacity 0.6s ease;
 
-      &.ifc-trade-time-show {
+      /*&.ifc-trade-time-show {
       display: block;
       opacity: 1;
       height: 30px;
+      }*/
+    }
+
+    .ifc-trade-fee {
+      bottom: 40px;
+      width: 30%;
+      left: 70%;
+      height: 0px;
+      text-align: center;
+      padding-left: 10px;
+      padding-right: 10px;
+      box-sizing: border-box;
+      font-size: 1.1rem;
+      //display: inline;
+      position: absolute;
+      opacity: 0;
+      color: #ccc;
+      transition: opacity 0.6s ease;
+    }
+
+    &.ifc-trade-show-time {
+      height: 80px;
+
+      .ifc-trade-time {
+        //display: block;
+        bottom: 10px;
+        opacity: 1;
+        height: 30px;
       }
+
+      .ifc-trade-fee {
+        bottom: 10px;
+        opacity: 1;
+        height: 30px;
+      }
+    }
+
+    .ifc-trade-more-btn {
+      width: 100%;
+      text-align: center;
+      //padding: 3px 10px;
+      background: rgba(200,200,200,0.2);
+    }
+  }
+}
+
+.ifc-benefit-grid {
+  
+  .ifc-benefit-table-head {
+    .box(@w: 100%; @h: 45px; @lh: 45px; @bg: rgba(166,166,166,0.1));
+
+    li {
+      float:left;
+      .text(@fontSize: 1.3rem; @color: #fff;);
+    }
+
+    .ifc-benefit-table-title-name {
+      padding-left: 10px;
+      width: 25%;
+    }
+
+    .ifc-benefit-table-title-address {
+      width: 15%;
+    }
+
+    .ifc-benefit-table-title-time {
+      width: 20%;
+    }
+
+    .ifc-benefit-table-title-amount {
+      width: 15%;
+    }
+
+    .ifc-benefit-table-title-type {
+      width: 25%;
+    }
+  }
+
+  .ifc-benefit-table {
+    overflow-y: scroll;
+
+    .ifc-benefit-item {
+      .box(@w: 100%; @h: 40px; @lh: 40px; @m: 8px 0; @bg: rgba(100,100,100,0.1));
+      position: relative;
+      transition: height 0.5s ease;
+
+      div {
+        float:left;
+        color: #fff;
+        font-size: 1.2rem;
+      }
+
+      .ifc-benefit-item-name {
+        width: 40%;
+        padding-left: 10px;
+      }
+
+      .ifc-benefit-item-time {
+        width: 20%;
+      }
+
+      .ifc-benefit-item-amount {
+        width: 15%;
+      }
+
+      .ifc-benefit-item-type {
+        width: 25%;
+      }
+
+      .ifc-benefit-item-address {
+        width: 55%;
+        padding-left: 10px;
+        display:none;
+
+        &.ifc-benefit-address-show {
+          display: block;
+        }
+      }
+
+      
+    }
+
+    .ifc-benefit-more-btn {
+      width: 100%;
+      text-align: center;
+      //padding: 3px 10px;
+      background: rgba(200,200,200,0.2);
+    }
+  }
+}
+
+.trade-more-grid {
+  .trade-more-table-head {
+    .box(@w: 100%; @h: 45px; @lh: 45px; @bg: rgba(166,166,166,0.1));
+
+    li {
+      float:left;
+      .text(@fontSize: 1.2rem; @color: #fff;);
+    }
+
+    .trade-more-table-title-type {
+      //width: 15%;
+      text-align: center;
+    }
+
+    .trade-more-table-title-address {
+      width: 55%;
+      text-align: left;
+      padding-left:10px;
+    }
+
+    .trade-more-table-title-time {
+      width: 30%;
+      text-align: left;
+    }
+
+    .trade-more-table-title-amount {
+      width: 15%
+    }
+  }
+
+  .trade-more-item {
+    .box(@w: 100%; @h: 40px; @lh: 40px; @m: 8px 0; @bg: rgba(100,100,100,0.1));
+    position: relative;
+    transition: height 0.5s ease;
+
+    div {
+      float: left;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: thin;
+    }
+
+    .trade-more-item-type {
+      width: 15%;
+      text-align: center;
+      font-weight: 200;
+    }
+
+    .trade-more-item-address {
+      width: 85%;
+      font-size: 1.2rem;
+      padding-left:10px;
+
+
+      &:after {
+        content: '〉';
+        font-family:"宋体";
+        font-size:1.2rem;
+        float:right;
+        margin-top:2px;
+        margin-right: 1rem;
+      }
+    }
+
+    .trade-more-amount {
+      width: 15%;
+    }
+
+    .trade-more-time {
+      height: 0px;
+      bottom: 40px;
+      //line-height:30px;
+      width: 70%;
+      text-align: left;
+      padding-left: 10px;
+      box-sizing: border-box;
+      font-size: 1.1rem;
+      //display: inline;
+      position: absolute;
+      opacity: 0;
+      color: #ccc;
+      transition: opacity 0.6s ease;
+
+      /*&.trade-more-time-show {
+      display: block;
+      opacity: 1;
+      height: 30px;
+      }*/
+    }
+
+    .trade-more-fee {
+      bottom: 40px;
+      width: 30%;
+      left: 70%;
+      height: 0px;
+      text-align: center;
+      padding-left: 10px;
+      padding-right: 10px;
+      box-sizing: border-box;
+      font-size: 1.1rem;
+      //display: inline;
+      position: absolute;
+      opacity: 0;
+      color: #ccc;
+      transition: opacity 0.6s ease;
+    }
+
+    &.trade-more-show-time {
+      height: 80px;
+
+      .trade-more-time {
+        //display: block;
+        bottom: 10px;
+        opacity: 1;
+        height: 30px;
+      }
+
+      .trade-more-fee {
+        bottom: 10px;
+        opacity: 1;
+        height: 30px;
+      }
+    }
+  }
+
+  .trade-more-page {
+    .box(@w: 100%; @h: 40px; @lh: 40px; @bg: rgba(100,100,100,0.1));
+    margin-top: 5px;
+    position: relative;
+    text-align:center;
+
+    .trade-more-page-prev {
+      width: 40%;
+      float:left;
+      color: #fff;
+      box-sizing: border-box;
+    }
+
+    .trade-more-page-show {
+      width: 20%;
+      text-align: center;
+      color: #fff;
+      background:rgba(200,200,200,0.1);
+      float:left;
+    }
+
+    .trade-more-page-next {
+      width: 40%;
+      float:right;
+      color: #fff;
+    }
+  }
+}
+
+.benefit-more-grid {
+  
+  .benefit-more-table-head {
+    .box(@w: 100%; @h: 45px; @lh: 45px; @bg: rgba(166,166,166,0.1));
+
+    li {
+      float:left;
+      .text(@fontSize: 1.3rem; @color: #fff;);
+    }
+
+    .benefit-more-table-title-name {
+      padding-left: 10px;
+      width: 25%;
+    }
+
+    .benefit-more-table-title-address {
+      width: 15%;
+    }
+
+    .benefit-more-table-title-time {
+      width: 20%;
+    }
+
+    .benefit-more-table-title-amount {
+      width: 15%;
+    }
+
+    .benefit-more-table-title-type {
+      width: 25%;
+    }
+  }
+
+  .benefit-more-table {
+    overflow-y: scroll;
+
+    .benefit-more-item {
+      .box(@w: 100%; @h: 40px; @lh: 40px; @m: 8px 0; @bg: rgba(100,100,100,0.1));
+      position: relative;
+      transition: height 0.5s ease;
+
+      div {
+        float:left;
+        color: #fff;
+        font-size: 1.2rem;
+      }
+
+      .benefit-more-item-name {
+        width: 40%;
+        padding-left: 10px;
+      }
+
+      .benefit-more-item-time {
+        width: 20%;
+      }
+
+      .benefit-more-item-amount {
+        width: 15%;
+      }
+
+      .benefit-more-item-type {
+        width: 25%;
+      }
+
+      .benefit-more-item-address {
+        width: 55%;
+        padding-left: 10px;
+        display:none;
+
+        &.benefit-more-address-show {
+          display: block;
+        }
+      }
+
+      
+    }
+  }
+
+  .benefit-more-page {
+    .box(@w: 100%; @h: 40px; @lh: 40px; @bg: rgba(100,100,100,0.1));
+    margin-top: 5px;
+    position: relative;
+    text-align:center;
+
+    .benefit-more-page-prev {
+      width: 40%;
+      float:left;
+      color: #fff;
+      box-sizing: border-box;
+    }
+
+    .benefit-more-page-show {
+      width: 20%;
+      text-align: center;
+      color: #fff;
+      background:rgba(200,200,200,0.1);
+      float:left;
+    }
+
+    .benefit-more-page-next {
+      width: 40%;
+      float:right;
+      color: #fff;
     }
   }
 }

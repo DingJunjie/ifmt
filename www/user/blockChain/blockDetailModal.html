@@ -1,4 +1,4 @@
-<ion-view view-title="区块9039" class="usual-background animated" hide-tabs="true">
+<ion-view view-title="区块{{blockDetail.height}}" class="usual-background animated" hide-tabs="true" ng-controller="blockDetailCtrl">
   <ion-nav-bar class="navbar-bg bar-transparent">
     <ion-nav-buttons side="left">
       <a href="#/blockChain" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
@@ -35,42 +35,42 @@
 
         <li class="block-detail-item">
           <span class="block-detail-name">日期</span>
-          <span class="block-detail-value">2017-09-09 11:11:11</span>
+          <span class="block-detail-value">{{blockDetail.timestamp | timestampFilter}}</span>
         </li>
 
         <li class="block-detail-item">
           <span class="block-detail-name">确认数</span>
-          <span class="block-detail-value">1</span>
+          <span class="block-detail-value">{{blockDetail.confirmations}}</span>
         </li>
 
         <li class="block-detail-item">
           <span class="block-detail-name">交易信息</span>
-          <span class="block-detail-value">{{blockDetail}}</span>
+          <span class="block-detail-value">{{blockDetail.numberOfTransactions}}</span>
         </li>
 
         <li class="block-detail-item-divide"></li>
 
         <li class="block-detail-item">
           <span class="block-detail-name">区块ID</span>
-          <span class="block-detail-value block-detail-code">skadjf12j914j2598j1513i4j912j412j3n12h12ic3i1920ix1902i12kcj3kl12j</span>
+          <span class="block-detail-value block-detail-code">{{blockDetail.id}}</span>
         </li>
 
         <li class="block-detail-item">
           <span class="block-detail-name">区块地址</span>
-          <span class="block-detail-value block-detail-code">sadfioj13401931092j412j512k4j12312j3</span>
+          <span class="block-detail-value block-detail-code">{{blockDetail.blockSignature}}</span>
         </li>
 
         <li class="block-detail-item-divide"></li>
 
         <li class="block-detail-item">
           <span class="block-detail-name">前一个块</span>
-          <span class="block-detail-value">1146</span>
+          <span class="block-detail-value">{{blockDetail.height - 1}}</span>
         </li>
 
-        <li class="block-detail-item">
+        <!-- <li class="block-detail-item">
           <span class="block-detail-name">后一个块</span>
           <span class="block-detail-value">1144</span>
-        </li>
+        </li> -->
       </ul>
     </div>
   </ion-content>

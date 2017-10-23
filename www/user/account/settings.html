@@ -1,4 +1,4 @@
-<ion-view view-title="设置" class="usual-background animated" hide-tabs="true">
+<ion-view view-title="设置" class="usual-background animated" hide-tabs="true" ng-controller="settingsCtrl">
     <ion-nav-bar class="navbar-bg bar-transparent">
         <ion-nav-buttons side="left">
             <a ui-sref="tabs.account" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
@@ -13,20 +13,20 @@
       <div class="setting-container">
         <div class="settings-option">
             <span>自动挖矿</span>
-            <label class="toggle toggle-assertive pull-right">
-                <input type="checkbox">
+            <label class="toggle toggle-assertive pull-right" ng-click="switchDig()">
+                <input type="checkbox" ng-model="settingOpt.autoDigSwitch">
                 <div class="track">
                     <div class="handle"></div>
                 </div>
             </label>
         </div>
         <div class="settings-option-tip">
-          <span>打开应用时，自动挖矿；当挖矿手续费超过1.009IFMT时将关闭自动挖矿。</span>
+          <span>打开应用时，自动挖矿；当挖矿手续费超过{{maxFee*100000000 | noEulerNumberFilter}}IFMT时将关闭自动挖矿。</span>
         </div>
 
         <div class="settings-option">
             <span>手续费</span>
-            <a href="#/account/fee"><span>0.002<small class="setting-fee-unit">IFMT</small><i class="icon-right ion-chevron-right"></i></span></a>
+            <a href="#/account/fee"><span>{{fee*100000000 | noEulerNumberFilter}}<small class="setting-fee-unit">IFMT</small><i class="icon-right ion-chevron-right"></i></span></a>
         </div>
         <div class="settings-option-tip">
           <span>设置挖矿、收付币、修改个人信息的手续费。</span>
@@ -34,10 +34,18 @@
 
         <div class="settings-option">
             <a href="#/account/maxFee"><span>手续费上限</span>
-            <span>1.009<small class="setting-fee-unit">IFMT</small><i class="icon-right ion-chevron-right"></i></span></a>
+            <span>{{maxFee}}<small class="setting-fee-unit">IFMT</small><i class="icon-right ion-chevron-right"></i></span></a>
         </div>
         <div class="settings-option-tip">
           <span>设置挖矿、收付币、修改个人信息的手续费的最高上限。</span>
+        </div>
+
+        <div class="settings-option">
+            <a href="#/account/secondSignature"><span>设置支付密码</span>
+            <span><i class="icon-right ion-chevron-right"></i></span></a>
+        </div>
+        <div class="settings-option-tip">
+          <span>设置支付时需要的密码，只能设置一次，无法重置或修改。</span>
         </div>
 
         <div class="settings-option">
