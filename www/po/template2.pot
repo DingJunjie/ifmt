@@ -1,0 +1,377 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: www/user/account/account.html:55
+msgid "About us"
+msgstr ""
+
+#: www/user/menus.html:15
+msgid "Account"
+msgstr ""
+
+#: www/user/home/home.html:29
+msgid "Account Earnings"
+msgstr ""
+
+#: www/user/account/nameSetting.html:15
+msgid "Account already has a username"
+msgstr ""
+
+#: www/user/home/home.html:42
+msgid "Account name or Address"
+msgstr ""
+
+#: www/user/account/contact.html:8
+msgid "Add"
+msgstr ""
+
+#: www/user/account/contactAdd.html:22
+msgid "Add as Contact"
+msgstr ""
+
+#: www/user/account/contactAdd.html:1
+#: www/user/pay/pay.html:57
+msgid "Add contact person"
+msgstr ""
+
+#: www/user/account/secondSignature.html:14
+#: www/user/account/settings.html:44
+msgid "Add second passphrase"
+msgstr ""
+
+#: www/user/account/contactAdd.html:15
+#: www/user/account/contactUser.html:22
+#: www/user/account/userSettings.html:27
+#: www/user/blockChain/blockDetailModal.html:59
+#: www/user/home/benefitMore.html:19
+#: www/user/home/home.html:66
+#: www/user/home/tradeMore.html:19
+msgid "Address"
+msgstr ""
+
+#: www/user/home/benefitMore.html:22
+#: www/user/home/home.html:44
+#: www/user/home/home.html:69
+#: www/user/home/tradeMore.html:21
+msgid "Amount"
+msgstr ""
+
+#: www/user/account/settings.html:15
+msgid "Auto-Forging"
+msgstr ""
+
+#: www/user/account/contactTransfer.html:20
+#: www/user/account/contactUser.html:37
+#: www/user/pay/pay.html:79
+msgid "Available Quantity"
+msgstr ""
+
+#: www/user/account/nameSetting.html:4
+#: www/user/account/secondSignature.html:4
+msgid "Back"
+msgstr ""
+
+#: www/user/blockChain/blockDetailModal.html:54
+msgid "Block ID"
+msgstr ""
+
+#: www/user/blockChain/blockChain.html:8
+#: www/user/menus.html:7
+msgid "Blockchain"
+msgstr ""
+
+#: www/user/account/contactTransfer.html:4
+#: www/user/account/feeConfig.html:4
+#: www/user/account/feeMaxConfig.html:4
+msgid "CANCEL"
+msgstr ""
+
+#: www/user/blockChain/blockDetailModal.html:42
+#: www/user/blockChain/tradeDetailModal.html:25
+msgid "CONFIRMATIONS"
+msgstr ""
+
+#: www/user/account/contactTransfer.html:19
+#: www/user/account/nameSetting.html:18
+msgid "Click to set"
+msgstr ""
+
+#: www/user/pay/pay.html:130
+msgid "Copy Address"
+msgstr ""
+
+#: www/user/account/feeConfig.html:1
+msgid "Default Fee"
+msgstr ""
+
+#: www/user/account/settings.html:24
+msgid "Enable Auto-Forging on this account"
+msgstr ""
+
+#: www/user/account/contactAdd.html:18
+msgid "Enter address or scan address barcode"
+msgstr ""
+
+#: www/user/pay/pay.html:61
+#: www/user/pay/pay.html:71
+msgid "Enter address or username"
+msgstr ""
+
+#: www/user/account/contactUser.html:40
+#: www/user/account/settings.html:28
+#: www/user/blockChain/blockChain.html:150
+#: www/user/blockChain/blockChain.html:84
+#: www/user/blockChain/blockDetailModal.html:27
+#: www/user/blockChain/blockMore.html:16
+#: www/user/blockChain/tradeDetailModal.html:29
+msgid "FEE"
+msgstr ""
+
+#: www/user/account/settings.html:48
+msgid "Further protect your account with an optional second passphrase! Please allow some time for the changes to take effect."
+msgstr ""
+
+#: www/user/blockChain/blockChain.html:82
+#: www/user/blockChain/blockDetailModal.html:17
+#: www/user/blockChain/blockMore.html:14
+msgid "Height"
+msgstr ""
+
+#: www/user/blockChain/blockChain.html:150
+msgid "Include"
+msgstr ""
+
+#: www/user/blockChain/blockMore.html:35
+#: www/user/home/benefitMore.html:38
+#: www/user/home/tradeMore.html:38
+msgid "Last Page"
+msgstr ""
+
+#: www/user/blockChain/blockChain.html:103
+msgid "Lastest Blocks"
+msgstr ""
+
+#: www/user/home/home.html:26
+msgid "Latest Transactions"
+msgstr ""
+
+#: www/user/account/settings.html:54
+msgid "Logout"
+msgstr ""
+
+#: www/user/blockChain/blockChain.html:119
+#: www/user/home/home.html:56
+#: www/user/home/home.html:83
+msgid "More"
+msgstr ""
+
+#: www/user/pay/pay.html:130
+msgid "My Address"
+msgstr ""
+
+#: www/user/account/account.html:43
+#: www/user/account/contact.html:1
+msgid "My Contacts"
+msgstr ""
+
+#: www/user/account/userSettings.html:1
+msgid "My Profile"
+msgstr ""
+
+#: www/user/pay/pay.html:139
+msgid "My Two-Dimensional Code"
+msgstr ""
+
+#: www/user/home/benefitMore.html:18
+#: www/user/home/home.html:65
+msgid "Name"
+msgstr ""
+
+#: www/user/blockChain/blockMore.html:37
+#: www/user/home/benefitMore.html:40
+#: www/user/home/tradeMore.html:40
+msgid "Next Page"
+msgstr ""
+
+#: www/user/menus.html:11
+msgid "Payment"
+msgstr ""
+
+#: www/user/account/feeConfig.html:14
+msgid "Please enter transaction fee: >= 0.00000001"
+msgstr ""
+
+#: www/user/account/contactTransfer.html:16
+#: www/user/account/contactUser.html:34
+#: www/user/pay/pay.html:76
+msgid "Please enter transfer amount"
+msgstr ""
+
+#: www/user/account/feeMaxConfig.html:14
+msgid "Please enter upper limit fee: > default fee"
+msgstr ""
+
+#: www/user/account/nameSetting.html:14
+msgid "Please set your username."
+msgstr ""
+
+#: www/user/blockChain/blockDetailModal.html:66
+msgid "Previous Block"
+msgstr ""
+
+#: www/user/blockChain/blockChain.html:60
+msgid "Progress"
+msgstr ""
+
+#: www/user/account/account.html:29
+msgid "Receive IBT"
+msgstr ""
+
+#: www/user/blockChain/tradeDetailModal.html:42
+msgid "Recipient"
+msgstr ""
+
+#: www/user/home/home.html:22
+msgid "Remaining Quantity"
+msgstr ""
+
+#: www/user/account/secondSignature.html:17
+msgid "Repeat second passphrase"
+msgstr ""
+
+#: www/user/blockChain/blockChain.html:85
+msgid "Reward"
+msgstr ""
+
+#: www/user/account/feeConfig.html:8
+#: www/user/account/feeMaxConfig.html:8
+#: www/user/account/nameSetting.html:8
+#: www/user/account/secondSignature.html:8
+msgid "Save"
+msgstr ""
+
+#: www/user/pay/pay.html:53
+msgid "Scan barcode add address"
+msgstr ""
+
+#: www/user/pay/pay.html:142
+msgid "Scan barcode to add my address"
+msgstr ""
+
+#: www/user/blockChain/tradeDetailModal.html:38
+msgid "Sender"
+msgstr ""
+
+#: www/user/account/settings.html:32
+msgid "Set your default fee in Auto-Forging, modify profile, payment or another function"
+msgstr ""
+
+#: www/user/account/settings.html:40
+msgid "Set your upper limit of fee in Auto-Forging, modify profile, payment or another function"
+msgstr ""
+
+#: www/user/account/account.html:62
+#: www/user/account/settings.html:1
+msgid "Settings"
+msgstr ""
+
+#: www/user/blockChain/blockChain.html:7
+msgid "Summary"
+msgstr ""
+
+#: www/user/account/feeConfig.html:17
+msgid "The fee must greater or equal than 0.00000001 and less than max-fee in settings"
+msgstr ""
+
+#: www/user/account/feeMaxConfig.html:17
+msgid "The upper limit of fee must greater than default fee and less than all your available IBT"
+msgstr ""
+
+#: www/user/blockChain/blockChain.html:86
+#: www/user/blockChain/blockDetailModal.html:37
+#: www/user/blockChain/blockMore.html:18
+#: www/user/home/benefitMore.html:20
+#: www/user/home/home.html:43
+#: www/user/home/home.html:67
+#: www/user/home/tradeMore.html:20
+msgid "Time"
+msgstr ""
+
+#: www/user/blockChain/blockChain.html:83
+#: www/user/blockChain/blockDetailModal.html:22
+#: www/user/blockChain/blockMore.html:15
+msgid "Total"
+msgstr ""
+
+#: www/user/blockChain/blockChain.html:132
+#: www/user/blockChain/tradeDetailModal.html:21
+msgid "TradeNumber"
+msgstr ""
+
+#: www/user/blockChain/blockChain.html:9
+msgid "Transaction"
+msgstr ""
+
+#: www/user/blockChain/tradeDetailModal.html:33
+msgid "Transaction Date"
+msgstr ""
+
+#: www/user/blockChain/tradeDetailModal.html:17
+msgid "Transaction ID"
+msgstr ""
+
+#: www/user/blockChain/blockDetailModal.html:47
+msgid "Transactions"
+msgstr ""
+
+#: www/user/account/contactTransfer.html:27
+#: www/user/account/contactUser.html:47
+#: www/user/pay/pay.html:93
+msgid "Transfer"
+msgstr ""
+
+#: www/user/account/account.html:33
+msgid "Transfer IBT"
+msgstr ""
+
+#: www/user/home/benefitMore.html:21
+#: www/user/home/home.html:68
+msgid "Type"
+msgstr ""
+
+#: www/user/account/feeMaxConfig.html:1
+#: www/user/account/settings.html:36
+msgid "Upper limit of Fee"
+msgstr ""
+
+#: www/user/account/contactTransfer.html:19
+#: www/user/account/nameSetting.html:18
+msgid "Use your default fee"
+msgstr ""
+
+#: www/user/account/contactUser.html:19
+#: www/user/account/nameSetting.html:1
+#: www/user/account/userSettings.html:22
+msgid "Username"
+msgstr ""
+
+#: www/user/account/account.html:14
+msgid "Welcome back,"
+msgstr ""
+
+#: www/user/account/account.html:15
+msgid "Welcome, click to edit profile"
+msgstr ""
+
+#: www/user/account/secondSignature.html:15
+#: www/user/account/secondSignature.html:18
+msgid "You already has a second passphrase"
+msgstr ""
+
+#: www/user/blockChain/blockDetailModal.html:32
+#: www/user/blockChain/blockMore.html:17
+msgid "reward"
+msgstr ""

@@ -14,56 +14,56 @@
     <div class="block-detail-container">
       <ul class="block-detail-list">
         <li class="block-detail-item">
-          <span class="block-detail-name">高度</span>
+          <span class="block-detail-name">{{'Height' | translate}}</span>
           <span class="block-detail-value">{{blockDetail.height}}</span>
         </li>
 
         <li class="block-detail-item">
-          <span class="block-detail-name">金额</span>
+          <span class="block-detail-name">{{'Total' | translate}}</span>
           <span class="block-detail-value">{{blockDetail.reward/100000000}}</span>
         </li>
 
         <li class="block-detail-item">
-          <span class="block-detail-name">费用</span>
+          <span class="block-detail-name">{{'FEE' | translate}}</span>
           <span class="block-detail-value">{{blockDetail.totalFee/100000000}}</span>
         </li>
 
         <li class="block-detail-item">
-          <span class="block-detail-name">奖励</span>
+          <span class="block-detail-name">{{'reward' | translate}}</span>
           <span class="block-detail-value">{{blockDetail.totalForged/100000000}}</span>
         </li>
 
         <li class="block-detail-item">
-          <span class="block-detail-name">日期</span>
+          <span class="block-detail-name">{{'Time' | translate}}</span>
           <span class="block-detail-value">{{blockDetail.timestamp | timestampFilter}}</span>
         </li>
 
         <li class="block-detail-item">
-          <span class="block-detail-name">确认数</span>
+          <span class="block-detail-name">{{'CONFIRMATIONS' | translate}}</span>
           <span class="block-detail-value">{{blockDetail.confirmations}}</span>
         </li>
 
         <li class="block-detail-item">
-          <span class="block-detail-name">交易信息</span>
+          <span class="block-detail-name">{{'Transactions' | translate}}</span>
           <span class="block-detail-value">{{blockDetail.numberOfTransactions}}</span>
         </li>
 
         <li class="block-detail-item-divide"></li>
 
         <li class="block-detail-item">
-          <span class="block-detail-name">区块ID</span>
+          <span class="block-detail-name">{{'Block ID' | translate}}</span>
           <span class="block-detail-value block-detail-code">{{blockDetail.id}}</span>
         </li>
 
         <li class="block-detail-item">
-          <span class="block-detail-name">区块地址</span>
+          <span class="block-detail-name">{{'Address' | translate}}</span>
           <span class="block-detail-value block-detail-code">{{blockDetail.blockSignature}}</span>
         </li>
 
         <li class="block-detail-item-divide"></li>
 
         <li class="block-detail-item">
-          <span class="block-detail-name">前一个块</span>
+          <span class="block-detail-name">{{'Previous Block' | translate}}</span>
           <span class="block-detail-value">{{blockDetail.height - 1}}</span>
         </li>
 

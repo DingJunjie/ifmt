@@ -1,7 +1,7 @@
 <ion-view view-title="" class="usual-background animated" hide-tabs="true" ng-controller="contactTransferCtrl">
   <ion-nav-bar class="navbar-bg bar-transparent">
     <ion-nav-buttons side="left">
-      <a href="#/account/contactUser" class="button button-icon" nav-direction="back">取消</a>
+      <a href="#/account/contactUser" class="button button-icon" nav-direction="back">{{'CANCEL' | translate}}</a>
       <!--javascript:history.back(-1)-->
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
@@ -13,18 +13,18 @@
     <div class="contact-transfer-container">
       <div class="contact-transfer-amount-container">
         <div class="contact-transfer-amount-content">
-          <input type="number" class="contact-transfer-amount-input" ng-model="contact.contactAmount" placeholder="请输入转账金额" />
-          <span class="contact-transfer-amount-unit">IFMT</span>
+          <input type="number" class="contact-transfer-amount-input" ng-model="contact.contactAmount" placeholder="{{'Please enter transfer amount' | translate}}" />
+          <span class="contact-transfer-amount-unit">IBT</span>
         </div>
-        <span class="contact-transfer-fee-container">收取{{fee*100000000 | noEulerNumberFilter}}手续费<a class="contact-transfer-fee-setting" href="#/account/fee">点击设置</a></span>
-        <div class="contact-transfer-fee-total">可用数量：12.09</div>
+        <span class="contact-transfer-fee-container">{{'Use your default fee' | translate}} :{{fee*100000000 | noEulerNumberFilter}}<a class="contact-transfer-fee-setting" href="#/account/fee">{{'Click to set' | translate}}</a></span>
+        <div class="contact-transfer-fee-total">{{'Available Quantity' | translate}}：{{balance}}</div>
       </div>
 
       <!-- <div class="contact-transfer-remark-container">
         <input type="text" class="contact-transfer-remark-input" placeholder="添加备注（20字以内）" />
       </div> -->
 
-      <div class="contact-transfer-submit-btn" ng-click="submitTransfer()">确认支付</div>
+      <div class="contact-transfer-submit-btn" ng-click="submitTransfer()">{{'Transfer' | translate}}</div>
     </div>
   </ion-content>
 </ion-view>

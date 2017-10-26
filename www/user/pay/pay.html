@@ -50,31 +50,39 @@
             <div class="pay-options">
               <div class="pay-option" ng-click="tradePara.switch = 2; addAttachment();" ng-class="tradePara.switch === 3 ? '' : (tradePara.switch === 0 ? 'pay-focus' : 'pay-blur')">
                 <img src="../images/ifmt/pay/scan.png" alt="" class="pay-option-image">
-                <span>扫码添加地址</span>
+                <span>{{'Scan barcode add address' | translate}}</span>
               </div>
               <a href="#/account/contact"><div class="pay-option" ng-click="tradePara.switch = 2; toContact();" ng-class="tradePara.switch === 3 ? '' : (tradePara.switch === 1 ? 'pay-focus' : 'pay-blur')">
                 <img src="../images/ifmt/pay/human.png" alt="" class="pay-option-image">
-                <span>添加联系人</span>
+                <span>{{'Add contact person' | translate}}</span>
               </div></a>
               <div class="pay-option" ng-click="tradePara.switch = 2;" ng-class="tradePara.switch === 3 ? '' : (tradePara.switch === 2 ? 'pay-focus' : 'pay-blur')">
                 <img src="../images/ifmt/pay/input.png" alt="" class="pay-option-image-input">
+                <span>{{'Enter address or username' | translate}}</span>
               </div>
 
               <div class="pay-container" ng-if="tradePara.switch !== 3">
                 <div class="add-collector-container padding">
+                  <div class="add-collector-address-container" ng-show="toUser">
+                    <input type="text" class="add-collector-address-input" placeholder="输入对方用户名" ng-model="toUser" />
+                  </div>
+
                   <div class="add-collector-address-container">
-                    <input type="text" class="add-collector-address-input" placeholder="输入对方地址" ng-model="to" />
+                    <input type="text" class="add-collector-address-input" placeholder="{{'Enter address or username' | translate}}" ng-model="to" />
                   </div>
 
                   <div class="add-collector-amount-container">
                     <div class="add-collector-amount-input-container">
-                      <input type="number" class="add-collector-amount-input"  ng-model="tradePara.amountDest" placeholder="请设置转账金额" />
-                      <span class="add-collector-amount-unit">IFMT</span>
+                      <input type="number" class="add-collector-amount-input"  ng-model="tradePara.amountDest" placeholder="{{'Please enter transfer amount' | translate}}" />
+                      <span class="add-collector-amount-unit">IBT</span>
                     </div>
-                    <div class="add-collector-fee-container">
-                      收取{{fee*100000000 | noEulerNumberFilter}}手续费<a class="add-collector-fee-config" href="#/account/fee">点击设置</a>
+                    <span class="add-collector-amount-all">{{'Available Quantity' | translate}}: {{balance}}</span>
+                  </div>
+
+                  <div class="add-collector-fee-container">
+                    <div class="add-collector-fee-input-container">
+                      <input type="number" class="add-collector-fee-input" ng-model="tradePara.fee" placeholder="{{fee * 100000000 | noEulerNumberFilter}}" />
                     </div>
-                    <span class="add-collector-amount-all">剩余数量: 12.09</span>
                   </div>
 
                   <!-- <div class="add-collector-remark-container">
@@ -82,7 +90,7 @@
                   </div> -->
 
                   <div class="add-collector-submit-btn" ng-click="payForContact()">
-                    确认支付
+                    {{'Transfer' | translate}}
                   </div>
                 </div>
                 
@@ -117,26 +125,36 @@
             </div>
           </ion-slide-page> -->
           <ion-slide-page class="swiper-slide pay-slide-3">
+            <div class="pay-address-container">
+              <div class="pay-address-group">
+                <div class="pay-address-title">{{'My Address' | translate}}<a class="pay-address-copy">{{'Copy Address' | translate}}</a></div>
+                <!-- <div class="pay-address-input">{{address}}</div> -->
+                <textarea type="text" class="pay-address-input" ng-model="address" disabled></textarea>
+              </div>
+            </div>
+
             <div class="pay-qrcode-container padding">
               <div class="pay-qrcode-outer">
                 <div class="pay-qrcode-title">
-                  <p class="pay-qrcode-title-content">个人收币码</p>
+                  <p class="pay-qrcode-title-content">{{'My Two-Dimensional Code' | translate}}</p>
                 </div>
                 <div class="pay-qrcode-content">
-                  <span class="pay-qrcode-tip">扫一扫，向我付币</span>
+                  <span class="pay-qrcode-tip">{{'Scan barcode to add my address' | translate}}</span>
                   <div class="pay-qrcode-img-container">
                     <!-- <img src="" alt="" class="pay-qrcode-img"> -->
                     <qrcode version="9" error-correction-level="L" size="180"
                                                     data="{{tradePara.address}}"
                                                     download></qrcode>
                   </div>
-                  <div class="pay-qrcode-operate-group">
+                  <!-- <div class="pay-qrcode-operate-group">
                     <div class="pay-qrcode-operate-setting">设置金额</div>
                     <div class="pay-qrcode-operate-record">收币记录</div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
+
+            
           </ion-slide-page>
       </ion-slides>
 

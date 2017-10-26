@@ -31,6 +31,8 @@ require('./js/swiper.jquery.min.js');
 require("./dist/js/socket.io.js");
 require("./js/commonAPI.js");
 require("./js/angular-qrcode.min.js");
+require("./node_modules/angular-gettext/dist/angular-gettext.min.js");
+
 window.qrcode = require("./js/qrcode.js");
 window.jsQR = require("jsqr");
 
@@ -70,6 +72,7 @@ var app = angular.module('IfmCoinApp', [
     'progressCircle',
     'progressWave',
     'chainSwiper',
+    'gettext',
     // 'monospaced.qrcode',
     // 'ui.grid',
 ]);
@@ -98,9 +101,10 @@ angular.module('IfmCoinApp').run(function ($ionicPlatform) {
 
 
 
-angular.module('IfmCoinApp').controller('loginController', ['$rootScope', '$scope',  '$timeout', '$interval', '$http', 'userService', '$ionicPopup', '$ionicPlatform', '$location', '$anchorScroll', '$cordovaImagePicker', '$cordovaCamera', '$cordovaGeolocation', '$cordovaNetwork', '$cordovaActionSheet', '$cordovaContacts','$ionicSlideBoxDelegate','$ionicTabsDelegate', function ($rootScope, $scope, $timeout, $interval, $http, userService, $ionicPopup, $ionicPlatform, $location, $anchorScroll,$cordovaImagePicker,$cordovaCamera,$cordovaGeolocation,$cordovaNetwork,$cordovaActionSheet,$cordovaContacts,blockChainService, $ionicSlideBoxDelegate,$ionicTabsDelegate) {
+angular.module('IfmCoinApp').controller('loginController', ['$rootScope', '$scope',  '$timeout', '$interval', '$http', 'userService', '$ionicPopup', '$ionicPlatform', '$location', '$anchorScroll', '$cordovaImagePicker', '$cordovaCamera', '$cordovaGeolocation', '$cordovaNetwork', '$cordovaActionSheet', '$cordovaContacts','$ionicSlideBoxDelegate','$ionicTabsDelegate', 'gettext', 'gettextCatalog', 'languageService', function ($rootScope, $scope, $timeout, $interval, $http, userService, $ionicPopup, $ionicPlatform, $location, $anchorScroll,$cordovaImagePicker,$cordovaCamera,$cordovaGeolocation,$cordovaNetwork,$cordovaActionSheet,$cordovaContacts,blockChainService, $ionicSlideBoxDelegate,$ionicTabsDelegate, gettext, gettextCatalog, languageService) {
     window.$rootScope = $rootScope;//用来全局控制动态加载效果
     window.$scope = $scope;
+    //console.log(gettext);
 
     $scope.gridContentHeight = ($(document).height() - 200);
     $scope.fullHeight = $(document).height();
@@ -243,8 +247,9 @@ angular.module('IfmCoinApp').controller('loginController', ['$rootScope', '$scop
       document.querySelectorAll('.login-pwd-content')[0].select();
       document.execCommand("Copy");
       $ionicPopup.alert({
-        title: '保存成功',
-        template: '<h4 style="text-align: center">主密码已保存至剪贴板</h4>'
+        title: gettext.getString('Successfully saved'),
+        //The passphrase has saved in clipboard
+        template: '<h4 style="text-align: center">'+gettext.getString('The passphrase has saved in clipboard')+'</h4>'
       });
     }
 
@@ -257,6 +262,16 @@ angular.module('IfmCoinApp').controller('loginController', ['$rootScope', '$scop
     $scope.returnPwd  = function() {
       $scope.repwd = false;
     }
+
+    /**
+     * 切换语言
+     */
+    $scope.loginOpt.lang = window.localStorage.language ? window.localStorage.language : 'zh';
+    $scope.changeLanguage = function(val) {
+      window.localStorage.language = val;
+      $rootScope.changeLang(val);
+    }
+    $scope.changeLanguage($scope.loginOpt.lang);
 
     //生成密钥
     $scope.generatePassphrase = function () {
@@ -282,6 +297,7 @@ angular.module('IfmCoinApp').controller('loginController', ['$rootScope', '$scop
                     }
 
                     putOnce(true, '/api/accounts/open/', req, function(data) {
+                      console.log(data);
                       window.localStorage.userData = JSON.stringify(data);
                       window.localStorage.pass = $scope.loginOpt.secret;
                       if($scope.loginOpt.passRemembered === true) {
@@ -290,21 +306,21 @@ angular.module('IfmCoinApp').controller('loginController', ['$rootScope', '$scop
                         window.localStorage.removeItem('pass');
                         window.localStorage.remember = '';
                       }
+                      window.localStorage.language = $scope.loginOpt.lang;
                       // walletDB.insertData("account", {
                         // "pass" : $scope.loginOpt.secret,
                         // "remember" : $scope.loginOpt.passRemembered
                       // });
                       window.location.href = "./user/index.html#/home";
                     }, function(err) {
-                      console.log(err);
                       $ionicPopup.alert({
-                        title : '<div>温馨提示</div>',
-                        template: '<div class="text-center">' + err + '</div>'
+                        title : '<div>'+gettext.getString("Tips")+'</div>',
+                        template: '<div class="text-center">' + gettext.getString("service error, please try it again") + '</div>'
                       });
                        // alert(err.error.message);
                     });
                 }else {
-                   throw ("主密码错误，请重新输入。");
+                   throw (gettext.getString("Invalid secret"));
                 }
             }else if($scope.loginOpt.rePassphrase && $scope.reg === true) {
                 var flag = ifmjs.Mnemonic.isValid($scope.loginOpt.rePassphrase);
@@ -322,23 +338,22 @@ angular.module('IfmCoinApp').controller('loginController', ['$rootScope', '$scop
                     }
                     
                   }, function(err) {
-                    console.log(JSON.stringify(err));
                     $ionicPopup.alert({
-                      title : '<div>温馨提示</div>',
+                      title : '<div>'+gettext.getString("Tips")+'</div>',
                       template: '<div class="text-center">' + err + '</div>'
                     });
                     // alert(err.error.message);
                   });
                 }else {
-                  throw ("主密码错误，请重新输入。");
+                  throw (gettext.getString("The passphrase entered doesn't match with the one generated before. Please go back and generate a new one."));
                 }
             }else {
-                throw ("请输入正确的主密码。");
+                throw (gettext.getString("Invalid secret"));
             }
             // window.location.href = "./user/index.html#/home";
         }catch (e) {
             $ionicPopup.alert({
-                title : '<div>温馨提示</div>',
+                title : '<div>'+gettext.getString("Tips")+'</div>',
                 template: '<div class="text-center">' + e + '</div>'
             });
         }
@@ -346,7 +361,9 @@ angular.module('IfmCoinApp').controller('loginController', ['$rootScope', '$scop
 
 
 
-}])
+}]).run(function(languageService) {
+  languageService();
+})
 
 
 require('./js/pinyin.js');
@@ -370,3 +387,5 @@ require('./js/service/runtimeDataService.js');
 require('./js/filter/numberFilter.js');
 require('./js/service/httpAjaxService.js');
 require('./js/filter/balanceTypeFilter.js');
+require('./js/service/languageService.js');
+require("./js/translations.js");

@@ -193,7 +193,7 @@
 
   .settings-exit-container {
     width: 100%;
-    margin-top: 100px;
+    margin-top: 40px;
     height:50px;
 
     .settings-exit-btn {
@@ -405,7 +405,7 @@ user-settings
 
     .contact-user-address-container {
       .contact-user-address-title {
-        .text-box(@w: auto; @c: #fff; @fontSize: 1.3rem;);
+        .text-box(@w: auto; @c: #fff; @fontSize: 1.4rem;);
         text-align: center;
         letter-spacing: 2px;
       }
@@ -417,11 +417,33 @@ user-settings
       }
     }
 
+    .contact-user-transfer-btn-group {
+      width: 84%;
+      margin:0 auto;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
     .contact-user-transfer-btn {
-      .btn-gradient(@w: 40%; @h: 40px);
-      border-radius: 20px;
-      margin:2rem auto ;
-      margin-bottom: 70px;
+      .btn-gradient(@w: 50%; @h: 40px);
+      //border-radius: 20px;
+      //margin:2rem auto ;
+      margin-top: 2rem;
+      //margin-bottom: 70px;
+      float:left;
+      color: #fff;
+    }
+
+    .contact-user-transfer-record-btn {
+      width: 46%;
+      margin-left: 4%;
+      height: 40px;
+      line-height: 40px;
+      text-align:center;
+      margin-top: 2rem;
+      background: #999;
+      color: #fff;
+      float:left;
     }
   }
 
@@ -521,6 +543,8 @@ user-settings
 }
 
 .contact-transfer-container {
+  width:90%;
+  margin:0 auto;
 
   .contact-transfer-amount-container {
     .box(@w: 100%;);
@@ -535,28 +559,34 @@ user-settings
         background: none;
         height: 40px;
         width: 80%;
-        font-size: 2.4rem;
+        font-size: 1.8rem;
         font-weight:400;
         float:left;
+        color:#fff;
       }
 
       .contact-transfer-amount-unit {
         width: 20%;
         float:right;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         color: #9999ff;
         text-align: right;
       }
     }
 
     .contact-transfer-fee-container {
+      .box-sizing(@w: 94%; @h: 40px; @m: 0 3%;);
       position: relative;
-      color: #999;
-      font-size: 1.1rem;
-      top: 10px;
-      left:10px;
-      padding: 4px 10px;
-      background:rgba(155,155,155,0.2);
+      border-bottom: 1px solid #666;
+      margin-top: 30px;
+      //top: 10px;
+      //padding: 4px 10px;
+
+      .contact-transfer-fee-setting {
+        background:none;
+        color: #fff;
+        font-size: 1.8rem;
+      }
 
       &:before {
         content: '';
@@ -606,6 +636,10 @@ user-settings
     .btn-gradient(@w: 94%; @h: 40px;);
     margin: 20px 3%;
   }
+
+  .contact-user-transfer-record-btn {
+
+  }
 }
 
 /**
@@ -638,6 +672,7 @@ user-settings
       float:right;
       text-align: right;
       color: #fff;
+      width:30px;
     }
   }
 
@@ -648,7 +683,7 @@ user-settings
 }
 
 .name-setting-container {
-  .box-sizing(@w: 100%; @h: 50px; @lh: 40px; @p: 5px 10px; @bg:rgba(155,155,155,0.1); @m: 20px 0 0 0);
+  .box-sizing(@w: 100%; @h: 50px; @lh: 40px; @p: 5px 10px; @bg:rgba(155,155,155,0.1); @m: 0px 0 0 0);
 
   .name-setting-input {
     width: 90%;
@@ -679,5 +714,8 @@ user-settings
     margin: 1px 0;
     background: rgba(200,200,200,0.1);
     padding: 10px 12px;
+    color: #fff;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
   }
 }

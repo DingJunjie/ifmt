@@ -11,11 +11,11 @@
   <ion-content>
     <div class="block-more-container" style="height: {{fullHeight}}px">
       <ul class="block-more-title">
-        <li class="block-more-title-item">高度</li>
-        <li class="block-more-title-item">金额</li>
-        <li class="block-more-title-item">费用</li>
-        <li class="block-more-title-item">奖励</li>
-        <li class="block-more-title-item">时间</li>
+        <li class="block-more-title-item">{{'Height' | translate}}</li>
+        <li class="block-more-title-item">{{'Total' | translate}}</li>
+        <li class="block-more-title-item">{{'FEE' | translate}}</li>
+        <li class="block-more-title-item">{{'reward' | translate}}</li>
+        <li class="block-more-title-item">{{'Time' | translate}}</li>
       </ul>
       
       <div class="block-more-list">
@@ -32,9 +32,9 @@
 
       <ul class="block-more-page">
         <!-- <li class="block-more-page-item" ng-repeat="pg in transaction.pageArr track by $index" ng-click="getTransactionsByPage($index, 10)">{{$index+1}}</li> -->
-        <li class="block-more-page-prev" ng-hide="block.current == 0" ng-click="prevPage(10)">上一页</li>
+        <li class="block-more-page-prev" ng-hide="block.current == 0" ng-click="prevPage(10)">{{'Last Page' | translate}}</li>
         <li class="block-more-page-show" ng-hide="block.current == 0">{{block.current+1}}/{{block.page}}</li>
-        <li class="block-more-page-next" ng-hide="block.current+1 == block.page" ng-click="nextPage(10)">下一页</li>
+        <li class="block-more-page-next" ng-hide="block.current+1 == block.page" ng-click="nextPage(10)">{{'Next Page' | translate}}</li>
       </ul>
     </div>
   </ion-content>

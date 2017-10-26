@@ -1,20 +1,20 @@
-<ion-view view-title="手续费上限" class="usual-background animated" hide-tabs="true" ng-controller="feeMaxCtrl">
+<ion-view view-title="{{'Upper limit of Fee' | translate}}" class="usual-background animated" hide-tabs="true" ng-controller="feeMaxCtrl">
   <ion-nav-bar class="navbar-bg bar-transparent">
     <ion-nav-buttons side="left">
-      <a href="#/account/settings" class="nav-cancel-btn" nav-direction="back">取消</a>
+      <a href="#/account/settings" class="nav-cancel-btn" nav-direction="back">{{'CANCEL' | translate}}</a>
       <!--javascript:history.back(-1)-->
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-      <a class="nav-right-btn suggest-submit-btn submit-active" ng-click="updateMaxFee($event, false)">保存</a>
+      <a class="nav-right-btn suggest-submit-btn submit-active" ng-click="updateMaxFee($event, false)">{{'Save' | translate}}</a>
       <!--javascript:history.back(-1)-->
     </ion-nav-buttons>
   </ion-nav-bar>
   <ion-content>
     <div class="fee-max-container">
-      <input type="number" class="fee-max-config-input" ng-model="feeOpt.maxFee" ng-keyup="updateMaxFee($event, true)" />
+      <input type="number" class="fee-max-config-input" ng-model="feeOpt.maxFee" ng-keyup="updateMaxFee($event, true)" placeholder="{{'Please enter upper limit fee: > default fee' | translate}}" />
 
       <span class="fee-max-config-tips">
-        手动输入您设置挖矿、收付币、修改个人信息的手续费上限。
+        {{'The upper limit of fee must greater than default fee and less than all your available IBT' | translate}}
       </span>
     </div>
   </ion-content>

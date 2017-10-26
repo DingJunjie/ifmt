@@ -14,32 +14,32 @@
     <div class="trade-detail-container">
       <ul class="trade-detail-list">
         <li class="trade-detail-item">
-          <div class="trade-detail-name">交易ID</div>
+          <div class="trade-detail-name">{{'Transaction ID' | translate}}</div>
           <div class="trade-detail-content trade-detail-blob">{{tradeDetail.id}}</div>
         </li>
         <li class="trade-detail-item">
-          <div class="trade-detail-name">交易数量</div>
+          <div class="trade-detail-name">{{'TradeNumber' | translate}}</div>
           <div class="trade-detail-content">{{tradeDetail.amount | numberFilter}} <span class="trade-detail-content-unit">IFMT</span></div>
         </li>
         <li class="trade-detail-item">
-          <div class="trade-detail-name">确认数</div>
+          <div class="trade-detail-name">{{'CONFIRMATIONS' | translate}}</div>
           <div class="trade-detail-content">{{tradeDetail.confirmations}}</div>
         </li>
         <li class="trade-detail-item">
-          <div class="trade-detail-name">手续费</div>
+          <div class="trade-detail-name">{{'FEE' | translate}}</div>
           <div class="trade-detail-content">{{tradeDetail.fee | numberFilter | noEulerNumberFilter}} <span class="trade-detail-content-unit">IFMT</span></div>
         </li>
         <li class="trade-detail-item">
-          <div class="trade-detail-name">交易时间</div>
+          <div class="trade-detail-name">{{'Transaction Date' | translate}}</div>
           <div class="trade-detail-content">{{tradeDetail.timestamp | timestampFilter}}</div>
         </li>
         <li class="trade-detail-item-divide-space"></li>
         <li class="trade-detail-item">
-          <div class="trade-detail-name">付币方</div>
+          <div class="trade-detail-name">{{'Sender' | translate}}</div>
           <div class="trade-detail-content trade-detail-address">{{tradeDetail.senderId}}</div>
         </li>
         <li class="trade-detail-item">
-          <div class="trade-detail-name">收币方</div>
+          <div class="trade-detail-name">{{'Recipient' | translate}}</div>
           <div class="trade-detail-content trade-detail-address">{{tradeDetail.recipientId}}</div>
         </li>
         <li class="trade-detail-item-divide-space"></li>

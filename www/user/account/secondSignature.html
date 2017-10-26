@@ -1,19 +1,21 @@
 <ion-view view-title="支付密码" class="usual-background animated slide-in-right" hide-tabs="true" ng-controller="payPwdCtrl">
   <ion-nav-bar class="navbar-bg bar-transparent">
     <ion-nav-buttons side="left">
-      <a href="javascript:history.go(-1)" class="nav-cancel-btn" nav-direction="back">取消</a>
+      <a href="javascript:history.go(-1)" class="nav-cancel-btn" nav-direction="back">{{'Back' | translate}}</a>
       <!--javascript:history.back(-1)-->
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-      <a class="nav-right-btn suggest-submit-btn submit-active" ng-click="savePayPwd()">保存</a>
+      <a class="nav-right-btn suggest-submit-btn submit-active" ng-click="savePayPwd()">{{'Save' | translate}}</a>
       <!--javascript:history.back(-1)-->
     </ion-nav-buttons>
   </ion-nav-bar>
   <ion-content>
     <div class="pwd-container">
-      <input type="password" class="pwd-config-input" disabled="{{secondSign}}" ng-model="userData.pwd" placeholder="{{secondSign ? '请设置支付密码，只能设置一次' : '您已经设置过支付密码，无法修改'}}" />
+      <input type="password" class="pwd-config-input" ng-show="secondSign" ng-model="userData.pwd" placeholder="{{'Add second passphrase' | translate}}" />
+      <input type="password" class="pwd-config-input" disabled="true" ng-hide="secondSign" placeholder="{{'You already has a second passphrase' | translate}}" />
 
-      <input type="password" class="pwd-config-input" disabled="{{secondSign}}" ng-model="userData.repwd" placeholder="{{secondSign ? '请再次输入支付密码' : '您已经设置过支付密码，无法修改'}}" />
+      <input type="password" class="pwd-config-input" ng-show="secondSign" ng-model="userData.repwd" placeholder="{{'Repeat second passphrase' | translate}}" />
+      <input type="password" class="pwd-config-input" ng-hide="secondSign" disabled="true" placeholder="{{'You already has a second passphrase' | translate}}" />
         
       </span>
     </div>

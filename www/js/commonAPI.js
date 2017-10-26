@@ -4,8 +4,8 @@
 var cacheUrl = [];  //用于缓存白名单
 
 // var hostUrl = 'http://test1.ifmchain.org:19001'; //测试主机地址
-var hostUrl = 'http://test2.ifmchain.org:19002'; //测试主机地址
-// var hostUrl = 'http://test3.ifmchain.org:19003'; //测试主机地址
+// var hostUrl = 'http://test2.ifmchain.org:19002'; //测试主机地址
+var hostUrl = 'http://test3.ifmchain.org:19003'; //测试主机地址
 // var hostUrl = 'http://test4.ifmchain.org:19004'; //测试主机地址
 // var hostUrl = 'http://192.168.16.161:19000';
 

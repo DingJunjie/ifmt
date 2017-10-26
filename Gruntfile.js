@@ -1,7 +1,7 @@
 module.exports = function (grunt) {
   // 项目配置
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
+    // pkg: grunt.file.readJSON('package.json'),
     /*//压缩
     uglify: {
       options: {
@@ -28,7 +28,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   // 默认任务
   grunt.registerTask('default', ['uglify']);*/
-    concat: {
+    /*concat: {
       release: {
         files: {
           "www/login.js" : files
@@ -57,6 +57,31 @@ module.exports = function (grunt) {
           }
         }
       }
+    }*/
+    nggettext_extract: {
+      pot: {
+        files: {
+          'www/po/template2.pot' : [
+              'www/user/*.html',
+              'www/user/*/*.html'
+          ]
+        }
+      }
+    },
+    nggettext_compile: {
+      all: {
+        options: {
+          module: 'IfmCoinApp'
+        },
+        files: {
+          'www/js/translations.js' : ['www/po/zh.po']
+        }
+      }
     }
   });
+
+  grunt.loadNpmTasks("grunt-angular-gettext");
+
+  grunt.registerTask("default", ["watch"]);
+  grunt.registerTask("release", ["nggettext_extract", "nggettext_compile"]);
 }

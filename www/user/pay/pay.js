@@ -2,12 +2,14 @@
  * Created by 俊杰 on 2017/7/12.
  */
 
-angular.module('IfmCoinApp').controller('payCtrl', ['$scope', 'runtimeData', 'userService', '$timeout', '$cordovaCamera', '$cordovaBarcodeScanner', '$cordovaImagePicker', '$ionicActionSheet', '$ionicPopup', '$cordovaDevice', function($scope, runtimeData, userService, $timeout, $cordovaCamera, $cordovaBarcodeScanner, $cordovaImagePicker, $ionicActionSheet, $ionicPopup, $cordovaDevice) {
+angular.module('IfmCoinApp').controller('payCtrl', ['$scope', '$rootScope', 'runtimeData', 'userService', '$timeout', '$cordovaCamera', '$cordovaBarcodeScanner', '$cordovaImagePicker', '$ionicActionSheet', '$ionicPopup', '$cordovaDevice', 'gettext', 'gettextCatalog', 'languageService', function($scope, $rootScope, runtimeData, userService, $timeout, $cordovaCamera, $cordovaBarcodeScanner, $cordovaImagePicker, $ionicActionSheet, $ionicPopup, $cordovaDevice, gettext, gettextCatalog, languageService) {
     $scope.bnlcHeight = $(document).height() - 48;
     $rootScope.fee = runtimeData.getFee();
     $scope.tradePara = {};
+    $scope.tradePara.fee = $rootScope.fee;
     $scope.tradePara.switch = 3;
     $scope.tradePara.address = userService.address;
+    $scope.tradePara.balance = userService.balance;
 
 
     var paySwiper = new Swiper('.pay-swipers', {
@@ -136,7 +138,7 @@ angular.module('IfmCoinApp').controller('payCtrl', ['$scope', 'runtimeData', 'us
                 //多重签名账户的公钥
                 //multisigAccountPublicKey: "",
                 timestamp: res.timestamp,
-                fee: parseFloat($rootScope.fee)
+                fee: parseFloat($scope.tradePara.fee)
             };
             console.log(data);
 
@@ -152,9 +154,13 @@ angular.module('IfmCoinApp').controller('payCtrl', ['$scope', 'runtimeData', 'us
                       throw resp.error.message;
                     }else {
                       $ionicPopup.alert({
-                        "title" : "转账成功",
-                        "template" : "<h4>转账成功</h4>"
+                        "title" : "提交成功",
+                        "template" : "<h4>转账提交成功</h4>"
                       })
+                      $rootScope.to = '';
+                      $rootScope.toUser = '';
+                      $scope.tradePara.fee = '';
+                      $scope.tradePara.amountDest = '';
                     }
                   })
                 }

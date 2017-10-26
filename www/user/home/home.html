@@ -14,19 +14,19 @@
               <img src="../images/ifmt/gp-icon.png" class="ifc-icon-a" />
               <img src="../images/ifmt/arrow.png" class="ifc-icon-up" />
               <span class="ifc-current-price">{{balanceCNY}}</span>
-              <span class="ifc-current-price-unit">CNY</span>
+              <span class="ifc-current-price-unit">USD</span>
             </div>
 
             <div class="ifc-current-coin-container">
-              <span class="ifc-coin-name">IFMC</span>
-              <span>剩余数量：{{balance}}</span>
+              <span class="ifc-coin-name">IBT</span>
+              <span>{{'Remaining Quantity' | translate}}：{{balance}}</span>
             </div>
 
             <div class="ifm-grid-title ifm-grid-trade" ng-class="grid.switch === true ? 'ifm-grid-selected' : ''" ng-click="switchGrid('trade')">
-              最新交易
+              {{'Latest Transactions' | translate}}
             </div>
             <div class="ifm-grid-title ifm-grid-benefit" ng-class="grid.switch === false ? 'ifm-grid-selected' : ''" ng-click="switchGrid('benefit')">
-              最新收益
+              {{'Account Earnings' | translate}}
             </div>
           </div>
         </div>
@@ -39,9 +39,9 @@
           <!-- ng-style='{"height":"{{gridContentHeight}}"}'-->
           <ul class="ifc-trade-table-head">
             <!--<li class="ifc-trade-table-title-type">类型</li>-->
-            <li class="ifc-trade-table-title-address">收付地址</li>
-            <li class="ifc-trade-table-title-time">收付时间</li>
-            <li class="ifc-trade-table-title-amount">数量</li>
+            <li class="ifc-trade-table-title-address">{{'Account name or Address' | translate}}</li>
+            <li class="ifc-trade-table-title-time">{{'Time' | translate}}</li>
+            <li class="ifc-trade-table-title-amount">{{'Amount' | translate}}</li>
           </ul>
           <div class="ifc-trade-table" ng-style="{'height' : '{{fullHeight - 317  - 45}}px'}">
             <div ng-repeat="ta in transactions" class="ifc-trade-item" ng-class="ta.showTime === true? 'ifc-trade-show-time': ''">
@@ -52,8 +52,8 @@
               <div class="ifc-trade-fee">( {{ta.fee | noEulerNumberFilter}} )</div>
             </div>
 
-            <div class="ifc-trade-item">
-              <a href="#/home/tradeMore"><div class="ifc-trade-more-btn">查看更多交易</div></a>
+            <div class="ifc-trade-item" ng-if="transactions.length > 9">
+              <a href="#/home/tradeMore"><div class="ifc-trade-more-btn">{{'More' | translate}}</div></a>
             </div>
 
             <div class="clearfloat"></div>
@@ -62,16 +62,16 @@
 
         <div class="ifc-benefit-grid" ng-style="{'height' : '{{fullHeight - 317}}px'}"  ng-show="!grid.switch">
           <ul class="ifc-benefit-table-head">
-            <li class="ifc-benefit-table-title-name">名称</li>
-            <li class="ifc-benefit-table-title-address">地址</li>
-            <li class="ifc-benefit-table-title-time">日期</li>
-            <li class="ifc-benefit-table-title-type">类型</li>
-            <li class="ifc-benefit-table-title-amount">数量</li>
+            <li class="ifc-benefit-table-title-name">{{'Name' | translate}}</li>
+            <li class="ifc-benefit-table-title-address">{{'Address' | translate}}</li>
+            <li class="ifc-benefit-table-title-time">{{'Time' | translate}}</li>
+            <li class="ifc-benefit-table-title-type">{{'Type' | translate}}</li>
+            <li class="ifc-benefit-table-title-amount">{{'Amount' | translate}}</li>
           </ul>
 
           <div class="ifc-benefit-table" ng-style="{'height' : '{{fullHeight - 317  - 45}}px'}">
             <div class="ifc-benefit-item" ng-repeat="be in benefits">
-              <div class="ifc-benefit-item-name">{{be.username}}</div>
+              <div class="ifc-benefit-item-name">{{be.username ? be.username : '-'}}</div>
               <div class="ifc-benefit-item-time">{{be.timestamp | timestampFilter | dateDiffFilter}}</div>
               <div class="ifc-benefit-item-type">{{be.type | balanceTypeFilter}}</div>
               <div class="ifc-benefit-item-amount">{{be.amountFixed}}</div>
@@ -79,8 +79,8 @@
               <!-- ifc-benefit-address-show -->
             </div>
 
-            <div class="ifc-benefit-item">
-              <a href="#/home/benefitMore"><div class="ifc-benefit-more-btn">查看更多收益</div></a>
+            <div class="ifc-benefit-item" ng-if="benefits.length > 9">
+              <a href="#/home/benefitMore"><div class="ifc-benefit-more-btn">{{'More' | translate}}</div></a>
             </div>
 
             <div class="clearfloat"></div>

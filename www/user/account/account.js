@@ -2,14 +2,14 @@
  * Created by 俊杰 on 2017/7/31.
  */
 
-angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'userService', function($scope, $timeout, userService) {
+angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'userService', 'gettext', 'gettextCatalog', 'languageService', function($scope, $timeout, userService, gettext, gettextCatalog, languageService) {
     $scope.address = userService.address;
     $scope.addressShow = $scope.address[0] + $scope.address[1] + $scope.address[2] + $scope.address[3] + '****' + $scope.address[$scope.address.length-4] + $scope.address[$scope.address.length-3] + $scope.address[$scope.address.length-2] + $scope.address[$scope.address.length-1];
     
     $scope.exit = function() {
       window.location.href = "/";
     }
-}]).controller('userSettingsCtrl',  ['$rootScope', '$scope', '$ionicActionSheet', '$timeout', 'userService', 'runtimeData', '$ionicPopup', function($rootScope, $scope, $ionicActionSheet, $timeout, userService, runtimeData, $ionicPopup) {
+}]).controller('userSettingsCtrl',  ['$rootScope', '$scope', '$ionicActionSheet', '$timeout', 'userService', 'runtimeData', '$ionicPopup', 'gettext', 'gettextCatalog', 'languageService', function($rootScope, $scope, $ionicActionSheet, $timeout, userService, runtimeData, $ionicPopup, gettext, gettextCatalog, languageService) {
   $scope.address = userService.address;
   /**
    * 获取actionSheet
@@ -45,7 +45,7 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
     $ionicPopup.alert({"title": "保存成功", "template": "地址已保存至剪贴板"})
   }
 
-}]).controller('nameSettingCtrl', ['$scope', 'runtimeData', 'userService', '$ionicPopup', function($scope, runtimeData, userService, $ionicPopup) {
+}]).controller('nameSettingCtrl', ['$scope', 'runtimeData', 'userService', '$ionicPopup', 'gettext', 'gettextCatalog', 'languageService', function($scope, runtimeData, userService, $ionicPopup, gettext, gettextCatalog, languageService) {
   $scope.fee = runtimeData.getFee();
   $scope.nameOpt = {};
   $scope.editName = function() {
@@ -129,6 +129,7 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
                             template: '<h4 style="text-align: center">用户名修改成功。</h4>'
                           })
                           $rootScope.username = $scope.nameOpt.newUsername;
+                          $scope.nameOpt.newUsername = '';
                       }
                     })
                   }
@@ -146,16 +147,16 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
           return err;
       })
   }
-}]).controller('feeCtrl', ['$scope', 'runtimeData', '$ionicPopup', '$timeout', function($scope, runtimeData, $ionicPopup, $timeout) {
+}]).controller('feeCtrl', ['$scope', 'runtimeData', '$ionicPopup', '$timeout', 'gettext', 'gettextCatalog', 'languageService', function($scope, runtimeData, $ionicPopup, $timeout, gettext, gettextCatalog, languageService) {
     $rootScope.fee = runtimeData.getFee();
     $scope.userData = {};
-    $scope.userData.currentFee = parseFloat(($scope.fee * 100000000)/100000000);
+    $scope.userData.currentFee = parseFloat($scope.fee);
 
     $scope.setFee = function() {
       if($scope.userData.currentFee >= 0.00000001 && $scope.userData.currentFee < $rootScope.maxFee) {
         var NumString = '' + $scope.userData.currentFee;
         if(/e/.test(NumString) === true) {
-          $scope.userData.currentFee =  1*$scope.userData.currentFee.toFixed(8);
+          $scope.userData.currentFee =  (($scope.userData.currentFee*100).toPrecision(8))/100;
         }
         window.localStorage.fee = $scope.userData.currentFee;
         runtimeData.setFee($scope.userData.currentFee);
@@ -170,7 +171,7 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
         })
       }
     }
-}]).controller('settingsCtrl', ['$scope', 'runtimeData', '$ionicPopup', 'userService', function($scope, runtimeData, $ionicPopup, userService) {
+}]).controller('settingsCtrl', ['$scope', 'runtimeData', '$ionicPopup', 'userService', 'gettext', 'gettextCatalog', 'languageService', function($scope, runtimeData, $ionicPopup, userService, gettext, gettextCatalog, languageService) {
     $scope.autoDig = window.localStorage.autoDig;
     $rootScope.fee = runtimeData.getFee();
     $rootScope.maxFee = runtimeData.getMaxFee();
@@ -191,7 +192,7 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
           window.location.href = "#/account";
        }
     }
-}]).controller('addContactCtrl', ['$scope', '$ionicPopup', 'userService', function($scope, $ionicPopup, userService) {
+}]).controller('addContactCtrl', ['$scope', '$ionicPopup', 'userService', '$cordovaBarcodeScanner', 'gettext', 'gettextCatalog', 'languageService', function($scope, $ionicPopup, userService, $cordovaBarcodeScanner, gettext, gettextCatalog, languageService) {
     $scope.contact = {};
     $scope.addContact = function() {
       if($scope.contact.addAddress && address.isAddress($scope.contact.addAddress)) {
@@ -236,7 +237,11 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
       }
     }
     
-  
+    $scope.scanAddress = function() {
+      $cordovaBarcodeScanner.scan().then(function(imageData) {
+        $scope.contact.addAddress = imageData.text; //二维码信息
+      })
+    }
 
     function addContactFn(fee, pass) {
       getOnce(true, '/api/transactions/getslottime', null, function(data) {
@@ -272,7 +277,7 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
                           title: '添加成功',
                           template: '<h4 style="text-align: center">联系人添加成功。</h4>'
                         })
-                        $scope.$emit('refreshContact');
+                        $rootScope.$emit('refreshContact');
                     }else {
                       throw "发生交易失败";
                     }
@@ -289,7 +294,11 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
       })
     }
 
-}]).controller('contactUserCtrl', ['$scope', function($scope) {
+    $scope.$watch('$viewContentLoaded', function() {  
+        $rootScope.$emit('refreshContact');
+    });
+
+}]).controller('contactUserCtrl', ['$scope', 'userService', '$ionicPopup', 'gettext', 'gettextCatalog', 'languageService', function($scope, userService, $ionicPopup, gettext, gettextCatalog, languageService) {
     $scope.contact = {};
 
     function getContactDetail(address) {
@@ -326,8 +335,68 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
 
     $scope.$watch('$viewContentLoaded', function() {  
         getContactDetail($rootScope.contactDetail.address);
-    });  
-}]).controller('contactTransferCtrl', ['$scope', 'userService', '$ionicPopup', function($scope, userService, $ionicPopup) {
+    });
+
+    $scope.contact = {};
+
+    $scope.submitTransfer = function() {
+      getOnce(true, "/api/transactions/getslottime", null, function(res) {
+          console.log(res);
+          if(res.success === true) {
+            var data = {
+                type: ifmjs.transactionTypes.SEND,
+                secret: window.localStorage.pass,
+                //支付账户的金额
+                amount: parseFloat($scope.contact.contactAmount),
+                //接受方账户
+                recipientId: $rootScope.contactDetail.address,
+                //recipientUsername:
+                //支付账户的公钥
+                publicKey: userService.publicKey,
+                //支付账户的支付密码
+                //secondSecret:"",
+                //多重签名账户的公钥
+                //multisigAccountPublicKey: "",
+                timestamp: res.timestamp,
+                fee: parseFloat($rootScope.fee)
+            };
+            console.log(data);
+
+            ifmjs.transaction.createTransaction(data, function(err, transaction) {
+              console.log(err, transaction);
+              try {
+                if(err) {
+                  throw err.message;
+                }else {
+                  putOnce(true, '/api/transactions/tx', transaction, function(resp) {
+                    console.log(resp);
+                    if(resp.error) {
+                      throw resp.error.message;
+                    }else {
+                      $ionicPopup.alert({
+                        "title" : "提交成功",
+                        "template" : "<h4>提交成功</h4>"
+                      })
+                      $scope.contact = {};
+                    }
+                  })
+                }
+              }catch(e) {
+                 e = e.message ? e.message : e;
+                 $ionicPopup.alert({
+                    "title" : "转账出现问题",
+                    "template" : "<h4>"+e+"</h4>"
+                 })
+              }
+            })
+
+
+          }else {
+            throw "转账失败，请重试";
+          }
+        })
+      }
+}]).controller('contactTransferCtrl', ['$scope', 'userService', '$ionicPopup', 'gettext', 'gettextCatalog', 'languageService', function($scope, userService, $ionicPopup, gettext, gettextCatalog, languageService) {
   $scope.contact = {};
 
   $scope.submitTransfer = function() {
@@ -386,7 +455,7 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
           }
         })
     }
-}]).controller('feeMaxCtrl', ['$scope', 'runtimeData', '$ionicPopup', function($scope, runtimeData, $ionicPopup) {
+}]).controller('feeMaxCtrl', ['$scope', 'runtimeData', '$ionicPopup', 'gettext', 'gettextCatalog', 'languageService', function($scope, runtimeData, $ionicPopup, gettext, gettextCatalog, languageService) {
     $scope.feeOpt = {};
     $scope.feeOpt.maxFee = runtimeData.getMaxFee();
 
@@ -405,10 +474,10 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
         }
       }
     }
-}]).controller('payPwdCtrl', ['$scope', 'runtimeData', '$ionicPopup', 'userService', function($scope, runtimeData, $ionicPopup, userService) {
+}]).controller('payPwdCtrl', ['$scope', 'runtimeData', '$ionicPopup', 'userService', 'gettext', 'gettextCatalog', 'languageService', function($scope, runtimeData, $ionicPopup, userService, gettext, gettextCatalog, languageService) {
     $scope.userData = {};
     $scope.savePayPwd = function() {
-      if(!secondSign) {
+      if(!$rootScope.secondSign) {
         $ionicPopup.alert({
           "title" : "设置失败",
           "template" : "<h4>您已经设置过二次密码，无法修改。</h4>"
@@ -429,7 +498,7 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
                       publicKey: userService.publicKey
                     }
                   },
-                  fee: fee,
+                  fee: $scope.contact.fee,
                   publicKey: userService.publicKey,
                   timestamp: timestamp
                 }

@@ -16,9 +16,9 @@
           <!-- ng-style='{"height":"{{gridContentHeight}}"}'-->
           <ul class="trade-more-table-head">
             <!--<li class="trade-more-table-title-type">类型</li>-->
-            <li class="trade-more-table-title-address">收付地址</li>
-            <li class="trade-more-table-title-time">收付时间</li>
-            <li class="trade-more-table-title-amount">数量</li>
+            <li class="trade-more-table-title-address">{{'Address' | translate}}</li>
+            <li class="trade-more-table-title-time">{{'Time' | translate}}</li>
+            <li class="trade-more-table-title-amount">{{'Amount' | translate}}</li>
           </ul>
           <div class="trade-more-table" style="min-height: {{fullHeight - 200}}px">
             <div ng-repeat="ta in transaction.transactions" class="trade-more-item" ng-class="ta.showTime === true? 'trade-more-show-time': ''">
@@ -35,9 +35,9 @@
 
           <ul class="trade-more-page">
             <!-- <li class="trade-more-page-item" ng-repeat="pg in transaction.pageArr track by $index" ng-click="getTransactionsByPage($index, 10)">{{$index+1}}</li> -->
-            <li class="trade-more-page-prev" ng-hide="transaction.current == 0" ng-click="prevPage(10)">上一页</li>
+            <li class="trade-more-page-prev" ng-hide="transaction.current == 0" ng-click="prevPage(10)">{{'Last Page' | translate}}</li>
             <li class="trade-more-page-show" ng-hide="transaction.current == 0">{{transaction.current+1}}/{{transaction.page}}</li>
-            <li class="trade-more-page-next" ng-hide="transaction.current+1 == transaction.page" ng-click="nextPage(10)">下一页</li>
+            <li class="trade-more-page-next" ng-hide="transaction.current+1 == transaction.page" ng-click="nextPage(10)">{{'Next Page' | translate}}</li>
           </ul>
         </div>
   </ion-content>

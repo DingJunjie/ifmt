@@ -1,6 +1,6 @@
 {
-  "name": "IFMT APP",
-  "short_name": "IFMT",
+  "name": "IFMChain",
+  "short_name": "IBT",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{

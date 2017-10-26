@@ -2,7 +2,7 @@
  * Created by 俊杰 on 2017/7/26.
  */
 
-angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', function($scope, userService) {
+angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', 'gettext', 'gettextCatalog', 'languageService', function($scope, userService, gettext, gettextCatalog, languageService) {
 	/**
 	 * 获取当前IFMT数以及对应RMB数额
 	 */
@@ -23,12 +23,13 @@ angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', fu
 			'senderPublicKey': userService.publicKey
 		}
 		getOnce(true, '/api/transactions', req, function(data) {
+			console.log(data);
 			if(data.success === true) {
 				for(var i in data.transactions) {
 					if(data.transactions[i].recipientId) {
 						data.transactions[i].recipientName = data.transactions[i].recipientId;
 					}else {
-						data.transactions[i].recipientName = '手续费';
+						data.transactions[i].recipientName = gettextCatalog.getString('FEE');
 					}
 					data.transactions[i].showTime = false;
 					data.transactions[i].amountFixed = (data.transactions[i].amount/100000000).toFixed(2);
@@ -132,7 +133,7 @@ angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', fu
 	getTransactions();
 	getBenefits();
 
-}]).controller('tradeMoreCtrl', ['$scope', '$ionicPopup', 'userService', function($scope, $ionicPopup, userService) {
+}]).controller('tradeMoreCtrl', ['$scope', '$ionicPopup', 'userService', 'gettext', 'gettextCatalog', 'languageService', function($scope, $ionicPopup, userService, gettext, gettextCatalog, languageService) {
 	$scope.transaction = {};
 	$scope.transaction.page = 0;
 	$scope.transaction.current = 0;
@@ -206,7 +207,7 @@ angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', fu
 		getTransactionsByPage($scope.transaction.current, limit);
 	}
 
-}]).controller('benefitMoreCtrl', ['$scope', '$ionicPopup', 'userService', function($scope, $ionicPopup, userService) {
+}]).controller('benefitMoreCtrl', ['$scope', '$ionicPopup', 'userService', 'gettext', 'gettextCatalog', 'languageService', function($scope, $ionicPopup, userService, gettext, gettextCatalog, languageService) {
 	$scope.benefit = {};
 	$scope.benefit.page = 0;
 	$scope.benefit.current = 0;
@@ -224,14 +225,14 @@ angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', fu
 			'limit' : limit,
 			'offset' : page*limit
 		}
-		getOnce(true, '/api/accounts/allBalanceDetails', req, function(data) {
+		getOnce(true, '/api/accounts/balanceDetails', req, function(data) {
 			if(data.success === true) {
 				for(var i in data.balancedetails) {
 					data.balancedetails[i].amountFixed = (data.balancedetails[i].amount/100000000).toFixed(2);
 					data.balancedetails[i].amountFixed = data.balancedetails[i].amountFixed * 1;
 				}
 				$scope.benefit.benefits = data.balancedetails;
-				var len = Math.ceil(data.count[0][0]/limit);
+				var len = Math.ceil(data.count/limit);
 				$scope.benefit.page = len;
 			}else {
 				$ionicPopup.alert({

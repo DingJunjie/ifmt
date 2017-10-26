@@ -281,7 +281,7 @@ angular.module('IfmCoinApp').run(function ($ionicPlatform) {
 //
 // 我的首页
 //
-angular.module('IfmCoinApp').controller('MainController', ['$rootScope', '$scope', '$timeout', '$interval', '$http', 'userService', 'runtimeData', 'httpAjaxService', '$ionicPopup', '$ionicPlatform', '$location', '$anchorScroll', '$cordovaImagePicker', '$cordovaCamera', '$cordovaGeolocation', '$cordovaNetwork', '$ionicActionSheet','$ionicSlideBoxDelegate','$ionicTabsDelegate', function ($rootScope, $scope, $timeout, $interval, $http, userService, runtimeData, httpAjaxService, $ionicPopup, $ionicPlatform, $location, $anchorScroll,$cordovaImagePicker,$cordovaCamera,$cordovaGeolocation,$cordovaNetwork, $ionicSlideBoxDelegate,$ionicTabsDelegate, $ionicActionSheet) {
+angular.module('IfmCoinApp').controller('MainController', ['$rootScope', '$scope', '$timeout', '$interval', '$http', 'userService', 'runtimeData', 'httpAjaxService', '$ionicPopup', '$ionicPlatform', '$location', '$anchorScroll', '$cordovaImagePicker', '$cordovaCamera', '$cordovaGeolocation', '$cordovaNetwork', '$ionicActionSheet','$ionicSlideBoxDelegate','$ionicTabsDelegate', 'gettext', 'gettextCatalog', 'languageService', function ($rootScope, $scope, $timeout, $interval, $http, userService, runtimeData, httpAjaxService, $ionicPopup, $ionicPlatform, $location, $anchorScroll,$cordovaImagePicker,$cordovaCamera,$cordovaGeolocation,$cordovaNetwork, $ionicSlideBoxDelegate,$ionicTabsDelegate, $ionicActionSheet, gettext, gettextCatalog, languageService) {
 
   if (ionic && ionic.Platform) {
       //alert("ionic platform");
@@ -336,6 +336,28 @@ angular.module('IfmCoinApp').controller('MainController', ['$rootScope', '$scope
   }
 
 
+  /**
+   * 从login获取的数据无法在home获取，所以存至localStorage再进行获取
+   * 当前端获取到login的值时进行赋值，并清空，当未获取时直接返回至登录
+   * @return {[type]} [description]
+   */
+  (function () {
+    var userData = window.localStorage.userData;
+    if(userData && JSON.parse(userData).success === true) {
+      var data = JSON.parse(userData);
+      userService.setData(data.account.address, data.account.publicKey, data.account.balance, data.account.unconfirmedBalance, data.account.effectiveBalance);
+      userService.setForging(data.account.forging);
+      userService.unconfirmedPassphrase = data.account.unconfirmedSignature;
+      userService.username = data.account.username;
+      userService.secondSign = data.account.secondSignature;
+      $rootScope.changeLang(window.localStorage.language);
+      refreshAccount();
+      window.localStorage.removeItem('userData');
+    }else {
+      window.location.href="/";
+    }
+  })()
+
   window.$rootScope = $rootScope;//用来全局控制动态加载效果
   window.$scope = $scope;
 
@@ -358,27 +380,6 @@ angular.module('IfmCoinApp').controller('MainController', ['$rootScope', '$scope
   $rootScope.username = userService.username;
   $rootScope.balance = userService.balance;
   $rootScope.secondSign = userService.secondSign;
-
-  /**
-   * 从login获取的数据无法在home获取，所以存至localStorage再进行获取
-   * 当前端获取到login的值时进行赋值，并清空，当未获取时直接返回至登录
-   * @return {[type]} [description]
-   */
-  (function () {
-    var userData = window.localStorage.userData;
-    if(userData && JSON.parse(userData).success === true) {
-      var data = JSON.parse(userData);
-      userService.setData(data.account.address, data.account.publicKey, data.account.balance, data.account.unconfirmedBalance, data.account.effectiveBalance);
-      userService.setForging(data.account.forging);
-      userService.unconfirmedPassphrase = data.account.unconfirmedSignature;
-      userService.username = data.account.username;
-      userService.secondSign = data.account.secondSignature;
-      refreshAccount();
-      window.localStorage.removeItem('userData');
-    }else {
-      window.location.href="/";
-    }
-  })()
   
   /**
    * 监听路由变化，触发部分事件
@@ -459,7 +460,9 @@ angular.module('IfmCoinApp').controller('MainController', ['$rootScope', '$scope
   }
 
 
-}])
+}]).run(function(languageService) {
+  languageService();
+})
 
 /**
  * 进入二级页面隐藏tab需要

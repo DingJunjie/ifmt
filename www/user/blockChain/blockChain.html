@@ -4,9 +4,9 @@
     <div class="chain-top-space"></div>
     <div class="chain-tab-container">
       <ul>
-        <li class="chain-tab-list-item" ng-class="chainSelected === 0 ? 'chain-tab-list-item-focus': 'chain-tab-list-blur'" ng-click="chainTabClick(0)"><span>最新概况</span></li>
-        <li class="chain-tab-list-item" ng-class="chainSelected === 1 ? 'chain-tab-list-item-focus': 'chain-tab-list-blur'" ng-click="chainTabClick(1)"><span>最新区块</span></li>
-        <li class="chain-tab-list-item" ng-class="chainSelected === 2 ? 'chain-tab-list-item-focus': 'chain-tab-list-blur'" ng-click="chainTabClick(2)"><span>最新交易</span></li>
+        <li class="chain-tab-list-item" ng-class="chainSelected === 0 ? 'chain-tab-list-item-focus': 'chain-tab-list-blur'" ng-click="chainTabClick(0)"><span>{{'Summary' | translate}}</span></li>
+        <li class="chain-tab-list-item" ng-class="chainSelected === 1 ? 'chain-tab-list-item-focus': 'chain-tab-list-blur'" ng-click="chainTabClick(1)"><span>{{'Blockchain' | translate}}</span></li>
+        <li class="chain-tab-list-item" ng-class="chainSelected === 2 ? 'chain-tab-list-item-focus': 'chain-tab-list-blur'" ng-click="chainTabClick(2)"><span>{{'Transaction' | translate}}</span></li>
       </ul>
     </div>
     <ion-slides class="has-header" slider="data.slider" pager="false" loop="true" options="blockChainOpt" on-slide-changed="slideChanged($index)" delegate-handle="blockChainSlider" ng-style="{'height': '{{fullHeight-150}}px'}">
@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="ifmt-my-ifmt-percent-container" ng-if="userData.autoDig">
-                  <p class="ifmt-my-ifmt-title">挖矿进度</p>
+                  <p class="ifmt-my-ifmt-title">{{'Progress' | translate}}</p>
                   <div class="ifmt-my-ifmt-percent" ng-click="cancelDig()">{{roundProgress}}%</div>
                 </div>
               </div>
@@ -79,11 +79,11 @@
       <ion-slide-page>
         <div class="chain-newest-block-container" style="width:100%;height:100%;" >
             <ul class="chain-newest-block-title">
-              <li class="chain-newest-block-title-item">高度</li>
-              <li class="chain-newest-block-title-item">金额</li>
-              <li class="chain-newest-block-title-item">费用</li>
-              <li class="chain-newest-block-title-item">奖励</li>
-              <li class="chain-newest-block-title-item">时间</li>
+              <li class="chain-newest-block-title-item">{{'Height' | translate}}</li>
+              <li class="chain-newest-block-title-item">{{'Total' | translate}}</li>
+              <li class="chain-newest-block-title-item">{{'FEE' | translate}}</li>
+              <li class="chain-newest-block-title-item">{{'Reward' | translate}}</li>
+              <li class="chain-newest-block-title-item">{{'Time' | translate}}</li>
             </ul>
 
             <!-- <div class="chain-newest-mine-title">我的区块</div>
@@ -100,7 +100,7 @@
               </div>
             </div></a> -->
 
-          <div class="chain-newest-all-title">最新区块</div>
+          <div class="chain-newest-all-title">{{'Lastest Blocks' | translate}}</div>
             <div class="chain-newest-block-list" style="height: {{fullHeight - 240}}px">
               <div class="chain-newest-block-item" ng-repeat="bl in blocks">
                 <ul class="chain-newest-block-content">
@@ -116,7 +116,7 @@
 
               <div class="chain-newest-block-item">
                 <ul class="chain-newest-block-content">
-                  <a href="#/blockChain/blockMore"><li class="chain-newest-block-more">查看更多区块</li></a>
+                  <a href="#/blockChain/blockMore"><li class="chain-newest-block-more">{{'More' | translate}}</li></a>
                 </ul>
               </div>
               
@@ -129,7 +129,7 @@
             <div class="chain-trade-item" ng-repeat = "tr in trades">
               <div class="chain-trade-title">
                 <span class="chain-trade-date">{{tr.timestamp | timestampFilter | dateDiffFilter}}</span>
-                <span class="chain-trade-amount">交易数量 <span>{{tr.amount | noEulerNumberFilter}}</span></span>
+                <span class="chain-trade-amount">{{'TradeNumber' | translate}} <span>{{tr.amount | noEulerNumberFilter}}</span></span>
                 <!--<span class="chain-trade-fee">含0.001手续费</span>-->
               </div>
 
@@ -147,7 +147,7 @@
                   <input type="text" class="chain-trade-remark-input" placeholder="无备注" />
                   <div class="chain-trade-remark-input">无备注</div>
                 </div> -->
-                <div class="chain-trade-fee-btm">含{{tr.fee | noEulerNumberFilter}}手续费</div>
+                <div class="chain-trade-fee-btm">{{'Include' | translate}}{{tr.fee | noEulerNumberFilter}}{{'FEE' | translate}}</div>
               </div>
             </div>
 

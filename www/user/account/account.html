@@ -11,7 +11,8 @@
             
           <!-- </div> -->
           <div class="account-info col-90">
-            <h5>欢迎你，<b>{{username}} </b></h5>
+            <h5 ng-show="username">{{'Welcome back, ' | translate}}<b>{{username}} </b></h5>
+            <h5 ng-show="!username">{{'Welcome, click to edit profile' | translate}}</h5>
             <!-- <img src="../images/ifmt/account/verified.png" alt="" class="verified" /> -->
             <a href="#/account/userSettings">
               <h5>{{addressShow}}</h5></a>
@@ -25,11 +26,11 @@
         <div class="row account-coin-container">
           <div class="col-50">
             <a href="#/pay"><img src="../images/ifmt/account/receive.png" alt="" class="account-receive-icon">
-              <span>收币</span></a>
+              <span>{{'Receive IBT' | translate}}</span></a>
           </div>
           <div class="col-50">
             <a href="#/pay"><img src="../images/ifmt/account/pay.png" alt="" class="account-pay-icon">
-            <span>付币</span></a>
+            <span>{{'Transfer IBT' | translate}}</span></a>
           </div>
         </div>
       </div>
@@ -39,7 +40,7 @@
       <ul class="list-group">
         <li class="list-group-item">
           <a href="#/account/contact"><img src="../images/ifmt/account/relative.png" alt="" class="account-setting-icon" />
-          <span>我的联系人</span>
+          <span>{{'My Contacts' | translate}}</span>
           <!--<i class="pull-right icon-right ion-chevron-right "></i>-->
           <img src="../images/ifmt/account/back.png" class="pull-right icon-right" alt=""></a>
         </li>
@@ -51,14 +52,14 @@
         </li> -->
         <li class="list-group-item">
           <a href="#/account/about"><img src="../images/ifmt/account/about.png" alt="" class="account-setting-icon" />
-          <span>关于本币</span>
+          <span>{{'About us' | translate}}</span>
           <!--<i class="pull-right icon-right ion-chevron-right "></i></a>-->
             <img src="../images/ifmt/account/back.png" class="pull-right icon-right" alt=""></a>
         </li>
 
         <li class="list-group-item list-group-item-setting">
           <a href="#/account/settings"><img src="../images/ifmt/account/setting.png" alt="" class="account-setting-icon" />
-          <span>设置</span>
+          <span>{{'Settings' | translate}}</span>
           <!--<i class="pull-right icon-right ion-chevron-right "></i></a>-->
             <img src="../images/ifmt/account/back.png" class="pull-right icon-right" alt=""></a>
         </li>

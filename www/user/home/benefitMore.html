@@ -15,16 +15,16 @@
           <!--<div ui-grid="{data:myData }" class="myGrid" ng-style="{'height' : '{{fullHeight - 317}}px'}"></div>-->
           <!-- ng-style='{"height":"{{gridContentHeight}}"}'-->
           <ul class="benefit-more-table-head">
-            <li class="benefit-more-table-title-name">名称</li>
-            <li class="benefit-more-table-title-address">地址</li>
-            <li class="benefit-more-table-title-time">日期</li>
-            <li class="benefit-more-table-title-type">类型</li>
-            <li class="benefit-more-table-title-amount">数量</li>
+            <li class="benefit-more-table-title-name">{{'Name' | translate}}</li>
+            <li class="benefit-more-table-title-address">{{'Address' | translate}}</li>
+            <li class="benefit-more-table-title-time">{{'Time' | translate}}</li>
+            <li class="benefit-more-table-title-type">{{'Type' | translate}}</li>
+            <li class="benefit-more-table-title-amount">{{'Amount' | translate}}</li>
           </ul>
 
           <div class="benefit-more-table" ng-style="{'height' : '{{fullHeight - 255}}px'}">
             <div class="benefit-more-item" ng-repeat="be in benefit.benefits">
-              <div class="benefit-more-item-name">{{be.username}}</div>
+              <div class="benefit-more-item-name">{{be.username ? be.username : '-'}}</div>
               <div class="benefit-more-item-time">{{be.timestamp | timestampFilter | dateDiffFilter}}</div>
               <div class="benefit-more-item-type">{{be.type | balanceTypeFilter}}</div>
               <div class="benefit-more-item-amount">{{be.amountFixed}}</div>
@@ -35,9 +35,9 @@
 
           <ul class="benefit-more-page">
             <!-- <li class="benefit-more-page-item" ng-repeat="pg in transaction.pageArr track by $index" ng-click="getTransactionsByPage($index, 10)">{{$index+1}}</li> -->
-            <li class="benefit-more-page-prev" ng-hide="benefit.current == 0" ng-click="prevPage(10)">上一页</li>
+            <li class="benefit-more-page-prev" ng-hide="benefit.current == 0" ng-click="prevPage(10)">{{'Last Page' | translate}}</li>
             <li class="benefit-more-page-show" ng-hide="benefit.current == 0">{{benefit.current+1}}/{{benefit.page}}</li>
-            <li class="benefit-more-page-next" ng-hide="benefit.current+1 == benefit.page" ng-click="nextPage(10)">下一页</li>
+            <li class="benefit-more-page-next" ng-hide="benefit.current+1 == benefit.page" ng-click="nextPage(10)">{{'Next Page' | translate}}</li>
           </ul>
         </div>
   </ion-content>

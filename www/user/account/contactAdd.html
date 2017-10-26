@@ -1,4 +1,4 @@
-<ion-view view-title="添加联系人" class="usual-background animated" hide-tabs="true" ng-controller="addContactCtrl">
+<ion-view view-title="{{'Add contact person' | translate}}" class="usual-background animated" hide-tabs="true" ng-controller="addContactCtrl">
   <ion-nav-bar class="navbar-bg bar-transparent">
     <ion-nav-buttons side="left">
       <a href="#/account/contact" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
@@ -12,14 +12,14 @@
   <ion-content>
     <div class="contact-add-container">
       <div class="contact-add-title">
-        联系人地址
+        {{'Address' | translate}}
       </div>
       <div class="contact-add-address-container">
-        <input type="text" class="contact-add-address-input" ng-model="contact.addAddress" placeholder="输入或扫描添加联系人地址" />
-        <i class="contact-add-address-scan">口</i>
+        <input type="text" class="contact-add-address-input" ng-model="contact.addAddress" placeholder="{{'Enter address or scan address barcode' | translate}}" />
+        <img class="contact-add-address-scan" ng-click="scanAddress()" src="../images/ifmt/pay/scan.png" />
       </div>
 
-      <div class="contact-add-submit-btn" ng-click="addContact()">提交</div>
+      <div class="contact-add-submit-btn" ng-click="addContact()">{{'Add as Contact' | translate}}</div>
     </div>
   </ion-content>
 </ion-view>

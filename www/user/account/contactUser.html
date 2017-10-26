@@ -16,20 +16,42 @@
           <img src="" alt="" class="contact-user-head-pic">
         </div> -->
 
-        <div class="contact-user-name">{{contactDetail.username ? '用户名：' : ''}}{{contactDetail.username}}</div>
+        <div class="contact-user-name">{{'Username' | translate}} : {{contactDetail.username}}</div>
         <div class="contact-user-address-container">
           <h4 class="contact-user-address-title">
-            收付币地址
+            {{'Address' | translate}}
           </h4>
           <div class="contact-user-address">
             {{contactDetail.address}}
           </div>
         </div>
 
-        <a href="#/account/contactTransfer"><div class="contact-user-transfer-btn">转币</div></a>
+        
+
+        <div class="contact-transfer-container">
+          <div class="contact-transfer-amount-container">
+            <div class="contact-transfer-amount-content">
+              <input type="number" class="contact-transfer-amount-input" ng-model="contact.contactAmount" placeholder="{{'Please enter transfer amount' | translate}}" />
+              <span class="contact-transfer-amount-unit">IBT</span>
+            </div>
+            <div class="contact-transfer-fee-total">{{'Available Quantity' | translate}} :{{balance}}</div>
+            <div class="contact-transfer-fee-container">
+            <!-- 收取{{fee*100000000 | noEulerNumberFilter}}手续费<a class="contact-transfer-fee-setting" href="#/account/fee">点击设置</a> -->
+              <input type="number" class="contact-transfer-fee-setting" placeholder="{{'FEE' | translate}}" ng-model="contact.fee">
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="contact-user-transfer-btn-group">
+          <div class="contact-user-transfer-btn" ng-click="submitTransfer()">{{'Transfer' | translate}}</div>
+          <div class="contact-user-transfer-record-btn">查看历史交易</div>
+        </div>
       </div>
 
-      <div class="contact-user-trade-container">
+      <div class="clearfloat"></div>
+
+      <div class="contact-user-trade-container" ng-hide="true">
         <div class="contact-user-trade-title">历史交易记录</div>
 
         <div class="contact-user-trade-table">

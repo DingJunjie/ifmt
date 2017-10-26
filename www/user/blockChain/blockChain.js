@@ -2,7 +2,7 @@
  * Created by 俊杰 on 2017/7/26.
  */
 
-angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','userService', '$ionicPopup', 'runtimeData', function($scope, $timeout,userService, $ionicPopup, runtimeData) {
+angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','userService', '$ionicPopup', 'runtimeData', 'gettext', 'gettextCatalog', 'languageService', function($scope, $timeout,userService, $ionicPopup, runtimeData, gettext, gettextCatalog, languageService) {
   /**
    * TIP:由于ANGULARJS和IONIC的作用域问题，$scope和页面上的$scope不一致
    * 所以要使用$scope.$parent或者使用$rootScope来设置部分值，一部分全局放置在$rootScope
@@ -96,18 +96,18 @@ angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','user
   $scope.startDig = function() {
 
     $ionicPopup.prompt({
-      title: "自动挖矿手续费",
-      template: "请输入您自动挖矿的手续费",
+      title: gettextCatalog.getString("FEE"),
+      template: gettextCatalog.getString("Please enter a valid transaction fee: >= 0.00000001"),
       inputType: 'number',
-      inputPlaceholder: $scope.fee
+      inputPlaceholder: parseFloat($scope.fee)
     }).then(function(digFee) {
         if(digFee && digFee > 0.00000001 && digFee < $rootScope.maxFee) {
           if(window.localStorage.remember === 'true') {
             vote(digFee, window.localStorage.pass);
           }else {
             $ionicPopup.prompt({
-              title: "请输入您的主密码",
-              template: "请输入您自动挖矿的主密码",
+              title: gettextCatalog.getString("Please enter your passphrase."),
+              template: gettextCatalog.getString("Please enter your passphrase below."),
               inputType: 'text',
               inputValue: '123'
             }).then(function(pass) {
@@ -115,8 +115,8 @@ angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','user
                 vote(digFee, pass);
               }else {
                 $ionicPopup.alert({
-                  "title" : "密码错误",
-                  "template" : "<h4>主密码错误，请重新输入。</h4>"
+                  "title" : gettextCatalog.getString("Invalid secret"),
+                  "template" : "<h4>"+gettextCatalog.getString("Passphrase doesn't match.")+"</h4>"
                 }, function() {
                   return;
                 })
@@ -125,8 +125,8 @@ angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','user
           }
         }else {
           $ionicPopup.alert({
-            "title" : "手续费错误",
-            "template" : "<h4>手续费应该大于0.00000001个IFMT，并小于设置的最大手续费</h4>"
+            "title" : gettextCatalog.getString("Invalid transaction type/fee"),
+            "template" : "<h4>"+gettextCatalog.getString('Please enter a valid transaction fee: >= 0.00000001')+"</h4>"
           }, function() {
             return;
           })
@@ -148,9 +148,6 @@ angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','user
             address: userService.address
           }, function(resp) {
             var delegates = resp.delegate;
-            if(delegates.length === 0) {
-              throw "自动投票没有选择人员";
-            }
 
             var voteList = [];
 
@@ -183,9 +180,10 @@ angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','user
                             $scope.userData.autoDig = true;
                           }, 0);
                         }else {
+                          console.log(data);
                           $ionicPopup.alert({
                             "title" : "自动挖矿失败",
-                            "template" : "<h4>自动挖矿失败！</h4>"
+                            "template" : "<h4>"+gettextCatalog.getString(data.message)+"</h4>"
                           })
                         }
                       })
@@ -271,12 +269,12 @@ angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','user
     window.location.href = '#/blockChain/tradeDetail';
   }
 
-}]).controller('blockDetailCtrl', ['$scope', '$timeout', 'runtimeData', function($scope, $timeout, runtimeData) {
+}]).controller('blockDetailCtrl', ['$scope', '$timeout', 'runtimeData', 'gettext', 'gettextCatalog', 'languageService', function($scope, $timeout, runtimeData, gettext, gettextCatalog, languageService) {
   // $scope.blockDetail = runtimeData.getBlock();
 
-}]).controller('tradeDetailCtrl', ['$scope', '$timeout', 'runtimeData', function($scope, $timeout, runtimeData) {
+}]).controller('tradeDetailCtrl', ['$scope', '$timeout', 'runtimeData', 'gettext', 'gettextCatalog', 'languageService', function($scope, $timeout, runtimeData, gettext, gettextCatalog, languageService) {
   // $scope.tradeDetail = runtimeData.getTrade();
-}]).controller('blockMoreCtrl', ['$scope', 'userService', 'runtimeData', function($scope, userService, runtimeData) {
+}]).controller('blockMoreCtrl', ['$scope', 'userService', 'runtimeData', 'gettext', 'gettextCatalog', 'languageService', function($scope, userService, runtimeData, gettext, gettextCatalog, languageService) {
   $scope.block = {};
   $scope.block.page = 0;
   $scope.block.current = 0;
@@ -300,7 +298,7 @@ angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','user
     })
   }
 
-  getBlockByPage(1, 10);
+  getBlockByPage(0, 10);
 
   $scope.showBlock = function(block) {
     // $scope.blockDetail = block;

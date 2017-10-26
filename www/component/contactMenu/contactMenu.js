@@ -33,7 +33,7 @@
       '</div>\n' +
       '</div>\n',
       replace : true,
-      controller: function($scope, $rootScope, userService, $ionicPopup, $timeout) {
+      controller: function($scope, $rootScope, userService, $ionicPopup, $timeout, $interval) {
         //定义排序属性方法
         function sortArr(property) {
           return function(obj1, obj2) {
@@ -53,7 +53,7 @@
         //包含的字母列表
         $scope.letterArray = [];
         //模拟数据
-        $scope.originalContactList = [{"name" : "我的名字特别长，长到我自己都快数不清了", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "什么东西", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "知乎", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "传神", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "笑嘻嘻", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "中文", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "丁俊杰", "address" : "asdfsadfasdfsdaf", "pinyin": ''}, {"name" : "丁嘻嘻", "address" : "asdfsadfasdfsdaf", "pinyin": ''}, {"name" : "water", "address" : "323kjk2l3", "pinyin": ''}, {"name" : "123", "address" : "hahaha", "pinyin": ''}];
+        // $scope.originalContactList = [{"name" : "我的名字特别长，长到我自己都快数不清了", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "什么东西", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "知乎", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "传神", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "笑嘻嘻", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "中文", "address" : "asldkfjalksdfjlkasjdf", "pinyin": ''}, {"name" : "丁俊杰", "address" : "asdfsadfasdfsdaf", "pinyin": ''}, {"name" : "丁嘻嘻", "address" : "asdfsadfasdfsdaf", "pinyin": ''}, {"name" : "water", "address" : "323kjk2l3", "pinyin": ''}, {"name" : "123", "address" : "hahaha", "pinyin": ''}];
         $scope.untrackedContactList;
 
         var contactReq = {
@@ -109,10 +109,9 @@
         $scope.showContact = function(co) {
           if($scope.paying === true) {
             if(co.username) {
-              $rootScope.to = co.username;
-            }else {
-              $rootScope.to = co.address;
+              $rootScope.toUser = co.username;
             }
+            $rootScope.to = co.address;
             window.location.href = "#/pay";
           }else {
             $rootScope.contactDetail = co;
@@ -189,7 +188,7 @@
                                 title: '添加成功',
                                 template: '<h4 style="text-align: center">联系人添加成功。</h4>'
                               })
-                              $timeout(getContacts, 10000);
+                              getContacts();
                               /*var temp;
                               for(var i in $scope.untrackedContactList) {
                                 if($scope.untrackedContactList[i].address === co.address) {
@@ -215,9 +214,11 @@
             })
           }
 
-          $scope.$on('refreshContact', function() {
+          $rootScope.$on('refreshContact', function() {
             getContacts();
           })
+
+          //$interval(getContacts, 10000);
 
         //将中文转为拼音
         /*for(var i in $scope.originalContactList) {

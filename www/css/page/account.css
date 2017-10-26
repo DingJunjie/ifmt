@@ -314,7 +314,7 @@
 }
 .setting-container .settings-exit-container {
   width: 100%;
-  margin-top: 100px;
+  margin-top: 40px;
   height: 50px;
 }
 .setting-container .settings-exit-container .settings-exit-btn {
@@ -602,7 +602,7 @@ user-settings
   margin: 0;
   color: #ffffff;
   background: initial;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   text-align: center;
   letter-spacing: 2px;
 }
@@ -620,8 +620,14 @@ user-settings
   text-align: center;
   letter-spacing: 1px;
 }
+.contact-user-container .contact-user-head-container .contact-user-transfer-btn-group {
+  width: 84%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  color: #fff;
+}
 .contact-user-container .contact-user-head-container .contact-user-transfer-btn {
-  width: 40%;
+  width: 50%;
   height: 40px;
   line-height: 40px;
   color: #ffffff;
@@ -630,9 +636,20 @@ user-settings
   letter-spacing: inherit;
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   background: -webkit-linear-gradient(top, #00ccff, #0ee5db);
-  border-radius: 20px;
-  margin: 2rem auto ;
-  margin-bottom: 70px;
+  margin-top: 2rem;
+  float: left;
+  color: #fff;
+}
+.contact-user-container .contact-user-head-container .contact-user-transfer-record-btn {
+  width: 46%;
+  margin-left: 4%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  margin-top: 2rem;
+  background: #999;
+  color: #fff;
+  float: left;
 }
 .contact-user-container .contact-user-trade-container {
   position: relative;
@@ -740,6 +757,10 @@ user-settings
 .contact-user-container .contact-user-trade-container .contact-user-trade-table .contact-user-trade-table-items .contact-user-trade-table-item .contact-user-trade-table-item-item.contact-user-trade-table-item-failure {
   color: #ff0000;
 }
+.contact-transfer-container {
+  width: 90%;
+  margin: 0 auto;
+}
 .contact-transfer-container .contact-transfer-amount-container {
   width: 100%;
   height: auto;
@@ -766,25 +787,35 @@ user-settings
   background: none;
   height: 40px;
   width: 80%;
-  font-size: 2.4rem;
+  font-size: 1.8rem;
   font-weight: 400;
   float: left;
+  color: #fff;
 }
 .contact-transfer-container .contact-transfer-amount-container .contact-transfer-amount-content .contact-transfer-amount-unit {
   width: 20%;
   float: right;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: #9999ff;
   text-align: right;
 }
 .contact-transfer-container .contact-transfer-amount-container .contact-transfer-fee-container {
+  width: 94%;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  margin: 0 3%;
+  box-sizing: border-box;
+  position: initial;
+  background: none;
   position: relative;
-  color: #999;
-  font-size: 1.1rem;
-  top: 10px;
-  left: 10px;
-  padding: 4px 10px;
-  background: rgba(155, 155, 155, 0.2);
+  border-bottom: 1px solid #666;
+  margin-top: 30px;
+}
+.contact-transfer-container .contact-transfer-amount-container .contact-transfer-fee-container .contact-transfer-fee-setting {
+  background: none;
+  color: #fff;
+  font-size: 1.8rem;
 }
 .contact-transfer-container .contact-transfer-amount-container .contact-transfer-fee-container:before {
   content: '';
@@ -883,6 +914,7 @@ user-settings
   float: right;
   text-align: right;
   color: #fff;
+  width: 30px;
 }
 .contact-add-container .contact-add-submit-btn {
   width: 94%;
@@ -901,7 +933,7 @@ user-settings
   height: 50px;
   line-height: 40px;
   padding: 5px 10px;
-  margin: 20px 0 0 0;
+  margin: 0px 0 0 0;
   box-sizing: border-box;
   position: initial;
   background: rgba(155, 155, 155, 0.1);
@@ -930,4 +962,7 @@ user-settings
   margin: 1px 0;
   background: rgba(200, 200, 200, 0.1);
   padding: 10px 12px;
+  color: #fff;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
 }

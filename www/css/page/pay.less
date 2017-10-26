@@ -50,17 +50,18 @@
   .add-collector-container {
 
     .add-collector-address-container {
-      margin: 30px 0;
+      .text-box(@h: 40px; @w: 100%; @lh: 30px; @m: 30px 0 30px 0);
+      border-bottom: 1px solid #999;
 
       .add-collector-address-input {
-        height: 26px;
+        height: 40px;
         background: none;
         width: 100%;
         border: none;
         outline:none;
         font-size: 1.6rem;
         color: #fff;
-        border-bottom: 1px solid #999;
+        
 
         &::-webkit-input-placeholder {
           color: #999;
@@ -69,7 +70,7 @@
     }
 
     .add-collector-amount-container {
-      .text-box(@h: 80px; @w: 100%; @lh: 30px; @m: 30px 0 30px 0);
+      .text-box(@h: 40px; @w: 100%; @lh: 30px; @m: 30px 0 30px 0);
 
       .add-collector-amount-input-container {
         position: relative;
@@ -82,7 +83,7 @@
           width: 80%;
           border:none;
           outline:none;
-          font-size: 2.0rem;
+          font-size: 1.6rem;
           color: #fff;
           height: 28px;
           float:left;
@@ -100,40 +101,64 @@
         }
       }
 
-      .add-collector-fee-container {
-        .box-sizing(@p:0px 10px; @bg: rgba(150,150,150,0.4));
-        position: relative;
-        top:8px;
-        border-radius:5px;
-        color:#ccc;
-        float:left;
-        font-size: 1.2rem;
+      /*&:before {
+        content:'';
+        position: absolute;
+        width:0;
+        height:0;
+        top:-10px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent rgba(150,150,150,0.4) transparent;
+      }*/
 
-        &:before {
-          content:'';
-          position: absolute;
-          width:0;
-          height:0;
-          top:-10px;
-          border-width: 5px;
-          border-style: solid;
-          border-color: transparent transparent rgba(150,150,150,0.4) transparent;
-        }
-
-        .add-collector-fee-config {
-          position: absolute;
-          right:-110px;
-          top:0;
-          width:100px;
-          text-decoration: underline;
-          font-size:1rem;
-        }
+      .add-collector-fee-config {
+        position: absolute;
+        right:-110px;
+        top:0;
+        width:100px;
+        text-decoration: underline;
+        font-size:1rem;
       }
 
       .add-collector-amount-all {
         font-size: 1rem;
         color: #f66;
         float:right;
+      }
+    }
+
+    .add-collector-fee-container {
+        //.box-sizing(@p:0px 10px; @bg: rgba(150,150,150,0.4));
+        .text-box(@h: 40px; @w: 100%; @lh: 30px; @m: 30px 0 10px 0);
+        position: relative;
+        top:-10px;
+        //border-radius:5px;
+        color:#ccc;
+        //float:left;
+        font-size: 1.6rem;
+
+      .add-collector-fee-input-container {
+        position: relative;
+        width: 100%;
+        height:35px;
+        border-bottom: 1px solid #999;
+
+        .add-collector-fee-input {
+          background: none;
+          width: 80%;
+          border:none;
+          background:none;
+          outline:none;
+          font-size: 1.6rem;
+          color: #fff;
+          height: 28px;
+          float:left;
+
+          &::-webkit-input-placeholder {
+            color: #999;
+          }
+        }
       }
     }
 
@@ -328,7 +353,7 @@
 
   .pay-qrcode-container {
     .pay-qrcode-outer {
-      .box(@w: 80%; @h:330px; @lh: inherit; @bg: rgba(255,255,255,0.1));
+      .box(@w: 80%; @h:310px; @lh: inherit; @bg: rgba(255,255,255,0.1));
       min-width: 280px;
       border-radius: 8px;
       .center;
@@ -380,6 +405,48 @@
             float:left;
           }
         }
+      }
+    }
+  }
+
+  .pay-address-container {
+    .box(@w: 80%; @h:130px; @lh: inherit; @bg: rgba(255,255,255,0.1));
+    .center;
+    margin-top: 10px;
+    border-radius: 8px;
+
+    .pay-address-group {
+      width:100%;
+
+      .pay-address-title {
+        .box(@w: 100%; @h: 40px; @lh: 40px; @bg: rgba(255,255,255,0.1));
+        .text(@color: #fff; @fontSize: 1.4rem; @fontWeight: 200; @letterSpacing: 1px;);
+        padding-left:15px;
+        border-radius: 8px 8px 0 0;
+
+        .pay-address-copy {
+          display:inline-block;
+          float:right;
+          height: 30px;
+          line-height: 20px;
+          margin-top: 5px;
+          margin-right: 15px;
+          padding:5px 10px;
+          background:rgba(166,166,166,0.5);
+          box-shadow: 0 0 8px rgba(0,0,0,0.2);
+          color: #fff;
+          font-size:1rem;
+        }
+      }
+
+      .pay-address-input {
+        width: 90%;
+        margin:15px 5%;
+        height:60px;
+        line-height: 25px;
+        background:rgba(200,200,200,0.1);
+        padding:5px 10px;
+        color: #fff;
       }
     }
   }

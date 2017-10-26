@@ -1,11 +1,11 @@
-<ion-view view-title="我的联系人" class="usual-background animated" hide-tabs="true" ng-controller="contactCtrl">
+<ion-view view-title="{{'My Contacts' | translate}}" class="usual-background animated" hide-tabs="true" ng-controller="contactCtrl">
   <ion-nav-bar class="navbar-bg bar-transparent">
     <ion-nav-buttons side="left">
       <a ng-click="contactBack();" class="button button-icon icon ion-ios-arrow-back" nav-direction="back"></a>
       <!--javascript:history.back(-1)-->
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-      <a href="#/account/contactAdd" class="nav-right-btn suggest-submit-btn submit-active" ng-if="!paying">添加</a>
+      <a href="#/account/contactAdd" class="nav-right-btn suggest-submit-btn submit-active" ng-if="!paying">{{'Add' | translate}}</a>
       <!--javascript:history.back(-1)-->
     </ion-nav-buttons>
   </ion-nav-bar>
