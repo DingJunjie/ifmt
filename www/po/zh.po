@@ -19,10 +19,16 @@ msgstr "(1449)"
 msgid "Tips"
 msgstr "温馨提示"
 
+msgid "Error"
+msgstr "错误"
+
+msgid "Warning"
+msgstr "警告"
+
 msgid "Successfully saved"
 msgstr "保存成功"
 
-msgid "Save"
+msgid "SAVE"
 msgstr "保存"
 
 msgid "Add"
@@ -32,6 +38,9 @@ msgid "NEXT"
 msgstr "下一步"
 
 msgid "The passphrase has saved in clipboard"
+msgstr "主密码已保存至剪贴板"
+
+msgid "Address has saved in clipboard"
 msgstr "主密码已保存至剪贴板"
 
 msgid "Next Page"
@@ -139,6 +148,9 @@ msgstr "有效的手续费必须大于或等于0.00000001并小于你所设置�
 msgid "The upper limit of fee must greater than default fee and less than all your available IBT"
 msgstr "手续费上限必须高于默认手续费而低于你所持有的IBT"
 
+msgid "The fee is less than default, please modify your input"
+msgstr "最高手续费低于默认手续费，请重新设置。"
+
 msgid "Scan barcode to add my address"
 msgstr "扫一扫，向我付币"
 
@@ -183,6 +195,45 @@ msgstr "交易奖励"
 
 msgid "service error, please try it again"
 msgstr "服务错误，请重试"
+
+msgid "unconfirmed"
+msgstr "待确认"
+
+msgid "Official Wechat"
+msgstr "官方微信"
+
+msgid "Official Email"
+msgstr "官方邮箱"
+
+msgid "Official Address"
+msgstr "官方地址"
+
+msgid "Choose barcode"
+msgstr "选取二维码"
+
+msgid "Camera"
+msgstr "相机"
+
+msgid "Album"
+msgstr "相册中获取"
+
+msgid "Fail to get recent tractions"
+msgstr "获取最近交易失败"
+
+msgid "Fail to get user reward"
+msgstr "获取账户收益失败"
+
+msgid "Transfer error"
+msgstr "转账出现错误"
+
+msgid "Please set fee amount to modify username"
+msgstr "请输入您修改用户名的手续费"
+
+msgid "Please set fee amount to add new contact"
+msgstr "请输入您添加联系人的手续费"
+
+msgid "Please enter a correct address"
+msgstr "请输入正确的地址"
 
 #: partials/app-template.html:177
 msgid "2nd Passphrase"
@@ -549,7 +600,7 @@ msgstr "启用"
 #: partials/modals/blockInfo.html:72 partials/modals/blockModal.html:32
 #: partials/modals/transactionInfo.html:47 partials/modals/userInfo.html:99
 msgid "FEE"
-msgstr "交易费"
+msgstr "手续费"
 
 #: partials/app-template.html:260
 msgid "FORGING"
@@ -1393,7 +1444,7 @@ msgid "Username"
 msgstr "用户名"
 
 msgid "Address"
-msgstr "地　址"
+msgstr "地址"
 
 #: partials/delegates.html:7 partials/votes.html:8
 msgid "View selection"

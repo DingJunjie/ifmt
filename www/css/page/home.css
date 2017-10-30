@@ -77,6 +77,48 @@
   display: table-cell;
   vertical-align: middle;
 }
+/**
+ * 定义ionicpopup样式
+ */
+.popup-container .popup {
+  border-radius: 15px;
+  padding: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.popup-container .popup .popup-head {
+  padding: 5px 10px;
+  padding-top: 15px;
+}
+.popup-container .popup .popup-head .popup-title {
+  font-size: 2.0rem;
+}
+.popup-container .popup .popup-body {
+  text-align: center;
+}
+.popup-container .popup .popup-body span,
+.popup-container .popup .popup-body h4,
+.popup-container .popup .popup-body h5,
+.popup-container .popup .popup-body div {
+  font-size: 1.4rem;
+  color: #333;
+  margin: 5px 0;
+}
+.popup-container .popup .popup-body input {
+  margin-bottom: 5px;
+}
+.popup-container .popup .popup-buttons {
+  padding: 0;
+  min-height: 30px;
+}
+.popup-container .popup .popup-buttons button {
+  margin: 0;
+}
+.popup-container .popup .popup-buttons button:first-child {
+  border-bottom-left-radius: 15px;
+}
+.popup-container .popup .popup-buttons button:last-child {
+  border-bottom-right-radius: 15px;
+}
 .home-bg-btm {
   position: absolute;
   height: 100%;
@@ -398,10 +440,10 @@
 }
 .ifc-benefit-grid .ifc-benefit-table-head .ifc-benefit-table-title-name {
   padding-left: 10px;
-  width: 25%;
+  width: 20%;
 }
 .ifc-benefit-grid .ifc-benefit-table-head .ifc-benefit-table-title-address {
-  width: 15%;
+  width: 20%;
 }
 .ifc-benefit-grid .ifc-benefit-table-head .ifc-benefit-table-title-time {
   width: 20%;

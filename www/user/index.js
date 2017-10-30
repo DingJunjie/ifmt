@@ -335,6 +335,17 @@ angular.module('IfmCoinApp').controller('MainController', ['$rootScope', '$scope
       });
   }
 
+  var inputs = $('input');
+
+  inputs.on('focus', handleScroll);
+
+  function handleScroll(e) {
+    var ip = e.target;
+
+    setTimeout(function() {
+      ip.scrollIntoView(false);
+    })
+  }
 
   /**
    * 从login获取的数据无法在home获取，所以存至localStorage再进行获取

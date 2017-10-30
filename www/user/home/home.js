@@ -2,7 +2,7 @@
  * Created by 俊杰 on 2017/7/26.
  */
 
-angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', 'gettext', 'gettextCatalog', 'languageService', function($scope, userService, gettext, gettextCatalog, languageService) {
+angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', 'gettext', 'gettextCatalog', 'languageService', '$interval', function($scope, userService, gettext, gettextCatalog, languageService, $interval) {
 	/**
 	 * 获取当前IFMT数以及对应RMB数额
 	 */
@@ -23,7 +23,6 @@ angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', 'g
 			'senderPublicKey': userService.publicKey
 		}
 		getOnce(true, '/api/transactions', req, function(data) {
-			console.log(data);
 			if(data.success === true) {
 				for(var i in data.transactions) {
 					if(data.transactions[i].recipientId) {
@@ -42,14 +41,14 @@ angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', 'g
 				console.log(data.transactions);
 			}else {
 				$ionicPopup.alert({
-					title : '<div>温馨提示</div>',
-	                template: '<div class="text-center">获取最近交易失败</div>'
+					title : '<div>'+gettextCatalog.getString('Tips')+'</div>',
+	                template: '<div class="text-center">'+gettextCatalog.getString(res.error.message)+'</div>'
 				})
 			}
 		}, function(err) {
 			$ionicPopup.alert({
-				title : '<div>温馨提示</div>',
-                template: '<div class="text-center">' + err + '</div>'
+				title : '<div>'+gettextCatalog.getString('Tips')+'</div>',
+                template: '<div class="text-center">' + gettextCatalog.getString(err) + '</div>'
 			})
 		})
 	}
@@ -66,13 +65,14 @@ angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', 'g
 		getOnce(true, '/api/accounts/balanceDetails', req, function(data) {
 			if(data.success === true) {
 				for(var i in data.balancedetails) {
-					data.balancedetails[i].amountFixed = (data.balancedetails[i].amount/100000000).toFixed(5);
+					data.balancedetails[i].amountFixed = (data.balancedetails[i].amount/100000000).toFixed(4);
+					data.balancedetails[i].amountFixed = 1* data.balancedetails[i].amountFixed;
 				}
 				$scope.benefits = data.balancedetails;
 			}else {
 				$ionicPopup.alert({
-					title : '<div>温馨提示</div>',
-	                template: '<div class="text-center">获取账户收益失败</div>'
+					title : '<div>'+gettextCatalog.getString('Tips')+'</div>',
+	                template: '<div class="text-center">'+gettextCatalog.getString(data.error.message)+'</div>'
 				})
 			}
 		})
@@ -95,7 +95,7 @@ angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', 'g
 					if(data.transactions[i].recipientId) {
 						data.transactions[i].recipientName = data.transactions[i].recipientId;
 					}else {
-						data.transactions[i].recipientName = '手续费';
+						data.transactions[i].recipientName = gettextCatalog.getString('FEE');
 					}
 					data.transactions[i].showTime = false;
 				}
@@ -104,17 +104,20 @@ angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', 'g
 				console.log(data.transactions);
 			}else {
 				$ionicPopup.alert({
-					title : '<div>温馨提示</div>',
-	                template: '<div class="text-center">获取最近交易失败</div>'
+					title : '<div>'+gettextCatalog.getString('Tips')+'</div>',
+	                template: '<div class="text-center">'+gettextCatalog.getString(data.error.message)+'</div>'
 				})
 			}
 		}, function(err) {
 			$ionicPopup.alert({
-				title : '<div>温馨提示</div>',
-                template: '<div class="text-center">' + err + '</div>'
+				title : '<div>'+gettextCatalog.getString('Tips')+'</div>',
+                template: '<div class="text-center">' + gettextCatalog.getString(err) + '</div>'
 			})
 		})
 	}
+
+	$interval(getTransactions, 10000);
+	$interval(getBenefits, 10000);
 
 	/**
 	 * 选取最新交易或最新收益TAB事件
@@ -132,6 +135,11 @@ angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', 'g
 
 	getTransactions();
 	getBenefits();
+
+	$scope.$watch('$viewContentLoaded', function() {  
+	    getTransactions();
+		getBenefits();
+    });
 
 }]).controller('tradeMoreCtrl', ['$scope', '$ionicPopup', 'userService', 'gettext', 'gettextCatalog', 'languageService', function($scope, $ionicPopup, userService, gettext, gettextCatalog, languageService) {
 	$scope.transaction = {};
@@ -159,7 +167,7 @@ angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', 'g
 					if(data.transactions[i].recipientId) {
 						data.transactions[i].recipientName = data.transactions[i].recipientId;
 					}else {
-						data.transactions[i].recipientName = '手续费';
+						data.transactions[i].recipientName = gettextCatalog.getString('FEE');
 					}
 					data.transactions[i].showTime = false;
 					data.transactions[i].amountFixed = (data.transactions[i].amount/100000000).toFixed(2);
@@ -173,14 +181,14 @@ angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', 'g
 				console.log(data.transactions);
 			}else {
 				$ionicPopup.alert({
-					title : '<div>温馨提示</div>',
-	                template: '<div class="text-center">获取最近交易失败</div>'
+					title : '<div>'+gettextCatalog.getString('Tips')+'</div>',
+	                template: '<div class="text-center">'+gettextCatalog.getString(data.error.message)+'</div>'
 				})
 			}
 		}, function(err) {
 			$ionicPopup.alert({
-				title : '<div>温馨提示</div>',
-                template: '<div class="text-center">' + err + '</div>'
+				title : '<div>'+gettextCatalog.getString('Tips')+'</div>',
+                template: '<div class="text-center">' + gettextCatalog.getString(err) + '</div>'
 			})
 		})
 	}
@@ -236,14 +244,14 @@ angular.module('IfmCoinApp').controller('homeCtrl', ['$scope', 'userService', 'g
 				$scope.benefit.page = len;
 			}else {
 				$ionicPopup.alert({
-					title : '<div>温馨提示</div>',
-	                template: '<div class="text-center">获取最近交易失败</div>'
+					title : '<div>'+gettextCatalog.getString('Tips')+'</div>',
+	                template: '<div class="text-center">'+gettextCatalog.getString(data.error.message)+'</div>'
 				})
 			}
 		}, function(err) {
 			$ionicPopup.alert({
-				title : '<div>温馨提示</div>',
-                template: '<div class="text-center">' + err + '</div>'
+				title : '<div>'+gettextCatalog.getString('Tips')+'</div>',
+                template: '<div class="text-center">' + gettextCatalog.getString(err) + '</div>'
 			})
 		})
 	}

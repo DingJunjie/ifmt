@@ -2,7 +2,7 @@
  * Created by 俊杰 on 2017/7/26.
  */
 
-angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','userService', '$ionicPopup', 'runtimeData', 'gettext', 'gettextCatalog', 'languageService', function($scope, $timeout,userService, $ionicPopup, runtimeData, gettext, gettextCatalog, languageService) {
+angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout', '$interval', 'userService', '$ionicPopup', 'runtimeData', 'gettext', 'gettextCatalog', 'languageService', function($scope, $timeout, $interval, userService, $ionicPopup, runtimeData, gettext, gettextCatalog, languageService) {
   /**
    * TIP:由于ANGULARJS和IONIC的作用域问题，$scope和页面上的$scope不一致
    * 所以要使用$scope.$parent或者使用$rootScope来设置部分值，一部分全局放置在$rootScope
@@ -99,7 +99,15 @@ angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','user
       title: gettextCatalog.getString("FEE"),
       template: gettextCatalog.getString("Please enter a valid transaction fee: >= 0.00000001"),
       inputType: 'number',
-      inputPlaceholder: parseFloat($scope.fee)
+      inputPlaceholder: parseFloat($scope.fee),
+      buttons: [
+        {text: gettextCatalog.getString('CANCEL'), 
+         onTap: function(e) {
+           return
+        }},
+        {text: gettextCatalog.getString('CONFIRM'),
+         type: 'button-positive'}
+      ]
     }).then(function(digFee) {
         if(digFee && digFee > 0.00000001 && digFee < $rootScope.maxFee) {
           if(window.localStorage.remember === 'true') {
@@ -182,16 +190,16 @@ angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','user
                         }else {
                           console.log(data);
                           $ionicPopup.alert({
-                            "title" : "自动挖矿失败",
-                            "template" : "<h4>"+gettextCatalog.getString(data.message)+"</h4>"
+                            "title" : gettextCatalog.getString('Tips'),
+                            "template" : "<h4>"+gettextCatalog.getString(data.error.message)+"</h4>"
                           })
                         }
                       })
                     }
                   }catch(e) {
                     $ionicPopup.alert({
-                      "title" : "自动挖矿失败",
-                      "template" : "<h4>自动挖矿失败！</h4>"
+                      "title" : gettextCatalog.getString('Tips'),
+                      "template" : "<h4>"+gettextCatalog.getString(e.error.message)+"</h4>"
                     })
                   }
                 })
@@ -201,8 +209,8 @@ angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','user
         })
       }else {
         $ionicPopup.alert({
-          "title" : "自动挖矿失败",
-          "template" : "<h4>自动挖矿失败！</h4>"
+          "title" : gettextCatalog.getString('Tips'),
+          "template" : "<h4>"+gettextCatalog.getString(res.error.message)+"</h4>"
         })
       }
     })
@@ -210,8 +218,8 @@ angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','user
 
   $scope.cancelDig = function() {
     $ionicPopup.confirm({
-      "title" : "取消自动挖矿",
-      "template" : "<h4>确定取消自动挖矿？</h4>"
+      "title" : gettextCatalog.getString('Close Forging'),
+      "template" : "<h4>"+gettextCatalog.getString('Please confirm whether to close forging.')+"</h4>"
     }).then(function(makeSure) {
       if(makeSure === true) {
         var req = {
@@ -227,8 +235,8 @@ angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','user
             }, 0);
           }else {
             $ionicPopup.alert({
-              "title" : "取消挖矿失败",
-              "template" : "<h4>取消自动挖矿失败！</h4>"
+              "title" : gettextCatalog.getString('Tips'),
+              "template" : "<h4>"+gettextCatalog.getString(res.error.message)+"</h4>"
             })
           }
         })
@@ -237,6 +245,10 @@ angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','user
     })
   }
 
+  /**
+   * 当缓存自动挖矿开启时自动挖矿
+   * @return {[type]} [description]
+   */
   var initDig = function() {
     if(window.localStorage.autoDig === 'true') {
       $scope.startDig();
@@ -245,6 +257,10 @@ angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','user
 
   initDig();
 
+  /**
+   * 获取20个交易信息
+   * @return {[type]} [description]
+   */
   function getNewestTrade () {
     var tradeOpt = {
       "limit" : 20,
@@ -263,11 +279,22 @@ angular.module('IfmCoinApp').controller('chainCtrl',[ '$scope', '$timeout','user
   }
   getNewestTrade();
 
+  /**
+   * 10秒获取1次交易和块
+   */
+  $interval(getNewestTrade, 10000);
+  $interval(getBlock, 10000);
+
   $scope.showTrade = function(trade) {
     $rootScope.tradeDetail = trade;
     runtimeData.setTrade(trade);
     window.location.href = '#/blockChain/tradeDetail';
   }
+
+  $scope.$watch('$viewContentLoaded', function() {  
+      getNewestTrade();
+      getBlock();
+  });
 
 }]).controller('blockDetailCtrl', ['$scope', '$timeout', 'runtimeData', 'gettext', 'gettextCatalog', 'languageService', function($scope, $timeout, runtimeData, gettext, gettextCatalog, languageService) {
   // $scope.blockDetail = runtimeData.getBlock();

@@ -60,6 +60,7 @@ msgid "Amount"
 msgstr ""
 
 #: www/user/account/settings.html:15
+#: www/user/blockChain/blockChain.html:57
 msgid "Auto-Forging"
 msgstr ""
 
@@ -99,7 +100,7 @@ msgstr ""
 msgid "Click to set"
 msgstr ""
 
-#: www/user/pay/pay.html:130
+#: www/user/pay/pay.html:131
 msgid "Copy Address"
 msgstr ""
 
@@ -122,25 +123,26 @@ msgstr ""
 
 #: www/user/account/contactUser.html:40
 #: www/user/account/settings.html:28
-#: www/user/blockChain/blockChain.html:150
-#: www/user/blockChain/blockChain.html:84
+#: www/user/blockChain/blockChain.html:152
+#: www/user/blockChain/blockChain.html:86
 #: www/user/blockChain/blockDetailModal.html:27
 #: www/user/blockChain/blockMore.html:16
 #: www/user/blockChain/tradeDetailModal.html:29
+#: www/user/pay/pay.html:84
 msgid "FEE"
 msgstr ""
 
-#: www/user/account/settings.html:48
-msgid "Further protect your account with an optional second passphrase! Please allow some time for the changes to take effect."
+#: www/user/blockChain/blockChain.html:7
+msgid "FORGING"
 msgstr ""
 
-#: www/user/blockChain/blockChain.html:82
+#: www/user/blockChain/blockChain.html:84
 #: www/user/blockChain/blockDetailModal.html:17
 #: www/user/blockChain/blockMore.html:14
 msgid "Height"
 msgstr ""
 
-#: www/user/blockChain/blockChain.html:150
+#: www/user/blockChain/blockChain.html:152
 msgid "Include"
 msgstr ""
 
@@ -150,7 +152,7 @@ msgstr ""
 msgid "Last Page"
 msgstr ""
 
-#: www/user/blockChain/blockChain.html:103
+#: www/user/blockChain/blockChain.html:105
 msgid "Lastest Blocks"
 msgstr ""
 
@@ -162,13 +164,13 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: www/user/blockChain/blockChain.html:119
+#: www/user/blockChain/blockChain.html:121
 #: www/user/home/home.html:56
 #: www/user/home/home.html:83
 msgid "More"
 msgstr ""
 
-#: www/user/pay/pay.html:130
+#: www/user/pay/pay.html:131
 msgid "My Address"
 msgstr ""
 
@@ -214,6 +216,10 @@ msgstr ""
 msgid "Please enter upper limit fee: > default fee"
 msgstr ""
 
+#: www/user/account/settings.html:48
+msgid "Please remember to pay the password and forget to retrieve it and lose the balance"
+msgstr ""
+
 #: www/user/account/nameSetting.html:14
 msgid "Please set your username."
 msgstr ""
@@ -222,7 +228,7 @@ msgstr ""
 msgid "Previous Block"
 msgstr ""
 
-#: www/user/blockChain/blockChain.html:60
+#: www/user/blockChain/blockChain.html:62
 msgid "Progress"
 msgstr ""
 
@@ -242,7 +248,7 @@ msgstr ""
 msgid "Repeat second passphrase"
 msgstr ""
 
-#: www/user/blockChain/blockChain.html:85
+#: www/user/blockChain/blockChain.html:87
 msgid "Reward"
 msgstr ""
 
@@ -278,10 +284,6 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: www/user/blockChain/blockChain.html:7
-msgid "Summary"
-msgstr ""
-
 #: www/user/account/feeConfig.html:17
 msgid "The fee must greater or equal than 0.00000001 and less than max-fee in settings"
 msgstr ""
@@ -290,7 +292,7 @@ msgstr ""
 msgid "The upper limit of fee must greater than default fee and less than all your available IBT"
 msgstr ""
 
-#: www/user/blockChain/blockChain.html:86
+#: www/user/blockChain/blockChain.html:88
 #: www/user/blockChain/blockDetailModal.html:37
 #: www/user/blockChain/blockMore.html:18
 #: www/user/home/benefitMore.html:20
@@ -300,13 +302,13 @@ msgstr ""
 msgid "Time"
 msgstr ""
 
-#: www/user/blockChain/blockChain.html:83
+#: www/user/blockChain/blockChain.html:85
 #: www/user/blockChain/blockDetailModal.html:22
 #: www/user/blockChain/blockMore.html:15
 msgid "Total"
 msgstr ""
 
-#: www/user/blockChain/blockChain.html:132
+#: www/user/blockChain/blockChain.html:134
 #: www/user/blockChain/tradeDetailModal.html:21
 msgid "TradeNumber"
 msgstr ""
@@ -329,7 +331,7 @@ msgstr ""
 
 #: www/user/account/contactTransfer.html:27
 #: www/user/account/contactUser.html:47
-#: www/user/pay/pay.html:93
+#: www/user/pay/pay.html:94
 msgid "Transfer"
 msgstr ""
 

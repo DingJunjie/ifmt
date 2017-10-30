@@ -14,7 +14,7 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
   /**
    * 获取actionSheet
    */
-  $scope.showActionSheet = function() {
+  /*$scope.showActionSheet = function() {
     var hideSheet = $ionicActionSheet.show({
       buttons: [
         {text: "查看大图"},
@@ -31,18 +31,18 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
       buttonClicked: function(index) {
         return true;
       }
-    });
+    });*/
     /*$timeout(function() {
       hideSheet();
     },2000);*/
-  }
+  // }
 
   $scope.contactList = [];
 
   $scope.saveAddress = function() {
     $('.user-settings-list-address')[1].select();
     document.execCommand("Copy");
-    $ionicPopup.alert({"title": "保存成功", "template": "地址已保存至剪贴板"})
+    $ionicPopup.alert({"title": gettextCatalog.getString('Successfully saved'), "template": gettextCatalog.getString('Address has saved in clipboard')})
   }
 
 }]).controller('nameSettingCtrl', ['$scope', 'runtimeData', 'userService', '$ionicPopup', 'gettext', 'gettextCatalog', 'languageService', function($scope, runtimeData, userService, $ionicPopup, gettext, gettextCatalog, languageService) {
@@ -51,23 +51,23 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
   $scope.editName = function() {
     if($rootScope.username === '') {
       $ionicPopup.prompt({
-        title: "修改用户名",
-        template: "请输入您修改用户名的手续费",
+        title: gettextCatalog.getString('TradeNumber (Fee)'),
+        template: gettextCatalog.getString('Please set fee amount to modify username'),
         inputType: 'number',
         inputPlaceholder: $scope.fee
       }).then(function(editFee) {
           if(editFee && editFee > 0.00000001 && editFee < $rootScope.maxFee) {
             $ionicPopup.prompt({
-              title: "请输入密码",
-              template: "请输入您的主密码",
+              title: gettextCatalog.getString('Please enter your passphrase.'),
+              template: gettextCatalog.getString('Please enter your passphrase below.'),
               inputType: 'text',
             }).then(function(pass) {
               if(pass.length>0 && ifmjs.Mnemonic.isValid(pass) === true) {
                 modifyUsername(editFee, pass);
               }else {
                 $ionicPopup.alert({
-                  "title" : "密码错误",
-                  "template" : "<h4>主密码错误，请重新输入。</h4>"
+                  "title" : gettextCatalog.getString('Tips'),
+                  "template" : "<h4>"+gettextCatalog.getString('Invalid passphrase')+"</h4>"
                 }, function() {
                   return;
                 })
@@ -75,8 +75,8 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
             })
           }else {
             $ionicPopup.alert({
-              "title" : "手续费错误",
-              "template" : "<h4>手续费应该大于0.00000001个IFMT，并小于设置的最大手续费</h4>"
+              "title" : gettextCatalog.getString('Tips'),
+              "template" : "<h4>"+gettextCatalog.getString('The fee must greater or equal than 0.00000001 and less than max-fee in settings')+"</h4>"
             }, function() {
               return;
             })
@@ -84,8 +84,8 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
         })
     }else {
       $ionicPopup.alert({
-        "title" : "用户名已被修改",
-        "template" : "<h4>您的用户名已经修改过一次，不能再次修改</h4>"
+        "title" : gettextCatalog.getString('Tips'),
+        "template" : "<h4>"+gettextCatalog.getString('Account already has a username')+"</h4>"
       })
     }
     
@@ -117,31 +117,40 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
 
               ifmjs.transaction.createTransaction(req, function(err, transaction) {
                 try {
-                  console.log(transaction);
                   if(err) {
                     throw err;
                   }else {
                     putOnce(true, "/api/accounts/tx/username", transaction, function(res) {
-                      console.log(res);
                       if(res.success === true) {
                           $ionicPopup.alert({
-                            title: '修改成功',
-                            template: '<h4 style="text-align: center">用户名修改成功。</h4>'
+                            title: gettextCatalog.getString('Submit successfully'),
+                            template: '<h4 style="text-align: center">'+gettextCatalog.getString('Submit successfully')+'</h4>'
                           })
                           $rootScope.username = $scope.nameOpt.newUsername;
                           $scope.nameOpt.newUsername = '';
+                      }else {
+                          $ionicPopup.alert({
+                            title: gettextCatalog.getString('Tips'),
+                            template: '<h4 style="text-align: center">'+gettextCatalog.getString(res.error.message)+'</h4>'
+                          })
                       }
                     })
                   }
                 }catch(e) {
-                  console.log(e);
+                  $ionicPopup.alert({
+                    title: gettextCatalog.getString('Tips'),
+                    template: '<h4 style="text-align: center">'+gettextCatalog.getString(e.error.message)+'</h4>'
+                  })
                 }
               })
           }else {
-              throw "获取时间戳错误";
+              throw data.error.message;
           }
         }catch(e) {
-          console.log(e);
+          $ionicPopup.alert({
+            title: gettextCatalog.getString('Tips'),
+            template: '<h4 style="text-align: center">'+gettextCatalog.getString(e)+'</h4>'
+          })
         }
       }, function(err) {
           return err;
@@ -166,8 +175,8 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
         window.history.go(-1);
       }else {
         $ionicPopup.alert({
-          'title' : "温馨提示",
-          'template' : '<h5 style="text-align: center">手续费应该大于0.00000001个IFMT，并小于设置的最大手续费</h5>'
+          'title' : gettextCatalog.getString('Tips'),
+          'template' : '<h5 style="text-align: center">'+gettextCatalog.getString('The fee must greater or equal than 0.00000001 and less than max-fee in settings')+'</h5>'
         })
       }
     }
@@ -192,28 +201,33 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
           window.location.href = "#/account";
        }
     }
+
+    $scope.$watch('$viewContentLoaded', function() {  
+        $rootScope.$emit('refreshContact');
+    });
+
 }]).controller('addContactCtrl', ['$scope', '$ionicPopup', 'userService', '$cordovaBarcodeScanner', 'gettext', 'gettextCatalog', 'languageService', function($scope, $ionicPopup, userService, $cordovaBarcodeScanner, gettext, gettextCatalog, languageService) {
     $scope.contact = {};
     $scope.addContact = function() {
       if($scope.contact.addAddress && address.isAddress($scope.contact.addAddress)) {
         $ionicPopup.prompt({
-          title: "添加联系人",
-          template: "请输入您添加联系人的手续费",
+          title: gettextCatalog.getString('Adding new contact'),
+          template: gettextCatalog.getString('Please set fee amount to add new contact'),
           inputType: 'number',
           inputPlaceholder: $scope.fee
         }).then(function(addFee) {
             if(addFee && addFee > 0.00000001 && addFee < $rootScope.maxFee) {
               $ionicPopup.prompt({
-                title: "请输入密码",
-                template: "请输入您的主密码",
+                title: gettextCatalog.getString('Please enter your passphrase.'),
+                template: gettextCatalog.getString('Please enter your passphrase below.'),
                 inputType: 'text',
               }).then(function(pass) {
                 if(pass.length>0 && ifmjs.Mnemonic.isValid(pass) === true) {
                   addContactFn(addFee, pass);
                 }else {
                 $ionicPopup.alert({
-                  "title" : "密码错误",
-                  "template" : "<h4>主密码错误，请重新输入。</h4>"
+                  "title" : gettextCatalog.getString('Tips'),
+                  "template" : "<h4>"+gettextCatalog.getString('Invalid passphrase')+"</h4>"
                 }, function() {
                   return;
                 })
@@ -221,8 +235,8 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
             })
           }else {
             $ionicPopup.alert({
-              "title" : "手续费错误",
-              "template" : "<h4>手续费应该大于0.00000001个IFMT，并小于设置的最大手续费</h4>"
+              "title" : gettextCatalog.getString('Tips'),
+              "template" : "<h4>"+gettextCatalog.getString('The fee must greater or equal than 0.00000001 and less than max-fee in settings')+"</h4>"
             }, function() {
               return;
             })
@@ -231,8 +245,8 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
 
       }else {
         $ionicPopup.alert({
-          "title" : "地址错误",
-          "template" : "<h4>请输入正确的地址</h4>"
+          "title" : gettextCatalog.getString('Invalid address'),
+          "template" : "<h4>"+gettextCatalog.getString('Please enter a correct address')+"</h4>"
         })
       }
     }
@@ -245,7 +259,6 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
 
     function addContactFn(fee, pass) {
       getOnce(true, '/api/transactions/getslottime', null, function(data) {
-      console.log(data);
       try {
         if(data.success === true) {
             var timestamp = data.timestamp;
@@ -262,11 +275,9 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
               publicKey: userService.publicKey,
               timestamp: timestamp
             }
-            console.log(req);
 
             ifmjs.transaction.createTransaction(req, function(err, transaction) {
               try {
-                console.log(transaction);
                 if(err) {
                   throw err;
                 }else {
@@ -274,22 +285,32 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
                     console.log(res);
                     if(res.success === true) {
                         $ionicPopup.alert({
-                          title: '添加成功',
-                          template: '<h4 style="text-align: center">联系人添加成功。</h4>'
+                          title: gettextCatalog.getString('Submit successfully'),
+                          template: '<h4 style="text-align: center">'+gettextCatalog.getString('Contacts') + gettextCatalog.getString('Submit successfully')+'</h4>'
                         })
                         $rootScope.$emit('refreshContact');
                     }else {
-                      throw "发生交易失败";
+                      throw gettextCatalog.getString(res.error.message);
                     }
                   })
                 }
               }catch(e) {
-                console.log(e);
+                e = e.error ? e.error.message : e.message;
+                $ionicPopup.alert({
+                  title: gettextCatalog.getString('Tips'),
+                  template: '<h4 style="text-align: center">'+gettextCatalog.getString(e)+'</h4>'
+                })
               }
             })
+          }else {
+            throw data.error.message;
           }
         }catch(e) {
-          console.log(e);
+          e = e.error ? e.error.message : e.message;
+          $ionicPopup.alert({
+            title: gettextCatalog.getString('Tips'),
+            template: '<h4 style="text-align: center">'+gettextCatalog.getString(e)+'</h4>'
+          })
         }
       })
     }
@@ -363,10 +384,9 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
             console.log(data);
 
             ifmjs.transaction.createTransaction(data, function(err, transaction) {
-              console.log(err, transaction);
               try {
                 if(err) {
-                  throw err.message;
+                  throw err;
                 }else {
                   putOnce(true, '/api/transactions/tx', transaction, function(resp) {
                     console.log(resp);
@@ -374,25 +394,27 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
                       throw resp.error.message;
                     }else {
                       $ionicPopup.alert({
-                        "title" : "提交成功",
-                        "template" : "<h4>提交成功</h4>"
+                        "title": gettextCatalog.getString('Submit successfully'),
+                        "template" : "<h4>"+gettextCatalog.getString('Submit successfully')+"</h4>"
                       })
                       $scope.contact = {};
                     }
                   })
                 }
               }catch(e) {
-                 e = e.message ? e.message : e;
+                 e = e.error ? e.error.message : e.message;
                  $ionicPopup.alert({
-                    "title" : "转账出现问题",
-                    "template" : "<h4>"+e+"</h4>"
+                    "title" : gettextCatalog.getString('Tips'),
+                    "template" : "<h4>"+gettextCatalog.getString(e)+"</h4>"
                  })
               }
             })
 
-
           }else {
-            throw "转账失败，请重试";
+            $ionicPopup.alert({
+              "title" : gettextCatalog.getString('Tips'),
+              "template" : "<h4>"+gettextCatalog.getString(res.error.message)+"</h4>"
+            })
           }
         })
       }
@@ -426,7 +448,7 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
               console.log(err, transaction);
               try {
                 if(err) {
-                  throw err.message;
+                  throw err;
                 }else {
                   putOnce(true, '/api/transactions/tx', transaction, function(resp) {
                     console.log(resp);
@@ -434,24 +456,26 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
                       throw resp.error.message;
                     }else {
                       $ionicPopup.alert({
-                        "title" : "转账成功",
-                        "template" : "<h4>转账成功</h4>"
+                        "title": gettextCatalog.getString('Submit successfully'),
+                        "template" : "<h4>"+gettextCatalog.getString('Submit successfully')+"</h4>"
                       })
                     }
                   })
                 }
               }catch(e) {
-                 e = e.message ? e.message : e;
+                 e = e.error ? e.error.message : e.message;
                  $ionicPopup.alert({
-                    "title" : "转账出现问题",
-                    "template" : "<h4>"+e+"</h4>"
+                    "title" : gettextCatalog.getString('Tips'),
+                    "template" : "<h4>"+gettextCatalog.getString(e)+"</h4>"
                  })
               }
             })
 
-
           }else {
-            throw "转账失败，请重试";
+            $ionicPopup.alert({
+                "title" : gettextCatalog.getString('Tips'),
+                "template" : "<h4>"+gettextCatalog.getString(res.error.message)+"</h4>"
+             })
           }
         })
     }
@@ -463,8 +487,8 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
       if( flag === false || (ev.keyCode === '13' && flag === true) ) {
         if($scope.feeOpt.maxFee < runtimeData.getFee()) {
           $ionicPopup.alert({
-            "title" : "手续费错误",
-            "template" : "<h4>最高手续费低于默认手续费，请重新设置。</h4>"
+            "title" : gettextCatalog.getString('Tips'),
+            "template" : "<h4>"+gettextCatalog.getString('The fee is less than default, please modify your input')+"</h4>"
           })
         }else {
           $rootScope.maxFee = $scope.feeOpt.maxFee;
@@ -479,12 +503,11 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
     $scope.savePayPwd = function() {
       if(!$rootScope.secondSign) {
         $ionicPopup.alert({
-          "title" : "设置失败",
-          "template" : "<h4>您已经设置过二次密码，无法修改。</h4>"
+          "title" : gettextCatalog.getString('Error'),
+          "template" : "<h4>"+gettextCatalog.getString('You already has a second passphrase')+"</h4>"
         })
       }else {
         getOnce(true, '/api/transactions/getslottime', null, function(data) {
-          console.log(data);
           try {
             if(data.success === true) {
                 var timestamp = data.timestamp;
@@ -513,31 +536,27 @@ angular.module('IfmCoinApp').controller('accountCtrl', ['$scope', '$timeout', 'u
                         console.log(res);
                         if(res.success === true) {
                           $ionicPopup.alert({
-                            "title" : "设置成功",
-                            "template" : "<h4>支付密码已经设置成功。</h4>"
+                            "title" : gettextCatalog.getString('Submit successfully'),
+                            "template" : "<h4>"+gettextCatalog.getString('Submit successfully') + ',' + gettextCatalog.getString('Please remember to pay the password and forget to retrieve it and lose the balance')+"</h4>"
                           })
                           userService.secondSign = true;
                         }
                       })
                     }
                   }catch(e) {
-                     e = e.message ? e.message : e;
                      $ionicPopup.alert({
-                        "title" : "设置支付密码出现问题",
-                        "template" : "<h4>"+e+"</h4>"
+                        "title" : gettextCatalog.getString('Error'),
+                        "template" : "<h4>"+gettextCatalog.getString(e.error.message)+"</h4>"
                      })
                   }
                 })
-
-
               }else {
-                throw "设置支付密码失败，请重试";
+                throw data.error.message;
               }
             }catch(e) {
-               e = e.message ? e.message : e;
                $ionicPopup.alert({
-                  "title" : "设置支付密码出现问题",
-                  "template" : "<h4>"+e+"</h4>"
+                  "title" : gettextCatalog.getString('Error'),
+                  "template" : "<h4>"+gettextCatalog.getString(e.error.message)+"</h4>"
                })
             }
           })

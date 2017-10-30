@@ -3,16 +3,72 @@
  */
 var cacheUrl = [];  //用于缓存白名单
 
-// var hostUrl = 'http://test1.ifmchain.org:19001'; //测试主机地址
+var hostUrl = 'http://test1.ifmchain.org:19001'; //测试主机地址
 // var hostUrl = 'http://test2.ifmchain.org:19002'; //测试主机地址
-var hostUrl = 'http://test3.ifmchain.org:19003'; //测试主机地址
+// var hostUrl = 'http://test3.ifmchain.org:19003'; //测试主机地址
 // var hostUrl = 'http://test4.ifmchain.org:19004'; //测试主机地址
 // var hostUrl = 'http://192.168.16.161:19000';
+    
+// var hostUrl = 'http://test1.ifmchain.org:19001';
+var hostUrl;
+var hostArr = ['http://test1.ifmchain.org:19001', 'http://test2.ifmchain.org:19001', 'http://test3.ifmchain.org:19001', 'http://test4.ifmchain.org:19001'];
+var hostState = [];
+
+function autoHost() {
+    $.ajax({
+        url : hostArr[0]+'/api/blocks/getLastBlock',
+        type : "GET",
+        contentType : "application/json; charset=utf=8",
+        dataType: "json",
+    }).done(function(data) {
+        hostState.push({id: 0, height: data.height[0].height}); 
+    })
+
+    $.ajax({
+        url : hostArr[1]+'/api/blocks/getLastBlock',
+        type : "GET",
+        contentType : "application/json; charset=utf=8",
+        dataType: "json",
+    }).done(function(data) {
+        hostState.push({id: 1, height: data.height[0].height}); 
+    })
+
+    $.ajax({
+        url : hostArr[2]+'/api/blocks/getLastBlock',
+        type : "GET",
+        contentType : "application/json; charset=utf=8",
+        dataType: "json",
+    }).done(function(data) {
+        hostState.push({id: 2, height: data.height[0].height}); 
+    })
+
+    $.ajax({
+        url : hostArr[3]+'/api/blocks/getLastBlock',
+        type : "GET",
+        contentType : "application/json; charset=utf=8",
+        dataType: "json",
+    }).done(function(data) {
+        hostState.push({id: 3, height: data.height[0].height}); 
+    })
+
+    setTimeout(function() {
+        console.log(hostState);
+        hostState.sort(function(a, b) {
+            return b.height-a.height;
+        })
+        hostUrl = hostArr[hostState[0].id];
+    }, 1000);
+}
+
+autoHost();
+
+
 
 var apkVer = "v0.1";
 var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
 
 (function() {
+
     /**
      * 对后端的一次POST请求
      * @param url   请求地址
@@ -27,20 +83,6 @@ var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
         fullUrl = useHostUrl ? hostUrl + url : url;
 
         if(!data) {data = {};}
-
-        /*
-        //当确定使用token后将token加入data传入后端
-        var token = window.localStorage.getItem('token');
-        if (token) {
-            data.token = token;
-        }*/
-        /*if (!noloading) {
-            iLoadCount ++;
-            if($rootScope.initfinished) {
-                $rootScope.postfinished = false;
-            }
-            safeApply($scope);
-        }*/
 
         $.ajax({
             url : fullUrl,
@@ -359,7 +401,6 @@ var iLoadCount = 0; //记录加载效果显示次数，0时取消加载效果
         blockTime = blockTime ? blockTime : 10;
         return endTime - (blockTime * 57);
     }
-
 
     window.getQry = getQry;
     window.getOnce = getOnce;

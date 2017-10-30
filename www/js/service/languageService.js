@@ -1,4 +1,4 @@
-angular.module('IfmCoinApp').service('languageService', function($rootScope, $window, gettextCatalog) {
+angular.module('IfmCoinApp').service('languageService', function($rootScope, $window, $timeout, gettextCatalog) {
 	$rootScope.language = [
 		{id: 'en', name: 'English', flag: './images/ifmt/login/en.png'},
 		{id: 'zh', name: "简体中文", flag: './images/ifmt/login/zh.png'}

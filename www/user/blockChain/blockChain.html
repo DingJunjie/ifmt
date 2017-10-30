@@ -4,7 +4,7 @@
     <div class="chain-top-space"></div>
     <div class="chain-tab-container">
       <ul>
-        <li class="chain-tab-list-item" ng-class="chainSelected === 0 ? 'chain-tab-list-item-focus': 'chain-tab-list-blur'" ng-click="chainTabClick(0)"><span>{{'Summary' | translate}}</span></li>
+        <li class="chain-tab-list-item" ng-class="chainSelected === 0 ? 'chain-tab-list-item-focus': 'chain-tab-list-blur'" ng-click="chainTabClick(0)"><span>{{'FORGING' | translate}}</span></li>
         <li class="chain-tab-list-item" ng-class="chainSelected === 1 ? 'chain-tab-list-item-focus': 'chain-tab-list-blur'" ng-click="chainTabClick(1)"><span>{{'Blockchain' | translate}}</span></li>
         <li class="chain-tab-list-item" ng-class="chainSelected === 2 ? 'chain-tab-list-item-focus': 'chain-tab-list-blur'" ng-click="chainTabClick(2)"><span>{{'Transaction' | translate}}</span></li>
       </ul>
@@ -53,7 +53,9 @@
                 </div>
                 <div class="ifmt-my-ifmt-wave">
                   <progress-wave ng-if="userData.autoDig" ng-click="cancelDig()"></progress-wave>
-                  <div class="ifmt-my-ifmt-dig-no" ng-if="!userData.autoDig" ng-click="startDig()"></div>
+                  <div class="ifmt-my-ifmt-dig-no" ng-if="!userData.autoDig" ng-click="startDig()">
+                    <div class="ifmt-my-ifmt-dig-no-content">{{'Auto-Forging' | translate}}</div>
+                  </div>
                 </div>
 
                 <div class="ifmt-my-ifmt-percent-container" ng-if="userData.autoDig">

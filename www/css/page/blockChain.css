@@ -77,6 +77,48 @@
   display: table-cell;
   vertical-align: middle;
 }
+/**
+ * 定义ionicpopup样式
+ */
+.popup-container .popup {
+  border-radius: 15px;
+  padding: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.popup-container .popup .popup-head {
+  padding: 5px 10px;
+  padding-top: 15px;
+}
+.popup-container .popup .popup-head .popup-title {
+  font-size: 2.0rem;
+}
+.popup-container .popup .popup-body {
+  text-align: center;
+}
+.popup-container .popup .popup-body span,
+.popup-container .popup .popup-body h4,
+.popup-container .popup .popup-body h5,
+.popup-container .popup .popup-body div {
+  font-size: 1.4rem;
+  color: #333;
+  margin: 5px 0;
+}
+.popup-container .popup .popup-body input {
+  margin-bottom: 5px;
+}
+.popup-container .popup .popup-buttons {
+  padding: 0;
+  min-height: 30px;
+}
+.popup-container .popup .popup-buttons button {
+  margin: 0;
+}
+.popup-container .popup .popup-buttons button:first-child {
+  border-bottom-left-radius: 15px;
+}
+.popup-container .popup .popup-buttons button:last-child {
+  border-bottom-right-radius: 15px;
+}
 .chain-top-space {
   height: 40px;
 }
@@ -183,8 +225,15 @@
 .chain-newest-info .ifmt-my-ifmt-container .ifmt-my-ifmt-circle-container .ifmt-my-ifmt-wave .ifmt-my-ifmt-dig-no {
   width: 100%;
   height: 100%;
-  background: url('../../images/ifmt/chain/autoDig.png') no-repeat center center;
-  background-size: cover;
+  position: relative;
+}
+.chain-newest-info .ifmt-my-ifmt-container .ifmt-my-ifmt-circle-container .ifmt-my-ifmt-wave .ifmt-my-ifmt-dig-no .ifmt-my-ifmt-dig-no-content {
+  width: 100%;
+  text-align: center;
+  margin-top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 4rem;
 }
 .chain-newest-info .ifmt-my-ifmt-container .ifmt-my-ifmt-circle-container .ifmt-my-ifmt-percent-container {
   position: absolute;
@@ -240,12 +289,17 @@
   .chain-newest-info .ifmt-my-ifmt-container .ifmt-my-ifmt-circle-container {
     margin: 3vh 0;
   }
+  .chain-newest-info .ifmt-my-ifmt-container .ifmt-my-ifmt-circle-container .ifmt-my-ifmt-percent-container {
+    transform: translateY(-60%);
+  }
   .chain-newest-info .ifmt-my-ifmt-container .ifmt-my-ifmt-circle-container .ifmt-my-ifmt-circle canvas {
     width: 350px;
     height: 350px;
   }
   .chain-newest-info .ifmt-my-ifmt-container .ifmt-my-ifmt-circle-container .ifmt-my-ifmt-wave {
-    top: 0;
+    width: 270px;
+    height: 270px;
+    top: 15px;
   }
   .chain-newest-info .ifmt-my-ifmt-container .chain-swiper-container {
     margin-top: 30px;

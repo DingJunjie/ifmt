@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="cn.bnqkl.ibt" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>本币钱包</name>
+    <name>IBT钱包</name>
     <description>This is an IFMChain's wallet</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Bngj team</author>
     <content src="index.html" />

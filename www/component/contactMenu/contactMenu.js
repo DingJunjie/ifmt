@@ -10,8 +10,8 @@
       '<div class="contact-untracked-content" ng-if="untrackedContactList.length > 0">\n' +
       '  <ul class="contact-menu-list">\n' +
       '    <li class="contact-menu-item-container">\n' +
-      '      <div class="contact-menu-letter">待确认</div>\n' +
-      '      <div class="contact-menu-item" ng-repeat="al in untrackedContactList">{{al.username ? al.username : al.address}}<button class="contact-menu-add-btn" ng-click="submitContact(al)">添加</button></div>\n' +
+      '      <div class="contact-menu-letter">{{"unconfirmed" | translate}}</div>\n' +
+      '      <div class="contact-menu-item" ng-repeat="al in untrackedContactList">{{al.username ? al.username : al.address}}<button class="contact-menu-add-btn" ng-click="submitContact(al)">{{"Add" | translate}}</button></div>\n' +
       '    </li>\n' +
       '  </ul>\n' +
       '</div>\n' +
@@ -33,7 +33,7 @@
       '</div>\n' +
       '</div>\n',
       replace : true,
-      controller: function($scope, $rootScope, userService, $ionicPopup, $timeout, $interval) {
+      controller: function($scope, $rootScope, userService, $ionicPopup, $timeout, $interval, gettextCatalog) {
         //定义排序属性方法
         function sortArr(property) {
           return function(obj1, obj2) {
@@ -110,6 +110,8 @@
           if($scope.paying === true) {
             if(co.username) {
               $rootScope.toUser = co.username;
+            }else {
+              $rootScope.toUser = '';
             }
             $rootScope.to = co.address;
             window.location.href = "#/pay";
@@ -121,23 +123,23 @@
 
         $scope.submitContact = function(co) {
           $ionicPopup.prompt({
-              title: "添加联系人",
-              template: "请输入您添加联系人的手续费",
+              title: gettextCatalog.getString('Add contact person'),
+              template: gettextCatalog.getString('Please set fee amount to add new contact'),
               inputType: 'number',
               inputPlaceholder: $scope.fee
             }).then(function(addFee) {
                 if(addFee && addFee > 0.00000001) {
                   $ionicPopup.prompt({
-                    title: "请输入密码",
-                    template: "请输入您的主密码",
+                    title: gettextCatalog.getString('Please enter your passphrase.'),
+                    template: gettextCatalog.getString('Please enter your passphrase below.'),
                     inputType: 'text',
                   }).then(function(pass) {
                     if(pass.length>0 && ifmjs.Mnemonic.isValid(pass) === true) {
                       submitContactFn(addFee, pass, co);
                     }else {
                     $ionicPopup.alert({
-                      "title" : "密码错误",
-                      "template" : "<h4>主密码错误，请重新输入。</h4>"
+                      "title" : gettextCatalog.getString('Tips'),
+                      "template" : "<h4>"+gettextCatalog.getString('Invalid passphrase')+"</h4>"
                     }, function() {
                       return;
                     })
@@ -145,8 +147,8 @@
                 })
               }else {
                 $ionicPopup.alert({
-                  "title" : "手续费错误",
-                  "template" : "<h4>手续费应该大于0.00000001个IFMT</h4>"
+                  "title" : gettextCatalog.getString('Tips'),
+                  "template" : "<h4>"+gettextCatalog.getString('The fee must greater or equal than 0.00000001 and less than max-fee in settings')+"</h4>"
                 }, function() {
                   return;
                 })
@@ -185,8 +187,8 @@
                           console.log(res);
                           if(res.success === true) {
                               $ionicPopup.alert({
-                                title: '添加成功',
-                                template: '<h4 style="text-align: center">联系人添加成功。</h4>'
+                                title: gettextCatalog.getString('Submit successfully'),
+                                template: '<h4 style="text-align: center">'+gettextCatalog.getString('Contacts') + gettextCatalog.getString('Submit successfully')+'</h4>'
                               })
                               getContacts();
                               /*var temp;
@@ -199,17 +201,26 @@
                               console.log(temp);
                               $scope.originalContactList.push(temp);*/
                           }else {
-                            throw "发生交易失败";
+                            throw gettextCatalog.getString(res.error.message);
                           }
                         })
                       }
                     }catch(e) {
-                      console.log(e);
+                      e = e.error ? e.error.message : e.message;
+                      $ionicPopup.alert({
+                        title: gettextCatalog.getString('Tips'),
+                        template: '<h4 style="text-align: center">'+gettextCatalog.getString(e)+'</h4>'
+                      })
                     }
                   })
+                }else {
+                  throw data.error.message;
                 }
               }catch(e) {
-                console.log(e);
+                $ionicPopup.alert({
+                  title: gettextCatalog.getString('Tips'),
+                  template: '<h4 style="text-align: center">'+gettextCatalog.getString(e.error.message)+'</h4>'
+                })
               }
             })
           }
@@ -217,6 +228,10 @@
           $rootScope.$on('refreshContact', function() {
             getContacts();
           })
+
+          $scope.$watch('$viewContentLoaded', function() {  
+              $rootScope.$emit('refreshContact');
+          });
 
           //$interval(getContacts, 10000);
 

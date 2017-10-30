@@ -94,8 +94,18 @@
         .ifmt-my-ifmt-dig-no {
           width: 100%;
           height: 100%;
-          background: url('../../images/ifmt/chain/autoDig.png') no-repeat center center;
-          background-size: cover;
+          position: relative;
+          //background: url('../../images/ifmt/chain/autoDig.png') no-repeat center center;
+          //background-size: cover;
+
+          .ifmt-my-ifmt-dig-no-content {
+            width: 100%;
+            text-align: center;
+            margin-top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 4rem;
+          }
         }   
       }
 
@@ -162,13 +172,19 @@
       .ifmt-my-ifmt-circle-container {
         margin: 3vh 0;
 
+        .ifmt-my-ifmt-percent-container {
+          transform: translateY(-60%);
+        }
+
         .ifmt-my-ifmt-circle canvas {
           width: 350px;
           height: 350px;
         }
 
         .ifmt-my-ifmt-wave {
-          top: 0;
+          width: 270px;
+          height: 270px;
+          top: 15px;
         }
       }
 

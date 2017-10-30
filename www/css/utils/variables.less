@@ -224,4 +224,52 @@
   //}
 }
 
+/**
+ * 定义ionicpopup样式
+ */
+.popup-container {
+  .popup {
+    border-radius: 15px;
+    //padding: 5px 0;
+    padding:0;
+    box-shadow:0 0 10px rgba(0,0,0,0.3);
+
+    .popup-head {
+      padding: 5px 10px;
+      padding-top: 15px;
+      .popup-title {
+        font-size: 2.0rem;
+      }
+    }
+
+    .popup-body {
+      text-align: center;
+      span, h4, h5, div {
+        font-size: 1.4rem;
+        color: #333;
+        margin:5px 0;
+      }
+
+      input {
+        margin-bottom: 5px;
+      }
+    }
+
+    .popup-buttons {
+      padding: 0;
+      min-height: 30px;
+
+      button {
+        margin: 0;
+
+        &:first-child {
+          border-bottom-left-radius: 15px;
+        }
+        &:last-child {
+          border-bottom-right-radius: 15px;
+        }
+      }
+    }
+  }
+}
 
